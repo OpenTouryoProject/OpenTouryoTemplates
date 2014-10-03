@@ -48,6 +48,8 @@
 //*                                RowUpdating、RowDeleting、PageIndexChanging、Sortingイベントを追加する。
 //*  2012/06/14  西野  大介        コントロール検索の再帰処理性能の集約＆効率化。
 //*  2013/03/05  西野  大介        cookieのパス属性のApplicationPathが「/」になるケースの考慮
+//*  2014/05/16  西野  大介        キャスト可否チェックのロジックを見直した。
+//*  2014/08/18  Sai-San           Added code for adding events dynamically for ListView events. 
 //**********************************************************************************
 
 using System.Text;
@@ -140,7 +142,7 @@ namespace Touryo.Infrastructure.Framework.Util
             #region チェック処理
 
             // コントロール指定が無い場合
-            if (ctrl == null )
+            if (ctrl == null)
             {
                 // 何もしないで戻る。
                 return;
@@ -176,49 +178,23 @@ namespace Touryo.Infrastructure.Framework.Util
                         if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_BUTTON))
                         {
                             // BUTTON
-                            Button button = null;
+                            Button button = FxCmnFunction.CastByAsOperator<Button>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                button = (Button)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             button.Click += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
                             // ControlHt.Add(ctrl.ID, ctrl);
                             // ControlHt[ctrl.ID] = ctrl;
                             FxCmnFunction.AddControlToDic(ctrl, controlHt); // 2011/02/12
-                            
+
                         }
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_LINK_BUTTON))
                         {
                             // LINK BUTTON
-                            LinkButton linkButton = null;
+                            LinkButton linkButton = FxCmnFunction.CastByAsOperator<LinkButton>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                linkButton = (LinkButton)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             linkButton.Click += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -229,22 +205,9 @@ namespace Touryo.Infrastructure.Framework.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_IMAGE_BUTTON))
                         {
                             // IMAGE BUTTON
-                            ImageButton imageButton = null;
+                            ImageButton imageButton = FxCmnFunction.CastByAsOperator<ImageButton>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                imageButton = (ImageButton)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             imageButton.Click += (ImageClickEventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -255,22 +218,9 @@ namespace Touryo.Infrastructure.Framework.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_IMAGE_MAP))
                         {
                             // IMAGE MAP
-                            ImageMap imageMap = null;
+                            ImageMap imageMap = FxCmnFunction.CastByAsOperator<ImageMap>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                imageMap = (ImageMap)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             imageMap.Click += (ImageMapEventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -281,22 +231,9 @@ namespace Touryo.Infrastructure.Framework.Util
                         //else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_COMMAND))
                         //{
                         //    // COMMAND
-                        //    Command command = null;
+                        //    Command command = FxCmnFunction.CastByAsOperator<Command>(ctrl, prefix);
 
-                        //    try
-                        //    {
-                        //        // キャストできる
-                        //        command = (Command)ctrl;
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        // キャストできない
-                        //        throw new FrameworkException(
-                        //            FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                        //            String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                        //            prefix, ctrl.GetType().ToString()), ex);
-                        //    }
-
+                        //    // ハンドラをキャストして設定
                         //    command.Click += (EventHandler)eventHandler;
 
                         //    // ディクショナリに格納
@@ -307,22 +244,9 @@ namespace Touryo.Infrastructure.Framework.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_DROP_DOWN_LIST))
                         {
                             // DROP DOWN LIST
-                            DropDownList dropDownList = null;
+                            DropDownList dropDownList = FxCmnFunction.CastByAsOperator<DropDownList>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                dropDownList = (DropDownList)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             dropDownList.SelectedIndexChanged += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -333,22 +257,9 @@ namespace Touryo.Infrastructure.Framework.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_LIST_BOX))
                         {
                             // LIST BOX
-                            ListBox listBox = null;
+                            ListBox listBox = FxCmnFunction.CastByAsOperator<ListBox>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                listBox = (ListBox)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             listBox.SelectedIndexChanged += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -359,22 +270,9 @@ namespace Touryo.Infrastructure.Framework.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_RADIO_BUTTON))
                         {
                             // RADIO BUTTON
-                            RadioButton radioButton = null;
+                            RadioButton radioButton = FxCmnFunction.CastByAsOperator<RadioButton>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                radioButton = (RadioButton)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             radioButton.CheckedChanged += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -385,22 +283,9 @@ namespace Touryo.Infrastructure.Framework.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_REPEATER))
                         {
                             // REPEATER
-                            Repeater repeater = null;
+                            Repeater repeater = FxCmnFunction.CastByAsOperator<Repeater>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                repeater = (Repeater)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             repeater.ItemCommand += (RepeaterCommandEventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -411,23 +296,9 @@ namespace Touryo.Infrastructure.Framework.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_GRIDVIEW))
                         {
                             // GRIDVIEW
-                            GridView gridView = null;
+                            GridView gridView = FxCmnFunction.CastByAsOperator<GridView>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                gridView = (GridView)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
-                            // キャスト
+                            // ハンドラをキャストして設定
                             object[] eventHandlers = ((object[])eventHandler);
 
                             // 全コマンド
@@ -447,6 +318,24 @@ namespace Touryo.Infrastructure.Framework.Util
                             // ControlHt.Add(ctrl.ID, ctrl);
                             // ControlHt[ctrl.ID] = ctrl;
                             FxCmnFunction.AddControlToDic(ctrl, controlHt); // 2011/02/12
+                        }
+                        else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_LISTVIEW))
+                        {
+                            // LISTVIEW
+                            ListView listView = FxCmnFunction.CastByAsOperator<ListView>(ctrl, prefix);
+
+                            // ハンドラをキャストして設定
+                            object[] eventHandlers = ((object[])eventHandler);
+
+                            //Delete event handler
+                            listView.ItemDeleting += (EventHandler<ListViewDeleteEventArgs>)eventHandlers[0];
+                            //Update event handler
+                            listView.ItemUpdating += (EventHandler<ListViewUpdateEventArgs>)eventHandlers[1];
+                            // Paging event handler
+                            listView.PagePropertiesChanged += (EventHandler)eventHandlers[2];
+                            //Sorting event handler
+                            listView.Sorting += (EventHandler<ListViewSortEventArgs>)eventHandlers[3];
+                            FxCmnFunction.AddControlToDic(ctrl, controlHt);
                         }
                     }
                 }
@@ -521,22 +410,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_BUTTON))
                             {
                                 // BUTTON
-                                Button button = null;
+                                Button button = FxCmnFunction.CastByAsOperator<Button>(ctrl, prefix);
 
-                                if(ctrl is Button)
-                                {
-                                    // キャストできる
-                                    button = (Button)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 button.Click += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -546,22 +422,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_LINK_BUTTON))
                             {
                                 // LINK BUTTON
-                                LinkButton linkButton = null;
+                                LinkButton linkButton = FxCmnFunction.CastByAsOperator<LinkButton>(ctrl, prefix);
 
-                                if (ctrl is LinkButton)
-                                {
-                                    // キャストできる
-                                    linkButton = (LinkButton)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 linkButton.Click += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -571,22 +434,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_IMAGE_BUTTON))
                             {
                                 // IMAGE BUTTON
-                                ImageButton imageButton = null;
+                                ImageButton imageButton = FxCmnFunction.CastByAsOperator<ImageButton>(ctrl, prefix);
 
-                                if (ctrl is ImageButton)
-                                {
-                                    // キャストできる
-                                    imageButton = (ImageButton)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 imageButton.Click += (ImageClickEventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -596,22 +446,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_IMAGE_MAP))
                             {
                                 // IMAGE MAP
-                                ImageMap imageMap = null;
+                                ImageMap imageMap = FxCmnFunction.CastByAsOperator<ImageMap>(ctrl, prefix);
 
-                                if (ctrl is ImageMap)
-                                {
-                                    // キャストできる
-                                    imageMap = (ImageMap)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 imageMap.Click += (ImageMapEventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -621,22 +458,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             //else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_COMMAND))
                             //{
                             //    // COMMAND
-                            //    Command command = null;
+                            //    Command command = FxCmnFunction.CastByAsOperator<Command>(ctrl, prefix);
 
-                            //    if (ctrl is Command)
-                            //    {
-                            //        // キャストできる
-                            //        command = (Command)ctrl;
-                            //    }
-                            //    else
-                            //    {
-                            //        // キャストできない
-                            //        throw new FrameworkException(
-                            //            FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                            //            String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                            //            prefix, ctrl.GetType().ToString()));
-                            //    }
-
+                            //    // ハンドラをキャストして設定
                             //    command.Click += (EventHandler)eventHandler;
 
                             //    // ディクショナリに格納
@@ -646,22 +470,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_DROP_DOWN_LIST))
                             {
                                 // DROP DOWN LIST
-                                DropDownList dropDownList = null;
+                                DropDownList dropDownList = FxCmnFunction.CastByAsOperator<DropDownList>(ctrl, prefix);
 
-                                if (ctrl is DropDownList)
-                                {
-                                    // キャストできる
-                                    dropDownList = (DropDownList)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 dropDownList.SelectedIndexChanged += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -671,22 +482,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_LIST_BOX))
                             {
                                 // LIST BOX
-                                ListBox listBox = null;
+                                ListBox listBox = FxCmnFunction.CastByAsOperator<ListBox>(ctrl, prefix);
 
-                                if (ctrl is ListBox)
-                                {
-                                    // キャストできる
-                                    listBox = (ListBox)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 listBox.SelectedIndexChanged += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -696,22 +494,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_RADIO_BUTTON))
                             {
                                 // RADIO BUTTON
-                                RadioButton radioButton = null;
+                                RadioButton radioButton = FxCmnFunction.CastByAsOperator<RadioButton>(ctrl, prefix);
 
-                                if (ctrl is RadioButton)
-                                {
-                                    // キャストできる
-                                    radioButton = (RadioButton)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 radioButton.CheckedChanged += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -721,22 +506,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_REPEATER))
                             {
                                 // REPEATER
-                                Repeater repeater = null;
+                                Repeater repeater = FxCmnFunction.CastByAsOperator<Repeater>(ctrl, prefix);
 
-                                if (ctrl is Repeater)
-                                {
-                                    // キャストできる
-                                    repeater = (Repeater)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 repeater.ItemCommand += (RepeaterCommandEventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -746,23 +518,9 @@ namespace Touryo.Infrastructure.Framework.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_GRIDVIEW))
                             {
                                 // GRIDVIEW
-                                GridView gridView = null;
+                                GridView gridView = FxCmnFunction.CastByAsOperator<GridView>(ctrl, prefix);
 
-                                if (ctrl is GridView)
-                                {
-                                    // キャストできる
-                                    gridView = (GridView)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
-                                // キャスト
+                                // ハンドラをキャストして設定
                                 object[] eventHandlers = ((object[])eventHandler);
 
                                 // 全コマンド
@@ -781,6 +539,27 @@ namespace Touryo.Infrastructure.Framework.Util
                                 // ディクショナリに格納
                                 controlHt[ctrl.ID] = ctrl;
                                 break;
+                            }
+                            else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_LISTVIEW))
+                            {
+                                // LISTVIEW
+                                ListView listView = FxCmnFunction.CastByAsOperator<ListView>(ctrl, prefix);
+
+                                // ハンドラをキャストして設定
+                                object[] eventHandlers = ((object[])eventHandler);
+
+                                // Delete
+                                listView.ItemDeleting += (EventHandler<ListViewDeleteEventArgs>)eventHandlers[0];
+                                //Update
+                                listView.ItemUpdating += (EventHandler<ListViewUpdateEventArgs>)eventHandlers[1];
+                                // Paging
+                                listView.PagePropertiesChanged += (EventHandler)eventHandlers[2];
+                                //Sorting event handler
+                                listView.Sorting += (EventHandler<ListViewSortEventArgs>)eventHandlers[3];
+
+                                // ディクショナリに格納
+                                controlHt[ctrl.ID] = ctrl;
+                                FxCmnFunction.AddControlToDic(ctrl, controlHt);
                             }
                         }
                     }
@@ -803,6 +582,32 @@ namespace Touryo.Infrastructure.Framework.Util
             }
 
             #endregion
+        }
+
+
+        /// <summary>キャスト可否チェック</summary>
+        /// <typeparam name="TResult">キャストする型</typeparam>
+        /// <param name="target">Control</param>
+        /// <param name="prefix">プレフィックス</param>
+        /// <returns>キャスト結果</returns>
+        public static TResult CastByAsOperator<TResult>(Control target, string prefix) where TResult : Control
+        {
+            // Cast By As Operator
+            TResult result = target as TResult;
+
+            if (result == null)
+            {
+                // キャストできない場合
+                throw new FrameworkException(
+                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
+                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
+                    prefix, target.GetType().ToString()));
+            }
+            else
+            {
+                // キャストできた場合
+                return result;
+            }
         }
 
         #region 旧処理
@@ -914,7 +719,7 @@ namespace Touryo.Infrastructure.Framework.Util
                 {
                     // oldGuid（更新時：newGuid）は、
                     // 先頭に移動させるため、後にエンキューする。
-                    flg = true; 
+                    flg = true;
                 }
                 else
                 {
@@ -1013,7 +818,7 @@ namespace Touryo.Infrastructure.Framework.Util
             else
             {
                 // 例えば「/ProjectX_sample」+「/」＝「/ProjectX_sample/」となる。
-            newCookie.Path = HttpContext.Current.Request.ApplicationPath + "/";
+                newCookie.Path = HttpContext.Current.Request.ApplicationPath + "/";
             }
 
             // ※ Request.ApplicationPathは、URLのホスト名以上のパス情報を含まず、
@@ -1047,7 +852,7 @@ namespace Touryo.Infrastructure.Framework.Util
             else
             {
                 // 例えば「/ProjectX_sample」+「/」＝「/ProjectX_sample/」となる。
-            newCookie.Path = HttpContext.Current.Request.ApplicationPath + "/";
+                newCookie.Path = HttpContext.Current.Request.ApplicationPath + "/";
             }
 
             // ※ Request.ApplicationPathは、URLのホスト名以上のパス情報を含まず、
