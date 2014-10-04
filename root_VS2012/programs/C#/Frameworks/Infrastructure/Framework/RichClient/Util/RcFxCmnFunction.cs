@@ -32,6 +32,7 @@
 //*  ----------  ----------------  -------------------------------------------------
 //*  2010/11/20  西野  大介        新規作成
 //*  2012/06/14  西野  大介        コントロール検索の再帰処理性能の集約＆効率化。
+//*  2014/05/16  西野  大介        キャスト可否チェックのロジックを見直した。
 //**********************************************************************************
 
 using System.Diagnostics;
@@ -120,21 +121,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                         if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_BUTTON))
                         {
                             // BUTTON
-                            Button button = null;
+                            Button button = RcFxCmnFunction.CastByAsOperator<Button>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                button = (Button)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             button.Click += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -144,21 +133,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_PICTURE_BOX))
                         {
                             // PICTURE BOX
-                            PictureBox pictureBox = null;
+                            PictureBox pictureBox = RcFxCmnFunction.CastByAsOperator<PictureBox>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                pictureBox = (PictureBox)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             pictureBox.Click += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -168,21 +145,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_COMBO_BOX))
                         {
                             // COMBO BOX
-                            ComboBox comboBox = null;
+                            ComboBox comboBox = RcFxCmnFunction.CastByAsOperator<ComboBox>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                comboBox = (ComboBox)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             comboBox.SelectedIndexChanged += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -192,21 +157,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_LIST_BOX))
                         {
                             // LIST BOX
-                            ListBox listBox = null;
+                            ListBox listBox = RcFxCmnFunction.CastByAsOperator<ListBox>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                listBox = (ListBox)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             listBox.SelectedIndexChanged += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -216,21 +169,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                         else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_RADIO_BUTTON))
                         {
                             // RADIO BUTTON
-                            RadioButton radioButton = null;
+                            RadioButton radioButton = RcFxCmnFunction.CastByAsOperator<RadioButton>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                radioButton = (RadioButton)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             radioButton.CheckedChanged += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -309,21 +250,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                             if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_BUTTON))
                             {
                                 // BUTTON
-                                Button button = null;
+                                Button button = RcFxCmnFunction.CastByAsOperator<Button>(ctrl, prefix);
 
-                                if (ctrl is Button)
-                                {
-                                    // キャストできる
-                                    button = (Button)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 button.Click += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -333,21 +262,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_PICTURE_BOX))
                             {
                                 // PICTURE BOX
-                                PictureBox pictureBox = null;
+                                PictureBox pictureBox = RcFxCmnFunction.CastByAsOperator<PictureBox>(ctrl, prefix);
 
-                                if (ctrl is PictureBox)
-                                {
-                                    // キャストできる
-                                    pictureBox = (PictureBox)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 pictureBox.Click += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -357,21 +274,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_COMBO_BOX))
                             {
                                 // COMBO BOX
-                                ComboBox comboBox = null;
+                                ComboBox comboBox = RcFxCmnFunction.CastByAsOperator<ComboBox>(ctrl, prefix);
 
-                                if (ctrl is ComboBox)
-                                {
-                                    // キャストできる
-                                    comboBox = (ComboBox)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 comboBox.SelectedIndexChanged += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -381,21 +286,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_LIST_BOX))
                             {
                                 // LIST BOX
-                                ListBox listBox = null;
+                                ListBox listBox = RcFxCmnFunction.CastByAsOperator<ListBox>(ctrl, prefix);
 
-                                if (ctrl is ListBox)
-                                {
-                                    // キャストできる
-                                    listBox = (ListBox)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 listBox.SelectedIndexChanged += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -405,21 +298,9 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
                             else if (prefix == GetConfigParameter.GetConfigValue(FxLiteral.PREFIX_OF_RADIO_BUTTON))
                             {
                                 // RADIO BUTTON
-                                RadioButton radioButton = null;
+                                RadioButton radioButton = RcFxCmnFunction.CastByAsOperator<RadioButton>(ctrl, prefix);
 
-                                if (ctrl is RadioButton)
-                                {
-                                    // キャストできる
-                                    radioButton = (RadioButton)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1], prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 radioButton.CheckedChanged += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
@@ -447,6 +328,31 @@ namespace Touryo.Infrastructure.Framework.RichClient.Util
             }
 
             #endregion
+        }
+
+        /// <summary>キャスト可否チェック</summary>
+        /// <typeparam name="TResult">キャストする型</typeparam>
+        /// <param name="target">Control</param>
+        /// <param name="prefix">プレフィックス</param>
+        /// <returns>キャスト結果</returns>
+        public static TResult CastByAsOperator<TResult>(Control target, string prefix) where TResult : Control
+        {
+            // Cast By As Operator
+            TResult result = target as TResult;
+
+            if (result == null)
+            {
+                // キャストできない場合
+                throw new FrameworkException(
+                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
+                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
+                    prefix, target.GetType().ToString()));
+            }
+            else
+            {
+                // キャストできた場合
+                return result;
+            }
         }
 
         /// <summary>
