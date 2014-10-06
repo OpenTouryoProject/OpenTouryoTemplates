@@ -46,6 +46,7 @@
 //*  2011/09/08  西野  大介        リカバリ処理のログ出力位置の変更
 //*                                （リカバリしない時ログを出力しないよう変更）。
 //*  2011/09/12  西野  大介        画面表示せず、ログ出力のみする例外処理方式を追加
+//*  2014/04/26  Sai              Replaced all the Japanese language in both UI and code with ResorceManager.GetString() method call
 //**********************************************************************************
 
 using System;
@@ -62,6 +63,9 @@ using System.Threading;
 using System.Diagnostics;
 using System.Security.Permissions;
 
+using System.Configuration;
+using System.Globalization;
+
 using Ionic.Zip;
 using Ionic.Zlib;
 
@@ -73,6 +77,8 @@ using Touryo.Infrastructure.Public.IO;
 using Touryo.Infrastructure.Public.Log;
 using Touryo.Infrastructure.Public.Str;
 using Touryo.Infrastructure.Public.Util;
+
+using System.Resources;
 
 namespace DeployZipPackWithHTTP
 {
@@ -93,6 +99,17 @@ namespace DeployZipPackWithHTTP
             get
             {
                 return this.lblStatus.Text;
+            }
+        }
+        
+        /// <summary>
+        /// Getting ResourceManager instance from Resources to apply internationalization
+        /// </summary>
+        private ResourceManager ResourceMgr
+        {
+            get
+            {
+                return Resources.Resource.ResourceManager;
             }
         }
 
@@ -199,8 +216,9 @@ namespace DeployZipPackWithHTTP
                     }
 
                     // ステータスを書き込む
-                    this.Status = "正常終了";
-
+                    //this.Status = "正常終了";
+                    //For internationalization, Replaced all the Japanese language to ResourceMgr.GetString() method call
+                    this.Status = ResourceMgr.GetString("S0001");
                     if (ArgsDic.ContainsKey("/QUIET"))
                     {
                         // メッセージ表示しない
@@ -208,8 +226,9 @@ namespace DeployZipPackWithHTTP
                     else
                     {
                         // メッセージ表示する
-                        MessageBox.Show(message, "メッセージ",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show(message, "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //For internationalization, Replaced all the Japanese language to ResourceMgr.GetString() method call
+                        MessageBox.Show(message, ResourceMgr.GetString("M0001"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else if (retVal is Exception)
@@ -221,19 +240,25 @@ namespace DeployZipPackWithHTTP
                     string message = "";
                     Exception ex = (Exception)retVal;
 
-                    message += "＜メッセージ＞\r\n";
+                    //message += "＜メッセージ＞\r\n";
+                    //For internationalization, Replaced all the Japanese language to ResourceMgr.GetString() method call
+                    message += ResourceMgr.GetString("M0002") + "\r\n";
                     message += ex.Message;
                     message += "\r\n";
 
                     message += "\r\n";
-                    message += "＜スタック トレース＞\r\n";
+                    //message += "＜スタック トレース＞\r\n";
+                    //For internationalization, Replaced all the Japanese language to ResourceMgr.GetString() method call
+                    message += ResourceMgr.GetString("M0003") + "\r\n";
                     message += ex.StackTrace;
                     message += "\r\n";
 
                     if (ex.InnerException != null)
                     {
                         message += "\r\n";
-                        message += "＜内部例外＞\r\n";
+                        //message += "＜内部例外＞\r\n";
+                        //For internationalization, Replaced all the Japanese language to ResourceMgr.GetString() method call
+                        message += ResourceMgr.GetString("M0004") + "\r\n";
                         message += ex.InnerException.ToString();
                         message += "\r\n";
                     }
@@ -241,7 +266,9 @@ namespace DeployZipPackWithHTTP
                     Program.OutPutMessage(message, LogLevel.ErrorLog);
 
                     // ステータスを書き込む
-                    this.Status = "異常終了";
+                    //this.Status = "異常終了";
+                    //For internationalization, Replaced all the Japanese language to ResourceMgr.GetString() method call
+                    this.Status = ResourceMgr.GetString("S0002");
 
                     // Exceptionではメッセージ表示しない。
 
@@ -263,7 +290,9 @@ namespace DeployZipPackWithHTTP
                     // 正常終了
                     
                     // ステータスを書き込む
-                    this.Status = "正常終了";
+                    //this.Status = "正常終了";
+                    //For internationalization, Replaced all the Japanese language to ResourceMgr.GetString() method call
+                    this.Status = ResourceMgr.GetString("S0001");
 
                     // 履歴を保存
                     Program.SaveHistories();
@@ -285,8 +314,9 @@ namespace DeployZipPackWithHTTP
                 catch(Exception ex)
                 {
                     // 例外を潰してログに出力
-                    Program.OutPutMessage(
-                        Program.TempZipFileName + "削除例外：" + ex.ToString(), LogLevel.ErrorLog);
+                    //Program.OutPutMessage(Program.TempZipFileName + "削除例外：" + ex.ToString(), LogLevel.ErrorLog);
+                    //For internationalization, Replaced all the Japanese language to ResourceMgr.GetString() method call
+                    Program.OutPutMessage(Program.TempZipFileName + ResourceMgr.GetString("E0002") + ex.ToString(), LogLevel.ErrorLog);
                 }
 
                 // 終了処理
