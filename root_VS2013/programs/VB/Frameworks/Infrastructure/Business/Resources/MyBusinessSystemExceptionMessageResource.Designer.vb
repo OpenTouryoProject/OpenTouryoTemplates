@@ -90,5 +90,32 @@ Namespace My.Resources
                 Return ResourceManager.GetString("SAMPLE_ERROR", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  The error occurred in workflow. :{0} に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend Shared ReadOnly Property WORKFLOW_ERROR() As String
+            Get
+                Return ResourceManager.GetString("WORKFLOW_ERROR", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  {0} argument is empty. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend Shared ReadOnly Property WORKFLOW_ERROR_CHECK_EMPTY() As String
+            Get
+                Return ResourceManager.GetString("WORKFLOW_ERROR_CHECK_EMPTY", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  {0} field is not contained in the {1} argument. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend Shared ReadOnly Property WORKFLOW_ERROR_CHECK_FIELD_ISNT_CONTAINED() As String
+            Get
+                Return ResourceManager.GetString("WORKFLOW_ERROR_CHECK_FIELD_ISNT_CONTAINED", resourceCulture)
+            End Get
+        End Property
     End Class
 End Namespace

@@ -4,9 +4,6 @@
 
 #region Apache License
 //
-//  
-// 
-//  
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at
@@ -35,8 +32,8 @@
 //*  2009/04/02  西野  大介        定義の追加（エラーの型）
 //*  2009/04/21  西野  大介        FrameworkExceptionの追加に伴い、定義追加
 //*  2009/07/21  西野  大介        マスタ ページのネストに対応
-//*  2012/12/14  西野 大介         WCF-HTTP対応
-//*  201x/12/17  西野 大介         WCF-TCP/IP対応
+//*  2012/12/14  西野  大介         WCF-HTTP対応
+//*  201x/12/17  西野  大介         WCF-TCP/IP対応
 //*  2013/12/23  西野  大介        アクセス修飾子をすべてpublicに変更した。
 //**********************************************************************************
 
