@@ -210,6 +210,12 @@ Open Touryo SubComponent:
   - See the following path.
    ./log4net/LICENSE
 
+- For the Json.NET component:
+
+  - License:https://json.codeplex.com/license
+  - See the following path.
+   ./Json.NET/LICENSE
+   
 - For the Dotnetzip component:
 
   - License:http://opensource.org/licenses/MS-PL
