@@ -42,6 +42,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
+using System.Configuration;
+using System.Globalization;
 
 namespace DeployZipPackWithHTTP
 {

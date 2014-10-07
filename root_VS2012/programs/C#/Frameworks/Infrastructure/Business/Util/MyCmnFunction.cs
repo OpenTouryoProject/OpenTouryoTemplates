@@ -39,6 +39,7 @@
 //*                                nullチェック方法、Contains → ContainsKeyなどに注意
 //*  2010/10/21  西野  大介        幾つかのイベント処理の正式対応（ベースクラス２→１へ）
 //*  2012/06/14  西野  大介        コントロール検索の再帰処理性能の集約＆効率化。
+//*  2014/05/16  西野  大介        キャスト可否チェックのロジックを見直した。
 //**********************************************************************************
 
 using System.Text;
@@ -131,22 +132,9 @@ namespace Touryo.Infrastructure.Business.Util
                         if (prefix == GetConfigParameter.GetConfigValue(MyLiteral.PREFIX_OF_CHECK_BOX))
                         {
                             // CHECK BOX
-                            CheckBox checkBox = null;
+                            CheckBox checkBox = FxCmnFunction.CastByAsOperator<CheckBox>(ctrl, prefix);
 
-                            try
-                            {
-                                // キャストできる
-                                checkBox = (CheckBox)ctrl;
-                            }
-                            catch (Exception ex)
-                            {
-                                // キャストできない
-                                throw new FrameworkException(
-                                    FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                    String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                    prefix, ctrl.GetType().ToString()), ex);
-                            }
-
+                            // ハンドラをキャストして設定
                             checkBox.CheckedChanged += (EventHandler)eventHandler;
 
                             // ディクショナリに格納
@@ -227,22 +215,9 @@ namespace Touryo.Infrastructure.Business.Util
                             if (prefix == GetConfigParameter.GetConfigValue(MyLiteral.PREFIX_OF_CHECK_BOX))
                             {
                                 // CHECK BOX
-                                CheckBox checkBox = null;
+                                CheckBox checkBox = FxCmnFunction.CastByAsOperator<CheckBox>(ctrl, prefix);
 
-                                if(ctrl is CheckBox)
-                                {
-                                    // キャストできる
-                                    checkBox = (CheckBox)ctrl;
-                                }
-                                else
-                                {
-                                    // キャストできない
-                                    throw new FrameworkException(
-                                        FrameworkExceptionMessage.CONTROL_TYPE_ERROR[0],
-                                        String.Format(FrameworkExceptionMessage.CONTROL_TYPE_ERROR[1],
-                                        prefix, ctrl.GetType().ToString()));
-                                }
-
+                                // ハンドラをキャストして設定
                                 checkBox.CheckedChanged += (EventHandler)eventHandler;
 
                                 // ディクショナリに格納
