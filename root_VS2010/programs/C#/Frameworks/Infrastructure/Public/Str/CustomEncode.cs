@@ -1046,6 +1046,8 @@ namespace Touryo.Infrastructure.Public.Str
             return HttpUtility.HtmlDecode(input);
         }
 
+#pragma warning disable
+
         /// <summary>Urlエンコードする。</summary>
         /// <param name="input">Url</param>
         /// <returns>UrlエンコードされたUrl</returns>
@@ -1072,6 +1074,8 @@ namespace Touryo.Infrastructure.Public.Str
             return HttpUtility.UrlEncodeUnicode(input);
         }
 
+#pragma warning restore
+        
         #endregion
 
         #region その他

@@ -283,3 +283,4 @@ Partial Public Class _TableName_Detail
 
 #End Region
 End Class
+

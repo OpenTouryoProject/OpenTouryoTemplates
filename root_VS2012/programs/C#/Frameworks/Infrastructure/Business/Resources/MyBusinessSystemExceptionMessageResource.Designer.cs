@@ -87,5 +87,32 @@ namespace Touryo.Infrastructure.Business.Resources {
                 return ResourceManager.GetString("SAMPLE_ERROR", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   The error occurred in workflow. :{0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string WORKFLOW_ERROR {
+            get {
+                return ResourceManager.GetString("WORKFLOW_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} argument is empty. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string WORKFLOW_ERROR_CHECK_EMPTY {
+            get {
+                return ResourceManager.GetString("WORKFLOW_ERROR_CHECK_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} field is not contained in the {1} argument. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string WORKFLOW_ERROR_CHECK_FIELD_ISNT_CONTAINED {
+            get {
+                return ResourceManager.GetString("WORKFLOW_ERROR_CHECK_FIELD_ISNT_CONTAINED", resourceCulture);
+            }
+        }
     }
 }

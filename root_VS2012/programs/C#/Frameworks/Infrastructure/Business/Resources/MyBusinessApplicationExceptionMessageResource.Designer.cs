@@ -60,14 +60,5 @@ namespace Touryo.Infrastructure.Business.Resources {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Message_SampleError  に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string SAMPLE_ERROR {
-            get {
-                return ResourceManager.GetString("SAMPLE_ERROR", resourceCulture);
-            }
-        }
     }
 }

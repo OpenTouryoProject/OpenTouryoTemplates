@@ -4,9 +4,6 @@
 
 #Region "Apache License"
 '
-'  
-' 
-'  
 ' Licensed under the Apache License, Version 2.0 (the "License");
 ' you may not use this file except in compliance with the License. 
 ' You may obtain a copy of the License at
@@ -42,14 +39,13 @@
 ' System
 Imports System
 Imports System.Threading
-Imports System.Resources
-Imports System.Globalization
 Imports Touryo.Infrastructure.Public.Util
+
+Imports System.Resources
 Imports My.Resources
+'Imports Touryo.Infrastructure.Business.Resources
 Imports System.Configuration
-
-
-
+Imports System.Globalization
 Namespace Touryo.Infrastructure.Business.Exceptions
 	''' <summary>
 	''' Business層の
@@ -99,3 +95,4 @@ Namespace Touryo.Infrastructure.Business.Exceptions
 		#End Region
 	End Class
 End Namespace
+

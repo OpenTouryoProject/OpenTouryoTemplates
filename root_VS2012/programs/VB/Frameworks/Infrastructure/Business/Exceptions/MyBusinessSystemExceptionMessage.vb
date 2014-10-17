@@ -4,9 +4,6 @@
 
 #Region "Apache License"
 '
-'  
-' 
-'  
 ' Licensed under the Apache License, Version 2.0 (the "License");
 ' you may not use this file except in compliance with the License. 
 ' You may obtain a copy of the License at
@@ -39,15 +36,17 @@
 '*  2014/02/03  西野  大介            取り込み：リソースファイル名とスイッチ名の変更、#pragma warning disableの追加。
 '**********************************************************************************
 
-' System
+' System;
 Imports System
 Imports System.Threading
+
 Imports Touryo.Infrastructure.Public.Util
+
 Imports System.Resources
 Imports My.Resources
-Imports System.Globalization
+'Imports Touryo.Infrastructure.Business.Resources
 Imports System.Configuration
-
+Imports System.Globalization
 
 
 Namespace Touryo.Infrastructure.Business.Exceptions

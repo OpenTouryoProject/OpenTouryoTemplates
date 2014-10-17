@@ -4,9 +4,6 @@
 
 #region Apache License
 //
-//  
-// 
-//  
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at
@@ -57,8 +54,11 @@ namespace Touryo.Infrastructure.Public.Dto
         /// </summary>
         public class TableRecords
         {
+            /// <summary>tbl</summary>
             public string tbl { get; set; }
+            /// <summary>col</summary>
             public Dictionary<string, string> col { get; set; }
+            /// <summary>row</summary>
             public ArrayList row { get; set; }
         }
 
@@ -357,7 +357,7 @@ namespace Touryo.Infrastructure.Public.Dto
         /// <summary>
         /// LoadJson Method(To Load records from Json format)
         /// </summary>
-        /// <param name="r">StreamReader</param>
+        /// <param name="sr">StreamReader</param>
         public void LoadJson(StreamReader sr)
         {
             List<TableRecords> lstTableRecords = new List<TableRecords>();
@@ -631,6 +631,8 @@ namespace Touryo.Infrastructure.Public.Dto
         }
 
         #endregion
+
+
 
         #region マーシャリングのサポート メソッド
 

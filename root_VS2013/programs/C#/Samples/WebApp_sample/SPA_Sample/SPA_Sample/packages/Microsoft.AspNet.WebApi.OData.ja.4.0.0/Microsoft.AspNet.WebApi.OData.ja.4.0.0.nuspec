@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.WebApi.OData.ja</id>
+    <version>4.0.0</version>
+    <title>!kuc1q!Microsoft ASP.NET Web API OData {Language} Resources 表©鷗字㌍ !</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnet_and_web_tools_2012_EULA_ENU.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/web-api</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>!M0Tpm!This package contains the {Language} satellite assemblies for ASP.NET Web API OData. 表©鷗字㌍ 表©鷗!</description>
+    <summary>!4vVf3!{Language} resources for the Microsoft.AspNet.WebApi.OData package 表©鷗字㌍ 表©!</summary>
+    <language>ja</language>
+    <tags>Microsoft AspNet WebApi AspNetWebApi OData</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.WebApi.OData" version="[4.0.0]" />
+    </dependencies>
+  </metadata>
+</package>

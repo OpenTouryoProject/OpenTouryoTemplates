@@ -28,6 +28,7 @@ namespace MVC_Sample
         /// 　Razor や DI に比べてかなり地味ですが、今までコントローラクラスに毎回付ける必要があった
         /// 　アクションフィルタを Global.asax で一括指定できるようになりました。
         /// </summary>
+        /// <param name="filters"></param>
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             // デフォルトで HandleError アクションフィルタを全てのコントローラへ適用するようになっている。

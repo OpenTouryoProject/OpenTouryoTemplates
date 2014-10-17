@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.WebApi.Tracing.ja</id>
+    <version>4.0.0</version>
+    <title>!2uQwF!Microsoft ASP.NET Web API Tracing {Language} Resources 表©鷗字㌍ !</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnet_and_web_tools_2012_EULA_ENU.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/web-api</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>!iWhHo!This package contains the {Language} satellite assemblies for ASP.NET Web API Tracing. 表©鷗字㌍ 表©鷗字!</description>
+    <summary>!qVn7i!{Language} resources for the Microsoft.AspNet.WebApi.Tracing package 表©鷗字㌍ 表©!</summary>
+    <language>ja</language>
+    <tags>Microsoft AspNet WebApi AspNetWebApi Diagnostics Tracing</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.WebApi.Tracing" version="[4.0.0]" />
+    </dependencies>
+  </metadata>
+</package>

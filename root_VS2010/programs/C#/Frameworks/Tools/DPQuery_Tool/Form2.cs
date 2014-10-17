@@ -4,9 +4,6 @@
 
 #region Apache License
 //
-//  
-// 
-//  
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at
@@ -143,6 +140,7 @@ namespace DPQuery_Tool
             this.Close();
         }
 
+        /// <summary>This Method gets the string values from resource file based on the key passed</summary>
         private string RM_GetString(string key)
         {
             // get the string value from resource file  by proper passing key.
