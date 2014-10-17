@@ -41,6 +41,13 @@ OpenTouryo Visual Studio 2010 template base is as follows.)
    (Build the program by running in numerical order the build batch of Above folder. 
    And then, if necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
    
+   Express Editionを使用している場合、devenv.comが存在しないので、
+   z_Common.batとz_Common2.batを差し替えてMSBuild.exeを使用して下さい。
+   
+   (If you are using the Express Edition,
+   use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
+   Because devenv.com does not exist.)
+   
 * サンプルの実行(Running the Sample)
 
    下記ファイルを開き実行する（VB版は一部の提供になっています）。

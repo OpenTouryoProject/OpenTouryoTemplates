@@ -41,6 +41,13 @@ OpenTouryo Visual Studio 2012 template base is as follows.)
    (Build the program by running in numerical order the build batch of Above folder. 
    And then, if necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
    
+   Express Editionを使用している場合、devenv.comが存在しないので、
+   z_Common.batとz_Common2.batを差し替えてMSBuild.exeを使用して下さい。
+   
+   (If you are using the Express Edition,
+   use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
+   Because devenv.com does not exist.)
+   
 * サンプルの実行(Running the Sample)
 
    下記ファイルを開き実行する（VB版は一部の提供になっています）。
@@ -54,7 +61,9 @@ OpenTouryo Visual Studio 2012 template base is as follows.)
          C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
       - ASP.NET MVC
          C:\\root\programs\C#\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
-    
+      - ASP.NET MVC SPA
+         C:\\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+             
    - C/S 2階層の場合(In the case of two-tier C/S)：
       - Windows Forms
          C:\root\programs\C#\Samples\2CS_sample\2CSClientWin_sample\2CSClientWin_sample.sln
