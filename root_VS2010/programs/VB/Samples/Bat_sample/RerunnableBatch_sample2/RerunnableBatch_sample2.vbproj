@@ -79,9 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.vb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="Dao\DaoOrders2_S1_Insert.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
