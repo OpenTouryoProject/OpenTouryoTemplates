@@ -32,22 +32,30 @@ OpenTouryo Visual Studio 2012 template base is as follows.)
       net start aspnet_state
 
 * プログラムのビルド(Building the program)
-   C:\root_VS2010\programs\C#
-   C:\root_VS2010\programs\VB
+   C:\root\programs\C#
+   C:\root\programs\VB
 
    フォルダ以下のビルドバッチを番号順に実行してプログラムをビルドします。
-   必要であれば、環境に合わせて、z_Common.bat内のBUILDFILEPATHを書き換えます。
+   (Build the program by running in numerical order the build batch of Above folder.)
+
+   - 必要であれば、環境に合わせて、z_Common.bat内のBUILDFILEPATHを書き換えます。
+     (If necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
    
-   (Build the program by running in numerical order the build batch of Above folder. 
-   And then, if necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
+     Express Editionを使用している場合は、devenv.comが存在しないので、
+     z_Common.batとz_Common2.batを差し替えてMSBuild.exeを使用して下さい。
+     
+     (If you are using the Express Edition,
+     use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
+     Because devenv.com does not exist.)
    
-   Express Editionを使用している場合、devenv.comが存在しないので、
-   z_Common.batとz_Common2.batを差し替えてMSBuild.exeを使用して下さい。
-   
-   (If you are using the Express Edition,
-   use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
-   Because devenv.com does not exist.)
-   
+   - VB版を使用する場合は、"C:\root\programs\C#\"の
+     1_DeleteDir.batから4_Build_Framework_Tool.batまでを実行した後に、
+     "C:\root\programs\VB\"の1_DeleteDir.batから順次実行して下さい。
+     
+     If you use the VB version,
+     after executing from "1_DeleteDir.bat" to "4_Build_Framework_Tool.bat" at the location of "C:\root\programs\C#\",
+     please executing sequentially from "1_DeleteDir.bat" at the location of "C:\root\programs\VB\".
+     
 * サンプルの実行(Running the Sample)
 
    下記ファイルを開き実行する（VB版は一部の提供になっています）。
@@ -128,9 +136,8 @@ Please have your own merge by get the DIFF of bug fixes from the repository at t
 
 # データプロバイダの入手、輸出手続き、使用許諾への添付について(obtain the data provider. export procedures. attach to license.)
 
-
 Open棟梁では、種々のデータ・プロバイダをサポートしていますが、
 各データ・プロバイダの入手・輸出手続きに関しては、各自対応下さい。
 
-The Open Touryo is support the data provider of various, 
+The OpenTouryo is support the data provider of various, 
 For information on obtaining and export procedures for each data provider, please support their own.

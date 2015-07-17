@@ -32,21 +32,29 @@ OpenTouryo Visual Studio 2013 template base is as follows.)
       net start aspnet_state
 
 * プログラムのビルド(Building the program)
-   C:\root_VS2010\programs\C#
-   C:\root_VS2010\programs\VB
+   C:\root\programs\C#
+   C:\root\programs\VB
 
    フォルダ以下のビルドバッチを番号順に実行してプログラムをビルドします。
-   必要であれば、環境に合わせて、z_Common.bat内のBUILDFILEPATHを書き換えます。
+   (Build the program by running in numerical order the build batch of Above folder.)
+
+   - 必要であれば、環境に合わせて、z_Common.bat内のBUILDFILEPATHを書き換えます。
+     (If necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
    
-   (Build the program by running in numerical order the build batch of Above folder. 
-   And then, if necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
+     Express Editionを使用している場合は、devenv.comが存在しないので、
+     z_Common.batとz_Common2.batを差し替えてMSBuild.exeを使用して下さい。
+     
+     (If you are using the Express Edition,
+     use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
+     Because devenv.com does not exist.)
    
-   Express Editionを使用している場合、devenv.comが存在しないので、
-   z_Common.batとz_Common2.batを差し替えてMSBuild.exeを使用して下さい。
-   
-   (If you are using the Express Edition,
-   use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
-   Because devenv.com does not exist.)
+   - VB版を使用する場合は、"C:\root\programs\C#\"の
+     1_DeleteDir.batから4_Build_Framework_Tool.batまでを実行した後に、
+     "C:\root\programs\VB\"の1_DeleteDir.batから順次実行して下さい。
+     
+     If you use the VB version,
+     after executing from "1_DeleteDir.bat" to "4_Build_Framework_Tool.bat" at the location of "C:\root\programs\C#\",
+     please executing sequentially from "1_DeleteDir.bat" at the location of "C:\root\programs\VB\".
    
 * VS2013のWebSiteで仮想パスのルートにプロジェクト名が
    入らなくなったことに起因して以下の対応が必要になりました。
@@ -67,19 +75,26 @@ OpenTouryo Visual Studio 2013 template base is as follows.)
       (Just in case, Run the aspnet_regiis. 
        You can run the "aspnet_regiis.exe - i" command to launch in administrator mode the CMD.)
        
-      C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe - i
+      "C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe" - i
   
-   - プロジェクトのルート・フォルダをIISの仮想ディレクトリに設定します（エイリアス：ProjectX_sample）。
-      (Set the virtual directory in IIS to "root folder of the project" (alias: ProjectX_sample).)
+   - IISの管理ツールにより、プロジェクトのルート・フォルダを
+      IISの仮想ディレクトリに設定します（エイリアス：ProjectX_sample）。
+      そして、その後、この仮想ディレクトリをアプリケーションに変換します。
       
+      (Set root folder of the project to virtual directory of IIS (alias: ProjectX_sample),
+      Thereafter, convert this to application by IIS management tool.)
+      
+      \root\programs\C#\Samples\WebApp_sample\ProjectX_sample
       \root\programs\VB\Samples\WebApp_sample\ProjectX_sample
-  
+      
    - VS2013を「管理者として実行」で起動して、
       プロジェクト・フォルダを既存のWebSiteとしてHTTP-IISから開きます。
+      "ファイル -> 開く -> WebSite、ローカル IIS -> IIS Expressサイトではなく、IISサイトから選択"
       プロジェクトをデバッグ実行し、仮想パスのルートにプロジェクト名が入る事を確認します。
       
       (Start with "Run as Administrator" on VS2013, 
-      I open it from the HTTP-IIS WebSite as an existing project folder. 
+      I open it from the HTTP-IIS WebSite as an existing project folder.
+      "File -> Open -> WebSite, Local IIS -> Select from IIS site rather than IIS express site"
       The debug run the project to see that the project name to enter the root of the virtual path.)
        
    - SQL Serverへの接続の暫定対策として偽装をします。
@@ -88,8 +103,12 @@ OpenTouryo Visual Studio 2013 template base is as follows.)
       <!-- 偽装する場合は以下を有効にする(Enable the following: If you want to impersonate) -->
       <identity impersonate="true" userName="xxxx" password="yyyy" />
       
-      他の対応方法として、SQL Server認証を有効にしても良い。
+      他の対応方法として、SQL Server認証を有効にしてもいけます。
       (In response other methods, it is also possible to enable the SQL Server authentication.)
+      
+      SQL Server の認証 - マイクロソフト系技術情報 Wiki
+      (SQLServer's authentication - Microsoft-based technology information Wiki)
+      http://techinfoofmicrosofttech.osscons.jp/index.php?SQL%20Server%20%E3%81%AE%E8%AA%8D%E8%A8%BC 
       
 * サンプルの実行(Running the Sample)
 
