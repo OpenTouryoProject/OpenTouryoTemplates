@@ -311,10 +311,7 @@
     <Content Include="Views\Shared\_AngularJSLayout.cshtml" />
     <Content Include="Views\Sample2\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Areas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

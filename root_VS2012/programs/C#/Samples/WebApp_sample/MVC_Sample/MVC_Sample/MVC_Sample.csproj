@@ -264,9 +264,7 @@
     <Content Include="Views\CrudMu2\_MessageView.cshtml" />
     <Content Include="Views\CrudMu2\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

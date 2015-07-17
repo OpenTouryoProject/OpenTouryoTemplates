@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServiceClient", "AuthSe
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ASPNETWebService", "..\..\..\..\Frameworks\Infrastructure\ServiceInterface\ASPNETWebService\", "{CF10219E-032C-4669-B9A1-D19F1C5A26E2}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/ASPNETWebService"
 		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\Frameworks\Infrastructure\ServiceInterface\ASPNETWebService\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\ASPNETWebService\"

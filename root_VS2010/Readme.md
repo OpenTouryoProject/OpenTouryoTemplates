@@ -108,8 +108,8 @@ OpenTouryo Visual Studio 2010 template base is as follows.)
    
 # 著作権、ライセンス(Copyright, license)
 
-[License]ディレクトリを確認下さい。
-(Please check [License] directory.)
+[License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license)ディレクトリを確認下さい。
+(Please check [License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license) directory.)
 
 # バグ対応(Bug fix)
 
