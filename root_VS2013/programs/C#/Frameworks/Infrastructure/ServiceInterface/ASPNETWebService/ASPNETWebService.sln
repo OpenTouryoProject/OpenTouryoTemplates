@@ -22,7 +22,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ASPNETWebService", ".", "{D
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "8888"
 		VWDDynamicPort = "false"
-		SlnRelativePath = "..\ASPNETWebService\"
 	EndProjectSection
 EndProject
 Global

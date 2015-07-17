@@ -8042,12 +8042,12 @@
     </member>
     <member name="M:System.Web.Mvc.Ajax.AjaxExtensions.GlobalizationScript(System.Web.Mvc.AjaxHelper)">
       <summary>カルチャ情報を定義するグローバリゼーション スクリプトへの参照を格納している HTML script  要素を返します。</summary>
-      <returns>次の例のように、src 属性がグローバリゼーション スクリプトに設定されている script 要素。 &lt;script type="text/javascript"     src="/MvcApplication1/Scripts/Globalization/en-US.js"&gt;&lt;/script&gt;</returns>
+      <returns>次の例のように、src 属性がグローバリゼーション スクリプトに設定されている script 要素。 &lt;script type="text/javascript"     src="/MVC_Sample/Scripts/Globalization/en-US.js"&gt;&lt;/script&gt;</returns>
       <param name="ajaxHelper">このメソッドによって拡張される AJAX ヘルパー オブジェクト。</param>
     </member>
     <member name="M:System.Web.Mvc.Ajax.AjaxExtensions.GlobalizationScript(System.Web.Mvc.AjaxHelper,System.Globalization.CultureInfo)">
       <summary>指定されたカルチャ情報を定義するグローバリゼーション スクリプトへの参照を格納している HTML script 要素を返します。</summary>
-      <returns>次の例のように、src 属性がグローバリゼーション スクリプトに設定されている HTML script 要素。&lt;script type="text/javascript"    src="/MvcApplication1/Scripts/Globalization/en-US.js"&gt;&lt;/script&gt;</returns>
+      <returns>次の例のように、src 属性がグローバリゼーション スクリプトに設定されている HTML script 要素。&lt;script type="text/javascript"    src="/MVC_Sample/Scripts/Globalization/en-US.js"&gt;&lt;/script&gt;</returns>
       <param name="ajaxHelper">このメソッドによって拡張される AJAX ヘルパー オブジェクト。</param>
       <param name="cultureInfo">日付形式など、ターゲット カルチャについての情報をカプセル化します。</param>
       <exception cref="T:System.ArgumentNullException">

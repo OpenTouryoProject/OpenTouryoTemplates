@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ASPNETWebService", ".", "{4418C1E8-B9A4-45BF-BF83-DFA2F8458288}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
 		Debug.AspNetCompiler.VirtualPath = "/ASPNETWebService"
 		Debug.AspNetCompiler.PhysicalPath = "..\ASPNETWebService\"
 		Debug.AspNetCompiler.TargetPath = "..\PrecompiledWeb\ASPNETWebService\"
@@ -22,7 +22,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ASPNETWebService", ".", "{4
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "8888"
 		VWDDynamicPort = "false"
-		SlnRelativePath = "..\ASPNETWebService\"
 	EndProjectSection
 EndProject
 Global

@@ -393,15 +393,15 @@ Public Class DaoCategories
 	''' <param name="fileName">ファイル名</param>
 	''' <param name="sqlUtil">SQLユーティリティ</param>
 	''' <returns>生成した静的SQL</returns>
-    Public Overloads Function ExecGenerateSQL(fileName As String, sqlUtil As SQLUtility) As String
-        ' ファイルからSQLを設定する。
-        Me.SetSqlByFile2(fileName)
+	Public Overloads Function ExecGenerateSQL(fileName As String, sqlUtil As SQLUtility) As String
+		' ファイルからSQLを設定する。
+		Me.SetSqlByFile2(fileName)
 
-        ' パラメタの設定
-        Me.SetParametersFromHt()
+		' パラメタの設定
+		Me.SetParametersFromHt()
 
-        Return MyBase.ExecGenerateSQL(sqlUtil)
-    End Function
+		Return MyBase.ExecGenerateSQL(sqlUtil)
+	End Function
 
 	#End Region
 

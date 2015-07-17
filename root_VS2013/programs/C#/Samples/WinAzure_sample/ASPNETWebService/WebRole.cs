@@ -62,8 +62,8 @@ namespace ASPNETWebService
                                                   storageConnectionString,
                                                   RoleEnvironment.DeploymentId);
             RoleInstanceDiagnosticManager roleInstanceDiagnosticManager = deploymentDiagnosticManager.GetRoleInstanceDiagnosticManager(
-                RoleEnvironment.CurrentRoleInstance.Role.Name,
-                RoleEnvironment.CurrentRoleInstance.Id);
+                                    RoleEnvironment.CurrentRoleInstance.Role.Name,
+                                    RoleEnvironment.CurrentRoleInstance.Id);
 
             // RoleInstance診断管理からコンフィグを取得する。
             // ・基本的にはデフォルト設定を利用する。
