@@ -36,12 +36,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSClientWinStore_sample", "
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "WSClientWinStoreJS_sample", "WSClientWinStoreJS_sample\WSClientWinStoreJS_sample.jsproj", "{C2C80D60-F48C-4EDD-B445-1E42D2BE8AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinStoreBusiness", "..\..\..\..\Frameworks\WinStore\WinStoreBusiness\WinStoreBusiness.csproj", "{19B5FDA7-E80F-4B57-9597-457F8CF63CD8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinStorePublic", "..\..\..\..\Frameworks\WinStore\WinStorePublic\WinStorePublic.csproj", "{D07C0124-01C0-4761-9D1E-109312F7C3B7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinStoreFramework", "..\..\..\..\Frameworks\WinStore\WinStoreFramework\WinStoreFramework.csproj", "{C109899A-2898-4B90-951E-142D393455FC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
