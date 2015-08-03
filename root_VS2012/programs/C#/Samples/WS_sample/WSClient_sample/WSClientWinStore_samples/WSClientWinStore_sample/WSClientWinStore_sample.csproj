@@ -239,14 +239,15 @@
     <WCFMetadataStorage Include="Service References\SbServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Frameworks\WinStore\WinStoreBusiness\WinStoreBusiness.csproj">
-      <Project>{19b5fda7-e80f-4b57-9597-457f8cf63cd8}</Project>
-      <Name>WinStoreBusiness</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\Frameworks\WinStore\WinStorePublic\WinStorePublic.csproj">
-      <Project>{d07c0124-01c0-4761-9d1e-109312f7c3b7}</Project>
-      <Name>WinStorePublic</Name>
-    </ProjectReference>
+    <Reference Include="PCLBusiness">
+      <HintPath>..\..\..\..\..\Frameworks\PortableClassLibrary\PCLBusiness\bin\Debug\PCLBusiness.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLFramework">
+      <HintPath>..\..\..\..\..\Frameworks\PortableClassLibrary\PCLFramework\bin\Debug\PCLFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLPublic">
+      <HintPath>..\..\..\..\..\Frameworks\PortableClassLibrary\PCLPublic\bin\Debug\PCLPublic.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
