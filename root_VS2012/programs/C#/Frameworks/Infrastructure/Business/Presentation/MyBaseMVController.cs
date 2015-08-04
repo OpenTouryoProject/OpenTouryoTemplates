@@ -31,7 +31,7 @@
 //*  日時        更新者            内容
 //*  ----------  ----------------  -------------------------------------------------
 //*  20xx/xx/xx  ＸＸ ＸＸ         新規作成（テンプレート）
-//*
+//*  2015/08/04  Supragyan        Added code for SessionTimeout to OnActionExecuting method.
 //**********************************************************************************
 
 // System
@@ -43,6 +43,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 // System.Web
+using System.Web;
 using System.Web.Mvc;
 
 // 業務フレームワーク
@@ -119,6 +120,95 @@ namespace Touryo.Infrastructure.Business.Presentation
                 "OnActionExecuting 前"
                 + " - " + filterContext.Controller.ToString()
                 + " - " + filterContext.ActionDescriptor.ActionName);
+
+            #region セッションタイムアウト検出処理
+
+            // セッションタイムアウト検出処理の定義を取得
+            string sessionTimeOutCheck =
+                GetConfigParameter.GetConfigValue(FxLiteral.SESSION_TIMEOUT_CHECK);
+
+            // デフォルト値対策：設定なし（null）の場合の扱いを決定
+            if (sessionTimeOutCheck == null)
+            {
+                // OFF扱い
+                sessionTimeOutCheck = FxLiteral.OFF;
+            }
+
+            // ON / OFF
+            if (sessionTimeOutCheck.ToUpper() == FxLiteral.ON)
+            {
+                // セッションタイムアウト検出処理（ON）
+
+                // セッション状態の確認
+                if (Session.IsNewSession)
+                {
+                    // 新しいセッションが開始された
+
+                    // セッションタイムアウト検出用Cookieをチェック
+                    HttpCookie cookie = Request.Cookies.Get(FxHttpCookieIndex.SESSION_TIMEOUT);
+
+                    if (cookie == null)
+                    {
+                        // セッションタイムアウト検出用Cookie無し → 新規のアクセス
+
+                        // セッションタイムアウト検出用Cookieを新規作成（値は空文字以外、何でも良い）
+
+                        // Set-Cookie HTTPヘッダをレスポンス
+                        Response.Cookies.Set(FxCmnFunction.CreateCookieForSessionTimeoutDetection());
+                    }
+                    else
+                    {
+                        // セッションタイムアウト検出用Cookie有り
+
+                        if (cookie.Value == "")
+                        {
+                            // セッションタイムアウト発生後の新規アクセス
+
+                            // だが、値が消去されている（空文字に設定されている）場合は、
+                            // 一度エラー or セッションタイムアウトになった後の新規のアクセスである。
+
+                            // セッションタイムアウト検出用Cookieを再作成（値は空文字以外、何でも良い）
+
+                            // Set-Cookie HTTPヘッダをレスポンス
+                            Response.Cookies.Set(FxCmnFunction.CreateCookieForSessionTimeoutDetection());
+                        }
+                        else
+                        {
+                            // セッションタイムアウト発生
+
+                            // エラー画面で以下の処理を実行する。
+                            // ・セッションタイムアウト検出用Cookieを消去
+                            // ・セッションを消去
+
+                            // ※ エラー画面への遷移方法がTransferになっているため、
+                            //    ここでセッションタイムアウト検出用Cookieを消去できないため。
+
+                            // セッションタイムアウト例外を発生させる
+                            throw new FrameworkException(
+                                FrameworkExceptionMessage.SESSION_TIMEOUT[0],
+                                FrameworkExceptionMessage.SESSION_TIMEOUT[1]);
+                        }
+                    }
+                }
+                else
+                {
+                    // セッション継続中
+                }
+            }
+            else if (sessionTimeOutCheck.ToUpper() == FxLiteral.OFF)
+            {
+                // セッションタイムアウト検出処理（OFF）
+            }
+            else
+            {
+                // パラメータ・エラー（書式不正）
+                throw new FrameworkException(
+                    FrameworkExceptionMessage.ERROR_IN_WRITING_OF_FX_SWITCH1[0],
+                    String.Format(FrameworkExceptionMessage.ERROR_IN_WRITING_OF_FX_SWITCH1[1],
+                        FxLiteral.SESSION_TIMEOUT_CHECK));
+            }
+
+            #endregion
 
             // アクションの実行
             base.OnActionExecuting(filterContext);
