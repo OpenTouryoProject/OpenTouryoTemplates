@@ -1,5 +1,5 @@
 ﻿//**********************************************************************************
-//* Copyright (C) 2007,2014 Hitachi Solutions,Ltd.
+//* Copyright (C) 2007,2015 Hitachi Solutions,Ltd.
 //**********************************************************************************
 
 #region Apache License
@@ -30,8 +30,8 @@
 //* 
 //*  日時        更新者            内容
 //*  ----------  ----------------  -------------------------------------------------
-//*  20xx/xx/xx  ＸＸ ＸＸ         新規作成（テンプレート）
 //*  2015/08/04  Supragyan        Added code for SessionTimeout to OnActionExecuting method.
+//*  2015/08/31  Supragyan        Modified OnException method to display error message on Error screen
 //**********************************************************************************
 
 // System
@@ -104,7 +104,7 @@ namespace Touryo.Infrastructure.Business.Presentation
             System.Diagnostics.Debug.WriteLine("View 前");
             return base.View(viewName, masterName, model);
         }
-        
+
         /// <summary>
         /// アクション メソッドの呼び出し前に呼び出されます。  
         /// Controller.OnActionExecuting メソッド (System.Web.Mvc)
@@ -231,9 +231,9 @@ namespace Touryo.Infrastructure.Business.Presentation
                 "OnActionExecuted 前"
                 + " - " + filterContext.Controller.ToString()
                 + " - " + filterContext.ActionDescriptor.ActionName);
-            
+
             base.OnActionExecuted(filterContext);
-            
+
             System.Diagnostics.Debug.WriteLine("OnActionExecuted 後");
         }
 
@@ -247,8 +247,84 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </remarks>
         protected override void OnException(ExceptionContext filterContext)
         {
-            //ASP.NET MVCでエラーハンドリングを行う場合 - waりとnaはてな日記
-            //http://d.hatena.ne.jp/waritohutsu/20090526/1243313938
+            #region 例外型を判別しエラーメッセージIDを取得
+
+            // エラーメッセージ
+            string err_msg;
+
+            // エラー情報をセッションから取得
+            string err_info;
+
+            //// Store the exception information for a Session.
+            Session["Exception"] = filterContext.Exception.ToString();
+
+            // エラーのタイプ
+            string[] arrErrType = filterContext.Exception.GetType().ToString().Split('.');
+            string errType = arrErrType[arrErrType.Length - 1];
+
+            // エラーメッセージＩＤ
+            string errMsgId = "";
+
+            // Check exception type
+            if (errType == "BusinessSystemException")
+            {
+                // システム例外
+                BusinessSystemException bsEx = (BusinessSystemException)filterContext.Exception;
+                errMsgId = bsEx.messageID;
+            }
+            else if (errType == "FrameworkException")
+            {
+                // フレームワーク例外
+                FrameworkException fxEx = (FrameworkException)filterContext.Exception;
+                errMsgId = fxEx.messageID;
+            }
+            else
+            {
+                // それ以外の例外
+                errMsgId = "－";
+            }
+
+            #endregion
+
+            #region エラー時に、セッションを開放しないで、業務を続行可能にする処理を追加。
+
+            // 不正操作エラー or 画面遷移制御チェック エラー
+            if (errMsgId == "IllegalOperationCheckError"
+                || errMsgId == "ScreenControlCheckError")
+            {
+                // セッションをクリアしない
+                Session.Add(FxHttpContextIndex.SESSION_ABANDON_FLAG, false);
+            }
+            else
+            {
+                // セッションをクリアする
+                Session.Add(FxHttpContextIndex.SESSION_ABANDON_FLAG, true);
+            }
+
+            #endregion
+
+            #region エラー画面に表示するエラー情報を作成
+
+            err_msg = System.Environment.NewLine +
+                "エラーメッセージＩＤ: " + errMsgId + System.Environment.NewLine +
+                "エラーメッセージ: " + filterContext.Exception.Message.ToString();
+
+            err_info = System.Environment.NewLine +
+                "対象URL: " +Request.Url.ToString() + System.Environment.NewLine +
+                "スタックトレース:" + filterContext.Exception.StackTrace.ToString() + System.Environment.NewLine +
+                "Exception.ToString():" + filterContext.ToString();
+            // Add exception information to Session。
+
+            Session.Add(FxHttpContextIndex.SYSTEM_EXCEPTION_MESSAGE, err_msg);
+            Session.Add(FxHttpContextIndex.SYSTEM_EXCEPTION_INFORMATION, err_info);
+
+            #endregion
+
+            // エラー画面へのパスを取得 --- チェック不要（ベースクラスでチェック済み）
+            string errorScreenPath = GetConfigParameter.GetConfigValue(FxLiteral.ERROR_SCREEN_PATH);
+
+            // エラー画面へ画面遷移
+            Response.Redirect(errorScreenPath);
 
             System.Diagnostics.Debug.WriteLine(
                 "OnException 前"
