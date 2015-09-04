@@ -14,7 +14,6 @@
 //*  ----------  ----------------  -------------------------------------------------
 //*  2015/08/28  Supragyan         Created ErrorInformation class to define error properties
 //**********************************************************************************
-
 //System
 using System;
 using System.Collections;
@@ -30,18 +29,18 @@ namespace MVC_Sample
     public static class ErrorInformation
     {
         /// <summary>
-        /// Error Message
+        /// ErrorMessage
         /// </summary>
         public static string ErrorMessage { get; set; }
 
         /// <summary>
-        /// Error Information
+        /// ErrorInformation
         /// </summary>
         public static string ErrorInfo { get; set; }
 
         /// <summary>
-        /// Error Datas
+        /// ErrorDatas
         /// </summary>
-        public static ArrayList ErrorDatas { get; set; }
+        public static List<object> ErrorDatas { get; set; }
     }
 }

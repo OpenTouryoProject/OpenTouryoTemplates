@@ -32,42 +32,22 @@
 //*  ----------  ----------------  -------------------------------------------------
 //*  2015/08/04  Supragyan        Added code for SessionTimeout to OnActionExecuting method.
 //*  2015/08/31  Supragyan        Modified OnException method to display error message on Error screen
+//*  2015/09/03  Supragyan        Modified ExceptionType,Session,RedireResult on OnException method 
 //**********************************************************************************
 
 // System
 using System;
-using System.IO;
-using System.Data;
-using System.Text;
-using System.Collections;
-using System.Collections.Generic;
 
 // System.Web
 using System.Web;
 using System.Web.Mvc;
 
-// 業務フレームワーク
-using Touryo.Infrastructure.Business.Business;
-using Touryo.Infrastructure.Business.Common;
-using Touryo.Infrastructure.Business.Dao;
-using Touryo.Infrastructure.Business.Exceptions;
-using Touryo.Infrastructure.Business.Presentation;
-using Touryo.Infrastructure.Business.Util;
-
 // フレームワーク
-using Touryo.Infrastructure.Framework.Business;
-using Touryo.Infrastructure.Framework.Common;
-using Touryo.Infrastructure.Framework.Dao;
 using Touryo.Infrastructure.Framework.Exceptions;
-using Touryo.Infrastructure.Framework.Presentation;
 using Touryo.Infrastructure.Framework.Util;
-using Touryo.Infrastructure.Framework.Transmission;
 
 // 部品
-using Touryo.Infrastructure.Public.Db;
-using Touryo.Infrastructure.Public.IO;
 using Touryo.Infrastructure.Public.Log;
-using Touryo.Infrastructure.Public.Str;
 using Touryo.Infrastructure.Public.Util;
 
 namespace Touryo.Infrastructure.Business.Presentation
@@ -86,7 +66,7 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// <returns>ViewResult オブジェクト</returns>
         protected override ViewResult View(IView view, object model)
         {
-            System.Diagnostics.Debug.WriteLine("View 前");
+            LogIF.InfoLog("ACCESS", "View 前");
             return base.View(view, model);
         }
 
@@ -101,7 +81,7 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// <returns>ViewResult オブジェクト</returns>
         protected override ViewResult View(string viewName, string masterName, object model)
         {
-            System.Diagnostics.Debug.WriteLine("View 前");
+            LogIF.InfoLog("ACCESS", "View 前");
             return base.View(viewName, masterName, model);
         }
 
@@ -116,10 +96,10 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            System.Diagnostics.Debug.WriteLine(
-                "OnActionExecuting 前"
-                + " - " + filterContext.Controller.ToString()
-                + " - " + filterContext.ActionDescriptor.ActionName);
+            string strLogMessage = "OnActionExecuting 前" + " - " + filterContext.Controller.ToString() + " - "
+                               + filterContext.ActionDescriptor.ActionName;
+
+            LogIF.InfoLog("ACCESS", strLogMessage);
 
             #region セッションタイムアウト検出処理
 
@@ -180,9 +160,6 @@ namespace Touryo.Infrastructure.Business.Presentation
                             // ・セッションタイムアウト検出用Cookieを消去
                             // ・セッションを消去
 
-                            // ※ エラー画面への遷移方法がTransferになっているため、
-                            //    ここでセッションタイムアウト検出用Cookieを消去できないため。
-
                             // セッションタイムアウト例外を発生させる
                             throw new FrameworkException(
                                 FrameworkExceptionMessage.SESSION_TIMEOUT[0],
@@ -212,8 +189,7 @@ namespace Touryo.Infrastructure.Business.Presentation
 
             // アクションの実行
             base.OnActionExecuting(filterContext);
-
-            System.Diagnostics.Debug.WriteLine("OnActionExecuting 後");
+            LogIF.InfoLog("ACCESS", "OnActionExecuting 後");
         }
 
         /// <summary>
@@ -226,15 +202,13 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// 現在の要求およびアクションに関する情報。
         /// </param>
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-            System.Diagnostics.Debug.WriteLine(
-                "OnActionExecuted 前"
-                + " - " + filterContext.Controller.ToString()
-                + " - " + filterContext.ActionDescriptor.ActionName);
+        {            
+            string strLogMessage = "OnActionExecuted 前" + " - " + filterContext.Controller.ToString()+ " - "
+                                   + filterContext.ActionDescriptor.ActionName;
+            LogIF.InfoLog("ACCESS", strLogMessage);
 
             base.OnActionExecuted(filterContext);
-
-            System.Diagnostics.Debug.WriteLine("OnActionExecuted 後");
+            LogIF.InfoLog("ACCESS", "OnActionExecuted 後");
         }
 
         /// <summary>アクションでハンドルされない例外が発生したときに呼び出されます。</summary>
@@ -247,7 +221,11 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </remarks>
         protected override void OnException(ExceptionContext filterContext)
         {
-            #region 例外型を判別しエラーメッセージIDを取得
+            string strLogMessage = "OnException 前" + " - " + filterContext.Controller.ToString() + " - "    
+                                   + filterContext.Exception.Message;
+            LogIF.ErrorLog("ACCESS", strLogMessage);         
+
+            #region 例外型を判別しエラーメッセージIDを取得            
 
             // エラーメッセージ
             string err_msg;
@@ -255,24 +233,25 @@ namespace Touryo.Infrastructure.Business.Presentation
             // エラー情報をセッションから取得
             string err_info;
 
+            // エラー画面へのパスを取得 --- チェック不要（ベースクラスでチェック済み）
+            string errorScreenPath = GetConfigParameter.GetConfigValue(FxLiteral.ERROR_SCREEN_PATH);
+
             //// Store the exception information for a Session.
-            Session["Exception"] = filterContext.Exception.ToString();
+            Session["ExceptionInformation"] = filterContext.Exception.ToString();
 
             // エラーのタイプ
-            string[] arrErrType = filterContext.Exception.GetType().ToString().Split('.');
-            string errType = arrErrType[arrErrType.Length - 1];
 
             // エラーメッセージＩＤ
             string errMsgId = "";
 
-            // Check exception type
-            if (errType == "BusinessSystemException")
+            // Check exception type 
+            if (filterContext.Exception is BusinessSystemException)
             {
                 // システム例外
                 BusinessSystemException bsEx = (BusinessSystemException)filterContext.Exception;
                 errMsgId = bsEx.messageID;
             }
-            else if (errType == "FrameworkException")
+            else if (filterContext.Exception is FrameworkException)
             {
                 // フレームワーク例外
                 FrameworkException fxEx = (FrameworkException)filterContext.Exception;
@@ -293,12 +272,12 @@ namespace Touryo.Infrastructure.Business.Presentation
                 || errMsgId == "ScreenControlCheckError")
             {
                 // セッションをクリアしない
-                Session.Add(FxHttpContextIndex.SESSION_ABANDON_FLAG, false);
+                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG]=false;
             }
             else
             {
                 // セッションをクリアする
-                Session.Add(FxHttpContextIndex.SESSION_ABANDON_FLAG, true);
+                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG]= true;
             }
 
             #endregion
@@ -310,30 +289,32 @@ namespace Touryo.Infrastructure.Business.Presentation
                 "エラーメッセージ: " + filterContext.Exception.Message.ToString();
 
             err_info = System.Environment.NewLine +
-                "対象URL: " +Request.Url.ToString() + System.Environment.NewLine +
+                "対象URL: " + Request.Url.ToString() + System.Environment.NewLine +
                 "スタックトレース:" + filterContext.Exception.StackTrace.ToString() + System.Environment.NewLine +
                 "Exception.ToString():" + filterContext.ToString();
-            // Add exception information to Session。
 
-            Session.Add(FxHttpContextIndex.SYSTEM_EXCEPTION_MESSAGE, err_msg);
-            Session.Add(FxHttpContextIndex.SYSTEM_EXCEPTION_INFORMATION, err_info);
+            // Add exception information to Session。
+            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_MESSAGE]= err_msg;
+            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_INFORMATION]=err_info;
 
             #endregion
 
-            // エラー画面へのパスを取得 --- チェック不要（ベースクラスでチェック済み）
-            string errorScreenPath = GetConfigParameter.GetConfigValue(FxLiteral.ERROR_SCREEN_PATH);
+            filterContext.ExceptionHandled = true;
+            filterContext.HttpContext.Response.Clear();
 
             // エラー画面へ画面遷移
-            Response.Redirect(errorScreenPath);
 
-            System.Diagnostics.Debug.WriteLine(
-                "OnException 前"
-                + " - " + filterContext.Controller.ToString()
-                + " - " + filterContext.Exception.Message);
+            if (filterContext.HttpContext.Request.IsAjaxRequest())
+            {
+                filterContext.Result = new JavaScriptResult() { Script = "location.href = '" + errorScreenPath + "'" };
+            }
+            else
+            {
+                filterContext.Result = new RedirectResult(errorScreenPath);
+            }
 
             base.OnException(filterContext);
-
-            System.Diagnostics.Debug.WriteLine("OnException 後");
+            LogIF.InfoLog("ACCESS", "OnException 後");
         }
 
         /// <summary>
@@ -347,13 +328,11 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </param>
         protected override void OnResultExecuting(ResultExecutingContext filterContext)
         {
-            System.Diagnostics.Debug.WriteLine(
-                "OnResultExecuting 前"
-                + " - " + filterContext.Controller.ToString());
+            string strLogMessage="OnResultExecuting 前" + " - " + filterContext.Controller.ToString();
+            LogIF.InfoLog("ACCESS", strLogMessage);
 
             base.OnResultExecuting(filterContext);
-
-            System.Diagnostics.Debug.WriteLine("OnResultExecuting 後");
+            LogIF.InfoLog("ACCESS", "OnResultExecuting 後");
         }
 
         /// <summary>
@@ -367,13 +346,11 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </param>
         protected override void OnResultExecuted(ResultExecutedContext filterContext)
         {
-            System.Diagnostics.Debug.WriteLine(
-                "OnResultExecuted 前"
-                + " - " + filterContext.Controller.ToString());
+            string strLogMessage = "OnResultExecuted 前" + " - " + filterContext.Controller.ToString();
+            LogIF.InfoLog("ACCESS", strLogMessage);           
 
             base.OnResultExecuted(filterContext);
-
-            System.Diagnostics.Debug.WriteLine("OnResultExecuted 後");
+            LogIF.InfoLog("ACCESS", "OnResultExecuted 後"); 
         }
     }
 }
