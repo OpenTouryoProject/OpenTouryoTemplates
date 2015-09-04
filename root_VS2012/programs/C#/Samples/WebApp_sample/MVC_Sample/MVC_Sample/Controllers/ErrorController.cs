@@ -15,6 +15,7 @@
 //*  2015/08/27  Supragyan         Created ErrorController class to display error messages and informations
 //*  2015/09/03  Supragyan         Rename Position data class to Exception data class
 //*  2015/09/03  Supragyan         Modified Index Action method
+//*  2015/09/04  Supragyan         Modified ArrayList to List of ExceptionData on Index action method
 //**********************************************************************************
 
 //system
@@ -24,8 +25,6 @@ using System.Collections.Generic;
 
 // フレームワーク
 using Touryo.Infrastructure.Framework.Util;
-
-// 業務フレームワーク
 
 // 部品
 using Touryo.Infrastructure.Public.Str;
@@ -39,7 +38,7 @@ namespace MVC_Sample.Controllers
     public class ErrorController : Controller
     {
         /// <summary>Session情報：リピータ処理用</summary>
-        private List<object> listData = new List<object>();
+        private List<ExceptionData> listData = new List<ExceptionData>();
 
         #region Index
         /// <summary>

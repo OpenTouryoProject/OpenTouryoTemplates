@@ -21,6 +21,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+//MVC_Sample
+using MVC_Sample.Controllers;
+
 namespace MVC_Sample
 {
     /// <summary>
@@ -41,6 +44,6 @@ namespace MVC_Sample
         /// <summary>
         /// ErrorDatas
         /// </summary>
-        public static List<object> ErrorDatas { get; set; }
+        public static List<ExceptionData> ErrorDatas { get; set; }
     }
 }
