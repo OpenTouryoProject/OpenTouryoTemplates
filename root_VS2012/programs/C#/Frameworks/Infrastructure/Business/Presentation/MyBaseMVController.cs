@@ -33,6 +33,8 @@
 //*  2015/08/04  Supragyan        Added code for SessionTimeout to OnActionExecuting method.
 //*  2015/08/31  Supragyan        Modified OnException method to display error message on Error screen
 //*  2015/09/03  Supragyan        Modified ExceptionType,Session,RedireResult on OnException method 
+//*  2015/10/27  Sai              Moved moved the code of SessionTimeout from OnActionExecuting
+//*                               method to BaseMVController class.    
 //**********************************************************************************
 
 // System
@@ -54,7 +56,7 @@ namespace Touryo.Infrastructure.Business.Presentation
 {
     /// <summary>画面コード親クラス２</summary>
     /// <remarks>（オーバーライドして）自由に利用できる。</remarks>
-    public class MyBaseMVController : Controller
+    public class MyBaseMVController : BaseMVController
     {
         /// <summary>
         /// 応答にビューを表示する ViewResult オブジェクトを作成します。
@@ -101,92 +103,6 @@ namespace Touryo.Infrastructure.Business.Presentation
 
             LogIF.InfoLog("ACCESS", strLogMessage);
 
-            #region セッションタイムアウト検出処理
-
-            // セッションタイムアウト検出処理の定義を取得
-            string sessionTimeOutCheck =
-                GetConfigParameter.GetConfigValue(FxLiteral.SESSION_TIMEOUT_CHECK);
-
-            // デフォルト値対策：設定なし（null）の場合の扱いを決定
-            if (sessionTimeOutCheck == null)
-            {
-                // OFF扱い
-                sessionTimeOutCheck = FxLiteral.OFF;
-            }
-
-            // ON / OFF
-            if (sessionTimeOutCheck.ToUpper() == FxLiteral.ON)
-            {
-                // セッションタイムアウト検出処理（ON）
-
-                // セッション状態の確認
-                if (Session.IsNewSession)
-                {
-                    // 新しいセッションが開始された
-
-                    // セッションタイムアウト検出用Cookieをチェック
-                    HttpCookie cookie = Request.Cookies.Get(FxHttpCookieIndex.SESSION_TIMEOUT);
-
-                    if (cookie == null)
-                    {
-                        // セッションタイムアウト検出用Cookie無し → 新規のアクセス
-
-                        // セッションタイムアウト検出用Cookieを新規作成（値は空文字以外、何でも良い）
-
-                        // Set-Cookie HTTPヘッダをレスポンス
-                        Response.Cookies.Set(FxCmnFunction.CreateCookieForSessionTimeoutDetection());
-                    }
-                    else
-                    {
-                        // セッションタイムアウト検出用Cookie有り
-
-                        if (cookie.Value == "")
-                        {
-                            // セッションタイムアウト発生後の新規アクセス
-
-                            // だが、値が消去されている（空文字に設定されている）場合は、
-                            // 一度エラー or セッションタイムアウトになった後の新規のアクセスである。
-
-                            // セッションタイムアウト検出用Cookieを再作成（値は空文字以外、何でも良い）
-
-                            // Set-Cookie HTTPヘッダをレスポンス
-                            Response.Cookies.Set(FxCmnFunction.CreateCookieForSessionTimeoutDetection());
-                        }
-                        else
-                        {
-                            // セッションタイムアウト発生
-
-                            // エラー画面で以下の処理を実行する。
-                            // ・セッションタイムアウト検出用Cookieを消去
-                            // ・セッションを消去
-
-                            // セッションタイムアウト例外を発生させる
-                            throw new FrameworkException(
-                                FrameworkExceptionMessage.SESSION_TIMEOUT[0],
-                                FrameworkExceptionMessage.SESSION_TIMEOUT[1]);
-                        }
-                    }
-                }
-                else
-                {
-                    // セッション継続中
-                }
-            }
-            else if (sessionTimeOutCheck.ToUpper() == FxLiteral.OFF)
-            {
-                // セッションタイムアウト検出処理（OFF）
-            }
-            else
-            {
-                // パラメータ・エラー（書式不正）
-                throw new FrameworkException(
-                    FrameworkExceptionMessage.ERROR_IN_WRITING_OF_FX_SWITCH1[0],
-                    String.Format(FrameworkExceptionMessage.ERROR_IN_WRITING_OF_FX_SWITCH1[1],
-                        FxLiteral.SESSION_TIMEOUT_CHECK));
-            }
-
-            #endregion
-
             // アクションの実行
             base.OnActionExecuting(filterContext);
             LogIF.InfoLog("ACCESS", "OnActionExecuting 後");
@@ -202,8 +118,8 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// 現在の要求およびアクションに関する情報。
         /// </param>
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
-        {            
-            string strLogMessage = "OnActionExecuted 前" + " - " + filterContext.Controller.ToString()+ " - "
+        {
+            string strLogMessage = "OnActionExecuted 前" + " - " + filterContext.Controller.ToString() + " - "
                                    + filterContext.ActionDescriptor.ActionName;
             LogIF.InfoLog("ACCESS", strLogMessage);
 
@@ -221,11 +137,11 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </remarks>
         protected override void OnException(ExceptionContext filterContext)
         {
-            string strLogMessage = "OnException 前" + " - " + filterContext.Controller.ToString() + " - "    
+            string strLogMessage = "OnException 前" + " - " + filterContext.Controller.ToString() + " - "
                                    + filterContext.Exception.Message;
-            LogIF.ErrorLog("ACCESS", strLogMessage);         
+            LogIF.ErrorLog("ACCESS", strLogMessage);
 
-            #region 例外型を判別しエラーメッセージIDを取得            
+            #region 例外型を判別しエラーメッセージIDを取得
 
             // エラーメッセージ
             string err_msg;
@@ -272,12 +188,12 @@ namespace Touryo.Infrastructure.Business.Presentation
                 || errMsgId == "ScreenControlCheckError")
             {
                 // セッションをクリアしない
-                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG]=false;
+                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG] = false;
             }
             else
             {
                 // セッションをクリアする
-                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG]= true;
+                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG] = true;
             }
 
             #endregion
@@ -294,8 +210,8 @@ namespace Touryo.Infrastructure.Business.Presentation
                 "Exception.ToString():" + filterContext.ToString();
 
             // Add exception information to Session。
-            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_MESSAGE]= err_msg;
-            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_INFORMATION]=err_info;
+            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_MESSAGE] = err_msg;
+            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_INFORMATION] = err_info;
 
             #endregion
 
@@ -328,7 +244,7 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </param>
         protected override void OnResultExecuting(ResultExecutingContext filterContext)
         {
-            string strLogMessage="OnResultExecuting 前" + " - " + filterContext.Controller.ToString();
+            string strLogMessage = "OnResultExecuting 前" + " - " + filterContext.Controller.ToString();
             LogIF.InfoLog("ACCESS", strLogMessage);
 
             base.OnResultExecuting(filterContext);
@@ -347,10 +263,10 @@ namespace Touryo.Infrastructure.Business.Presentation
         protected override void OnResultExecuted(ResultExecutedContext filterContext)
         {
             string strLogMessage = "OnResultExecuted 前" + " - " + filterContext.Controller.ToString();
-            LogIF.InfoLog("ACCESS", strLogMessage);           
+            LogIF.InfoLog("ACCESS", strLogMessage);
 
             base.OnResultExecuted(filterContext);
-            LogIF.InfoLog("ACCESS", "OnResultExecuted 後"); 
+            LogIF.InfoLog("ACCESS", "OnResultExecuted 後");
         }
     }
 }
