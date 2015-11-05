@@ -32,6 +32,8 @@
 //*  ----------  ----------------  -------------------------------------------------
 //*  2015/10/27  Sai              Created new class and moved the code of SessionTimeout from OnActionExecuting
 //*                               method in MyBaseMVController to this class.
+//*                               Removed unnecessary log information.
+//*                                 
 //**********************************************************************************
 
 // System
@@ -66,10 +68,8 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            string strLogMessage = "OnActionExecuting 前" + " - " + filterContext.Controller.ToString() + " - "
-                               + filterContext.ActionDescriptor.ActionName;
-
-            LogIF.InfoLog("ACCESS", strLogMessage);
+            // Calling base class method.
+            base.OnActionExecuting(filterContext);
 
             #region セッションタイムアウト検出処理
 
@@ -105,6 +105,7 @@ namespace Touryo.Infrastructure.Business.Presentation
 
                         // Set-Cookie HTTPヘッダをレスポンス
                         Response.Cookies.Set(FxCmnFunction.CreateCookieForSessionTimeoutDetection());
+                        Session[FxHttpSessionIndex.DUMMY] = "dummy";
                     }
                     else
                     {
@@ -121,6 +122,7 @@ namespace Touryo.Infrastructure.Business.Presentation
 
                             // Set-Cookie HTTPヘッダをレスポンス
                             Response.Cookies.Set(FxCmnFunction.CreateCookieForSessionTimeoutDetection());
+                            Session[FxHttpSessionIndex.DUMMY] = "dummy";
                         }
                         else
                         {
@@ -157,7 +159,10 @@ namespace Touryo.Infrastructure.Business.Presentation
 
             #endregion
 
-            LogIF.InfoLog("ACCESS", "OnActionExecuting 後");
+            string strLogMessage = "OnActionExecuting" + " - " + filterContext.Controller.ToString() + " - "
+                             + filterContext.ActionDescriptor.ActionName;
+
+            LogIF.InfoLog("ACCESS", strLogMessage);
         }
     }
 }
