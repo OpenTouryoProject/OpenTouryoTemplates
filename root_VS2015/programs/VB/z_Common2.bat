@@ -5,11 +5,14 @@
 @rem --------------------------------------------------
 @rem Specifying Build tool.
 @rem --------------------------------------------------
-set BUILDFILEPATH="C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"
+set BUILDFILEPATH="C:\Program Files\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com"
 
-set BUILDFILEPATH2.0="C:\Windows\Microsoft.NET\Framework\v2.0.50727\MSBuild.exe"
-set BUILDFILEPATH3.5="C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe"
-set BUILDFILEPATH4.0="C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"
+set BUILDFILEPATH2.0="C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\devenv.com"
+set BUILDFILEPATH3.5="C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\devenv.com"
+set BUILDFILEPATH4.0="C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\devenv.com"
+set BUILDFILEPATH4.5="C:\Program Files\Microsoft Visual Studio 11.0\Common7\IDE\devenv.com"
+set BUILDFILEPATH4.5.1="C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\IDE\devenv.com"
+set BUILDFILEPATH4.6="C:\Program Files\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com"
 
 @echo --------------------------------------------------
 @echo The choice of build configuration (Debug / Release).
@@ -19,4 +22,4 @@ set BUILD_CONFIG=Debug
 @echo --------------------------------------------------
 @echo Creating a build command.
 @echo --------------------------------------------------
-set COMMANDLINE=/p:Configuration=%BUILD_CONFIG%
+set COMMANDLINE=/build %BUILD_CONFIG%
