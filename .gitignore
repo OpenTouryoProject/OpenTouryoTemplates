@@ -188,3 +188,6 @@ FakesAssemblies/
 /root_VS2013/programs/C#/Frameworks/PortableClassLibrary/PCLBusiness/bin/Debug/PCLBusiness.dll
 /root_VS2013/programs/C#/Frameworks/PortableClassLibrary/PCLFramework/bin/Debug/PCLFramework.dll
 /root_VS2013/programs/C#/Frameworks/PortableClassLibrary/PCLPublic/bin/Debug/PCLPublic.dll
+/root_VS2015/programs/C#/Samples/WinAzure_sample/packages/Microsoft.WindowsAzure.ConfigurationManager.1.7.0.0/Microsoft.WindowsAzure.ConfigurationManager.1.7.0.0.nupkg
+/root_VS2015/programs/C#/Samples/WinAzure_sample/packages/Microsoft.WindowsAzure.ConfigurationManager.1.7.0.0/\[Content_Types\].xml
+/root_VS2015/programs/C#/Samples/WinAzure_sample/packages/Microsoft.WindowsAzure.ConfigurationManager.1.7.0.0/lib/net35-full/Microsoft.WindowsAzure.Configuration.dll
