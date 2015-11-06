@@ -12,8 +12,8 @@
 //*
 //*  日時        更新者            内容
 //*  ----------  ----------------  -------------------------------------------------
-//*  20xx/xx/xx  ＸＸ ＸＸ         ＸＸＸＸ
-//*
+//*  2015/10/29  Sai               Modified the code of navigating to CrudMu2 controller
+//*                                in the Transitions method.         
 //**********************************************************************************
 
 //System
@@ -448,10 +448,10 @@ namespace MVC_Sample.Controllers
                 // Ajax.BeginFormでは、UpdateTargetIdで指定した
                 // ターゲット以外を更新する場合、JavaScriptでの対応が必要。
                 // ＃ここではjQueryを使用している。
-                string scriptText = 
-                    string.Format("$('#textBox1').val('{0}');$('#textBox2').val('{1}');$('#textBox3').val('{2}');", 
-                        testReturnValue.ShipperID, 
-                        testReturnValue.CompanyName, 
+                string scriptText =
+                    string.Format("$('#textBox1').val('{0}');$('#textBox2').val('{1}');$('#textBox3').val('{2}');",
+                        testReturnValue.ShipperID,
+                        testReturnValue.CompanyName,
                         testReturnValue.Phone);
                 return JavaScript(scriptText);
             }
@@ -624,12 +624,12 @@ namespace MVC_Sample.Controllers
             // Ajax.BeginFormでは、以下のように記述することで部分更新が可能。
             return PartialView("_MessageView", model);
         }
-        
+
         /// <summary>画面遷移する</summary>
         /// <returns>画面遷移のためのJavaScriptResult</returns>
         public ActionResult Transitions()
         {
-            return JavaScript("location.href='/CrudMu2/';");
+            return JavaScript("location.href='" + Url.Action("Index", "CrudMu2") + "';");
         }
     }
 }
