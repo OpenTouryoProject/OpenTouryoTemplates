@@ -41,16 +41,12 @@
 //**********************************************************************************
 
 // System
-using System;
-
 // System.Web
-using System.Web;
 using System.Web.Mvc;
-
 // フレームワーク
 using Touryo.Infrastructure.Framework.Exceptions;
+using Touryo.Infrastructure.Framework.Presentation;
 using Touryo.Infrastructure.Framework.Util;
-
 // 部品
 using Touryo.Infrastructure.Public.Log;
 using Touryo.Infrastructure.Public.Util;
