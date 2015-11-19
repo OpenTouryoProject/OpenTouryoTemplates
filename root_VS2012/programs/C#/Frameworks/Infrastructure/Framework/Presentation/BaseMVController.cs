@@ -51,7 +51,7 @@ using Touryo.Infrastructure.Framework.Util;
 using Touryo.Infrastructure.Public.Log;
 using Touryo.Infrastructure.Public.Util;
 
-namespace Touryo.Infrastructure.Business.Presentation
+namespace Touryo.Infrastructure.Framework.Presentation
 {
     /// <summary>画面コード親クラス２</summary>
     /// <remarks>（オーバーライドして）自由に利用できる。</remarks>
