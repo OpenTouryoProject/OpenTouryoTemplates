@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure;
@@ -12,44 +12,44 @@ using System.Security.AccessControl;
 
 namespace ProjectX_sample
 {
-    /// <summary>WebRole‚ÌEntryPoint</summary>
+    /// <summary>WebRoleã®EntryPoint</summary>
     public class WebRole : RoleEntryPoint
     {
-        /// <summary>OnStartƒCƒxƒ“ƒg</summary>
+        /// <summary>OnStartã‚¤ãƒ™ãƒ³ãƒˆ</summary>
         public override bool OnStart()
         {
-            // Windows Azuref’fiWindows Azure DiagnosticsjŠÖ˜A‚Ìİ’è
+            // Windows Azureè¨ºæ–­ï¼ˆWindows Azure Diagnosticsï¼‰é–¢é€£ã®è¨­å®š
             this.ConfigureDiagnostics();
 
-            //// RoleEnvironment.ChangedƒCƒxƒ“ƒg ƒnƒ“ƒhƒ‰‚ğdŠ|‚¯‚é
+            //// RoleEnvironment.Changedã‚¤ãƒ™ãƒ³ãƒˆ ãƒãƒ³ãƒ‰ãƒ©ã‚’ä»•æ›ã‘ã‚‹
             //RoleEnvironment.Changed += (sender, args) =>
             //{
-            //    // ƒ[ƒ‹ŠÂ‹«‚Ì\¬İ’è‚Ì•ÏX‚ª”­¶‚µ‚½ê‡
+            //    // ãƒ­ãƒ¼ãƒ«ç’°å¢ƒã®æ§‹æˆè¨­å®šã®å¤‰æ›´ãŒç™ºç”Ÿã—ãŸå ´åˆ
             //    if (args.Changes.Any(chg => chg is RoleEnvironmentConfigurationSettingChange))
             //    {
-            //        // •ÏX‚ªARoleEnvironmentConfigurationSetting‚É‚ ‚Á‚½ê‡A
-            //        // iŠg’£ƒƒ\ƒbƒhiAnyj{ ƒ‰ƒ€ƒ_®‚ğg—p‚µ‚Ä‚¢‚éj
-            //        // Windows Azuref’fiWindows Azure DiagnosticsjŠÖ˜A‚ÌiÄjİ’è
+            //        // å¤‰æ›´ãŒã€RoleEnvironmentConfigurationSettingã«ã‚ã£ãŸå ´åˆã€
+            //        // ï¼ˆæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆAnyï¼‰ï¼‹ ãƒ©ãƒ ãƒ€å¼ã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹ï¼‰
+            //        // Windows Azureè¨ºæ–­ï¼ˆWindows Azure Diagnosticsï¼‰é–¢é€£ã®ï¼ˆå†ï¼‰è¨­å®š
             //        this.ConfigureDiagnostics();
             //    }
             //};
 
-            // base.OnStart‚ğŒÄ‚Ô
+            // base.OnStartã‚’å‘¼ã¶
             return base.OnStart();
         }
 
-        /// <summary>Windows Azuref’fiWindows Azure DiagnosticsjŠÖ˜A‚Ìİ’è</summary>
+        /// <summary>Windows Azureè¨ºæ–­ï¼ˆWindows Azure Diagnosticsï¼‰é–¢é€£ã®è¨­å®š</summary>
         private void ConfigureDiagnostics()
         {
-            // Windows Azuref’fiWindows Azure Diagnosticsjî•ño—Í—p‚ÌƒXƒgƒŒ[ƒW ƒAƒJƒEƒ“ƒgæ“¾
+            // Windows Azureè¨ºæ–­ï¼ˆWindows Azure Diagnosticsï¼‰æƒ…å ±å‡ºåŠ›ç”¨ã®ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ ã‚¢ã‚«ã‚¦ãƒ³ãƒˆå–å¾—
             string wadConnectionString = "Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString";
 
-            //// ƒXƒgƒŒ[ƒW ƒAƒJƒEƒ“ƒg‚Ì‰Šú‰»
+            //// ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®åˆæœŸåŒ–
             //CloudStorageAccount cloudStorageAccount =
             //  CloudStorageAccount.Parse(
             //    RoleEnvironment.GetConfigurationSettingValue(wadConnectionString));
 
-            //// RoleInstancef’fŠÇ—‚Ì‰Šú‰»iƒ[ƒ‹‚É‘Î‚·‚éf’f‚Ì—LŒø‰»j
+            //// RoleInstanceè¨ºæ–­ç®¡ç†ã®åˆæœŸåŒ–ï¼ˆãƒ­ãƒ¼ãƒ«ã«å¯¾ã™ã‚‹è¨ºæ–­ã®æœ‰åŠ¹åŒ–ï¼‰
             //RoleInstanceDiagnosticManager roleInstanceDiagnosticManager =
             //  cloudStorageAccount.CreateRoleInstanceDiagnosticManager(
             //    RoleEnvironment.DeploymentId,
@@ -64,34 +64,34 @@ namespace ProjectX_sample
                                     RoleEnvironment.CurrentRoleInstance.Role.Name,
                                     RoleEnvironment.CurrentRoleInstance.Id);
 
-            // RoleInstancef’fŠÇ—‚©‚çƒRƒ“ƒtƒBƒO‚ğæ“¾‚·‚éB
-            // EŠî–{“I‚É‚ÍƒfƒtƒHƒ‹ƒgİ’è‚ğ—˜—p‚·‚éB
-            // ERoleEnvironment.ChangedƒCƒxƒ“ƒg ƒnƒ“ƒhƒ‰‚ğdŠ|‚¯‚éê‡‚ÍƒJƒŒƒ“ƒgİ’è‚ğ—˜—p‚·‚éB
+            // RoleInstanceè¨ºæ–­ç®¡ç†ã‹ã‚‰ã‚³ãƒ³ãƒ•ã‚£ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚
+            // ãƒ»åŸºæœ¬çš„ã«ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨­å®šã‚’åˆ©ç”¨ã™ã‚‹ã€‚
+            // ãƒ»RoleEnvironment.Changedã‚¤ãƒ™ãƒ³ãƒˆ ãƒãƒ³ãƒ‰ãƒ©ã‚’ä»•æ›ã‘ã‚‹å ´åˆã¯ã‚«ãƒ¬ãƒ³ãƒˆè¨­å®šã‚’åˆ©ç”¨ã™ã‚‹ã€‚
             DiagnosticMonitorConfiguration config =
                 DiagnosticMonitor.GetDefaultInitialConfiguration();
             // roleInstanceDiagnosticManager.GetCurrentConfiguration();
 
-            #region Windows Azuref’fiWindows Azure DiagnosticsjAPI‚ğg—p‚µ‚½İ’èŠJn
+            #region Windows Azureè¨ºæ–­ï¼ˆWindows Azure Diagnosticsï¼‰APIã‚’ä½¿ç”¨ã—ãŸè¨­å®šé–‹å§‹
 
-            #region ƒCƒ“ƒtƒ‰ƒXƒgƒ‰ƒNƒ`ƒƒ ƒƒOif’fƒ‚ƒjƒ^©‘Ì‚ÌƒƒOj
-            // “]‘—ƒŒƒxƒ‹‚¨‚æ‚Ñ“]‘—ŠÔŠu‚ğİ’è
-            config.DiagnosticInfrastructureLogs.ScheduledTransferLogLevelFilter = LogLevel.Undefined; // —vŒŸ“¢
-            config.DiagnosticInfrastructureLogs.ScheduledTransferPeriod = TimeSpan.FromSeconds(15); // —vŒŸ“¢
+            #region ã‚¤ãƒ³ãƒ•ãƒ©ã‚¹ãƒˆãƒ©ã‚¯ãƒãƒ£ ãƒ­ã‚°ï¼ˆè¨ºæ–­ãƒ¢ãƒ‹ã‚¿è‡ªä½“ã®ãƒ­ã‚°ï¼‰
+            // è»¢é€ãƒ¬ãƒ™ãƒ«ãŠã‚ˆã³è»¢é€é–“éš”ã‚’è¨­å®š
+            config.DiagnosticInfrastructureLogs.ScheduledTransferLogLevelFilter = LogLevel.Undefined; // è¦æ¤œè¨
+            config.DiagnosticInfrastructureLogs.ScheduledTransferPeriod = TimeSpan.FromSeconds(15); // è¦æ¤œè¨
             #endregion
-            // o—Íæ‚ÌTableƒXƒgƒŒ[ƒW–¼FWADDiagnosticInfrastructureLogsTable
+            // å‡ºåŠ›å…ˆã®Tableã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸åï¼šWADDiagnosticInfrastructureLogsTable
 
-            #region ƒCƒxƒ“ƒg ƒƒO‚Ìİ’è
-            // æ“¾‚·‚éƒCƒxƒ“ƒg ƒ\[ƒX‚ğİ’è
+            #region ã‚¤ãƒ™ãƒ³ãƒˆ ãƒ­ã‚°ã®è¨­å®š
+            // å–å¾—ã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆ ã‚½ãƒ¼ã‚¹ã‚’è¨­å®š
             config.WindowsEventLog.DataSources.Add("Application!*");
             config.WindowsEventLog.DataSources.Add("System!*");
-            // “]‘—ƒŒƒxƒ‹‚¨‚æ‚Ñ“]‘—ŠÔŠu‚ğİ’è
-            config.WindowsEventLog.ScheduledTransferLogLevelFilter = LogLevel.Undefined; // —vŒŸ“¢
-            config.WindowsEventLog.ScheduledTransferPeriod = TimeSpan.FromMinutes(15); // —vŒŸ“¢
+            // è»¢é€ãƒ¬ãƒ™ãƒ«ãŠã‚ˆã³è»¢é€é–“éš”ã‚’è¨­å®š
+            config.WindowsEventLog.ScheduledTransferLogLevelFilter = LogLevel.Undefined; // è¦æ¤œè¨
+            config.WindowsEventLog.ScheduledTransferPeriod = TimeSpan.FromMinutes(15); // è¦æ¤œè¨
             #endregion
-            // o—Íæ‚ÌTableƒXƒgƒŒ[ƒW–¼FWADWindowsEventLogsTable
+            // å‡ºåŠ›å…ˆã®Tableã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸åï¼šWADWindowsEventLogsTable
 
-            #region ƒpƒtƒH[ƒ}ƒ“ƒX ƒJƒEƒ“ƒ^‚Ì“]‘—İ’è
-            // ƒJƒEƒ“ƒ^AƒTƒ“ƒvƒŠƒ“ƒO ƒŒ[ƒg‚Ìw’è
+            #region ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ ã‚«ã‚¦ãƒ³ã‚¿ã®è»¢é€è¨­å®š
+            // ã‚«ã‚¦ãƒ³ã‚¿ã€ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚° ãƒ¬ãƒ¼ãƒˆã®æŒ‡å®š
             config.PerformanceCounters.DataSources.Add(new PerformanceCounterConfiguration()
             {
                 CounterSpecifier = @"\Processor(_Total)\% Processor Time",
@@ -102,112 +102,112 @@ namespace ProjectX_sample
                 CounterSpecifier = @"\Memory\Available Bytes",
                 SampleRate = TimeSpan.FromSeconds(10)
             });
-            // “]‘—ŠÔŠu‚ğİ’è
-            config.PerformanceCounters.ScheduledTransferPeriod = TimeSpan.FromMinutes(15); // —vŒŸ“¢
+            // è»¢é€é–“éš”ã‚’è¨­å®š
+            config.PerformanceCounters.ScheduledTransferPeriod = TimeSpan.FromMinutes(15); // è¦æ¤œè¨
             #endregion
-            // o—Íæ‚ÌTableƒXƒgƒŒ[ƒW–¼FWADPerformanceCountersTable
+            // å‡ºåŠ›å…ˆã®Tableã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸åï¼šWADPerformanceCountersTable
 
-            #region ƒNƒ‰ƒbƒVƒ… ƒ_ƒ“ƒv“]‘—‚Ì—LŒø‰»
+            #region ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ ãƒ€ãƒ³ãƒ—è»¢é€ã®æœ‰åŠ¹åŒ–
             CrashDumps.EnableCollection(true);
             #endregion
-            // o—Íæ‚ÌBlobƒXƒgƒŒ[ƒW ƒRƒ“ƒeƒi–¼Fwad-crash-dumps
+            // å‡ºåŠ›å…ˆã®Blobã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ ã‚³ãƒ³ãƒ†ãƒŠåï¼šwad-crash-dumps
 
-            #region IISƒƒOAFREBƒƒO‚Ì“]‘—İ’è(¦ web.config ‚Ö‚Ìİ’è‚à•K—v)
-            // IISƒƒO‚ÍƒfƒtƒHƒ‹ƒg‚Åæ“¾‚ª—LŒø‚Æ‚È‚Á‚Ä‚¢‚é‚½‚ßABlob‚Ö‚Ì“]‘—‚ğw’è‚·‚é‚Ì‚İ‚ÅûW‚ª‰Â”\‚Æ‚È‚éB
-            // FREBiFailed Request Trace logjƒƒO‚É‚Â‚¢‚Ä‚Íweb.config ‚Ö‚Ìİ’è‚à•K—v
+            #region IISãƒ­ã‚°ã€FREBãƒ­ã‚°ã®è»¢é€è¨­å®š(â€» web.config ã¸ã®è¨­å®šã‚‚å¿…è¦)
+            // IISãƒ­ã‚°ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§å–å¾—ãŒæœ‰åŠ¹ã¨ãªã£ã¦ã„ã‚‹ãŸã‚ã€Blobã¸ã®è»¢é€ã‚’æŒ‡å®šã™ã‚‹ã®ã¿ã§åé›†ãŒå¯èƒ½ã¨ãªã‚‹ã€‚
+            // FREBï¼ˆFailed Request Trace logï¼‰ãƒ­ã‚°ã«ã¤ã„ã¦ã¯web.config ã¸ã®è¨­å®šã‚‚å¿…è¦
             #endregion
-            // o—Íæ‚ÌBlobƒXƒgƒŒ[ƒW ƒRƒ“ƒeƒi–¼Fwad-iis-logfilesAwad-iis-failedreqlogfiles
+            // å‡ºåŠ›å…ˆã®Blobã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ ã‚³ãƒ³ãƒ†ãƒŠåï¼šwad-iis-logfilesã€wad-iis-failedreqlogfiles
 
-            #region ƒgƒŒ[ƒX ƒƒO‚Ìİ’è(¦ *.config ‚Ö‚Ìİ’è‚à•K—v)
-            // “]‘—ƒŒƒxƒ‹‚¨‚æ‚Ñ“]‘—ŠÔŠu‚ğİ’è
-            config.Logs.ScheduledTransferLogLevelFilter = LogLevel.Undefined; // —vŒŸ“¢
-            config.Logs.ScheduledTransferPeriod = TimeSpan.FromMinutes(1); // —vŒŸ“¢
+            #region ãƒˆãƒ¬ãƒ¼ã‚¹ ãƒ­ã‚°ã®è¨­å®š(â€» *.config ã¸ã®è¨­å®šã‚‚å¿…è¦)
+            // è»¢é€ãƒ¬ãƒ™ãƒ«ãŠã‚ˆã³è»¢é€é–“éš”ã‚’è¨­å®š
+            config.Logs.ScheduledTransferLogLevelFilter = LogLevel.Undefined; // è¦æ¤œè¨
+            config.Logs.ScheduledTransferPeriod = TimeSpan.FromMinutes(1); // è¦æ¤œè¨
             #endregion
-            // o—Íæ‚ÌTableƒXƒgƒŒ[ƒW–¼FWADLogsTable
+            // å‡ºåŠ›å…ˆã®Tableã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸åï¼šWADLogsTable
 
-            #region ƒJƒXƒ^ƒ€ ƒƒOiƒ[ƒJƒ‹ ƒXƒgƒŒ[ƒW‚Ö‚Ìo—Í‚Ìê‡j
+            #region ã‚«ã‚¹ã‚¿ãƒ  ãƒ­ã‚°ï¼ˆãƒ­ãƒ¼ã‚«ãƒ« ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã¸ã®å‡ºåŠ›ã®å ´åˆï¼‰
 
-            // o—ÍæƒfƒBƒŒƒNƒgƒŠİ’è
+            // å‡ºåŠ›å…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªè¨­å®š
             DirectoryConfiguration dirConfig1 = new DirectoryConfiguration()
             {
-                // o—ÍæBlobƒRƒ“ƒeƒi‚Ìw’è
+                // å‡ºåŠ›å…ˆBlobã‚³ãƒ³ãƒ†ãƒŠã®æŒ‡å®š
                 Container = "my-custom-logfiles1",
-                // ƒNƒH[ƒ^[‚Ìİ’èiÀÛ‚Ég‚¤—Êj
+                // ã‚¯ã‚©ãƒ¼ã‚¿ãƒ¼ã®è¨­å®šï¼ˆå®Ÿéš›ã«ä½¿ã†é‡ï¼‰
                 DirectoryQuotaInMB = 100,
             };
 
-            // ƒ[ƒJƒ‹ ƒXƒgƒŒ[ƒW‚ÌƒpƒX‚ğw’è
-            //iƒ[ƒJƒ‹ ƒXƒgƒŒ[ƒW‚Ìİ’è©‘Ì‚ÍAVisual Studio‚ğg—p‚µ*.csdef‚Éİ’è‰Â”\j
+            // ãƒ­ãƒ¼ã‚«ãƒ« ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã®ãƒ‘ã‚¹ã‚’æŒ‡å®š
+            //ï¼ˆãƒ­ãƒ¼ã‚«ãƒ« ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã®è¨­å®šè‡ªä½“ã¯ã€Visual Studioã‚’ä½¿ç”¨ã—*.csdefã«è¨­å®šå¯èƒ½ï¼‰
             LocalResource ls = RoleEnvironment.GetLocalResource("LogStorage");
             dirConfig1.Path = ls.RootPath;
 
-            // log4net‚ÉŠÂ‹«•Ï”Œo—R‚ÅƒpƒXî•ñiRootPathj‚ğ
-            // “n‚»‚¤‚Æ‚µ‚½‚ªƒGƒ~ƒ…ƒŒ[ƒ^ã‚Å‚¤‚Ü‚­“®ì‚¹‚¸’f”OB
+            // log4netã«ç’°å¢ƒå¤‰æ•°çµŒç”±ã§ãƒ‘ã‚¹æƒ…å ±ï¼ˆRootPathï¼‰ã‚’
+            // æ¸¡ãã†ã¨ã—ãŸãŒã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ä¸Šã§ã†ã¾ãå‹•ä½œã›ãšæ–­å¿µã€‚
 
-            // ƒ[ƒJƒ‹ ƒXƒgƒŒ[ƒW‚ğ“]‘—Œ³ƒRƒŒƒNƒVƒ‡ƒ“‚É’Ç‰Á
+            // ãƒ­ãƒ¼ã‚«ãƒ« ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã‚’è»¢é€å…ƒã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«è¿½åŠ 
             config.Directories.DataSources.Add(dirConfig1);
-            // ‚È‚¨Aƒ[ƒJƒ‹ ƒXƒgƒŒ[ƒW‚ÌƒpƒX‚ÍALocalResource.RootPath‚É‚Äæ“¾‚ª‰Â”\‚Å‚ ‚éB
+            // ãªãŠã€ãƒ­ãƒ¼ã‚«ãƒ« ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã®ãƒ‘ã‚¹ã¯ã€LocalResource.RootPathã«ã¦å–å¾—ãŒå¯èƒ½ã§ã‚ã‚‹ã€‚
 
             #endregion
-            // o—Íæ‚ÌBlobƒXƒgƒŒ[ƒW ƒRƒ“ƒeƒi–¼Fmy-custom-logfiles1
+            // å‡ºåŠ›å…ˆã®Blobã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ ã‚³ãƒ³ãƒ†ãƒŠåï¼šmy-custom-logfiles1
 
-            #region ƒJƒXƒ^ƒ€ƒƒOi”CˆÓ‚Ìo—Íæ‚Ìê‡j
+            #region ã‚«ã‚¹ã‚¿ãƒ ãƒ­ã‚°ï¼ˆä»»æ„ã®å‡ºåŠ›å…ˆã®å ´åˆï¼‰
 
-            // o—ÍæƒfƒBƒŒƒNƒgƒŠİ’è
+            // å‡ºåŠ›å…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªè¨­å®š
             DirectoryConfiguration dirConfig2 = new DirectoryConfiguration()
             {
-                // o—ÍæBlobƒRƒ“ƒeƒi‚Ìw’è
+                // å‡ºåŠ›å…ˆBlobã‚³ãƒ³ãƒ†ãƒŠã®æŒ‡å®š
                 Container = "my-custom-logfiles2",
-                // ƒNƒH[ƒ^[‚Ìİ’èiÀÛ‚Ég‚¤—Êj
+                // ã‚¯ã‚©ãƒ¼ã‚¿ãƒ¼ã®è¨­å®šï¼ˆå®Ÿéš›ã«ä½¿ã†é‡ï¼‰
                 DirectoryQuotaInMB = 100,
             };
 
-            // ”CˆÓ‚ÌƒfƒBƒŒƒNƒgƒŠ‚ğw’è
+            // ä»»æ„ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®š
             string path = "c:\\logs";
             dirConfig2.Path = path;
-            // ƒfƒBƒŒƒNƒgƒŠ‚ğ“]‘—Œ³ƒRƒŒƒNƒVƒ‡ƒ“‚É’Ç‰Á
+            // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è»¢é€å…ƒã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«è¿½åŠ 
             config.Directories.DataSources.Add(dirConfig2);
 
-            // ƒfƒBƒŒƒNƒgƒŠ ƒZƒLƒ…ƒŠƒeƒB‚ğæ“¾
+            // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ã‚’å–å¾—
             DirectorySecurity ds = Directory.GetAccessControl(path);
 
-            // Everyone FullControl‚ÌƒAƒNƒZƒX ƒ‹[ƒ‹‚Ì¶¬
+            // Everyone FullControlã®ã‚¢ã‚¯ã‚»ã‚¹ ãƒ«ãƒ¼ãƒ«ã®ç”Ÿæˆ
             FileSystemAccessRule AccessRule = new FileSystemAccessRule(
                 "Everyone",
                 FileSystemRights.FullControl,
                 InheritanceFlags.ObjectInherit,
                 PropagationFlags.None,
                 AccessControlType.Allow);
-            // ƒfƒBƒŒƒNƒgƒŠ ƒLƒ…ƒŠƒeƒB‚ÉƒAƒNƒZƒX ƒ‹[ƒ‹‚ğ’Ç‰Á
+            // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª ã‚­ãƒ¥ãƒªãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ ãƒ«ãƒ¼ãƒ«ã‚’è¿½åŠ 
             ds.AddAccessRule(AccessRule);
 
-            // ƒfƒBƒŒƒNƒgƒŠ‚ÉƒfƒBƒŒƒNƒgƒŠ ƒZƒLƒ…ƒŠƒeƒB‚ğ”½‰f
-            // š <Runtime executionContext="elevated"/>‚ğu*.csdefv‚É‹LqB
+            // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ã‚’åæ˜ 
+            // â˜… <Runtime executionContext="elevated"/>ã‚’ã€Œ*.csdefã€ã«è¨˜è¿°ã€‚
             Directory.SetAccessControl(path, ds);
 
             #endregion
-            // o—Íæ‚ÌBlobƒXƒgƒŒ[ƒW ƒRƒ“ƒeƒi–¼Fmy-custom-logfiles2
+            // å‡ºåŠ›å…ˆã®Blobã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ ã‚³ãƒ³ãƒ†ãƒŠåï¼šmy-custom-logfiles2
 
-            // IISƒƒOAƒJƒXƒ^ƒ€ ƒƒOAƒNƒ‰ƒbƒVƒ… ƒ_ƒ“ƒv‚È‚Ç‚Å
-            // g—p‚·‚éƒfƒBƒŒƒNƒgƒŠ ƒoƒbƒtƒ@‚©‚çBlobƒXƒgƒŒ[ƒW‚Ö‚Ì“]‘—ŠÔŠu‚Ìw’è
+            // IISãƒ­ã‚°ã€ã‚«ã‚¹ã‚¿ãƒ  ãƒ­ã‚°ã€ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ ãƒ€ãƒ³ãƒ—ãªã©ã§
+            // ä½¿ç”¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰Blobã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã¸ã®è»¢é€é–“éš”ã®æŒ‡å®š
             config.Directories.ScheduledTransferPeriod = TimeSpan.FromMinutes(15);
 
             #endregion
 
-            // RoleInstancef’fŠÇ—‚ÉƒRƒ“ƒtƒBƒO‚ğİ’è
+            // RoleInstanceè¨ºæ–­ç®¡ç†ã«ã‚³ãƒ³ãƒ•ã‚£ã‚°ã‚’è¨­å®š
             roleInstanceDiagnosticManager.SetCurrentConfiguration(config);
 
-            // f’f‚ÌŠJniƒGƒ~ƒ…ƒŒ[ƒ^‚Å‚Í•s—v‚¾‚ªAÀ‹@‚Å‚Í•K—v
+            // è¨ºæ–­ã®é–‹å§‹ï¼ˆã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ã§ã¯ä¸è¦ã ãŒã€å®Ÿæ©Ÿã§ã¯å¿…è¦
             DiagnosticMonitor.Start(wadConnectionString, config);
 
-            // ƒ[ƒJƒ‹ ƒXƒgƒŒ[ƒW‚Ö‚ÌƒƒOo—ÍƒeƒXƒg
+            // ãƒ­ãƒ¼ã‚«ãƒ« ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã¸ã®ãƒ­ã‚°å‡ºåŠ›ãƒ†ã‚¹ãƒˆ
             path = Path.Combine(ls.RootPath,
                 string.Format("test_{0}.txt", DateTime.Now.ToString("yyyyMMdd")));
 
-            // StreamWriter‚ğŠJ‚«AƒƒO‚ğo—Í
+            // StreamWriterã‚’é–‹ãã€ãƒ­ã‚°ã‚’å‡ºåŠ›
             using (StreamWriter sw = new StreamWriter(path, true))
             {
-                sw.WriteLine("{0} : {1}", DateTime.UtcNow, "ƒ[ƒJƒ‹ ƒXƒgƒŒ[ƒW‚Ö‚ÌƒƒOo—ÍƒeƒXƒg");
+                sw.WriteLine("{0} : {1}", DateTime.UtcNow, "ãƒ­ãƒ¼ã‚«ãƒ« ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã¸ã®ãƒ­ã‚°å‡ºåŠ›ãƒ†ã‚¹ãƒˆ");
                 sw.Close();
             }
         }
