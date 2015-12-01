@@ -55,7 +55,7 @@ public class JSONService : IJSONService
         string currentPage = queryStrings["page"];
         string rows = queryStrings["rows"];
         int startIndex = (int.Parse(currentPage) - 1) * int.Parse(rows);
-        int maximumRows = int.Parse(rows) - 1;
+        int maximumRows = int.Parse(rows);
 
         ProductsTableAdapter productTableAdapter = new ProductsTableAdapter();
         DataTable productTableData = productTableAdapter.SelectMethod(startIndex, maximumRows);
