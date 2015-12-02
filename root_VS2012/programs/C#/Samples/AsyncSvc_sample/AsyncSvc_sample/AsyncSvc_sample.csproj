@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AsyncSvc_sample</RootNamespace>
     <AssemblyName>AsyncSvc_sample</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -33,14 +34,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AsyncProcessingService">
-      <HintPath>..\..\..\Frameworks\Infrastructure\Framework\AsyncProcessingService\AsyncProcessingService\bin\Debug\AsyncProcessingService.dll</HintPath>
-    </Reference>
     <Reference Include="Business">
       <HintPath>..\..\..\Frameworks\Infrastructure\Business\bin\Debug\Business.dll</HintPath>
     </Reference>
@@ -60,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LayerB.cs" />
-    <Compile Include="LayerD.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
