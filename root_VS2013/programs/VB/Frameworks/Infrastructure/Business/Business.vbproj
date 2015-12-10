@@ -79,6 +79,11 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncProcessingService\AsyncProcessingServiceParameterValue.vb" />
+    <Compile Include="AsyncProcessingService\AsyncProcessingServiceReturnValue.vb" />
+    <Compile Include="AsyncProcessingService\LayerB.vb" />
+    <Compile Include="AsyncProcessingService\LayerD.vb" />
+    <Compile Include="Business\MyApsBaseLogic.vb" />
     <Compile Include="Business\MyBaseLogic.vb" />
     <Compile Include="Business\MyFcBaseLogic.vb" />
     <Compile Include="Business\_3TierEngine.vb" />
