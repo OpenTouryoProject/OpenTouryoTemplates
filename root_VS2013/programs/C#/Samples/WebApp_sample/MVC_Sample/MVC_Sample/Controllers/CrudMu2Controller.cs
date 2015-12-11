@@ -12,8 +12,8 @@
 //*
 //*  日時        更新者            内容
 //*  ----------  ----------------  -------------------------------------------------
-//*  20xx/xx/xx  ＸＸ ＸＸ         ＸＸＸＸ
-//*
+//*  2015/10/29  Sai               Modified the code of navigating to CrudMu controller
+//*                                in the Transitions method.
 //**********************************************************************************
 
 //System
@@ -257,7 +257,7 @@ namespace MVC_Sample.Controllers
                     model.shippers.Rows.Add(srow);
                 }
             }
-            
+
             // Html.BeginFormでは、全体更新。
             return View("Index", model);
         }
@@ -324,7 +324,7 @@ namespace MVC_Sample.Controllers
                     model.shippers.Rows.Add(srow);
                 }
             }
-            
+
             // Html.BeginFormでは、全体更新。
             return View("Index", model);
         }
@@ -652,8 +652,7 @@ namespace MVC_Sample.Controllers
         /// <returns>画面遷移のためのRedirectResult</returns>
         public ActionResult Transitions()
         {
-            //return new RedirectResult("/CrudMu/");
-            return Redirect("/CrudMu/");
+            return Redirect(Url.Action("Index", "CrudMu"));
         }
     }
 }

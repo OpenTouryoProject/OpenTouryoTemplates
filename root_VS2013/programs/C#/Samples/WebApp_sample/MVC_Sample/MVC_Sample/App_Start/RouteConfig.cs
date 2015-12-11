@@ -8,7 +8,7 @@
 //*
 //*  日時        更新者            内容
 //*  ----------  ----------------  -------------------------------------------------
-//*  20xx/xx/xx  ＸＸ ＸＸ         ＸＸＸＸ
+//*  2015/11/03  Sai               Changed controller to CrudMu in RegisterRoutes method to display startup page.
 //**********************************************************************************
 
 using System;
@@ -49,7 +49,13 @@ namespace MVC_Sample
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "CrudMu", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Default2",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "CrudMu2", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
