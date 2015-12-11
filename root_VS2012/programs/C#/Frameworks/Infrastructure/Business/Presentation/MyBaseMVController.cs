@@ -33,19 +33,20 @@
 //*  2015/08/04  Supragyan        Added code for SessionTimeout to OnActionExecuting method.
 //*  2015/08/31  Supragyan        Modified OnException method to display error message on Error screen
 //*  2015/09/03  Supragyan        Modified ExceptionType,Session,RedireResult on OnException method 
+//*  2015/10/27  Sai              Moved the code of SessionTimeout from OnActionExecuting method to BaseMVController class.  
+//*  2015/10/30  Sai              Added else part to the filterContext If statement in OnException method to resolve the exception occurs
+//*                               in the redirection method in the child action as per the comments in Github.  
+//*  2015/11/03  Sai              Implemeted performance measurement in the methods OnActionExecuting, OnActionExecuted, OnResultExecuting
+//*                               and OnResultExecuted     
 //**********************************************************************************
 
 // System
-using System;
-
 // System.Web
-using System.Web;
 using System.Web.Mvc;
-
 // フレームワーク
 using Touryo.Infrastructure.Framework.Exceptions;
+using Touryo.Infrastructure.Framework.Presentation;
 using Touryo.Infrastructure.Framework.Util;
-
 // 部品
 using Touryo.Infrastructure.Public.Log;
 using Touryo.Infrastructure.Public.Util;
@@ -54,8 +55,11 @@ namespace Touryo.Infrastructure.Business.Presentation
 {
     /// <summary>画面コード親クラス２</summary>
     /// <remarks>（オーバーライドして）自由に利用できる。</remarks>
-    public class MyBaseMVController : Controller
+    public class MyBaseMVController : BaseMVController
     {
+        /// <summary>性能測定</summary>
+        private PerformanceRecorder perfRec;
+
         /// <summary>
         /// 応答にビューを表示する ViewResult オブジェクトを作成します。
         /// Controller.View メソッド (System.Web.Mvc)
@@ -66,8 +70,12 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// <returns>ViewResult オブジェクト</returns>
         protected override ViewResult View(IView view, object model)
         {
-            LogIF.InfoLog("ACCESS", "View 前");
-            return base.View(view, model);
+            ViewResult vr = base.View(view, model);
+
+            // Logging.
+            LogIF.InfoLog("ACCESS", "View");
+
+            return vr;
         }
 
         /// <summary>
@@ -81,7 +89,7 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// <returns>ViewResult オブジェクト</returns>
         protected override ViewResult View(string viewName, string masterName, object model)
         {
-            LogIF.InfoLog("ACCESS", "View 前");
+            LogIF.InfoLog("ACCESS", "View");
             return base.View(viewName, masterName, model);
         }
 
@@ -96,100 +104,20 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            string strLogMessage = "OnActionExecuting 前" + " - " + filterContext.Controller.ToString() + " - "
-                               + filterContext.ActionDescriptor.ActionName;
+            // 性能測定開始
+            this.perfRec = new PerformanceRecorder();
+            this.perfRec.StartsPerformanceRecord();
+
+            // Calling base class method.
+            base.OnActionExecuting(filterContext);
+
+            // Logging.
+
+            string strLogMessage = ", -" + "," + Request.UserHostAddress + "," + "<-----" + "," + filterContext.Controller.ToString() +
+                                   "," + filterContext.ActionDescriptor.ActionName + "," + "OnActionExecuting" + "," + perfRec.ExecTime +
+                                   "," + perfRec.CpuTime;
 
             LogIF.InfoLog("ACCESS", strLogMessage);
-
-            #region セッションタイムアウト検出処理
-
-            // セッションタイムアウト検出処理の定義を取得
-            string sessionTimeOutCheck =
-                GetConfigParameter.GetConfigValue(FxLiteral.SESSION_TIMEOUT_CHECK);
-
-            // デフォルト値対策：設定なし（null）の場合の扱いを決定
-            if (sessionTimeOutCheck == null)
-            {
-                // OFF扱い
-                sessionTimeOutCheck = FxLiteral.OFF;
-            }
-
-            // ON / OFF
-            if (sessionTimeOutCheck.ToUpper() == FxLiteral.ON)
-            {
-                // セッションタイムアウト検出処理（ON）
-
-                // セッション状態の確認
-                if (Session.IsNewSession)
-                {
-                    // 新しいセッションが開始された
-
-                    // セッションタイムアウト検出用Cookieをチェック
-                    HttpCookie cookie = Request.Cookies.Get(FxHttpCookieIndex.SESSION_TIMEOUT);
-
-                    if (cookie == null)
-                    {
-                        // セッションタイムアウト検出用Cookie無し → 新規のアクセス
-
-                        // セッションタイムアウト検出用Cookieを新規作成（値は空文字以外、何でも良い）
-
-                        // Set-Cookie HTTPヘッダをレスポンス
-                        Response.Cookies.Set(FxCmnFunction.CreateCookieForSessionTimeoutDetection());
-                    }
-                    else
-                    {
-                        // セッションタイムアウト検出用Cookie有り
-
-                        if (cookie.Value == "")
-                        {
-                            // セッションタイムアウト発生後の新規アクセス
-
-                            // だが、値が消去されている（空文字に設定されている）場合は、
-                            // 一度エラー or セッションタイムアウトになった後の新規のアクセスである。
-
-                            // セッションタイムアウト検出用Cookieを再作成（値は空文字以外、何でも良い）
-
-                            // Set-Cookie HTTPヘッダをレスポンス
-                            Response.Cookies.Set(FxCmnFunction.CreateCookieForSessionTimeoutDetection());
-                        }
-                        else
-                        {
-                            // セッションタイムアウト発生
-
-                            // エラー画面で以下の処理を実行する。
-                            // ・セッションタイムアウト検出用Cookieを消去
-                            // ・セッションを消去
-
-                            // セッションタイムアウト例外を発生させる
-                            throw new FrameworkException(
-                                FrameworkExceptionMessage.SESSION_TIMEOUT[0],
-                                FrameworkExceptionMessage.SESSION_TIMEOUT[1]);
-                        }
-                    }
-                }
-                else
-                {
-                    // セッション継続中
-                }
-            }
-            else if (sessionTimeOutCheck.ToUpper() == FxLiteral.OFF)
-            {
-                // セッションタイムアウト検出処理（OFF）
-            }
-            else
-            {
-                // パラメータ・エラー（書式不正）
-                throw new FrameworkException(
-                    FrameworkExceptionMessage.ERROR_IN_WRITING_OF_FX_SWITCH1[0],
-                    String.Format(FrameworkExceptionMessage.ERROR_IN_WRITING_OF_FX_SWITCH1[1],
-                        FxLiteral.SESSION_TIMEOUT_CHECK));
-            }
-
-            #endregion
-
-            // アクションの実行
-            base.OnActionExecuting(filterContext);
-            LogIF.InfoLog("ACCESS", "OnActionExecuting 後");
         }
 
         /// <summary>
@@ -202,13 +130,18 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// 現在の要求およびアクションに関する情報。
         /// </param>
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
-        {            
-            string strLogMessage = "OnActionExecuted 前" + " - " + filterContext.Controller.ToString()+ " - "
-                                   + filterContext.ActionDescriptor.ActionName;
-            LogIF.InfoLog("ACCESS", strLogMessage);
-
+        {
+            // Calling base class method.
             base.OnActionExecuted(filterContext);
-            LogIF.InfoLog("ACCESS", "OnActionExecuted 後");
+
+            // 性能測定終了
+            this.perfRec.EndsPerformanceRecord();
+
+            string strLogMessage = ", -" + "," + Request.UserHostAddress + "," + "<-----" + "," + filterContext.Controller.ToString() +
+                                   "," + filterContext.ActionDescriptor.ActionName + "," + "OnActionExecuted" + "," + perfRec.ExecTime +
+                                   "," + perfRec.CpuTime;
+
+            LogIF.InfoLog("ACCESS", strLogMessage);
         }
 
         /// <summary>アクションでハンドルされない例外が発生したときに呼び出されます。</summary>
@@ -221,11 +154,10 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </remarks>
         protected override void OnException(ExceptionContext filterContext)
         {
-            string strLogMessage = "OnException 前" + " - " + filterContext.Controller.ToString() + " - "    
-                                   + filterContext.Exception.Message;
-            LogIF.ErrorLog("ACCESS", strLogMessage);         
+            // Calling base class method.
+            base.OnException(filterContext);
 
-            #region 例外型を判別しエラーメッセージIDを取得            
+            #region 例外型を判別しエラーメッセージIDを取得
 
             // エラーメッセージ
             string err_msg;
@@ -236,7 +168,7 @@ namespace Touryo.Infrastructure.Business.Presentation
             // エラー画面へのパスを取得 --- チェック不要（ベースクラスでチェック済み）
             string errorScreenPath = GetConfigParameter.GetConfigValue(FxLiteral.ERROR_SCREEN_PATH);
 
-            //// Store the exception information for a Session.
+            // Store the exception information for a Session.
             Session["ExceptionInformation"] = filterContext.Exception.ToString();
 
             // エラーのタイプ
@@ -272,12 +204,12 @@ namespace Touryo.Infrastructure.Business.Presentation
                 || errMsgId == "ScreenControlCheckError")
             {
                 // セッションをクリアしない
-                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG]=false;
+                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG] = false;
             }
             else
             {
                 // セッションをクリアする
-                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG]= true;
+                Session[FxHttpContextIndex.SESSION_ABANDON_FLAG] = true;
             }
 
             #endregion
@@ -294,8 +226,8 @@ namespace Touryo.Infrastructure.Business.Presentation
                 "Exception.ToString():" + filterContext.ToString();
 
             // Add exception information to Session。
-            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_MESSAGE]= err_msg;
-            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_INFORMATION]=err_info;
+            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_MESSAGE] = err_msg;
+            Session[FxHttpContextIndex.SYSTEM_EXCEPTION_INFORMATION] = err_info;
 
             #endregion
 
@@ -308,13 +240,20 @@ namespace Touryo.Infrastructure.Business.Presentation
             {
                 filterContext.Result = new JavaScriptResult() { Script = "location.href = '" + errorScreenPath + "'" };
             }
+            else if (filterContext.IsChildAction)
+            {
+                filterContext.Result = new ContentResult() { Content = "<script>location.href = '" + errorScreenPath + "'</script>" };
+            }
             else
             {
                 filterContext.Result = new RedirectResult(errorScreenPath);
             }
 
-            base.OnException(filterContext);
-            LogIF.InfoLog("ACCESS", "OnException 後");
+            // Logging.
+            string strLogMessage = ", -" + "," + Request.UserHostAddress + "," + "<-----" + "," + filterContext.Controller.ToString() + " - "
+                                   + "OnException" + " - " + filterContext.Exception.Message;
+
+            LogIF.ErrorLog("ACCESS", strLogMessage);
         }
 
         /// <summary>
@@ -328,11 +267,24 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </param>
         protected override void OnResultExecuting(ResultExecutingContext filterContext)
         {
-            string strLogMessage="OnResultExecuting 前" + " - " + filterContext.Controller.ToString();
-            LogIF.InfoLog("ACCESS", strLogMessage);
+            // イベント処理開始前にエラーが発生した場合は、
+            // this.perfRecがnullの場合があるので、null対策コードを挿入する。
+            if (this.perfRec == null)
+            {
+                // nullの場合、新しいインスタンスを生成し、性能測定開始。
+                this.perfRec = new PerformanceRecorder();
+                perfRec.StartsPerformanceRecord();
+            }
 
+            // Calling base class method.
             base.OnResultExecuting(filterContext);
-            LogIF.InfoLog("ACCESS", "OnResultExecuting 後");
+
+            // Logging.
+            string strLogMessage = ", -" + "," + Request.UserHostAddress + "," + "<-----" + "," + filterContext.Controller.ToString() +
+                                   "," + filterContext.Result + "," + "OnResultExecuting" + "," + perfRec.ExecTime +
+                                   "," + perfRec.CpuTime;
+
+            LogIF.InfoLog("ACCESS", strLogMessage);
         }
 
         /// <summary>
@@ -346,11 +298,26 @@ namespace Touryo.Infrastructure.Business.Presentation
         /// </param>
         protected override void OnResultExecuted(ResultExecutedContext filterContext)
         {
-            string strLogMessage = "OnResultExecuted 前" + " - " + filterContext.Controller.ToString();
-            LogIF.InfoLog("ACCESS", strLogMessage);           
-
+            // Calling base class method.
             base.OnResultExecuted(filterContext);
-            LogIF.InfoLog("ACCESS", "OnResultExecuted 後"); 
+
+            // イベント処理開始前にエラーが発生した場合は、
+            // this.perfRecがnullの場合があるので、null対策コードを挿入する。
+            if (this.perfRec == null)
+            {
+                // nullの場合、新しいインスタンスを生成し、性能測定開始。
+                this.perfRec = new PerformanceRecorder();
+                perfRec.StartsPerformanceRecord();
+            }
+
+            this.perfRec.EndsPerformanceRecord();
+
+            // Logging.
+            string strLogMessage = ", -" + "," + Request.UserHostAddress + "," + "<-----" + "," + filterContext.Controller.ToString() +
+                                   "," + filterContext.Result + "," + "OnResultExecuted" + "," + perfRec.ExecTime +
+                                   "," + perfRec.CpuTime;
+
+            LogIF.InfoLog("ACCESS", strLogMessage);
         }
     }
 }

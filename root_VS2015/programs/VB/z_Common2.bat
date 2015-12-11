@@ -3,16 +3,21 @@
 @rem --------------------------------------------------
 
 @rem --------------------------------------------------
+@rem Set Program Files path
+@rem --------------------------------------------------
+reg Query "HKLM\Hardware\Description\System\CentralProcessor\0" | find /i "x86" > NUL && set PROGRAM_FILES=Program Files || set PROGRAM_FILES=Program Files (x86)
+
+@rem --------------------------------------------------
 @rem Specifying Build tool.
 @rem --------------------------------------------------
-set BUILDFILEPATH="C:\Program Files\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com"
+set BUILDFILEPATH="C:\%PROGRAM_FILES%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com"
 
-set BUILDFILEPATH2.0="C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\devenv.com"
-set BUILDFILEPATH3.5="C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\devenv.com"
-set BUILDFILEPATH4.0="C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\devenv.com"
-set BUILDFILEPATH4.5="C:\Program Files\Microsoft Visual Studio 11.0\Common7\IDE\devenv.com"
-set BUILDFILEPATH4.5.1="C:\Program Files\Microsoft Visual Studio 12.0\Common7\IDE\IDE\devenv.com"
-set BUILDFILEPATH4.6="C:\Program Files\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com"
+set BUILDFILEPATH2.0="C:\%PROGRAM_FILES%\Microsoft Visual Studio 8\Common7\IDE\devenv.com"
+set BUILDFILEPATH3.5="C:\%PROGRAM_FILES%\Microsoft Visual Studio 9.0\Common7\IDE\devenv.com"
+set BUILDFILEPATH4.0="C:\%PROGRAM_FILES%\Microsoft Visual Studio 10.0\Common7\IDE\devenv.com"
+set BUILDFILEPATH4.5="C:\%PROGRAM_FILES%\Microsoft Visual Studio 11.0\Common7\IDE\devenv.com"
+set BUILDFILEPATH4.5.1="C:\%PROGRAM_FILES%\Microsoft Visual Studio 12.0\Common7\IDE\IDE\devenv.com"
+set BUILDFILEPATH4.6="C:\%PROGRAM_FILES%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com"
 
 @echo --------------------------------------------------
 @echo The choice of build configuration (Debug / Release).
