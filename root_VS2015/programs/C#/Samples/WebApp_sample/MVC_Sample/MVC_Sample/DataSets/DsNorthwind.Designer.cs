@@ -14752,8 +14752,7 @@ namespace MVC_Sample.DataSets.DsNorthwindTableAdapters {
             }
             global::System.Data.IDbTransaction workTransaction = workConnection.BeginTransaction();
             if ((workTransaction == null)) {
-                throw new global::System.ApplicationException("The transaction cannot begin. The current data connection does not support transa" +
-                        "ctions or the current state is not allowing the transaction to begin.");
+                throw new global::System.ApplicationException("トランザクションを開始できません。現在のデータ接続がトランザクションをサポートしていないか、または現在の状態がトランザクションの開始を許可していません。");
             }
             global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
             global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
