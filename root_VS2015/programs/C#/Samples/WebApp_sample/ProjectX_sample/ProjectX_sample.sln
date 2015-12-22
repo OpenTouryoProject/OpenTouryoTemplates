@@ -22,6 +22,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ProjectX_sample", ".", "{57
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "9999"
 		VWDDynamicPort = "false"
+		SlnRelativePath = "..\ProjectX_sample\"
 	EndProjectSection
 EndProject
 Global

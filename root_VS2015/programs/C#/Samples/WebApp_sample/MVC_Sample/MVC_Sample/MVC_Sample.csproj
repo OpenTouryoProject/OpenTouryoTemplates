@@ -151,11 +151,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CrudMu2Controller.cs" />
     <Compile Include="Controllers\CrudMuController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="DataSets\DsNorthwind.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DsNorthwind.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ErrorInformation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -275,6 +277,7 @@
     <Content Include="Views\CrudMu2\_ChartView.cshtml" />
     <Content Include="Views\CrudMu2\_MessageView.cshtml" />
     <Content Include="Views\CrudMu2\Index.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
