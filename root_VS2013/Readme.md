@@ -1,85 +1,85 @@
-# Open “—À Visual Studio2013 ƒeƒ“ƒvƒŒ[ƒgEƒx[ƒX‚Ì—˜—p•û–@(How to Use OpenTouryo Visual Studio 2013 template base)
+ï»¿# Open æ£Ÿæ¢ Visual Studio2013 ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ»ãƒ™ãƒ¼ã‚¹ã®åˆ©ç”¨æ–¹æ³•(How to Use OpenTouryo Visual Studio 2013 template base)
 
 
-Open“—À Visual Studio2013 ƒeƒ“ƒvƒŒ[ƒgEƒx[ƒX‚É
-“¯«‚³‚ê‚éƒTƒ“ƒvƒ‹‚ÌÀsè‡‚Í‰º‹L‚Ì‚Æ‚¨‚è‚Å‚·B
+Openæ£Ÿæ¢ Visual Studio2013 ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ»ãƒ™ãƒ¼ã‚¹ã«
+åŒæ¢±ã•ã‚Œã‚‹ã‚µãƒ³ãƒ—ãƒ«ã®å®Ÿè¡Œæ‰‹é †ã¯ä¸‹è¨˜ã®ã¨ãŠã‚Šã§ã™ã€‚
 
 (Execution procedure of the samples that are shipped with the
 OpenTouryo Visual Studio 2013 template base is as follows.)
 
-* u/root_VS2013/vˆÈ‰º‚ÌƒtƒHƒ‹ƒ_‚ğuC:\rootvƒtƒHƒ‹ƒ_ˆÈ‰º‚É”z’u‚µ‚Ü‚·B
-   (Deploy to under uC:\rootvfolder from under u/root_VS2013/vfolder.)
+* ã€Œ/root_VS2013/ã€ä»¥ä¸‹ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’ã€ŒC:\rootã€ãƒ•ã‚©ãƒ«ãƒ€ä»¥ä¸‹ã«é…ç½®ã—ã¾ã™ã€‚
+   (Deploy to under ã€ŒC:\rootã€folder from under ã€Œ/root_VS2013/ã€folder.)
    
-* Visual Studio 2013 ‚Æ SQL Server ‚ÌƒCƒ“ƒXƒg[ƒ‹
+* Visual Studio 2013 ã¨ SQL Server ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
    (Installing Visual Studio 2013 and SQL Server.)
    
-* ƒTƒ“ƒvƒ‹DB‚Ì€”õ(Prepare Sample DB)
+* ã‚µãƒ³ãƒ—ãƒ«DBã®æº–å‚™(Prepare Sample DB)
 
-   - ‰º‹L‚©‚çƒ_ƒEƒ“ƒ[ƒh‚µƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·B
+   - ä¸‹è¨˜ã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™ã€‚
       (Download and install from the following.)
       
       Download: NorthWind and pubs Sample Databases for SQL Server 2000 - Microsoft Download Center - Download Details
       http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=23654
       
-   - ‰º‹LƒRƒ}ƒ“ƒh‚ğÀs‚µ‚Ü‚·(Run the following command)B
+   - ä¸‹è¨˜ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã—ã¾ã™(Run the following command)ã€‚
       "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S localhost\SQLExpress -E -i "C:\SQL Server 2000 Sample Databases\instnwnd.sql"
 
-* ƒZƒbƒVƒ‡ƒ“ó‘ÔƒT[ƒrƒX‚Ì€”õ(Preparing the session state service)
-   - ŠÇ—Ò‚Æ‚µ‚ÄƒRƒ}ƒ“ƒhƒvƒƒ“ƒvƒg‚ğ‹N“®‚µA‰º‹LƒRƒ}ƒ“ƒh‚ğÀs‚µ‚Ü‚·B
+* ã‚»ãƒƒã‚·ãƒ§ãƒ³çŠ¶æ…‹ã‚µãƒ¼ãƒ“ã‚¹ã®æº–å‚™(Preparing the session state service)
+   - ç®¡ç†è€…ã¨ã—ã¦ã‚³ãƒãƒ³ãƒ‰ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã‚’èµ·å‹•ã—ã€ä¸‹è¨˜ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã—ã¾ã™ã€‚
       (Start a command prompt as an administrator, and then run the following command.)
       
       sc config aspnet_state start= auto
       net start aspnet_state
 
-* ƒvƒƒOƒ‰ƒ€‚Ìƒrƒ‹ƒh(Building the program)
+* ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ãƒ“ãƒ«ãƒ‰(Building the program)
    C:\root\programs\C#
    C:\root\programs\VB
 
-   ƒtƒHƒ‹ƒ_ˆÈ‰º‚Ìƒrƒ‹ƒhƒoƒbƒ`‚ğ”Ô†‡‚ÉÀs‚µ‚ÄƒvƒƒOƒ‰ƒ€‚ğƒrƒ‹ƒh‚µ‚Ü‚·B
+   ãƒ•ã‚©ãƒ«ãƒ€ä»¥ä¸‹ã®ãƒ“ãƒ«ãƒ‰ãƒãƒƒãƒã‚’ç•ªå·é †ã«å®Ÿè¡Œã—ã¦ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’ãƒ“ãƒ«ãƒ‰ã—ã¾ã™ã€‚
    (Build the program by running in numerical order the build batch of Above folder.)
 
-   - •K—v‚Å‚ ‚ê‚ÎAŠÂ‹«‚É‡‚í‚¹‚ÄAz_Common.bat“à‚ÌBUILDFILEPATH‚ğ‘‚«Š·‚¦‚Ü‚·B
+   - å¿…è¦ã§ã‚ã‚Œã°ã€ç’°å¢ƒã«åˆã‚ã›ã¦ã€z_Common.batå†…ã®BUILDFILEPATHã‚’æ›¸ãæ›ãˆã¾ã™ã€‚
      (If necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
    
-     Express Edition‚ğg—p‚µ‚Ä‚¢‚éê‡‚ÍAdevenv.com‚ª‘¶İ‚µ‚È‚¢‚Ì‚ÅA
-     z_Common.bat‚Æz_Common2.bat‚ğ·‚µ‘Ö‚¦‚ÄMSBuild.exe‚ğg—p‚µ‚Ä‰º‚³‚¢B
+     Express Editionã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹å ´åˆã¯ã€devenv.comãŒå­˜åœ¨ã—ãªã„ã®ã§ã€
+     z_Common.batã¨z_Common2.batã‚’å·®ã—æ›¿ãˆã¦MSBuild.exeã‚’ä½¿ç”¨ã—ã¦ä¸‹ã•ã„ã€‚
      
      (If you are using the Express Edition,
      use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
      Because devenv.com does not exist.)
    
-   - VB”Å‚ğg—p‚·‚éê‡‚ÍA"C:\root\programs\C#\"‚Ì
-     1_DeleteDir.bat‚©‚ç4_Build_Framework_Tool.bat‚Ü‚Å‚ğÀs‚µ‚½Œã‚ÉA
-     "C:\root\programs\VB\"‚Ì1_DeleteDir.bat‚©‚ç‡ŸÀs‚µ‚Ä‰º‚³‚¢B
+   - VBç‰ˆã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€"C:\root\programs\C#\"ã®
+     1_DeleteDir.batã‹ã‚‰4_Build_Framework_Tool.batã¾ã§ã‚’å®Ÿè¡Œã—ãŸå¾Œã«ã€
+     "C:\root\programs\VB\"ã®1_DeleteDir.batã‹ã‚‰é †æ¬¡å®Ÿè¡Œã—ã¦ä¸‹ã•ã„ã€‚
      
      If you use the VB version,
      after executing from "1_DeleteDir.bat" to "4_Build_Framework_Tool.bat" at the location of "C:\root\programs\C#\",
      please executing sequentially from "1_DeleteDir.bat" at the location of "C:\root\programs\VB\".
    
-* VS2013‚ÌWebSite‚Å‰¼‘zƒpƒX‚Ìƒ‹[ƒg‚ÉƒvƒƒWƒFƒNƒg–¼‚ª
-   “ü‚ç‚È‚­‚È‚Á‚½‚±‚Æ‚É‹Nˆö‚µ‚ÄˆÈ‰º‚Ì‘Î‰‚ª•K—v‚É‚È‚è‚Ü‚µ‚½B
+* VS2013ã®WebSiteã§ä»®æƒ³ãƒ‘ã‚¹ã®ãƒ«ãƒ¼ãƒˆã«ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆåãŒ
+   å…¥ã‚‰ãªããªã£ãŸã“ã¨ã«èµ·å› ã—ã¦ä»¥ä¸‹ã®å¯¾å¿œãŒå¿…è¦ã«ãªã‚Šã¾ã—ãŸã€‚
    
    (The project name lost from root of the virtual path in the WebSite of VS2013.
    I now need to be addressed in the following.)
    
-   e.g.: ƒvƒƒWƒFƒNƒg–¼ (project name) = ProjectX_sample
+   e.g.: ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå (project name) = ProjectX_sample
          - before version Visual Studio 2012 -> http://localhost:9999/ProjectX_sample/Aspx/start/menu.aspx
          - Visual Studio 2013 -> http://localhost:9999/Aspx/start/menu.aspx
          
    asp.net - Upgrade VS2012 project to VS2013 web site and it won't let me specify IIS port - Stack Overflow
    http://stackoverflow.com/questions/19635467/upgrade-vs2012-project-to-vs2013-web-site-and-it-wont-let-me-specify-iis-port
    
-   - ”O‚Ì‚½‚ßAaspnet_regiis‚ğÀs‚µ‚Ü‚·B
-      CMD‚ğŠÇ—Òƒ‚[ƒh‚Å‹N“®‚µ‚Äuaspnet_regiis.exe - ivƒRƒ}ƒ“ƒh‚ğÀs‚µ‚Ü‚·B
+   - å¿µã®ãŸã‚ã€aspnet_regiisã‚’å®Ÿè¡Œã—ã¾ã™ã€‚
+      CMDã‚’ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰ã§èµ·å‹•ã—ã¦ã€Œaspnet_regiis.exe - iã€ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã—ã¾ã™ã€‚
       
       (Just in case, Run the aspnet_regiis. 
        You can run the "aspnet_regiis.exe - i" command to launch in administrator mode the CMD.)
        
       "C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe" - i
   
-   - IIS‚ÌŠÇ—ƒc[ƒ‹‚É‚æ‚èAƒvƒƒWƒFƒNƒg‚Ìƒ‹[ƒgEƒtƒHƒ‹ƒ_‚ğ
-      IIS‚Ì‰¼‘zƒfƒBƒŒƒNƒgƒŠ‚Éİ’è‚µ‚Ü‚·iƒGƒCƒŠƒAƒXFProjectX_samplejB
-      ‚»‚µ‚ÄA‚»‚ÌŒãA‚±‚Ì‰¼‘zƒfƒBƒŒƒNƒgƒŠ‚ğƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚É•ÏŠ·‚µ‚Ü‚·B
+   - IISã®ç®¡ç†ãƒ„ãƒ¼ãƒ«ã«ã‚ˆã‚Šã€ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ«ãƒ¼ãƒˆãƒ»ãƒ•ã‚©ãƒ«ãƒ€ã‚’
+      IISã®ä»®æƒ³ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«è¨­å®šã—ã¾ã™ï¼ˆã‚¨ã‚¤ãƒªã‚¢ã‚¹ï¼šProjectX_sampleï¼‰ã€‚
+      ãã—ã¦ã€ãã®å¾Œã€ã“ã®ä»®æƒ³ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã«å¤‰æ›ã—ã¾ã™ã€‚
       
       (Set root folder of the project to virtual directory of IIS (alias: ProjectX_sample),
       Thereafter, convert this to application by IIS management tool.)
@@ -87,38 +87,38 @@ OpenTouryo Visual Studio 2013 template base is as follows.)
       \root\programs\C#\Samples\WebApp_sample\ProjectX_sample
       \root\programs\VB\Samples\WebApp_sample\ProjectX_sample
       
-   - VS2013‚ğuŠÇ—Ò‚Æ‚µ‚ÄÀsv‚Å‹N“®‚µ‚ÄA
-      ƒvƒƒWƒFƒNƒgEƒtƒHƒ‹ƒ_‚ğŠù‘¶‚ÌWebSite‚Æ‚µ‚ÄHTTP-IIS‚©‚çŠJ‚«‚Ü‚·B
-      "ƒtƒ@ƒCƒ‹ -> ŠJ‚­ -> WebSiteAƒ[ƒJƒ‹ IIS -> IIS ExpressƒTƒCƒg‚Å‚Í‚È‚­AIISƒTƒCƒg‚©‚ç‘I‘ğ"
-      ƒvƒƒWƒFƒNƒg‚ğƒfƒoƒbƒOÀs‚µA‰¼‘zƒpƒX‚Ìƒ‹[ƒg‚ÉƒvƒƒWƒFƒNƒg–¼‚ª“ü‚é–‚ğŠm”F‚µ‚Ü‚·B
+   - VS2013ã‚’ã€Œç®¡ç†è€…ã¨ã—ã¦å®Ÿè¡Œã€ã§èµ·å‹•ã—ã¦ã€
+      ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãƒ»ãƒ•ã‚©ãƒ«ãƒ€ã‚’æ—¢å­˜ã®WebSiteã¨ã—ã¦HTTP-IISã‹ã‚‰é–‹ãã¾ã™ã€‚
+      "ãƒ•ã‚¡ã‚¤ãƒ« -> é–‹ã -> WebSiteã€ãƒ­ãƒ¼ã‚«ãƒ« IIS -> IIS Expressã‚µã‚¤ãƒˆã§ã¯ãªãã€IISã‚µã‚¤ãƒˆã‹ã‚‰é¸æŠ"
+      ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒãƒƒã‚°å®Ÿè¡Œã—ã€ä»®æƒ³ãƒ‘ã‚¹ã®ãƒ«ãƒ¼ãƒˆã«ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆåãŒå…¥ã‚‹äº‹ã‚’ç¢ºèªã—ã¾ã™ã€‚
       
       (Start with "Run as Administrator" on VS2013, 
       I open it from the HTTP-IIS WebSite as an existing project folder.
       "File -> Open -> WebSite, Local IIS -> Select from IIS site rather than IIS express site"
       The debug run the project to see that the project name to enter the root of the virtual path.)
        
-   - SQL Server‚Ö‚ÌÚ‘±‚Ìb’è‘Îô‚Æ‚µ‚Ä‹U‘•‚ğ‚µ‚Ü‚·B
+   - SQL Serverã¸ã®æ¥ç¶šã®æš«å®šå¯¾ç­–ã¨ã—ã¦å½è£…ã‚’ã—ã¾ã™ã€‚
       (Impersonate as an interim measure for a connection to SQL Server.)
       
-      <!-- ‹U‘•‚·‚éê‡‚ÍˆÈ‰º‚ğ—LŒø‚É‚·‚é(Enable the following: If you want to impersonate) -->
+      <!-- å½è£…ã™ã‚‹å ´åˆã¯ä»¥ä¸‹ã‚’æœ‰åŠ¹ã«ã™ã‚‹(Enable the following: If you want to impersonate) -->
       <identity impersonate="true" userName="xxxx" password="yyyy" />
       
-      ‘¼‚Ì‘Î‰•û–@‚Æ‚µ‚ÄASQL Server”FØ‚ğ—LŒø‚É‚µ‚Ä‚à‚¢‚¯‚Ü‚·B
+      ä»–ã®å¯¾å¿œæ–¹æ³•ã¨ã—ã¦ã€SQL Serverèªè¨¼ã‚’æœ‰åŠ¹ã«ã—ã¦ã‚‚ã„ã‘ã¾ã™ã€‚
       (In response other methods, it is also possible to enable the SQL Server authentication.)
       
-      SQL Server ‚Ì”FØ - ƒ}ƒCƒNƒƒ\ƒtƒgŒn‹Zpî•ñ Wiki
+      SQL Server ã®èªè¨¼ - ãƒã‚¤ã‚¯ãƒ­ã‚½ãƒ•ãƒˆç³»æŠ€è¡“æƒ…å ± Wiki
       (SQLServer's authentication - Microsoft-based technology information Wiki)
       http://techinfoofmicrosofttech.osscons.jp/index.php?SQL%20Server%20%E3%81%AE%E8%AA%8D%E8%A8%BC 
       
-* ƒTƒ“ƒvƒ‹‚ÌÀs(Running the Sample)
+* ã‚µãƒ³ãƒ—ãƒ«ã®å®Ÿè¡Œ(Running the Sample)
 
-   ‰º‹Lƒtƒ@ƒCƒ‹‚ğŠJ‚«Às‚·‚éiVB”Å‚Íˆê•”‚Ì’ñ‹Ÿ‚É‚È‚Á‚Ä‚¢‚Ü‚·jB
-   ƒƒOƒCƒ“‰æ–Ê‚ªo‚½ê‡‚ÍAƒpƒXƒ[ƒh‚ÌŠm”F‚Ís‚Á‚Ä‚¢‚È‚¢‚½‚ßA”CˆÓ‚Ì”š‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B
+   ä¸‹è¨˜ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãå®Ÿè¡Œã™ã‚‹ï¼ˆVBç‰ˆã¯ä¸€éƒ¨ã®æä¾›ã«ãªã£ã¦ã„ã¾ã™ï¼‰ã€‚
+   ãƒ­ã‚°ã‚¤ãƒ³ç”»é¢ãŒå‡ºãŸå ´åˆã¯ã€ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®ç¢ºèªã¯è¡Œã£ã¦ã„ãªã„ãŸã‚ã€ä»»æ„ã®æ•°å­—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚
    
    (Open and run the following file (VB version provide some). 
    If the login screen appears, because not check the password, please enter the number of any.)
    
-   - Web ‚Ìê‡(In the case of Web)F
+   - Web ã®å ´åˆ(In the case of Web)ï¼š
       - ASP.NET
          C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
       - ASP.NET MVC
@@ -126,13 +126,13 @@ OpenTouryo Visual Studio 2013 template base is as follows.)
       - ASP.NET MVC SPA
          C:\\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
     
-   - C/S 2ŠK‘w‚Ìê‡(In the case of two-tier C/S)F
+   - C/S 2éšå±¤ã®å ´åˆ(In the case of two-tier C/S)ï¼š
       - Windows Forms
          C:\root\programs\C#\Samples\2CS_sample\2CSClientWin_sample\2CSClientWin_sample.sln
       - WPF
          C:\root\programs\C#\Samples\2CS_sample\2CSClientWPF_sample\2CSClientWPF_sample.sln
     
-   - C/S 3ŠK‘w‚Ìê‡(In the case of three-tier C/S)F
+   - C/S 3éšå±¤ã®å ´åˆ(In the case of three-tier C/S)ï¼š
       - Windows Forms
          C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWin_sample\WSClientWin_sample.sln
          C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSClientWinCone_sample.sln
@@ -140,45 +140,45 @@ OpenTouryo Visual Studio 2013 template base is as follows.)
          C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
          C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPFbap_sample\WSClientWPFbap_sample.sln
     
-   - Silverlight ‚Ìê(In the case of Silverlight)F
+   - Silverlight ã®å ´(In the case of Silverlight)ï¼š
       C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientSL_samples\WSClientSL_samples.sln
-   - WindowsƒXƒgƒAƒAƒvƒŠ ‚Ìê‡(In the case of Windows Store App )F
+   - Windowsã‚¹ãƒˆã‚¢ã‚¢ãƒ—ãƒª ã®å ´åˆ(In the case of Windows Store App )ï¼š
       C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientWinStore_samples.sln
-   - Windows Azure ‚Ìê‡(In the case of Windows Azure)F
+   - Windows Azure ã®å ´åˆ(In the case of Windows Azure)ï¼š
       C:\root_org\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
 
-* Šeƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì“à—e‚É]‚¢Open“—À‚Ì•]‰¿‚ª‰Â”\‚Å‚·B
+* å„ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã®å†…å®¹ã«å¾“ã„Openæ£Ÿæ¢ã®è©•ä¾¡ãŒå¯èƒ½ã§ã™ã€‚
    (Evaluation of OpenTouryo is possible in accordance with the contents of each tutorial.)
    
    \OpenTouryoProject\OpenTouryoDocuments\2_Tutorial\
    
-   ƒhƒLƒ…ƒƒ“ƒg—Ş‚Í[OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments)ƒŠƒ|ƒWƒgƒŠ‚ÉŠi”[‚³‚ê‚Ä‚¢‚Ü‚·B
+   ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆé¡ã¯[OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments)ãƒªãƒã‚¸ãƒˆãƒªã«æ ¼ç´ã•ã‚Œã¦ã„ã¾ã™ã€‚
    (documents are located in the [OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments) repository.)
    
-* ‚Ü‚½Aƒeƒ“ƒvƒŒ[ƒgEƒx[ƒX‚ğƒ`ƒ…[ƒgƒŠƒAƒ‹‚Ì“à—e‚É]‚¢ƒJƒXƒ^ƒ}ƒCƒY‚·‚é‚±‚Æ‚ÅA
-   “–ŠYVisual Studioƒo[ƒWƒ‡ƒ“‚ÌˆÄŒŒü‚¯ƒvƒƒWƒFƒNƒgEƒeƒ“ƒvƒŒ[ƒg‚ğì¬‚Å‚«‚Ü‚·B
+* ã¾ãŸã€ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ»ãƒ™ãƒ¼ã‚¹ã‚’ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã®å†…å®¹ã«å¾“ã„ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã™ã‚‹ã“ã¨ã§ã€
+   å½“è©²Visual Studioãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®æ¡ˆä»¶å‘ã‘ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãƒ»ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ä½œæˆã§ãã¾ã™ã€‚
    
    (Further, You  will customize template base according to the contents of the tutorial, 
    You can create project template for the Visual Studio version for the project.)
     
    \OpenTouryoProject\OpenTouryoDocuments\2_Tutorial\Tutorial_Template_development.doc
    
-   ƒhƒLƒ…ƒƒ“ƒg—Ş‚Í[OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments)ƒŠƒ|ƒWƒgƒŠ‚ÉŠi”[‚³‚ê‚Ä‚¢‚Ü‚·B
+   ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆé¡ã¯[OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments)ãƒªãƒã‚¸ãƒˆãƒªã«æ ¼ç´ã•ã‚Œã¦ã„ã¾ã™ã€‚
    (documents are located in the [OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments) repository.)
    
-# ’˜ìŒ Aƒ‰ƒCƒZƒ“ƒX(Copyright, license)
+# è‘—ä½œæ¨©ã€ãƒ©ã‚¤ã‚»ãƒ³ã‚¹(Copyright, license)
 
-[License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license)ƒfƒBƒŒƒNƒgƒŠ‚ğŠm”F‰º‚³‚¢B
+[License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license)ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¢ºèªä¸‹ã•ã„ã€‚
 (Please check [License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license) directory.)
 
-# ƒoƒO‘Î‰(Bug fix)
+# ãƒã‚°å¯¾å¿œ(Bug fix)
 
-ƒoƒO‚Ì”­Œ©‚â’Ê’m‚ª‚ ‚Á‚½ê‡A’Ê’m‚Ì‘Ã“–«‚ÌŠm”FŒãA
-ƒoƒbƒNƒƒO‚É‰Á‚¦‚ç‚ê”CˆÓ‚Ìƒ^ƒCƒ~ƒ“ƒO‚ÅƒtƒBƒbƒNƒX‚³‚ê‚Ü‚·B
+ãƒã‚°ã®ç™ºè¦‹ã‚„é€šçŸ¥ãŒã‚ã£ãŸå ´åˆã€é€šçŸ¥ã®å¦¥å½“æ€§ã®ç¢ºèªå¾Œã€
+ãƒãƒƒã‚¯ãƒ­ã‚°ã«åŠ ãˆã‚‰ã‚Œä»»æ„ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã•ã‚Œã¾ã™ã€‚
 
-ƒoƒOC³ƒpƒbƒ`‚Ìæ‚İ‚ÍAÅV”Åæ‚İ‚É‚æ‚èÀŒ»‚³‚ê‚Ü‚·B
-á‚µ‚­‚ÍA“–ŠYƒoƒO‚ğƒgƒ‰ƒbƒLƒ“ƒOEƒc[ƒ‹ã‚©‚çŠm”F‚µ‚Ä
-ƒŠƒ|ƒWƒgƒŠ‚©‚çƒoƒOƒtƒBƒbƒNƒX‚ÌDIFF‚ğæ“¾‚µŠe©ƒ}[ƒW‚µ‚Ä‚­‚¾‚³‚¢B
+ãƒã‚°ä¿®æ­£ãƒ‘ãƒƒãƒã®å–è¾¼ã¿ã¯ã€æœ€æ–°ç‰ˆå–è¾¼ã¿ã«ã‚ˆã‚Šå®Ÿç¾ã•ã‚Œã¾ã™ã€‚
+è‹¥ã—ãã¯ã€å½“è©²ãƒã‚°ã‚’ãƒˆãƒ©ãƒƒã‚­ãƒ³ã‚°ãƒ»ãƒ„ãƒ¼ãƒ«ä¸Šã‹ã‚‰ç¢ºèªã—ã¦
+ãƒªãƒã‚¸ãƒˆãƒªã‹ã‚‰ãƒã‚°ãƒ•ã‚£ãƒƒã‚¯ã‚¹æ™‚ã®DIFFã‚’å–å¾—ã—å„è‡ªãƒãƒ¼ã‚¸ã—ã¦ãã ã•ã„ã€‚
 
 If there is a notification or discovery of the bug,
 after confirmation of the validity of the notification, 
@@ -188,11 +188,11 @@ Incorporation of bug fixes are implemented by the latest version of incorporatio
 Or, check from the tracking tool on the bug 
 Please have your own merge by get the DIFF of bug fixes from the repository at the time.
 
-# ƒf[ƒ^ƒvƒƒoƒCƒ_‚Ì“üèA—Aoè‘±‚«Ag—p‹–‘ø‚Ö‚Ì“Y•t‚É‚Â‚¢‚Ä(obtain the data provider. export procedures. attach to license.)
+# ãƒ‡ãƒ¼ã‚¿ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å…¥æ‰‹ã€è¼¸å‡ºæ‰‹ç¶šãã€ä½¿ç”¨è¨±è«¾ã¸ã®æ·»ä»˜ã«ã¤ã„ã¦(obtain the data provider. export procedures. attach to license.)
 
 
-Open“—À‚Å‚ÍAíX‚Ìƒf[ƒ^EƒvƒƒoƒCƒ_‚ğƒTƒ|[ƒg‚µ‚Ä‚¢‚Ü‚·‚ªA
-Šeƒf[ƒ^EƒvƒƒoƒCƒ_‚Ì“üèE—Aoè‘±‚«‚ÉŠÖ‚µ‚Ä‚ÍAŠe©‘Î‰‰º‚³‚¢B
+Openæ£Ÿæ¢ã§ã¯ã€ç¨®ã€…ã®ãƒ‡ãƒ¼ã‚¿ãƒ»ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã¾ã™ãŒã€
+å„ãƒ‡ãƒ¼ã‚¿ãƒ»ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®å…¥æ‰‹ãƒ»è¼¸å‡ºæ‰‹ç¶šãã«é–¢ã—ã¦ã¯ã€å„è‡ªå¯¾å¿œä¸‹ã•ã„ã€‚
 
 The Open Touryo is support the data provider of various, 
 For information on obtaining and export procedures for each data provider, please support their own.

@@ -32,3 +32,7 @@ Visual Studio 2012、.NET4.5  のテンプレート・ベース
 #### [/root_VS2013/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2013)
 Visual Studio 2013、.NET4.5.1のテンプレート・ベース
 (Template-base for Visual Studio 2013, .NET4.5.1)
+
+#### [/root_VS2015/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2015)
+Visual Studio 2015、.NET4.6のテンプレート・ベース
+(Template-base for Visual Studio 2015, .NET4.6)

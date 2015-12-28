@@ -1,16 +1,16 @@
-�ECrudMu
-  Ajax.BeginForm�̃T���v���B
-  �v���W�F�N�g�̃v���p�e�B��Web�^�u�̊J�n���쁨�y�[�W���w�肷��B
-  �ɁuCrudMu/�v�Ɠ��͂��Ď��s����B
+﻿・CrudMu
+  Ajax.BeginFormのサンプル。
+  プロジェクトのプロパティ→Webタブの開始動作→ページを指定する。
+  に「CrudMu/」と入力して実行する。
   
-�ECrudMu2
-  Html.BeginForm�̃T���v���B
-  �v���W�F�N�g�̃v���p�e�B��Web�^�u�̊J�n���쁨�y�[�W���w�肷��B
-  �ɁuCrudMu2/�v�Ɠ��͂��Ď��s����B
+・CrudMu2
+  Html.BeginFormのサンプル。
+  プロジェクトのプロパティ→Webタブの開始動作→ページを指定する。
+  に「CrudMu2/」と入力して実行する。
 
-�EAjax.BeginForm
-�EHtml.BeginForm
-�̎�����̍��ق́A
-�ECrudMu
-�ECrudMu2
-��Diff���̂邱�ƂŊm�F�ł���B
+・Ajax.BeginForm
+・Html.BeginForm
+の実装上の差異は、
+・CrudMu
+・CrudMu2
+のDiffを採ることで確認できる。
