@@ -47,7 +47,7 @@ function Fx_Document_OnLoad2() {
     Fx_AjaxExtensionInit();
 
     // Webサーバへ一定時間ごとにpingを行う
-    window.setInterval(HttpPing, 5000);
+   //window.setInterval(HttpPing, 5000);
 }
 
 //// ---------------------------------------------------------------
@@ -56,17 +56,17 @@ function Fx_Document_OnLoad2() {
 //// 引数    －
 //// 戻り値  －
 //// ---------------------------------------------------------------
-function HttpPing() {
-$.ajax({
-        type: 'GET',
-        url: URL,
-        contentType: "application/json; charset=utf-8",
-        data: {},
-        dataType: "json",
-        success: function () {},
-        error: function () {}
-    });
-}
+//function HttpPing() {
+//$.ajax({
+//        type: 'GET',
+//        url: URL,
+//        contentType: "application/json; charset=utf-8",
+//        data: {},
+//        dataType: "json",
+//        success: function () {},
+//        error: function () {}
+//    });
+//}
 
 // ダウンロード処理の場合、ダイアログを表示しない。
 var IsDownload = false;
