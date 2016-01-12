@@ -12,7 +12,8 @@
 //*
 //*  日時        更新者            内容
 //*  ----------  ----------------  -------------------------------------------------
-//*  2015/12/28  Sai               Added controller to prevent session timeout
+//*  2015/12/28  Sai               Added controller to prevent session timeout.
+//*  2016/01/12  Sai               Removed method Ping and modified Index method to return empty string.
 //**********************************************************************************
 
 //System
@@ -35,18 +36,7 @@ namespace MVC_Sample.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
-        }
-
-        /// <summary>
-        /// Returns session id in Json format.
-        /// </summary>
-        /// <returns>session id in Json format.</returns>
-        [HttpGet]
-        public JsonResult Ping()
-        {
-            //Returns session id in Json format.
-            return Json(Session.SessionID, JsonRequestBehavior.AllowGet);
+            return new EmptyResult();
         }
     }
 }
