@@ -21,6 +21,7 @@
 //*  2015/12/28  Sai               Added Java script method for preventing session timeout.
 //*  2015/12/28  Sai               Commented out window.setInterval method.
 //*  2016/01/11  Sai               Removed unnecessary code.
+//*  2016/01/12  Sai               Changed interval in method window.setInterval(HttpPing, 5000)
 //**********************************************************************************
 
 function Fx_Document_OnLoad() {
@@ -47,7 +48,7 @@ function Fx_Document_OnLoad2() {
     Fx_AjaxExtensionInit();
 
     // Webサーバへ一定時間ごとにpingを行う
-   //window.setInterval(HttpPing, 5000);
+   //window.setInterval(HttpPing, 5 * 60 * 1000);
 }
 
 //// ---------------------------------------------------------------
@@ -57,7 +58,7 @@ function Fx_Document_OnLoad2() {
 //// 戻り値  －
 //// ---------------------------------------------------------------
 //function HttpPing() {
-//$.ajax({
+//    $.ajax({
 //        type: 'GET',
 //        url: URL,
 //        contentType: "application/json; charset=utf-8",
