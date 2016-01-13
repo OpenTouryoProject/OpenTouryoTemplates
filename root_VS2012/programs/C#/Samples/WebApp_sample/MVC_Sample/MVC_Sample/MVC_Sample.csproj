@@ -148,6 +148,7 @@
     <Compile Include="Controllers\CrudMu2Controller.cs" />
     <Compile Include="Controllers\CrudMuController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\PingController.cs" />
     <Compile Include="DataSets\DsNorthwind.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -226,6 +227,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Framework\Img\loading.gif" />
+    <Content Include="Framework\Js\common.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="DataSets\DsNorthwind.xsc">
@@ -255,6 +258,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Ping\Index.cshtml"/>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
