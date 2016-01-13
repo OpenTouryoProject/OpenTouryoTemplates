@@ -17,7 +17,11 @@
 //*  2015/02/06  Supragyan         Added condition for check AjaxPostBackElement in Fx_AjaxExtensionInitializeRequest
 //*  2015/02/06  Supragyan         Added condition for check AjaxPostBackElement in Fx_AjaxExtensionEndRequest
 //*  2015/02/09  Supragyan         Added condition for Trident on Internet Explorer
-//*  2016/01/12  Sai	           Changed interval in method window.setInterval(HttpPing, 5000)
+//*  2015/09/09  Sandeep           Added condition code to detect IE-9, IE-10 and IE-11, to suppress double transmission
+//*  2015/12/28  Sai               Added Java script method for preventing session timeout.
+//*  2015/12/28  Sai               Commented out window.setInterval method.
+//*  2016/01/11  Sai               Removed unnecessary code.
+//*  2016/01/12  Sai               Changed interval in method window.setInterval(HttpPing, 5000)
 //**********************************************************************************
 
 function Fx_Document_OnLoad() {
@@ -40,20 +44,11 @@ function Fx_Document_OnLoad2() {
     // プログレス ダイアログの初期化
     Fx_InitProgressDialog();
 
-    // 子ウィンドウを開く関数  
-    Fx_ShowChildScreen();
-
-    // 子ウィンドウ（ダイアログ）を閉じる関数
-    Fx_CloseModalScreen();
-
     // Ajaxの初期化処理
     Fx_AjaxExtensionInit();
 
-    // 標準スタイルのウィンドウを表示
-    //Fx_StandardStyleWindow();
-
     // Webサーバへ一定時間ごとにpingを行う
-    //window.setInterval(HttpPing, 5 * 60 * 1000);
+   //window.setInterval(HttpPing, 5 * 60 * 1000);
 }
 
 //// ---------------------------------------------------------------
@@ -63,63 +58,16 @@ function Fx_Document_OnLoad2() {
 //// 戻り値  －
 //// ---------------------------------------------------------------
 //function HttpPing() {
-//    var httpObj = jQuery.get("/ProjectX_sample/Framework/ping.aspx", null, function () {
-//        //動作確認用コード(ping先の画面のソースをアラート表示)
-////        alert(httpObj.responseText);
+//    $.ajax({
+//        type: 'GET',
+//        url: URL,
+//        contentType: "application/json; charset=utf-8",
+//        data: {},
+//        dataType: "json",
+//        success: function () {},
+//        error: function () {}
 //    });
 //}
-
-// ---------------------------------------------------------------
-// 画面のスタイルなどを調整
-// ---------------------------------------------------------------
-// 引数    －
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_StandardStyleWindow() {
-
-    var childScreenType = GetElementByName_SuffixSearch("ChildScreenType");
-
-    // hiddenがnullになることがある・・・
-    if (childScreenType == null || childScreenType == undefined) {
-        return;
-    }
-
-    // childScreenTypeが「0」の場合、画面最大化を表示
-    if (childScreenType.value == "0") {
-
-        // 幅と高さ、スタイルを指定する。
-        var width = 1024;
-        var height = 768;
-        var wt = (screen.width - width) / 2;
-        var wl = (screen.height - height) / 2;
-        var style = ",statusbar=false,addressbar=false,menuBar=false,toolbar=false,resizable=false,visible=true";
-
-        var arg = "top=" + wl + ",left=" + wt + ",width=" + width + ",height=" + height + style;
-
-        if (this.name != 'StandardStyleWindow') {
-            // 自分を指定のスタイルで開きなおし、
-            if (window.open(this.location, 'StandardStyleWindow', arg) != null) {
-
-                // 自身（開いた元の画面）を閉じる。
-                //window.opener = null;
-                //window.close();
-
-                // JavaScript：いろいろ（仮）：So-netブログ
-                // http://magnus.blog.so-net.ne.jp/archive/c35376109-1
-                (window.open('', '_self').opener = window).close();
-            }
-        }
-    }
-}
-
-// ---------------------------------------------------------------
-// このダイアログを閉じた時に呼ばれる（ダミー）
-// ---------------------------------------------------------------
-// 引数    －
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_Document_OnClose() {
-}
 
 // ダウンロード処理の場合、ダイアログを表示しない。
 var IsDownload = false;
@@ -165,6 +113,15 @@ function Fx_OnSubmit() {
         }
         else if (navigator.appVersion.indexOf("MSIE 8.0") != -1) {
             // IE8.0では完全に有効
+        }
+        else if (navigator.appVersion.indexOf("MSIE 9.0") != -1) {
+            // IE9.0で問題の報告を受けていません。 
+        }
+        else if (navigator.appVersion.indexOf("MSIE 10.0") != -1) {
+            // IE10.0で問題の報告を受けていません。 
+        }
+        else if (navigator.appVersion.indexOf("Trident/7") != -1) {
+            // IE11.0で問題が合った場合、報告をお願いします。
         }
 
         if (document.readyState == "complete") {
@@ -372,7 +329,6 @@ function Fx_OnSubmit() {
     }
 }
 
-
 // ---------------------------------------------------------------
 // プログレス ダイアログ表示を仕掛ける。
 // ---------------------------------------------------------------
@@ -446,7 +402,7 @@ function Fx_InitProgressDialog() {
     // imgを生成
     var _img = document.createElement("img");
 
-    _img.src = "/ProjectX_sample/Framework/Img/loading.gif";
+    _img.src = "/MVC_sample/Framework/Img/loading.gif";
     _img.style.width = "50px";
     _img.style.height = "50px";
     _img.alt = "処理中画像";
@@ -487,292 +443,6 @@ function Fx_DisplayProgressDialog() {
 
 //**********************************************************************************
 
-// ---------------------------------------------------------------
-//  フレームワーク機能（ダイアログ）
-// ---------------------------------------------------------------
-
-// ---------------------------------------------------------------
-// 子画面表示
-// ---------------------------------------------------------------
-// 引数    －
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_ShowChildScreen() {
-
-    var fobj = document.aspnetForm;
-
-    if (fobj == null || fobj == undefined) {
-        fobj = document.getElementById("form1");
-    }
-
-    if (fobj == null || fobj == undefined) {
-        fobj = document.getElementById("aspnetForm");
-    }
-
-    // 子画面型と子画面URLは必須
-    var childScreenType = GetElementByName_SuffixSearch("ctl00$ChildScreenType");
-    var childScreenUrl = GetElementByName_SuffixSearch("ctl00$ChildScreenUrl");
-
-    // hiddenがnullになることがある・・・
-    if (childScreenType == null || childScreenType == undefined) {
-        return;
-    }
-    if (childScreenUrl == null || childScreenUrl == undefined) {
-        return;
-    }
-
-    // childScreenTypeが「1」の場合、「OK」メッセージ・ダイアログを表示
-    if (childScreenType.value == "1") {
-        // Cookieフラグを確認（バックボタン押下時の不具合対応）
-        if (Fx_GetCookie("BackButtonControl") == "TRUE") {
-            // Cookieを更新し、戻るボタンで戻った時に画面を表示しないようにする。
-            Fx_SetCookie("BackButtonControl", "FALSE", "path=/");
-
-            // OKMessageBox
-            return Fx_ShowMessageDialog(childScreenUrl.value);
-        }
-        else {
-            // 戻るボタンで戻ったので、画面は表示しない。
-            return;
-        }
-    }
-
-    // childScreenTypeが「2」の場合、「YES」・「NO」メッセージ・ダイアログを表示
-    if (childScreenType.value == "2") {
-        // Cookieフラグを確認（バックボタン押下時の不具合対応）
-        if (Fx_GetCookie("BackButtonControl") == "TRUE") {
-            // Cookieを更新し、戻るボタンで戻った時に画面を表示しないようにする。
-            Fx_SetCookie("BackButtonControl", "FALSE", "path=/");
-
-            // myFlagの初期化
-            var myFlag = 0;
-
-            // YesNoMessageBoxを表示する
-            myFlag = Fx_ShowMessageDialog(childScreenUrl.value);
-
-            // サブミット フラグの確認
-            var submitFlag = GetElementByName_SuffixSearch("ctl00$SubmitFlag");
-
-            if (myFlag == 0) {
-                // myFlagが「0」の場合、
-                // 「×」ボタンが押されたことを意味する。
-
-                // submitFlagを「1」に設定
-                submitFlag.value = "1";
-
-                // サーバ後処理を実行するため、サブミット
-                Fx_SetProgressDialog();
-                fobj.submit();
-            }
-            else if (myFlag == 1) {
-                // myFlagが「1」の場合、
-                // 「YES」ボタンが押されたことを意味する。
-
-                // submitFlagを「2」に設定
-                submitFlag.value = "2";
-
-                // サーバ後処理を実行するため、サブミット
-                Fx_SetProgressDialog();
-                fobj.submit();
-            }
-            else if (myFlag == 2) {
-                // myFlagが「2」の場合、
-                // 「NO」ボタンが押されたことを意味する。
-
-                // submitFlagを「3」に設定
-                submitFlag.value = "3";
-
-                // サーバ後処理を実行するため、サブミット
-                Fx_SetProgressDialog();
-                fobj.submit();
-            }
-
-            return;
-        }
-        else {
-            // 戻るボタンで戻ったので、画面は表示しない。
-            return;
-        }
-    }
-
-    // childScreenTypeが「3」の場合、業務モーダル・ダイアログを表示
-    if (childScreenType.value == "3") {
-        // Cookieフラグを確認（バックボタン押下時の不具合対応）
-        if (Fx_GetCookie("BackButtonControl") == "TRUE") {
-            // Cookieを更新し、戻るボタンで戻った時に画面を表示しないようにする。
-            Fx_SetCookie("BackButtonControl", "FALSE", "path=/");
-
-            // 業務モーダル・ダイアログ
-            Fx_ShowModalScreen(childScreenUrl.value);
-
-            return;
-        }
-        else {
-            // 戻るボタンで戻ったので、画面は表示しない。
-            return;
-        }
-    }
-
-    // childScreenTypeが「4」の場合、モードレス画面を表示
-    if (childScreenType.value == "4") {
-        // Cookieフラグを確認（バックボタン押下時の不具合対応）
-        if (Fx_GetCookie("BackButtonControl") == "TRUE") {
-            // Cookieを更新し、戻るボタンで戻った時に画面を表示しないようにする。
-            Fx_SetCookie("BackButtonControl", "FALSE", "path=/");
-
-            // モードレス画面
-            Fx_ShowNormalScreen(childScreenUrl.value);
-
-            return;
-        }
-        else {
-            // 戻るボタンで戻ったので、画面は表示しない。
-            return;
-        }
-    }
-}
-
-// ---------------------------------------------------------------
-// メッセージ ダイアログを表示
-// ---------------------------------------------------------------
-// 引数    url
-// 戻り値  window.showModalDialogの戻り値
-// ---------------------------------------------------------------
-function Fx_ShowMessageDialog(url) {
-
-    var args = new Array();
-
-    // urlキャッシュ対応処理
-    var d = new Date();
-    var year_now = d.getYear().toString();
-    var month_now = d.getMonth().toString();
-    var date_now = d.getDate().toString();
-    var day_now = d.getDay().toString();
-    var hour_now = d.getHours().toString();
-    var minute_now = d.getMinutes().toString();
-    var second_now = d.getSeconds();
-
-    // 既にQueryStringが設定されているので、？ではなく、＆を使用する。
-    url = url + "&Time=" + year_now + month_now + date_now + day_now + hour_now + minute_now + second_now;
-
-    // マスクする。
-    Fx_MaskOn();
-
-    try {
-        // ダイアログを表示(window.showModalDialog)
-        // 第1引数 = URL
-        // 第2引数 = 該当ページに引き渡すArrayクラス(不要ならば null)
-        // 第3引数 = オプション(「項目1:値1;項目2:値2;…;項目n:値n」の形式)
-        // 戻り値  = ダイアログ側の window.returnValue プロパティ設定値
-
-        // ★ダイアログのサイズはここに記述する。
-        var ret = window.showModalDialog(url, args,
-                     GetElementByName_SuffixSearch("ctl00$FxDialogStyle").value);
-    } finally {
-        // マスクを外す。
-        Fx_MaskOff();
-    }
-
-    return ret;
-}
-
-
-// ---------------------------------------------------------------
-// モーダル画面を表示
-// ---------------------------------------------------------------
-// 引数    url, style
-// 戻り値  false（クライアント側起動の際に、イベントを無効にするため）
-// ---------------------------------------------------------------
-function Fx_ShowModalScreen(url, style) {
-
-    var fobj = document.aspnetForm;
-
-    if (fobj == null || fobj == undefined) {
-        fobj = document.getElementById("form1");
-    }
-
-    if (fobj == null || fobj == undefined) {
-        fobj = document.getElementById("aspnetForm");
-    }
-
-    // 引数の個数を判別
-    switch (arguments.length) {
-        case 1:
-            // スタイルの指定が無い場合（サーバ起動）
-            style = GetElementByName_SuffixSearch("ctl00$BusinessDialogStyle").value
-        case 2:
-            // スタイルの指定が有る場合（クライアント起動）
-        default:
-    }
-
-    // ダイアログ フレームへのURL
-    var dialogFrameUrl = GetElementByName_SuffixSearch("ctl00$DialogFrameUrl");
-
-    // サブミット フラグの設定用
-    var submitFlag = GetElementByName_SuffixSearch("ctl00$SubmitFlag");
-
-    var args = new Array();
-    args[0] = url;
-
-    // マスクする。
-    Fx_MaskOn();
-
-    try {
-        // モーダル画面を表示
-        // 第1引数 = DialogFrameのURL
-        // 第2引数 = DialogFrame → DialogLoader.htmから起動するモーダル画面のURL
-        // 第3引数 = 画面のスタイル(「項目1:値1;項目2:値2;…;項目n:値n」の形式) 
-        var ret = window.showModalDialog(dialogFrameUrl.value, args, style);
-    } finally {
-        // マスクを外す。
-        Fx_MaskOff();
-    }
-
-    if (ret == "1") {
-        // 戻り値が１の場合、ポストバック（後処理）を実行する。
-        // →  後処理のためのポストバックを実行する。
-
-        // submitFlagを「4」に設定
-        submitFlag.value = "4";
-        // サーバ後処理を実行するため、サブミット
-        Fx_SetProgressDialog();
-        fobj.submit();
-    }
-    else if (ret == "2") {
-        // closeFlagが２の場合、ポストバック（後処理）を実行しない。
-        // →  なにもしない。
-    }
-    else if (ret == "3") {
-        // closeFlagが３の場合、当該画面が、モーダル画面かどうかを判定する。
-        if (window.dialogArguments == null || window.dialogArguments == undefined) {
-            // 当該画面が、モーダル画面でない場合、ポストバック（後処理）を実行する。
-
-            // submitFlagを「4」に設定
-            submitFlag.value = "4";
-            // サーバ後処理を実行するため、サブミット
-            Fx_SetProgressDialog();
-            fobj.submit();
-        }
-        else {
-            // 当該画面が、モーダル画面の場合、自分を閉じる。
-            window.returnValue = "3";
-            window.close();
-        }
-    }
-    else {
-        // 不明なステータスポストバック（後処理）を実行する。
-        // →  後処理のためのポストバックを実行する（★ プロジェクトによって動作を変更）。
-
-        // submitFlagを「4」に設定
-        submitFlag.value = "4";
-        // サーバ後処理を実行するため、サブミット
-        Fx_SetProgressDialog();
-        fobj.submit();
-    }
-
-    return false;
-}
-
 // ------------------------------------------------------------
 //  マスクの表示
 // ------------------------------------------------------------
@@ -807,81 +477,6 @@ function Fx_CreateMask() {
     _div.style.backgroundColor = 'gray';
 
     AjaxMask = _div;
-}
-
-// ---------------------------------------------------------------
-// マスクする。
-// ---------------------------------------------------------------
-// 引数    －
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_MaskOn() {
-    document.body.appendChild(AjaxMask);
-}
-
-// ---------------------------------------------------------------
-// マスクを外す。
-// ---------------------------------------------------------------
-// 引数    －
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_MaskOff() {
-    document.body.removeChild(AjaxMask);
-}
-
-// ---------------------------------------------------------------
-// モーダル画面をポストバックで閉じるためのメソッド
-// ---------------------------------------------------------------
-// 引数    －
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_CloseModalScreen() {
-
-    var closeFlag = GetElementByName_SuffixSearch("ctl00$CloseFlag");
-
-    // hiddenがnullになることがある・・・
-    if (closeFlag == null || closeFlag == undefined) {
-        return;
-    }
-
-    if (closeFlag.value == "1") {
-        // closeFlagが１の場合、自画面を閉じ、
-        // 親画面でポストバック（後処理）を実行する。
-        window.returnValue = "1";
-        window.close();
-    }
-    else if (closeFlag.value == "2") {
-        // closeFlagが２の場合、自画面を閉じ、
-        // 親画面でポストバック（後処理）を実行しない。
-        window.returnValue = "2";
-        window.close();
-    }
-    else if (closeFlag.value == "3") {
-        // closeFlagが３の場合、自画面を閉じ、
-        // 親のモーダル画面も閉じる。
-        window.returnValue = "3";
-        window.close();
-    }
-}
-
-
-// ---------------------------------------------------------------
-// モードレス画面を表示
-// ---------------------------------------------------------------
-// 引数    －
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_ShowNormalScreen(url) {
-
-    // ウィンドウを表示(window.open)
-    // 第1引数 = URL
-    // 第2引数 = ウィンドウ名
-    // 第3引数 = 画面のスタイル(「項目1:値1;項目2:値2;…;項目n:値n」の形式)
-
-    // ウィンドウ名を固定にすると、複数のウィンドウが開かなくなる。
-    window.open(url,
-           GetElementByName_SuffixSearch("ctl00$NormalScreenTarget").value,
-           GetElementByName_SuffixSearch("ctl00$NormalScreenStyle").value);
 }
 
 //**********************************************************************************
@@ -1081,59 +676,6 @@ function GetElementByName_SuffixSearch(name) {
                 // 検索名のほうが長い
             }
         }
-    }
-}
-
-//**********************************************************************************
-
-// ---------------------------------------------------------------
-//  ユーティリティ：Cookie処理関数
-// ---------------------------------------------------------------
-
-// ---------------------------------------------------------------
-// Cookieを参照する関数（Cookieから指定されたデータを抜きだす）
-// ---------------------------------------------------------------
-// 引数    Cookie名
-// 戻り値  成功した時はCookie値、失敗した時はfalseを返す
-// ---------------------------------------------------------------
-function Fx_GetCookie(name) {
-    // "="を追加
-    name += "=";
-
-    // 検索時最終項目で-1になるのを防ぐ
-    myCookie = document.cookie + ";";
-
-    // 指定されたセクション名を検索する
-    start = myCookie.indexOf(name);
-
-    if (start != -1) {
-        // 見つかった場合
-
-        // データを抜きだす
-        end = myCookie.indexOf(";", start);
-        return unescape(myCookie.substring(start + name.length, end));
-    }
-    else {
-        // 見つからなかった場合
-        return false;
-    }
-}
-
-// ---------------------------------------------------------------
-// Cookieを設定する関数（Cookieにデータを保存する）
-// ---------------------------------------------------------------
-// 引数    Cookie名
-// 戻り値  成功した時はtrue、失敗した時はfalseを返す
-// ---------------------------------------------------------------
-function Fx_SetCookie(name, value, option) {
-    // nullチェック
-    if ((name != null) && (value != null)) {
-        // データ保存
-        document.cookie = name + "=" + escape(value) + ";" + option;
-        return true;
-    }
-    else {
-        return false;
     }
 }
 

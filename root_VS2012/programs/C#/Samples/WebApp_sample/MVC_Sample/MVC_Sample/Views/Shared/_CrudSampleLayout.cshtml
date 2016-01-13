@@ -9,14 +9,20 @@
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.9.2.min.js"></script>
+    <script src="~/Framework/Js/common.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/Common.js"></script>
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/themes/base/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        URL = '@Url.Action("Index", "Ping")';
+        $("form").live("submit", function (event) {
+            Fx_OnSubmit();
+        });
+    </script>
 </head>
-<body onload="Fx_Document_OnLoad('@Url.Action("Ping", "Ping")')">
+<body onload="Fx_Document_OnLoad()">
     @RenderBody()
 </body>
 </html>
