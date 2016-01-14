@@ -22,6 +22,7 @@
 //*  2015/12/28  Sai               Commented out window.setInterval method.
 //*  2016/01/11  Sai               Removed unnecessary code.
 //*  2016/01/12  Sai               Changed interval in method window.setInterval(HttpPing, 5000)
+//*  2016/01/13  Sai               Removed Ajax extensions code and added JQuery's Ajax Complete method.
 //**********************************************************************************
 
 function Fx_Document_OnLoad() {
@@ -43,9 +44,6 @@ function Fx_Document_OnLoad2() {
 
     // プログレス ダイアログの初期化
     Fx_InitProgressDialog();
-
-    // Ajaxの初期化処理
-    Fx_AjaxExtensionInit();
 
     // Webサーバへ一定時間ごとにpingを行う
    //window.setInterval(HttpPing, 5 * 60 * 1000);
@@ -485,9 +483,6 @@ function Fx_CreateMask() {
 //  フレームワーク機能（Ajax）
 // ---------------------------------------------------------------
 
-// Ajax：ポストバックエレメント
-var AjaxPostBackElement;
-
 // Ajax：プログレス ダイアログのサイズ（div）
 var AjaxProgressDialog_Width = 300;
 var AjaxProgressDialog_Height = 100;
@@ -496,89 +491,9 @@ var AjaxProgressDialog_Height = 100;
 var Ajax_IsProgressed = false;
 
 // ---------------------------------------------------------------
-// Ajax Extensionの初期化
-// ---------------------------------------------------------------
-// 引数    －
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_AjaxExtensionInit() {
-    try {
-        // チェック（Sysが無い場合はエラーとなりなにもしない）
-        var sys = Sys;
-
-        // ここのエラーは握りつぶされるので、余計なコード
-        // は入れないで↓のコードブロックに追加すること。
-    }
-    catch (e) {
-        // なにもしないで戻る。
-        return;
-    }
-
-    // エラーとならなかった場合、
-
-    // Ajax Extensionの開始終了処理の登録
-    Fx_AjaxExtensionRegPreAndAfter(sys.WebForms.PageRequestManager.getInstance());
-}
-
-// ---------------------------------------------------------------
-// Ajax Extensionの開始終了処理の登録
-// ---------------------------------------------------------------
-// 引数    pageRequestManager
-// 戻り値  －
-// ---------------------------------------------------------------
-function Fx_AjaxExtensionRegPreAndAfter(pageRequestManager) {
-    // 非同期ポストバックの開始前、終了後に呼び出されるイベント・ハンドラを定義
-
-    // 開始前イベント
-    pageRequestManager.add_initializeRequest(Fx_AjaxExtensionInitializeRequest);
-
-    // 終了後イベント
-    pageRequestManager.add_endRequest(Fx_AjaxExtensionEndRequest);
-}
-
-// ---------------------------------------------------------------
-// Ajax Extensionの開始前イベント処理
-// ---------------------------------------------------------------
-// 引数    sender, args
-// ---------------------------------------------------------------
-function Fx_AjaxExtensionInitializeRequest(sender, args) {
-
-    // これが呼ばれるのは、Fx_OnSubmitの後
-
-    // ∴ 下記の処理は、Fx_OnSubmitの二重送信防止機能に統合
-
-    // // 現在、実行中の非同期通信が存在するかを判定
-    // if (pageRequestManager.get_isInAsyncPostBack())
-    // { 
-    //     // 非同期通信中である場合にはエラー メッセージを表示
-    //     alert("二重送信です(ajax)");
-    // 
-    //     // 後続の処理をキャンセル
-    //     args.set_cancel(true);
-    // }
-
-    // ★★ Fx_OnSubmitが呼ばれるのは、Ajax Extensionのみ。
-    // 　　 ClientCallbackや、WebServiceBridgeでは、呼ばれない。
-
-    // ポストバック エレメントを取得
-    AjaxPostBackElement = args.get_postBackElement();
-
-    if (AjaxPostBackElement) {
-        AjaxPostBackElement.disabled = true;
-    }
-
-    // 二重送信フラグの設定
-    Ajax_IsProgressed = true;
-    // ★★ ここの処理が動く前に、
-    // 他が、Fx_OnSubmitを通過しないか？
-}
-
-// ---------------------------------------------------------------
 // Ajax Extensionの終了後イベント処理
 // ---------------------------------------------------------------
-// 引数    sender, args
-// ---------------------------------------------------------------
-function Fx_AjaxExtensionEndRequest(sender, args) {
+$(document).ajaxComplete(function () {
     // はじめにタイマをクリアする。
     clearTimeout(ProgressDialogTimer);
 
@@ -594,13 +509,7 @@ function Fx_AjaxExtensionEndRequest(sender, args) {
 
     // 二重送信フラグの設定
     Ajax_IsProgressed = false;
-
-    // イベント発生元の要素を有効化
-
-    if (AjaxPostBackElement) {
-        AjaxPostBackElement.disabled = false;
-    }
-}
+});
 
 // ---------------------------------------------------------------
 // ClientCallbackや、WebServiceBridge、
@@ -610,74 +519,6 @@ function Fx_AjaxExtensionEndRequest(sender, args) {
 // 技術毎に、開始終了処理のイベント実装の機構を持つが、
 // それを使うか、どうか、などの検討も必要になる。
 // ---------------------------------------------------------------
-
-//**********************************************************************************
-
-// ---------------------------------------------------------------
-//  ユーティリティ：element取得関数
-// ---------------------------------------------------------------
-
-// ---------------------------------------------------------------
-// elementをnameの後方一致で取得関数する関数
-// ---------------------------------------------------------------
-// 引数    elementのname（後方一致）
-// 戻り値  取得したelement
-// ---------------------------------------------------------------
-function GetElementByName_SuffixSearch(name) {
-
-    var elementName = "";
-
-    var nameLength = name.length;
-    var elementNameLength = 0;
-
-    var fobj = document.aspnetForm;
-
-    if (fobj == null || fobj == undefined) {
-        fobj = document.getElementById("form1");
-    }
-
-    if (fobj == null || fobj == undefined) {
-        fobj = document.getElementById("aspnetForm");
-    }
-
-    // 必要なHiddenは後方にあるので、
-    // 後方から検索するように変更。
-    var i = fobj.elements.length - 1;
-
-    for (i; i >= 0; i--) {
-        // element.nameを取得
-        var e = fobj.elements[i];
-        elementName = e.name;
-
-        // name属性の存在チェック
-        if (elementName == null || elementName == undefined) {
-            // name属性がない。
-        }
-        else {
-
-            // name属性がある。
-            elementNameLength = elementName.length;
-
-            // name属性のlengthチェック
-            if (nameLength <= elementNameLength) {
-
-                // 検索名と同じか、長い場合
-                if (elementName.substring((elementNameLength - nameLength), elementNameLength) == name) {
-                    // 対象elementである。
-                    // elementを返す
-                    return e;
-                }
-                else {
-                    // 対象elementでない。
-                    // element検索を続行
-                }
-            }
-            else {
-                // 検索名のほうが長い
-            }
-        }
-    }
-}
 
 //**********************************************************************************
 
