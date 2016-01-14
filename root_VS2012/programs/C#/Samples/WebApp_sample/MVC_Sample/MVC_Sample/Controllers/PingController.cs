@@ -33,7 +33,7 @@ namespace MVC_Sample.Controllers
         /// <summary>
         /// 画面の初期表示
         /// </summary>
-        /// <returns>初期表示状態の画面 (EmptyResult)</returns>
+        /// <returns>空の結果を返す (EmptyResult)</returns>
         [HttpGet]
         public ActionResult Index()
         {
