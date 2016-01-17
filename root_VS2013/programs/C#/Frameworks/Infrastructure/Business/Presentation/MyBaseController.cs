@@ -50,6 +50,7 @@
 //*  2012/06/18  西野  大介        OriginalStackTrace（ログ出力）の品質向上
 //*  2013/01/18  西野  大介        public static TransferErrorScreen2追加（他から呼出可能に）
 //*  2013/01/18  西野  大介        public static GetUserInfo2追加（他から呼出可能に）
+//*  2016/01/13  Sandeep           Resolved the URL issue of error screen transition path
 //**********************************************************************************
 
 // System
@@ -893,6 +894,9 @@ namespace Touryo.Infrastructure.Business.Presentation
 
             // エラー画面へのパスを取得 --- チェック不要（ベースクラスでチェック済み）
             string errorScreenPath = GetConfigParameter.GetConfigValue(FxLiteral.ERROR_SCREEN_PATH);
+
+            // Resolves the path of the url with respect to the server
+            BaseController.ResolveServerUrl(ref errorScreenPath);
 
             // エラー画面へ画面遷移
             HttpContext.Current.Server.Transfer(errorScreenPath);
