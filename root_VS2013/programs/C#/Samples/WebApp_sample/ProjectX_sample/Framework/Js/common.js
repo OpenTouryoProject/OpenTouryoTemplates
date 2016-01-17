@@ -455,7 +455,7 @@ function Fx_InitProgressDialog() {
     // imgを生成
     var _img = document.createElement("img");
 
-    _img.src = "/ProjectX_sample/Framework/Img/loading.gif";
+    _img.src = "../../Framework/Img/loading.gif";
     _img.style.width = "50px";
     _img.style.height = "50px";
     _img.alt = "処理中画像";
