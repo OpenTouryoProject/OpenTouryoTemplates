@@ -15,12 +15,11 @@
     <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/themes/base/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
     @RenderSection("scripts", required: false)
+
     <script type="text/javascript">
         URL = '@Url.Action("Index", "Ping")';
-        $("form").live("submit", function (event) {
-            Fx_OnSubmit();
-        });
     </script>
+
 </head>
 <body onload="Fx_Document_OnLoad()">
     @RenderBody()
