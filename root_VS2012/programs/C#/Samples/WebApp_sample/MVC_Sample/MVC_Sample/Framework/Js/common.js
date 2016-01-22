@@ -23,6 +23,7 @@
 //*  2016/01/11  Sai               Removed unnecessary code.
 //*  2016/01/12  Sai               Changed interval in method window.setInterval(HttpPing, 5000)
 //*  2016/01/13  Sai               Removed Ajax extensions code and added JQuery's Ajax Complete method.
+//*  2016/01/22  Sai               Added .ajaxSend method to prevent double submit functionality in Ajax form.
 //**********************************************************************************
 
 function Fx_Document_OnLoad() {
@@ -598,3 +599,15 @@ function Fx_getContentsHeight() {
     return Math.max.apply(null, [document.body.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.documentElement.clientHeight]);
 }
 
+var ButtonID = null;
+
+// Enables the functionality of Prevent Double Submit for Ajax.BeginForm based on the button submitted. 
+$(document).ajaxSend(function () {
+
+    // Checks the submitted button id and enables Prevent Double Submit for the submitted button.
+    if (ButtonID == 'button5')
+    {
+    Fx_OnSubmit();
+    }
+    
+});
