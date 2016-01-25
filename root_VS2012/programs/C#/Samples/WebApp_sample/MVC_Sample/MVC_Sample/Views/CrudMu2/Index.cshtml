@@ -1,4 +1,5 @@
 ﻿@model MVC_Sample.Models.CrudModel
+@using Touryo.Infrastructure.Public.Util
 @{
     // ページタイトル
     ViewBag.Title = "CRUDサンプル（Html.BeginForm）";
@@ -161,6 +162,7 @@
 @* スクリプト・セクション（RenderSection("scripts", required: false)に出力されます） *@
 @section scripts{
 <script type="text/javascript">
+
     $(function () {
         $('#button1').click(function () {
             // button1 の場合は、GetCountのActionを実行しメッセージ部分を更新する
@@ -259,6 +261,10 @@
             // Form をサブミットしないよう、false を返す
             return false;
         });
+
+        $("form").live("submit", function (event) {
+            Fx_OnSubmit();
+        });    
     });
 </script>
 }
