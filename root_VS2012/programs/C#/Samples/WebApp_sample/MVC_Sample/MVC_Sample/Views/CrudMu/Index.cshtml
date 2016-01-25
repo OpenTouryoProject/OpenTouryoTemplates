@@ -166,11 +166,11 @@
             // button1 の場合は、GetCountのActionを実行しメッセージ部分を更新する
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("GetCount")');
+
+            // If prevent double submission, then sets the flag to true.
+            PreventAjaxDoubleSubmit = true;
+
             $('#form1').submit();
-
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
-
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -180,9 +180,6 @@
             $('#form1').attr('data-ajax-update', '#chartResult');
             $('#form1').attr('action', '@Url.Action("SelectAll_DT")');
             $('#form1').submit();
-
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
 
             // サブミットが 2 回発生しないよう、false を返す
             return false;
@@ -194,9 +191,6 @@
             $('#form1').attr('action', '@Url.Action("SelectAll_DS")');
             $('#form1').submit();
 
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
-
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -207,9 +201,6 @@
             $('#form1').attr('action', '@Url.Action("SelectAll_DR")');
             $('#form1').submit();
 
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
-
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -219,10 +210,7 @@
             $('#form1').attr('data-ajax-update', '#chartResult');
             $('#form1').attr('action', '@Url.Action("SelectAll_DSQL")');
             $('#form1').submit();
-
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
-
+            
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -232,10 +220,7 @@
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("Select")');
             $('#form1').submit();
-
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
-
+            
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -245,10 +230,7 @@
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("Insert")');
             $('#form1').submit();
-
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
-
+                        
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -258,10 +240,7 @@
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("Update")');
             $('#form1').submit();
-
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
-
+                        
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -271,10 +250,7 @@
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("Delete")');
             $('#form1').submit();
-
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
-
+                        
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -283,9 +259,6 @@
             // button10 の場合は、TransitionsのActionを実行し画面遷移する
             $('#form1').attr('action', '@Url.Action("Transitions")');
             $('#form1').submit();
-
-            // Stores button id for enabling the functionality of prevent double submit.
-            ButtonID = $(this).attr('id');
 
             // サブミットが 2 回発生しないよう、false を返す
             return false;
@@ -297,7 +270,7 @@
 
             // Form をサブミットしないよう、false を返す
             return false;
-        });
+        });    
         
     });
 </script>

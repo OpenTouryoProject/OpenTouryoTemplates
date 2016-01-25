@@ -24,6 +24,9 @@
 //*  2016/01/12  Sai               Changed interval in method window.setInterval(HttpPing, 5000)
 //*  2016/01/13  Sai               Removed Ajax extensions code and added JQuery's Ajax Complete method.
 //*  2016/01/22  Sai               Added .ajaxSend method to prevent double submit functionality in Ajax form.
+//*  2016/01/22  Sai               Added flag variable 'PreventAjaxDoubleSubmit', added if condiation to this flag in 
+//*                                ajaxSend method to skip progress dialogue also added codign for setting this flag to 
+//*                                false in ajaxComplete method.       
 //**********************************************************************************
 
 function Fx_Document_OnLoad() {
@@ -497,19 +500,19 @@ var Ajax_IsProgressed = false;
 $(document).ajaxComplete(function () {
     // はじめにタイマをクリアする。
     clearTimeout(ProgressDialogTimer);
-
     // プログレス ダイアログを非表示にする。
     try {
-
         document.body.removeChild(AjaxMask);
         document.body.removeChild(AjaxProgressDialog);
-
     } catch (e) {
         //alert( e );//エラー内容
     }
 
     // 二重送信フラグの設定
     Ajax_IsProgressed = false;
+
+    //Disables Prevent Double Submit finctionality by setting flag to flase.
+    PreventAjaxDoubleSubmit = false;
 });
 
 // ---------------------------------------------------------------
@@ -601,13 +604,16 @@ function Fx_getContentsHeight() {
 
 var ButtonID = null;
 
+// Flag variable for enable/disable Prevent Double Submit functionality for Ajax.BeginForm.
+var PreventAjaxDoubleSubmit = false;
+
 // Enables the functionality of Prevent Double Submit for Ajax.BeginForm based on the button submitted. 
 $(document).ajaxSend(function () {
 
-    // Checks the submitted button id and enables Prevent Double Submit for the submitted button.
-    if (ButtonID == 'button5')
-    {
-    Fx_OnSubmit();
+    // checks and disables progress dialogue if PreventAjaxDoubleSubmit set to true.
+    if (PreventAjaxDoubleSubmit) {
+        // 二重送信フラグの設定
+        Ajax_IsProgressed = true;
+        Fx_OnSubmit();
     }
-    
 });
