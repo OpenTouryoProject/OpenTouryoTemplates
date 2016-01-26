@@ -631,5 +631,15 @@ namespace MVC_Sample.Controllers
         {
             return JavaScript("location.href='" + Url.Action("Index", "CrudMu2") + "';");
         }
+
+        /// <summary>
+        /// Sleepを実行し二重送信防止機能をテストする
+        /// </summary>
+        /// <returns>EmptyResult</returns>
+        public ActionResult PreventDoubleSubmission()
+        {
+            System.Threading.Thread.Sleep(5 * 1000);
+            return new EmptyResult();
+        }
     }
 }

@@ -494,8 +494,27 @@ var AjaxProgressDialog_Height = 100;
 // Ajax：プログレス中かどうか
 var Ajax_IsProgressed = false;
 
+var ButtonID = null;
+
+// Flag variable for enable/disable Prevent Double Submit functionality for Ajax.BeginForm.
+var PreventAjaxDoubleSubmit = false;
+
 // ---------------------------------------------------------------
-// Ajax Extensionの終了後イベント処理
+// Ajaxの開始前イベント処理
+// ---------------------------------------------------------------
+// Enables the functionality of Prevent Double Submit for Ajax.BeginForm based on the button submitted. 
+$(document).ajaxSend(function () {
+
+    // checks and disables progress dialogue if PreventAjaxDoubleSubmit set to true.
+    if (PreventAjaxDoubleSubmit) {
+        // 二重送信フラグの設定
+        Fx_OnSubmit();
+        Ajax_IsProgressed = true;
+    }
+});
+
+// ---------------------------------------------------------------
+// Ajaxの終了後イベント処理
 // ---------------------------------------------------------------
 $(document).ajaxComplete(function () {
     // はじめにタイマをクリアする。
@@ -601,19 +620,3 @@ function Fx_getContentsHeight() {
     // コンテンツ全体の高さを取得する
     return Math.max.apply(null, [document.body.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.documentElement.clientHeight]);
 }
-
-var ButtonID = null;
-
-// Flag variable for enable/disable Prevent Double Submit functionality for Ajax.BeginForm.
-var PreventAjaxDoubleSubmit = false;
-
-// Enables the functionality of Prevent Double Submit for Ajax.BeginForm based on the button submitted. 
-$(document).ajaxSend(function () {
-
-    // checks and disables progress dialogue if PreventAjaxDoubleSubmit set to true.
-    if (PreventAjaxDoubleSubmit) {
-        // 二重送信フラグの設定
-        Ajax_IsProgressed = true;
-        Fx_OnSubmit();
-    }
-});
