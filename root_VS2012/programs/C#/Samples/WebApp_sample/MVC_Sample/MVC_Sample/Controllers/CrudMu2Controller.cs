@@ -654,5 +654,21 @@ namespace MVC_Sample.Controllers
         {
             return Redirect(Url.Action("Index", "CrudMu"));
         }
+
+        /// <summary>
+        /// Sleepを実行し二重送信防止機能をテストする
+        /// </summary>        
+        /// <returns>再描画（ViewResult）</returns>
+        public ActionResult PreventDoubleSubmission(FormCollection form)
+        {
+            System.Threading.Thread.Sleep(5 * 1000);
+
+            CrudModel model = new CrudModel();
+            // 値の復元のため、CopyInputValuesを呼び出す。
+            model.CopyInputValues(form);
+
+            // Html.BeginFormでは、全体更新。
+            return View("Index", model);
+        }
     }
 }
