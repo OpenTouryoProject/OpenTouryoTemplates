@@ -26,7 +26,8 @@
 //*  2016/01/22  Sai               Added .ajaxSend method to prevent double submit functionality in Ajax form.
 //*  2016/01/22  Sai               Added flag variable 'PreventAjaxDoubleSubmit', added if condiation to this flag in 
 //*                                ajaxSend method to skip progress dialogue also added codign for setting this flag to 
-//*                                false in ajaxComplete method.       
+//*                                false in ajaxComplete method.   
+//*  2016/02/01  Sai               Fixed Progress dialogue mask not displaying problem.
 //**********************************************************************************
 
 function Fx_Document_OnLoad() {
@@ -464,8 +465,8 @@ function Fx_CreateMask() {
 
     _div.style.top = "0px";
     _div.style.left = "0px";
-    _div.style.height = Fx_getContentsHeight(); //"100%";では、初期表示画面サイズになってしまう。
-    _div.style.width = Fx_getBrowserWidth(); //"100%";では、初期表示画面サイズになってしまう。
+    _div.style.height = Fx_getContentsHeight()+"px"; //"100%";では、初期表示画面サイズになってしまう。
+    _div.style.width = Fx_getBrowserWidth() + "px"; //"100%";では、初期表示画面サイズになってしまう。
     _div.style.position = "absolute";
 
     // 1000なら最前面だろうという仕様（ToMost相当が無い）
