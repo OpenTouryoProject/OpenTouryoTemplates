@@ -23,7 +23,7 @@ using System.Web.Mvc;
 namespace MVC_Sample.Controllers
 {
     /// <summary>
-    /// Ping Controller for Html.BeginForm
+    /// Ping Controller
     /// </summary>
     public class PingController : Controller
     {

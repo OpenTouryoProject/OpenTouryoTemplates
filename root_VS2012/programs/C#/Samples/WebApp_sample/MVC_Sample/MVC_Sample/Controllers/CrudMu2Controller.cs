@@ -664,7 +664,7 @@ namespace MVC_Sample.Controllers
             System.Threading.Thread.Sleep(5 * 1000);
 
             CrudModel model = new CrudModel();
-            // 値の復元のため、CopyInputValuesを呼び出す。
+            // CopyInputValuesを呼び出し、テキストボックスの入力値を画面に復元する。
             model.CopyInputValues(form);
 
             // Html.BeginFormでは、全体更新。
