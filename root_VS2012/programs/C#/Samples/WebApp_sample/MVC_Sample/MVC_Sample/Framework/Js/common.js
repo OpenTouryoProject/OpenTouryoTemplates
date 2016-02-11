@@ -18,7 +18,8 @@
 //*  2016/01/22  Sai               Added flag variable 'PreventAjaxDoubleSubmit', added if condiation to this flag in 
 //*                                ajaxSend method to skip progress dialogue also added codign for setting this flag to 
 //*                                false in ajaxComplete method.   
-//*  2016/02/01  Sai               Fixed Progress dialogue mask not displaying problem.
+//*  2016/02/01  Sai               Fixed Progress dialog mask not displaying problem.
+//*  2016/02/11  Nishi             Finish up of the prevent double submition function.
 //**********************************************************************************
 
 // ---------------------------------------------------------------
@@ -492,29 +493,82 @@ var AjaxProgressDialog_Height = 100;
 // Ajax：処理中かどうか
 var Ajax_IsProgressed = false;
 
-var ButtonID = null;
-
-// Flag variable for enable/disable Prevent Double Submit functionality for Ajax.BeginForm.
+// Flag variable for enable/disable "Prevent Double Submit functionality" for Ajax.BeginForm.
 var PreventAjaxDoubleSubmit = false;
+
+//  Flag variable for control "Prevent Double Submit functionality" for Ajax.BeginForm.
+var IsAborted = false;
 
 // ---------------------------------------------------------------
 // Ajaxの開始前イベント処理
 // ---------------------------------------------------------------
 // Enables the functionality of Prevent Double Submit for Ajax.BeginForm based on the button submitted. 
-$(document).ajaxSend(function () {
-
+$(document).ajaxSend(function (eo, jqXHRo, settings) {
     // checks and disables progress dialogue if PreventAjaxDoubleSubmit set to true.
     if (PreventAjaxDoubleSubmit) {
-        // 二重送信フラグの設定
-        Fx_OnSubmit();
-        Ajax_IsProgressed = true;
+        if ( Fx_OnSubmit() ) {
+            // 二重送信フラグの設定
+            Ajax_IsProgressed = true;
+        }
+        else {
+            IsAborted = true;
+            jqXHRo.abort();
+        }
     }
 });
 
 // ---------------------------------------------------------------
 // Ajaxの終了後イベント処理
 // ---------------------------------------------------------------
-$(document).ajaxComplete(function () {
+//$(document).ajaxComplete(function (eo, jqXHRo, settings) {
+
+// ---------------------------------------------------------------
+// Ajaxの正常終了後イベント処理
+// ---------------------------------------------------------------
+// 引数
+//     ・第1引数：イベントオブジェクト
+//     ・第2引数：jqXHRオブジェクト
+//     ・第3引数：ajaxのセッティング情報
+// 戻り値  －
+// ---------------------------------------------------------------
+$(document).ajaxSuccess(function (eo, jqXHRo, settings) {
+    // ajax通信が正常終了した場合
+    Fx_ClearPreventDoubleSubmissionSettings();
+});
+
+// ---------------------------------------------------------------
+// Ajaxの異常終了後イベント処理
+// ---------------------------------------------------------------
+// 引数
+//     ・第1引数：イベントオブジェクト
+//     ・第2引数：jqXHRオブジェクト
+//     ・第3引数：ajaxのセッティング情報
+//     ・第4引数：例外オブジェクト
+// 戻り値  －
+// ---------------------------------------------------------------
+$(document).ajaxError(function (eo, jqXHRo, settings, error) {
+    // ajax通信が異常終了した場合、
+
+    if (IsAborted)
+    {
+        // 二重送信防止した場合。
+        // ・・・何もしない。
+    }
+    else
+    {
+        // その他の異常終了。
+        Fx_ClearPreventDoubleSubmissionSettings();
+    }
+});
+
+// ---------------------------------------------------------------
+// 二重送信防止機能の設定を解除
+// ---------------------------------------------------------------
+// 引数    －
+// 戻り値  －
+// ---------------------------------------------------------------
+function Fx_ClearPreventDoubleSubmissionSettings()
+{
     // はじめにタイマをクリアする。
     clearTimeout(ProgressDialogTimer);
     // プログレス ダイアログを非表示にする。
@@ -530,16 +584,7 @@ $(document).ajaxComplete(function () {
 
     //Disables Prevent Double Submit finctionality by setting flag to flase.
     PreventAjaxDoubleSubmit = false;
-});
-
-// ---------------------------------------------------------------
-// ClientCallbackや、WebServiceBridge、
-// XMLHTTPRequest、jQueryなど、Ajax非同期通信用
-// 汎用の開始前処理、終了後処理関数を用意する（予定）。
-// 
-// 技術毎に、開始終了処理のイベント実装の機構を持つが、
-// それを使うか、どうか、などの検討も必要になる。
-// ---------------------------------------------------------------
+}
 
 //**********************************************************************************
 

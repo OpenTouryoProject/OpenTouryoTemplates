@@ -639,7 +639,23 @@ namespace MVC_Sample.Controllers
         public ActionResult PreventDoubleSubmission()
         {
             System.Threading.Thread.Sleep(5 * 1000);
-            return new EmptyResult();
+            
+            // 結果表示するメッセージ
+
+            // 確認用のカウンタ
+            if (Session["cnt"] == null)
+            {
+                Session["cnt"] = 1;
+            }
+            else
+            {
+                Session["cnt"] = ((int)Session["cnt"]) + 1;
+            }
+
+            CrudModel model = new CrudModel() { Message = "PreventDoubleSubmission:" + Session["cnt"].ToString() };
+
+            // Ajax.BeginFormでは、以下のように記述することで部分更新が可能。
+            return PartialView("_MessageView", model);
         }
     }
 }
