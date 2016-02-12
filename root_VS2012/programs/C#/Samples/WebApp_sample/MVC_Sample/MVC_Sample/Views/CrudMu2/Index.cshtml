@@ -268,7 +268,7 @@
 
         // Html.BeginFormの時は二重送信防止機能を組込む為にこの実装を追記する。
         $("form").live("submit", function () {
-            Fx_OnSubmit();
+            return Fx_OnSubmit();
         });    
     });
 </script>
