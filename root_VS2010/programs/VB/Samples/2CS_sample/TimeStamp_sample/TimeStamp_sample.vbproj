@@ -11,7 +11,7 @@
     <RootNamespace>_TimeStamp_sample</RootNamespace>
     <AssemblyName>TimeStamp_sample</AssemblyName>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>

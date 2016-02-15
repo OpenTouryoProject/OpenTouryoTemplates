@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ProjectX_sample", ".", "{DA0667F0-9CF7-4D00-A691-AEC74D131E0E}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
 		Debug.AspNetCompiler.VirtualPath = "/ProjectX_sample"
 		Debug.AspNetCompiler.PhysicalPath = "..\ProjectX_sample\"
 		Debug.AspNetCompiler.TargetPath = "..\PrecompiledWeb\ProjectX_sample\"

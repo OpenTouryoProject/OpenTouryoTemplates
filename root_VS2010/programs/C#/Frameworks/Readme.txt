@@ -1,21 +1,21 @@
-ï»¿ï¼œãƒ•ã‚©ãƒ«ãƒ€ã®èª¬æ˜ï¼
+ƒƒtƒHƒ‹ƒ_‚Ìà–¾„
 
-â— Infrastructure
-    Frameworkã®ä¸€å¼ã§ã™ã€‚
+œ Infrastructure
+    Framework‚Ìˆê®‚Å‚·B
 
-â— Tools
+œ Tools
 
    - DPQuery_Tool
-     å‹•çš„ãƒ‘ãƒ©ãƒ¡ã‚¿ãƒ©ã‚¤ã‚ºãƒ‰ãƒ»ã‚¯ã‚¨ãƒªåˆ†æãƒ„ãƒ¼ãƒ«
+     “®“Iƒpƒ‰ƒƒ^ƒ‰ƒCƒYƒhEƒNƒGƒŠ•ªÍƒc[ƒ‹
 
    - DaoGen_Tool
-     Då±¤è‡ªå‹•ç”Ÿæˆãƒ„ãƒ¼ãƒ«
+     D‘w©“®¶¬ƒc[ƒ‹
 
    - DeployZipPackWithHTTP
-     Webãƒ‡ãƒ—ãƒ­ã‚¤éƒ¨å“
+     WebƒfƒvƒƒC•”•i
 
    - Encryption
-     æš—å·åŒ–éƒ¨å“
+     ˆÃ†‰»•”•i
 
-â— PortableClassLibrary
-    Silverlight, WinStoreç”¨éƒ¨å“
+œ PortableClassLibrary
+    Silverlight, WinStore—p•”•i

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ASPNETWebService", ".", "{DD95A8C3-982B-4286-BB1E-9D00CD95CE02}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
 		Debug.AspNetCompiler.VirtualPath = "/ASPNETWebService"
 		Debug.AspNetCompiler.PhysicalPath = "..\ASPNETWebService\"
 		Debug.AspNetCompiler.TargetPath = "..\PrecompiledWeb\ASPNETWebService\"
