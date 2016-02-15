@@ -18,7 +18,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
@@ -73,6 +73,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -81,6 +82,7 @@
     <Compile Include="Db\DamODBC.cs" />
     <Compile Include="Db\DamOLEDB.cs" />
     <Compile Include="Db\SQLUtility.cs" />
+    <Compile Include="Db\DamOraClient.cs" />
     <Compile Include="Dto\DataRowState.cs" />
     <Compile Include="Dto\DTColumn.cs" />
     <Compile Include="Dto\DTColumns.cs" />

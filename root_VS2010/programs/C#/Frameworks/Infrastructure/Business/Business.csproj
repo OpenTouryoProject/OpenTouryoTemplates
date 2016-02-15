@@ -18,7 +18,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
@@ -71,7 +71,6 @@
     <Compile Include="AsyncProcessingService\AsyncProcessingServiceReturnValue.cs" />
     <Compile Include="AsyncProcessingService\LayerB.cs" />
     <Compile Include="AsyncProcessingService\LayerD.cs" />
-    <Compile Include="Business\MyApsBaseLogic.cs" />
     <Compile Include="Business\MyBaseLogic.cs" />
     <Compile Include="Business\MyFcBaseLogic.cs" />
     <Compile Include="Business\_3TierEngine.cs" />
@@ -86,6 +85,7 @@
     <Compile Include="Dao\MyBaseDao.cs" />
     <Compile Include="Exceptions\MyBusinessApplicationExceptionMessage.cs" />
     <Compile Include="Exceptions\MyBusinessSystemExceptionMessage.cs" />
+    <Compile Include="Business\MyApsBaseLogic.cs" />
     <Compile Include="Presentation\CmnTableAdapter.cs" />
     <Compile Include="Presentation\MyBaseController.cs">
       <SubType>ASPXCodeBehind</SubType>
