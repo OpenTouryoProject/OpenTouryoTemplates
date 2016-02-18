@@ -39,10 +39,10 @@ using System.Data;
 //////////////////////////////////////////////////
 namespace Touryo.Infrastructure.Public.Db
 {
-    /// <summary>
-    /// DamOraClientのダミー
-    /// </summary>
-    public class DamOraClient { }
+    ///// <summary>
+    ///// DamOraClientのダミー
+    ///// </summary>
+    //public class DamOraClient { }
 
     /// <summary>
     /// DamOraOdpのダミー
