@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WSClientSL_sample.Web", "WSClientSL_sample.Web\", "{A591BB20-B2A3-4176-9FA9-8D03E446D845}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
 		ProjectReferences = "{2A740A82-ECC1-4BEB-A523-BFAD83838789}|WcfDataContract.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/WSClientSL_sample.Web"
 		Debug.AspNetCompiler.PhysicalPath = "WSClientSL_sample.Web\"

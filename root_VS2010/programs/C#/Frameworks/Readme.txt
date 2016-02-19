@@ -1,4 +1,4 @@
-﻿＜フォルダの説明＞
+＜フォルダの説明＞
 
 ● Infrastructure
     Frameworkの一式です。
