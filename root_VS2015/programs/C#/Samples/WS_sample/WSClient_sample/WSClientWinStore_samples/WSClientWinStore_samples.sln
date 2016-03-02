@@ -39,6 +39,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSClientWinStore_sample", "
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "WSClientWinStoreJS_sample", "WSClientWinStoreJS_sample\WSClientWinStoreJS_sample.jsproj", "{C2C80D60-F48C-4EDD-B445-1E42D2BE8AAA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2E346F8B-E78C-496F-A89D-5165FC0307AB}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
