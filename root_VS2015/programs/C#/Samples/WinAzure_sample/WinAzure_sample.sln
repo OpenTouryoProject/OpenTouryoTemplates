@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectX_sample", "ProjectX
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETWebService", "ASPNETWebService\ASPNETWebService.csproj", "{93A0D449-D473-41D2-B16A-E12F9C05B370}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSClientSL_sample", "WSClientSL_sample\WSClientSL_sample.csproj", "{0702247B-05F9-4D31-8F5B-750AF5B3B9C9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfDataContract", "..\..\Frameworks\Infrastructure\Business\WcfDataContract\WcfDataContract.csproj", "{2A740A82-ECC1-4BEB-A523-BFAD83838789}"
 EndProject
 Project("{72F1FD5F-E859-32D1-A786-58E2842749F4}") = "WindowsAzureProject", "WindowsAzureProject\WindowsAzureProject.ccproj", "{0E04F8A9-6096-4517-A733-34BAEC27FF3D}"
