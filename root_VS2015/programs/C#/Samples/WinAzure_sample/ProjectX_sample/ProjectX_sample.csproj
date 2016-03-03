@@ -15,7 +15,6 @@
     <AssemblyName>ProjectX_sample</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
-    <SilverlightApplicationList>{0702247B-05F9-4D31-8F5B-750AF5B3B9C9}|..\WSClientSL_sample\WSClientSL_sample.csproj|ClientBin|False</SilverlightApplicationList>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
@@ -98,8 +97,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WSClientSL_sampleTestPage.aspx" />
-    <Content Include="WSClientSL_sampleTestPage.html" />
     <EmbeddedResource Include="..\resource\Log\SampleLogConf.xml">
       <Link>XML\SampleLogConf.xml</Link>
     </EmbeddedResource>
@@ -227,7 +224,6 @@
     <Content Include="Aspx\testScreenCtrl\WebForm3.aspx" />
     <Content Include="Aspx\testScreenCtrl\WebForm4.aspx" />
     <Content Include="Aspx\testScreenCtrl\WebForm5.aspx" />
-    <Content Include="ClientBin\WSClientSL_sample.xap" />
     <Content Include="Css\style.css" />
     <Content Include="Framework\Img\error.ico" />
     <Content Include="Framework\Img\image.JPG" />
@@ -238,7 +234,6 @@
     <Content Include="Framework\Js\common.js" />
     <Content Include="Framework\Js\ie_key_event.js" />
     <Content Include="Global.asax" />
-    <Content Include="Silverlight.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -246,9 +241,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="WebService\ServiceForMu.asmx" />
-    <Content Include="WebService\ServiceForRt.svc" />
-    <Content Include="WebService\ServiceForSb.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppCode\sample\3TierTableAdapter\ProductsTableAdapter.cs" />
@@ -649,18 +641,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRole.cs" />
-    <Compile Include="WebService\IServiceForRt.cs" />
-    <Compile Include="WebService\ServiceForMu.asmx.cs">
-      <DependentUpon>ServiceForMu.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebService\ServiceForRt.svc.cs">
-      <DependentUpon>ServiceForRt.svc</DependentUpon>
-    </Compile>
-    <Compile Include="WebService\ServiceForSb.asmx.cs">
-      <DependentUpon>ServiceForSb.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
