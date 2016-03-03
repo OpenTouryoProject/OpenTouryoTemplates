@@ -141,14 +141,11 @@ OpenTouryo Visual Studio 2015 template base is as follows.)
          C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSClientWinCone_sample.sln
       - WPF
          C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
-         C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPFbap_sample\WSClientWPFbap_sample.sln
     
-   - Silverlight の場(In the case of Silverlight)：
-      C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientSL_samples\WSClientSL_samples.sln
    - Windowsストアアプリ の場合(In the case of Windows Store App )：
       C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientWinStore_samples.sln
    - Windows Azure の場合(In the case of Windows Azure)：
-      C:\root_org\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
+      C:\root\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
 
 * 各チュートリアルの内容に従いOpen棟梁の評価が可能です。
    (Evaluation of OpenTouryo is possible in accordance with the contents of each tutorial.)
