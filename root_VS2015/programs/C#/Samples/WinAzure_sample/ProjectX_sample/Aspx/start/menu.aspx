@@ -50,8 +50,6 @@
 　　<br />
     ● <a href="/Aspx/testPublic/testScreen.aspx">単体テスト（共通部品）</a><br />
     <br />
-    ● <a href="/WSClientSL_sampleTestPage.aspx">Silverlightサンプル</a><br />
-    <br />
     -------------------------<br />
     <br />
     ● <a href="logout.aspx">ログアウト画面</a><br />
