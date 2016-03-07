@@ -177,6 +177,9 @@
     <EmbeddedResource Include="..\resource\Xml\TMProtocolDefinition.xml">
       <Link>XML\TMProtocolDefinition.xml</Link>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\resource\Xml\TMProtocolDefinition2.xml">
+      <Link>XML\TMProtocolDefinition2.xml</Link>
+    </EmbeddedResource>
     <Content Include="ServiceForAuth.asmx" />
     <Content Include="ServiceForFx.asmx" />
     <Content Include="Web.config" />
