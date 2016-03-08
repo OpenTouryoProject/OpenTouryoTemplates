@@ -879,7 +879,7 @@ Namespace Touryo.Infrastructure.Business.Presentation
         ''' <param name="fxEventArgs">イベントハンドラの共通引数</param>
         ''' <returns>URL</returns>
         Public Function UOC_TestScreen1_btnMButton2_Click(ByVal fxEventArgs As FxEventArgs) As String
-            Return "testTransitionAheadScreen.aspx"
+            Return "~/Aspx/testFxLayerP/testTransitionAheadScreen.aspx"
         End Function
 
         ''' <summary>
@@ -888,7 +888,7 @@ Namespace Touryo.Infrastructure.Business.Presentation
         ''' <param name="fxEventArgs">イベントハンドラの共通引数</param>
         ''' <returns>URL</returns>
         Public Function UOC_TestScreen1_lbnMLinkButton2_Click(ByVal fxEventArgs As FxEventArgs) As String
-            Return "testTransitionAheadScreen.aspx"
+            Return "~/Aspx/testFxLayerP/testTransitionAheadScreen.aspx"
         End Function
 
         ''' <summary>
@@ -897,7 +897,7 @@ Namespace Touryo.Infrastructure.Business.Presentation
         ''' <param name="fxEventArgs">イベントハンドラの共通引数</param>
         ''' <returns>URL</returns>
         Public Function UOC_TestScreen1_ibnMImageButton2_Click(ByVal fxEventArgs As FxEventArgs) As String
-            Return "testTransitionAheadScreen.aspx"
+            Return "~/Aspx/testFxLayerP/testTransitionAheadScreen.aspx"
         End Function
 
         ''' <summary>
@@ -906,7 +906,7 @@ Namespace Touryo.Infrastructure.Business.Presentation
         ''' <param name="fxEventArgs">イベントハンドラの共通引数</param>
         ''' <returns>URL</returns>
         Public Function UOC_TestScreen1_impMImageMap2_Click(ByVal fxEventArgs As FxEventArgs) As String
-            Return "testTransitionAheadScreen.aspx"
+            Return "~/Aspx/testFxLayerP/testTransitionAheadScreen.aspx"
         End Function
 
 #End Region
