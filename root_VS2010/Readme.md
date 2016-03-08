@@ -21,8 +21,14 @@ OpenTouryo Visual Studio 2010 template base is as follows.)
       Download: NorthWind and pubs Sample Databases for SQL Server 2000 - Microsoft Download Center - Download Details
       http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=23654
       
-   - 下記コマンドを実行します(Run the following command)。
+   - 下記コマンドを実行します。(Run the following command.)
       "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S localhost\SQLExpress -E -i "C:\SQL Server 2000 Sample Databases\instnwnd.sql"
+      
+   - SQL Server 2012 以降のバージョンにNorthwindをインストールする場合は以下の手順に従って下さい。  
+      (Please follow the below steps, if you want to install the Northwind on SQL Server 2012 or a later version.)
+      - SQL ServerにNorthwindとPubsサンプルデータベースを入れる。 - Gobble up pudding  
+http://fa11enprince.hatenablog.com/entry/2014/05/28/234203
+
 
 * セッション状態サービスの準備(Preparing the session state service)
    - 管理者としてコマンドプロンプトを起動し、下記コマンドを実行します。
