@@ -10,8 +10,7 @@
     <!--FxCode：add-start-->
     <script type="text/javascript" src="<%= Me.ResolveClientUrl("~/Framework/js/common.js") %>"></script>
     <script type="text/javascript" src="<%= Me.ResolveClientUrl("~/Framework/js/ie_key_event.js") %>"></script>
-    <%--<script src="../../Framework/Js/common.js"></script>
-    <script src="../../Framework/Js/ie_key_event.js"></script>--%>
+
     <!-- Resolve URL in the javascript-->
     <script type="text/javascript">
         var baseUrl = "<%= ResolveUrl("~/") %>";
