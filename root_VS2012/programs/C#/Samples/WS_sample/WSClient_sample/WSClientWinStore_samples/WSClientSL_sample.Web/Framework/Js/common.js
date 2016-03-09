@@ -12,6 +12,11 @@
 // 引数    －
 // 戻り値  －
 // ---------------------------------------------------------------
+//*  日時        更新者            内容
+//*  ----------  ----------------  -------------------------------------------------
+//*  2016/19/01  Sandeep           Implemented ResolveServerUrl method to resolve URL issue in javascript
+//**********************************************************************************
+
 function Fx_Document_OnLoad() {
     // OnLoad処理を別スレッドで実行
     setTimeout("Fx_Document_OnLoad2()", 1);
@@ -441,7 +446,7 @@ function Fx_InitProgressDialog() {
     // imgを生成
     var _img = document.createElement("img");
 
-    _img.src = "/ProjectX_sample/Framework/Img/loading.gif";
+    _img.src = ResolveServerUrl("~/Framework/Img/loading.gif");
     _img.style.width = "50px";
     _img.style.height = "50px";
     _img.alt = "処理中画像";
@@ -1206,3 +1211,15 @@ function Fx_getContentsHeight() {
     return Math.max.apply(null, [document.body.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.documentElement.clientHeight]);
 }
 
+// ---------------------------------------------------------------
+// Resolves the path of a specified url based on the application server
+// ---------------------------------------------------------------
+// Parameter     － Relative url
+// Return value  － Resolved relative url
+// ---------------------------------------------------------------
+function ResolveServerUrl(url) {
+    if (url.indexOf("~/") == 0) {
+        url = baseUrl + url.substring(2);
+    }
+    return url;
+}
