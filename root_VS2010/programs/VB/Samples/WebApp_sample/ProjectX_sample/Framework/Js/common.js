@@ -17,6 +17,9 @@
 //*  2015/02/06  Supragyan         Added condition for check AjaxPostBackElement in Fx_AjaxExtensionInitializeRequest
 //*  2015/02/06  Supragyan         Added condition for check AjaxPostBackElement in Fx_AjaxExtensionEndRequest
 //*  2015/02/09  Supragyan         Added condition for Trident on Internet Explorer
+//*  2015/09/09  Sandeep           Added condition code to detect IE-9, IE-10 and IE-11, to suppress double transmission
+//*  2016/01/12  Sai	           Changed interval in method window.setInterval(HttpPing, 5000)
+//*  2016/03/03  Supragyan         Implemented ResolveServerUrl method to resolve URL issue in javascript
 //**********************************************************************************
 
 function Fx_Document_OnLoad() {
@@ -52,7 +55,7 @@ function Fx_Document_OnLoad2() {
     //Fx_StandardStyleWindow();
 
     // Webサーバへ一定時間ごとにpingを行う
-    //window.setInterval(HttpPing, 5000);
+    //window.setInterval(HttpPing, 5 * 60 * 1000);
 }
 
 //// ---------------------------------------------------------------
@@ -165,6 +168,15 @@ function Fx_OnSubmit() {
         else if (navigator.appVersion.indexOf("MSIE 8.0") != -1) {
             // IE8.0では完全に有効
         }
+        else if (navigator.appVersion.indexOf("MSIE 9.0") != -1) {
+            // IE9.0で問題の報告を受けていません。 
+        }
+        else if (navigator.appVersion.indexOf("MSIE 10.0") != -1) {
+            // IE10.0で問題の報告を受けていません。 
+        }
+        else if (navigator.appVersion.indexOf("Trident/7") != -1) {
+            // IE11.0で問題が合った場合、報告をお願いします。
+        } 
 
         if (document.readyState == "complete") {
 
@@ -445,7 +457,7 @@ function Fx_InitProgressDialog() {
     // imgを生成
     var _img = document.createElement("img");
 
-    _img.src = "/ProjectX_sample/Framework/Img/loading.gif";
+    _img.src = ResolveServerUrl("~/Framework/Img/loading.gif");
     _img.style.width = "50px";
     _img.style.height = "50px";
     _img.alt = "処理中画像";
@@ -1214,3 +1226,15 @@ function Fx_getContentsHeight() {
     return Math.max.apply(null, [document.body.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.documentElement.clientHeight]);
 }
 
+// ---------------------------------------------------------------
+// Resolves the path of a specified url based on the application server
+// ---------------------------------------------------------------
+// Parameter     － Relative url
+// Return value  － Resolved relative url
+// ---------------------------------------------------------------
+function ResolveServerUrl(url) {
+    if (url.indexOf("~/") == 0) {
+        url = baseUrl + url.substring(2);
+    }
+    return url;
+}
