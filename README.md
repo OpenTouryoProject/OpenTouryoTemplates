@@ -1,38 +1,28 @@
 ﻿#Open棟梁(OpenTouryo)
 
- ”Open棟梁”は、長年の.NETアプリケーション開発実績にて蓄積したノウハウに基づき開発した.NET用アプリケーション フレームワークです。
-(”OpenTouryo” , is an application framework for .NET which was developed using the accumulated know-how with a long track record in .NET application development.)
+"Open棟梁" は、長年の.NETアプリケーション開発実績にて蓄積したノウハウに基づき開発した.NET Framework用アプリケーション フレームワークです。
+("OpenTouryo" is an application framework for .NET Framework which was developed using the accumulated know-how with a long track record in .NET application development.)
 
 テンプレート・ベースに同梱されるサンプルはOpen棟梁の評価に利用できます。
 また、テンプレート・ベースをチュートリアルの内容に従いカスタマイズすることで
 当該Visual Studioバージョンの案件向けプロジェクト・テンプレートを作成できます。 
+(You can see what OpenTouryo is according to template-base.
+Further, you can create the "project template" using proper version of Visual Studio.
+Tutorial will be helpful to you for customizing template-base!)
 
-(Samples that are shipped with the template-base can be used to evaluate the OpenTouryo. 
-Further, by using template-base customized according to the contents of the tutorial, 
-You can create a project template for the project for the Visual Studio version.)
+詳しくは、各フォルダのReadmeをご参照ください。
+(For more information, please refer to the Readme in each root_VS20XX folder.)
 
-詳しくは、各フォルダのReadmeを参照下さい。
-(For more information, please refer to the Readme for each folder.)
+## 内容物(contents)
 
-##内容物(contents)
-
-###ディレクトリ（directory）
-
-#### [/license/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license)
+### [/license/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license)
 ライセンス(license)
 
-#### [/root_VS2010/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2010)
-Visual Studio 2010、.NET4.0  のテンプレート・ベース
-(Template-base for Visual Studio 2010, .NET4.0)
+### テンプレート・ベース（Template-base）
 
-#### [/root_VS2012/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2012)
-Visual Studio 2012、.NET4.5  のテンプレート・ベース
-(Template-base for Visual Studio 2012, .NET4.5)
-
-#### [/root_VS2013/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2013)
-Visual Studio 2013、.NET4.5.1のテンプレート・ベース
-(Template-base for Visual Studio 2013, .NET4.5.1)
-
-#### [/root_VS2015/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2015)
-Visual Studio 2015、.NET4.6のテンプレート・ベース
-(Template-base for Visual Studio 2015, .NET4.6)
+|Template-base|Develop Environment|Run-time Environment|
+|:-----|:------------------|:-------------------|
+|[/root_VS2010/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2010)|Visual Studio 2010|.NET Framework 3.5 SP1|
+|[/root_VS2012/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2012)|Visual Studio 2012|.NET Framework 4.5|
+|[/root_VS2013/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2013)|Visual Studio 2013|.NET Framework 4.5.1|
+|[/root_VS2015/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2015)|Visual Studio 2015|.NET Framework 4.6|
