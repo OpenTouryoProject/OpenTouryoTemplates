@@ -13,9 +13,10 @@ Visual Studio 2013 と SQL Server Express のインストール
 (Installing Visual Studio 2013 and SQL Server Express.)
    
 ##### サンプルDBの準備(Prepare Sample DB)
-下記からダウンロードしインストールします。(Download and install from the following.)
+下記からダウンロードしインストールします。  
+(Download and install from the following.)
 
-  - Download: NorthWind and pubs Sample Databases for SQL Server 2000 - Microsoft Download Center - Download Details  
+  - Download: NorthWind and pubs Sample Databases for SQL Server 2000 - Microsoft Download Center  
     http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=23654
 
 下記コマンドを実行します(Run the following command)。
@@ -51,8 +52,7 @@ Visual Studio 2013 と SQL Server Express のインストール
   please executing sequentially from "1_DeleteDir.bat" at the location of "C:\root\programs\VB\".)
    
 ##### WebサービスのURLの変更(Change the URL of the Web service)
-このテンプレート・ベース内の ASP.NET Web サイトプロジェクトは、既定では IIS Express を使用したデバッグ実行を想定しています。従って、既定のIIS Express配下で実行する場合、そのまま実行できます。 しかし、VS2013のWebSiteでは既定のIIS Expressで実行する場合、仮想パスのルートにアプリケーション名が入らなくなりました。
-
+このテンプレート・ベース内の ASP.NET Web サイトプロジェクトは、既定では IIS Express を使用したデバッグ実行を想定しています。従って、既定のIIS Express配下で実行する場合、そのまま実行できます。 しかし、VS2013のWebSiteでは既定のIIS Expressで実行する場合、仮想パスのルートにアプリケーション名が入らなくなりました。  
 (I suppose that you debug ASP.NET Web site project included in this template-base under IIS Express (the default web server). Therefore, if you run under the IIS Express of default, it can be run as it is. But, If you run web service under IIS Express, the url of web service does not include the application name. The default urls of ASP.NET Web site are expressed in the following format.)
 
 ```
@@ -71,55 +71,54 @@ http://localhost:xxxx/Service.asmx (xxxx: port number)
 
 ##### サンプルの実行(Running the Sample)
 記ファイルを開き実行する（VB版は一部の提供になっています）。
-ログイン画面が出た場合は、パスワードの確認は行っていないため、任意の数字を入力してください。
-   
+ログイン画面が出た場合は、パスワードの確認は行っていないため、任意の数字を入力してください。  
 (Open and run the following file (VB version provide some). 
 If the login screen appears, because not check the password, please enter the number of any.)
    
 ###### Web の場合(In the case of Web)：
-- ASP.NET
-   C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
-- ASP.NET MVC
-   C:\\root\programs\C#\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
-- ASP.NET MVC SPA
-   C:\\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+- ASP.NET  
+C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
+- ASP.NET MVC  
+C:\\root\programs\C#\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
+- ASP.NET MVC SPA  
+C:\\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
  
 ###### C/S 2階層の場合(In the case of two-tier C/S)：
-- Windows Forms
-   C:\root\programs\C#\Samples\2CS_sample\2CSClientWin_sample\2CSClientWin_sample.sln
-- WPF
-   C:\root\programs\C#\Samples\2CS_sample\2CSClientWPF_sample\2CSClientWPF_sample.sln
+- Windows Forms  
+C:\root\programs\C#\Samples\2CS_sample\2CSClientWin_sample\2CSClientWin_sample.sln
+- WPF  
+C:\root\programs\C#\Samples\2CS_sample\2CSClientWPF_sample\2CSClientWPF_sample.sln
 
 ###### C/S 3階層の場合(In the case of three-tier C/S)：
-- Windows Forms
-   C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWin_sample\WSClientWin_sample.sln
-   C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSClientWinCone_sample.sln
-- WPF
-   C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
-- Windowsストアアプリ の場合(In the case of Windows Store App )：
+- Windows Forms  
+  - C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWin_sample\WSClientWin_sample.sln
+  - C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSClientWinCone_sample.sln
+- WPF  
+C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
+- Windowsストアアプリ の場合(In the case of Windows Store App )：  
 C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientWinStore_samples.sln
 
 ###### Windows Azure の場合(In the case of Windows Azure)：
 C:\root\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
 
 ### Open棟梁の評価(Evaluation of OpenTouryo)
-各チュートリアルの内容に従いOpen棟梁の評価が可能です。(Evaluation of OpenTouryo is possible in accordance with the contents of each tutorial.)
+各チュートリアルの内容に従いOpen棟梁の評価が可能です。  
+(Evaluation of OpenTouryo is possible in accordance with the contents of each tutorial.)
    
-   \OpenTouryoProject\OpenTouryoDocuments\2_Tutorial\
+    \OpenTouryoProject\OpenTouryoDocuments\2_Tutorial\
    
-   ドキュメント類は[OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments)リポジトリに格納されています。
-   (documents are located in the [OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments) repository.)
+ドキュメント類は[OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments)リポジトリに格納されています。  
+(documents are located in the [OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments) repository.)
    
 ### プロジェクト・テンプレートの開発(develop project template)
 また、テンプレート・ベースをチュートリアルの内容に従いカスタマイズすることで、
-当該Visual Studioバージョンの案件向けプロジェクト・テンプレートを開発できます。
-   
+当該Visual Studioバージョンの案件向けプロジェクト・テンプレートを開発できます。  
 (Further, You  will customize template base according to the contents of the tutorial, 
 You can develop project template for the Visual Studio version for the project.)
  
-\OpenTouryoProject\OpenTouryoDocuments\2_Tutorial\Tutorial_Template_development.doc
+    \OpenTouryoProject\OpenTouryoDocuments\2_Tutorial\Tutorial_Template_development.doc
 
-ドキュメント類は[OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments)リポジトリに格納されています。
+ドキュメント類は[OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments)リポジトリに格納されています。  
 (documents are located in the [OpenTouryoProject/OpenTouryoDocuments](https://github.com/OpenTouryoProject/OpenTouryoDocuments) repository.)
    
 # 著作権、ライセンス(Copyright, license)
