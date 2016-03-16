@@ -9,8 +9,8 @@ Open棟梁 Visual Studio2013 テンプレート・ベースに同梱されるサ
 (Deploy to under 「C:\root」folder from under 「/root_VS2013/」folder.)
 
 ##### インストール
-Visual Studio 2013 と SQL Server のインストール  
-(Installing Visual Studio 2013 and SQL Server.)
+Visual Studio 2013 と SQL Server Express のインストール  
+(Installing Visual Studio 2013 and SQL Server Express.)
    
 ##### サンプルDBの準備(Prepare Sample DB)
 下記からダウンロードしインストールします。(Download and install from the following.)
@@ -23,7 +23,7 @@ Visual Studio 2013 と SQL Server のインストール
  "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S localhost\SQLExpress -E -i "C:\SQL Server 2000 Sample Databases\instnwnd.sql"
 ```
 
-##### セッション状態サービスの準備(Preparing the session state service)
+##### ASP.NET 状態サービスの準備(Preparing the ASP.NET State Service)
 
 - 管理者としてコマンドプロンプトを起動し、下記コマンドを実行します。  
    (Start a command prompt as an administrator, and then run the following command.)
@@ -40,15 +40,8 @@ Visual Studio 2013 と SQL Server のインストール
 (Build the program by running in numerical order the build batch of Above folder.)
 
 - 必要であれば、環境に合わせて、z_Common.bat内のBUILDFILEPATHを書き換えます。  
-  (If necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
-   
-  Express Editionを使用している場合は、devenv.comが存在しないので、
-  z_Common.batとz_Common2.batを差し替えてMSBuild.exeを使用して下さい。
-  
-  (If you are using the Express Edition,
-  use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
-  Because devenv.com does not exist.)
-   
+  (If necessary, you can rewrite the value of variable BUILDFILEPATH in z_Common.bat according to your environment.)
+
 - VB版を使用する場合は、"C:\root\programs\C#\"の
   1_DeleteDir.batから4_Build_Framework_Tool.batまでを実行した後に、
   "C:\root\programs\VB\"の1_DeleteDir.batから順次実行して下さい。
@@ -57,29 +50,24 @@ Visual Studio 2013 と SQL Server のインストール
   after executing from "1_DeleteDir.bat" to "4_Build_Framework_Tool.bat" at the location of "C:\root\programs\C#\",
   please executing sequentially from "1_DeleteDir.bat" at the location of "C:\root\programs\VB\".)
    
-##### パスの変更
-このテンプレート・ベース内の ASP.NET Web サイトプロジェクトは、既定では IIS Express を使用したデバッグ実行を想定しています。しかし、VS2013のWebSiteでは既定のIIS Expressで実行する場合、仮想パスのルートにプロジェクト名が入らなくなりました。
+##### Webサービスのパスの変更
+このテンプレート・ベース内の ASP.NET Web サイトプロジェクトは、既定では IIS Express を使用したデバッグ実行を想定しています。従って、既定のIIS Express配下で実行する場合、そのまま実行できます。 しかし、VS2013のWebSiteでは既定のIIS Expressで実行する場合、仮想パスのルートにアプリケーション名が入らなくなりました。
 
-(I expect that you debug ASP.NET Web site project included in this template-base using IIS Express of default. But, If you run ASP.NET Web site, project name to the root of the virtual path has not been included. The default urls of ASP.NET Web site are expressed in the following format.)
+(I suppose that you debug ASP.NET Web site project included in this template-base under IIS Express (the default web server). Therefore, if you run under the IIS Express of default, it can be run as it is. But, If you run web service under IIS Express, the url of web service does not include the application name. The default urls of ASP.NET Web site are expressed in the following format.)
+
 ```
 http://localhost:xxxx/Service.asmx (xxxx: port number)
 ```
 
-従って、もし Web サービスを IIS で実行する場合は、必要に応じて以下の対応が必要になります。    
-(Therefore, if you run web services using IIS, you need to do the following procedure as necessary.)
-
-- 既定のIIS Express配下で実行する場合、そのまま実行できます。  
-  (If you execute under the IIS Express of default, it can be run as it is.)
-
-- プロジェクト名を入れるためにIIS配下で実行する場合、必要に応じて以下の変更が必要になります。  
-  (If you execute under IIS in order to included the project name in the URL, You will need to change the followings, if necessary.)
- 
-  - FxXMLTMProtocolDefinitionプロパティの値をTMProtocolDefinition2.xmlからTMProtocolDefinition.xmlに変更する。  
-    (To change the value of the FxXMLTMProtocolDefinition property from TMProtocolDefinition2.xml to TMProtocolDefinition.xml.)
-   
-  - WinStore_sampleのbaseUrl プロパティを変更する。(To change the baseUrl property of WinStore_sample.)
-    - *.htmlファイルの中 (Among the *.html files)
-    - App.xamlファイルの中 (Among the App.xaml files)
+従って、アプリケーション名を入れるためにWeb サービスを IIS配下で実行する場合、必要に応じて以下の変更が必要になります。  
+(Therefore, if you run web services using IIS in order to included the application name to the URL, you need to do the following procedure as necessary.)
+  
+- FxXMLTMProtocolDefinitionプロパティの値をTMProtocolDefinition2.xmlからTMProtocolDefinition.xmlに変更する。  
+ (To change the value of the FxXMLTMProtocolDefinition property from TMProtocolDefinition2.xml to TMProtocolDefinition.xml.)
+  
+- WinStore_sampleのbaseUrl プロパティを変更する。(To change the baseUrl property of WinStore_sample.)
+  - *.htmlファイルの中 (Among the *.html files)
+  - App.xamlファイルの中 (Among the App.xaml files)
 
 ##### サンプルの実行 (Running the Sample)
 記ファイルを開き実行する（VB版は一部の提供になっています）。
