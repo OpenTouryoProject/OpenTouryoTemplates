@@ -52,7 +52,7 @@ Visual Studio 2015 と SQL Server Express のインストール
   please executing sequentially from "1_DeleteDir.bat" at the location of "C:\root\programs\VB\".)
    
 ##### WebサービスのURLの変更(Change the URL of the Web service)
-このテンプレート・ベース内の ASP.NET Web サイトプロジェクトは、既定では IIS Express を使用したデバッグ実行を想定しています。従って、既定のIIS Express配下で実行する場合、そのまま実行できます。 しかし、VS2015のASP.NET Web siteでは既定のIIS Expressで実行する場合、仮想パスのルートにアプリケーション名が入らなくなりました。  
+このテンプレート・ベース内の ASP.NET Web サイトプロジェクトは、既定では IIS Express を使用したデバッグ実行を想定しています。従って、既定のIIS Express配下で実行する場合、そのまま実行できます。 しかし、VS2015のASP.NET Web siteでは既定のIIS Expressで実行する場合、仮想パスのルートにアプリケーション名が入らなくなりました。 ASP.NET Web サイトのデフォルトのURLは次の形式で表現されます。 
 (I suppose that you debug ASP.NET Web site project included in this template-base under IIS Express (the default web server). Therefore, if you run under the IIS Express of default, it can be run as it is. But, If you run ASP.NET Web site of VS2015 under IIS Express, the url of web service does not include the application name. The default urls of ASP.NET Web site are expressed in the following format.)
 
 
@@ -67,8 +67,8 @@ http://localhost:xxxx/Service.asmx (xxxx: port number)
  (To change the value of the FxXMLTMProtocolDefinition property from TMProtocolDefinition2.xml to TMProtocolDefinition.xml.)
   
 - WinStore_sampleのbaseUrl プロパティを変更する。(To change the baseUrl property of WinStore_sample.)
-  - *.htmlファイルの中 (Among the *.html files)
-  - App.xamlファイルの中 (Among the App.xaml files)
+  - *.htmlファイルの中 (In the *.html files)
+  - App.xamlファイルの中 (In the App.xaml files)
 
 ##### サンプルの実行(Running the Sample)
 記ファイルを開き実行する（VB版は一部の提供になっています）。
