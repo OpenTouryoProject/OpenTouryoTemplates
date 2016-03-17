@@ -20,6 +20,10 @@
         <script src="/js/CRUDPage_jn.js"></script>
         <script src="/Scripts/jquery-1.9.1.js"></script>
         <script type="text/javascript">
+            var baseUrl = "http://localhost:9996/";
+        </script>
+
+        <script type="text/javascript">
             $(function () {
                 $('#button1').click(function () {
                     // コンテキスト
@@ -44,7 +48,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {
@@ -91,7 +95,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {
@@ -154,7 +158,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {
@@ -217,7 +221,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {
@@ -291,7 +295,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {
@@ -356,7 +360,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {
@@ -415,7 +419,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {
@@ -477,7 +481,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {
@@ -526,7 +530,7 @@
                     // 非同期呼出しを行う
                     WinJS.xhr({
                         type: 'POST',
-                        url: 'http://localhost:9996/WSClientSL_sample/WebService/ServiceForRt.svc/JSON',
+                        url: baseUrl + 'WebService/ServiceForRt.svc/JSON',
                         data: JSON.stringify(param),
                         responseType: 'json',
                         headers: {

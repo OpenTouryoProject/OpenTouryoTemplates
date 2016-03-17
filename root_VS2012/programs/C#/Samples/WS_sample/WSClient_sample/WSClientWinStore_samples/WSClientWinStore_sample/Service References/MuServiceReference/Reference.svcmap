@@ -21,7 +21,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9996/WSClientSL_sample/WebService/ServiceForMu.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:9996/WebService/ServiceForMu.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="ServiceForMu.disco" MetadataType="Disco" ID="89bfbc11-bbe2-4c1a-8f04-49cf670ef4e3" SourceId="1" SourceUrl="http://localhost:9996/WSClientSL_sample/WebService/ServiceForMu.asmx?disco" />

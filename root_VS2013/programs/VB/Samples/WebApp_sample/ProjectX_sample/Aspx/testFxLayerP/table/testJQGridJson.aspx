@@ -6,17 +6,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="../../../Content/themes/base/all.css" rel="stylesheet" type="text/css" />
-    <link href="../../../Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" type="text/css" />
-    <script src="../../../Scripts/jquery-2.1.3.min.js" type="text/javascript"></script>
-    <script src="../../../Scripts/jquery-ui-1.11.2.min.js" type="text/javascript"></script>
-    <script src="../../../Scripts/i18n/grid.locale-da.js" type="text/javascript"></script>
-    <script src="../../../Scripts/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <link href="<%= Me.ResolveClientUrl("~/Content/themes/base/all.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%= Me.ResolveClientUrl("~/Content/jquery.jqGrid/ui.jqgrid.css")%>" rel="stylesheet" type="text/css" />
+    <script src="<%= Me.ResolveClientUrl("~/Scripts/jquery-2.1.3.min.js")%>" type="text/javascript"></script>
+    <script src="<%= Me.ResolveClientUrl("~/Scripts/jquery-ui-1.11.2.min.js")%>" type="text/javascript"></script>
+    <script src="<%= Me.ResolveClientUrl("~/Scripts/i18n/grid.locale-da.js")%>" type="text/javascript"></script>
+    <script src="<%= Me.ResolveClientUrl("~/Scripts/jquery.jqGrid.min.js")%>" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(function () {
             $('#list').jqGrid({
-                url: '/ProjectX_sample/WebService/JSONService.svc/GetProductData',
+                url: '<%=ResolveUrl("~/WebService/JSONService.svc/GetProductData")%>',
                 datatype: 'json',
                 colNames: ['ProductID', 'ProductName', 'SupplierID', 'CategoryID', 'QuantityPerUnit', 'UnitPrice', 'UnitsInStock', 'UnitsOnOrder', 'ReorderLevel', 'Discontinued'],
                 colModel: [
@@ -41,7 +41,7 @@
 
             $('#list2').jqGrid({
                 datatype: 'json',
-                url: '/ProjectX_sample/WebService/JSONService.svc/GetProductData',
+                url: '<%=ResolveUrl("~/WebService/JSONService.svc/GetProductData")%>',
                 colNames: ['ProductID', 'ProductName', 'SupplierID', 'CategoryID', 'QuantityPerUnit', 'UnitPrice', 'UnitsInStock', 'UnitsOnOrder', 'ReorderLevel', 'Discontinued'],
                 colModel: [
                     { name: 'ProductID', width: 100 },
