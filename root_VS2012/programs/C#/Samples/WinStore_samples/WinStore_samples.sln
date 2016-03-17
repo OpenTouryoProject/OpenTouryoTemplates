@@ -36,6 +36,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinStore_sample", "WinStore
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "WinStoreJS_sample", "WinStoreJS_sample\WinStoreJS_sample.jsproj", "{C2C80D60-F48C-4EDD-B445-1E42D2BE8AAA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7167D561-410A-4BC0-80C4-81DDF56B65DE}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
