@@ -55,7 +55,7 @@ namespace Touryo.Infrastructure.Framework.Util
         //public const string AUTHENTICATION_USER_INFORMATIONS = "AuthenticationUserInformations:";
 
         /// <summary>サブシステム情報を格納するSessionキー</summary>
-        public const string SUB_SYSTEM_INFORMATION = "SubSystemInformation";        
+        public const string SUB_SYSTEM_INFORMATION = "SubSystemInformation";
 
         /// <summary>ボタン履歴を保持する「キュー」を格納するSessionキー</summary>
         public const string BUTTON_HISTORY = "ButtonHistory";
@@ -78,7 +78,7 @@ namespace Touryo.Infrastructure.Framework.Util
 
         /// <summary>親画面別セッション領域のルートSessionキー</summary>
         public const string SESSION_SCOPE_OF_PARENT_SCREEN_BY_GUID = "SessionScopeOfParentScreenByGUID:";
-        
+
         #endregion
 
         #region ウィンドウ別
