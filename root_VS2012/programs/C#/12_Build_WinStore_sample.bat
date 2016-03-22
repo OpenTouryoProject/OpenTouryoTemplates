@@ -23,14 +23,14 @@ call %CURRENT_DIR%z_Common.bat
 rem --------------------------------------------------
 rem Copy the Bin folder assembly.
 rem --------------------------------------------------
-md "Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientSL_sample.Web\Bin"
-xcopy /E /Y "Frameworks\Infrastructure\Build" "Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientSL_sample.Web\Bin\"
+md "Samples\WinStore_samples\WinStore_sample.Web\Bin"
+xcopy /E /Y "Frameworks\Infrastructure\Build" "Samples\WinStore_samples\WinStore_sample.Web\Bin\"
 pause
 
 rem --------------------------------------------------
 rem Batch build of WSClientWinStore_sample.
 rem --------------------------------------------------
-%BUILDFILEPATH% %COMMANDLINE% "Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientWinStore_samples.sln"
+%BUILDFILEPATH% %COMMANDLINE% "Samples\WinStore_samples\WinStore_samples.sln"
 
 pause
 
