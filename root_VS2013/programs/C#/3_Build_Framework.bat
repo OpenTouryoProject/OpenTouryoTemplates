@@ -30,7 +30,6 @@ xcopy /E /Y "Frameworks\Infrastructure\Business\bin\%BUILD_CONFIG%" "Frameworks\
 xcopy /E /Y "Frameworks\Infrastructure\CustomControl\bin\%BUILD_CONFIG%" "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%\"
 
 xcopy /E /Y "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%" "Frameworks\Infrastructure\Build\"
-xcopy /E /Y "Frameworks\Infrastructure\Public\Dll" "Frameworks\Infrastructure\Build\"
 
 pause
 
