@@ -50,7 +50,11 @@ Visual Studio 2015 と SQL Server Express のインストール
   (If you use the VB version,
   after executing from "1_DeleteDir.bat" to "4_Build_Framework_Tool.bat" at the location of "C:\root\programs\C#\",
   please executing sequentially from "1_DeleteDir.bat" at the location of "C:\root\programs\VB\".)
-   
+ 
+- Open 棟梁 Visual Studio 2015 テンプレート・ベースが利用するライブラリは、NuGet経由でダウンロードします。このため、プロキシ環境下でビルドバッチファイルを実行する場合、正常にライブラリがダウンロードできないことがあります。このような場合は、z_Common.bat に http_proxy 環境変数を作成し、プロキシ環境の情報を設定してください。
+  
+  (OpenTouryo Visual Studio 2015 template base uses various libraries. And the libraries are downloaded by NuGet. So, NuGet might not download the libraries normally when you run the build batch files with proxy environment. In such case, create environment variable http_proxy in z_Common.bat, and set the information of proxy environment to environment variable http_proxy.)
+  
 ##### WebサービスのURLの変更(Change the URL of the Web service)
 このテンプレート・ベース内の ASP.NET Web サイトプロジェクトは、既定では IIS Express を使用したデバッグ実行を想定しています。従って、既定のIIS Express配下で実行する場合、そのまま実行できます。 しかし、VS2015のASP.NET Web siteでは既定のIIS Expressで実行する場合、仮想パスのルートにアプリケーション名が入らなくなりました。 ASP.NET Web サイトのデフォルトのURLは次の形式で表現されます。 
 (I suppose that you debug ASP.NET Web site project included in this template-base under IIS Express (the default web server). Therefore, you can run web services under IIS Express as it is. But, If you run ASP.NET Web site of VS2015 under IIS Express, the url of web service does not include the application name. The default urls of ASP.NET Web site are expressed in the following format.)
