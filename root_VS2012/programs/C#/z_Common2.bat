@@ -27,3 +27,8 @@ set BUILD_CONFIG=Debug
 @echo Creating a build command.
 @echo --------------------------------------------------
 set COMMANDLINE=/build %BUILD_CONFIG%
+
+@echo --------------------------------------------------
+@echo Set the proxy settings of Nuget.
+@echo --------------------------------------------------
+@rem set http_proxy=http://[username]:[password]@[proxy fqdn or ip address]
