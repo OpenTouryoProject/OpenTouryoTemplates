@@ -50,10 +50,6 @@ Visual Studio 2010 と SQL Server Express のインストール
   (If you use the VB version,
   after executing from "1_DeleteDir.bat" to "4_Build_Framework_Tool.bat" at the location of "C:\root\programs\C#\",
   please executing sequentially from "1_DeleteDir.bat" at the location of "C:\root\programs\VB\".)
- 
-- Open 棟梁 Visual Studio 2010 テンプレート・ベースが利用するライブラリは、NuGet経由でダウンロードします。このため、プロキシ環境下でビルドバッチファイルを実行する場合、正常にライブラリがダウンロードできないことがあります。このような場合は、z_Common.bat に http_proxy 環境変数を作成し、プロキシ環境の情報を設定してください。
-  
-  (OpenTouryo Visual Studio 2010 template base uses various libraries. And the libraries are downloaded by NuGet. So, NuGet might not download the libraries normally when you run the build batch files with proxy environment. In such case, create environment variable http_proxy in z_Common.bat, and set the information of proxy environment to environment variable http_proxy.)
   
 ##### サンプルの実行(Running the Sample)
 記ファイルを開き実行する（VB版は一部の提供になっています）。
