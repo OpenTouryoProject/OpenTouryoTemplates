@@ -122,7 +122,9 @@
     <Compile Include="RichTextBoxDisableDF.cs">
       <SubType>Component</SubType>
     </Compile>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

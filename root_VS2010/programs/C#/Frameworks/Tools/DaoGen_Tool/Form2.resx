@@ -134,6 +134,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+
   <data name="cmbDFEncoding.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
   </data>
@@ -178,7 +179,7 @@
     <value>gbxDaoFileEncoding</value>
   </data>
   <data name="cbxOnlyTableMaintenance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 17</value>
+    <value>480, 17</value>
   </data>
   <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -247,7 +248,7 @@
     <value>0</value>
   </data>
   <data name="cbxTableMaintenance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 17</value>
+    <value>198, 17</value>
   </data>
   <data name="rbnDTL_CS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -274,7 +275,7 @@
     <value>107, 17</value>
   </data>
   <data name="cbxOnlyTableMaintenance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 19</value>
+    <value>8, 19</value>
   </data>
   <data name="cmbSFEncoding.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 23</value>
@@ -412,7 +413,7 @@
     <value>True</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 43</value>
+    <value>525, 58</value>
   </data>
   <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -421,7 +422,7 @@
     <value>Choose Encoding of SQL File Output</value>
   </data>
   <data name="cbxTableMaintenance.Text" xml:space="preserve">
-    <value>Table Maintenance (*. Aspx, *. Aspx.cs, TableAdapter.cs)</value>
+    <value>Generate table maintenance screen.</value>
   </data>
   <data name="&gt;&gt;gbxSQLFileEncoding.Parent" xml:space="preserve">
     <value>gbxOutput</value>
@@ -565,7 +566,7 @@
     <value>True</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>541, 445</value>
+    <value>541, 461</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>275, 34</value>
@@ -814,7 +815,7 @@
     <value>groupBox2</value>
   </data>
   <data name="btnDaoAndSqlGen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 478</value>
+    <value>12, 496</value>
   </data>
   <data name="lblSetOutput.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
@@ -901,7 +902,7 @@
     <value>gbxSQLFileEncoding</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>533, 419</value>
+    <value>533, 435</value>
   </data>
   <data name="&gt;&gt;btnDaoAndSqlGen.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -994,7 +995,7 @@
     <value>1</value>
   </data>
   <data name="cbxOnlyTableMaintenance.Text" xml:space="preserve">
-    <value>Only table maintenance</value>
+    <value>Only table maintenance screen will be generated (Dao and SQL and DTO will not be generated.)</value>
   </data>
   <data name="gbxOutput.Text" xml:space="preserve">
     <value>Output Setting</value>
@@ -1507,7 +1508,7 @@
     <value>rbnDB2</value>
   </data>
   <data name="gbxDTO.Text" xml:space="preserve">
-    <value>To generate the type of an item for transfer (encoding is the same as the Dao)</value>
+    <value>To generate DTO (encoding is the same as the Dao)</value>
   </data>
   <data name="rbnDTL_CS.Location" type="System.Drawing.Point, System.Drawing">
     <value>65, 19</value>
@@ -1564,7 +1565,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="cbxTableMaintenance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 19</value>
+    <value>8, 35</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1573,7 +1574,7 @@
     <value>groupBox3</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>566, 510</value>
+    <value>566, 535</value>
   </data>
   <data name="&gt;&gt;cbxEntity.Name" xml:space="preserve">
     <value>cbxEntity</value>
