@@ -367,7 +367,7 @@ Public Partial Class Aspx_testFxLayerP_normal_testScreen1nest
 		If DirectCast(Me.GetMasterWebControl("CheckBox2"), CheckBox).Checked = True Then
 			' スタイル指定あり
 			Me.ShowNormalScreen("~/Aspx/testFxLayerP/nest/testScreen1nest.aspx", style)
-		Else
+			Else
 			' スタイル指定なし
 			Me.ShowNormalScreen("~/Aspx/testFxLayerP/nest/testScreen1nest.aspx")
 		End If
