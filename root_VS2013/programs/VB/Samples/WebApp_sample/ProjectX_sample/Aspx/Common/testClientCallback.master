@@ -11,7 +11,7 @@
     <!--FxCode：add-start-->
     <script type="text/javascript" src="<%= Me.ResolveClientUrl("~/Framework/js/common.js") %>"></script>
     <script type="text/javascript" src="<%= Me.ResolveClientUrl("~/Framework/js/ie_key_event.js") %>"></script>
-
+    
     <!-- Resolve URL in the javascript-->
     <script type="text/javascript">
         var baseUrl = "<%= ResolveUrl("~/") %>";
@@ -26,7 +26,7 @@
     <!--meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /-->
     
     <link rel="stylesheet" type="text/css" href="<%= Me.ResolveClientUrl("~/Css/style.css") %>"/>
-   
+
     <!--FxCode：add-end-->
 </head>
 
