@@ -111,7 +111,7 @@
                 @* HTMLヘルパー（Html.DropDownListメソッド → selectタグを生成する） *@
                 @Html.DropDownList("ddlOrderColumn", Model.DdlOrderColumnItems, new { style = "width: 100%" })
             </td>
-            <td colspan="5"><button id="button11" style="width: 100%">クリア</button></td>
+            <td colspan="5"><button id="button10" style="width: 100%">クリア</button></td>
         </tr>
 
         <!-- 昇順・降順 -->
@@ -153,7 +153,10 @@
             <td colspan="10"><label id="lblErrorMessage"></label></td>
         </tr>
         <tr>
-            <td colspan="10"><button id="button10" style="width: 100%">（ポスト後）画面遷移（リダイレクト）</button></td>
+            <td colspan="10"><button id="button21" style="width: 100%">（ポスト後）画面遷移（リダイレクト）</button></td>
+        </tr>
+        <tr>
+            <td colspan="10"><button id="button22" style="width: 100%">二重送信防止</button></td>
         </tr>
     </table>
 }
@@ -166,6 +169,10 @@
             // button1 の場合は、GetCountのActionを実行しメッセージ部分を更新する
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("GetCount")');
+
+            // If prevent double submission, then sets the flag to true.
+            PreventAjaxDoubleSubmit = true;
+
             $('#form1').submit();
 
             // サブミットが 2 回発生しないよう、false を返す
@@ -207,7 +214,7 @@
             $('#form1').attr('data-ajax-update', '#chartResult');
             $('#form1').attr('action', '@Url.Action("SelectAll_DSQL")');
             $('#form1').submit();
-
+            
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -217,7 +224,7 @@
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("Select")');
             $('#form1').submit();
-
+            
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -227,7 +234,7 @@
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("Insert")');
             $('#form1').submit();
-
+                        
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -237,7 +244,7 @@
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("Update")');
             $('#form1').submit();
-
+                        
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
@@ -247,13 +254,22 @@
             $('#form1').attr('data-ajax-update', '#messageResult');
             $('#form1').attr('action', '@Url.Action("Delete")');
             $('#form1').submit();
-
+                        
             // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
 
         $('#button10').click(function () {
-            // button10 の場合は、TransitionsのActionを実行し画面遷移する
+            // 結果をクリアする
+            $('#chartResult').html('');
+
+            // Form をサブミットしないよう、false を返す
+            return false;
+        });
+
+
+        $('#button21').click(function () {
+            // button21 の場合は、TransitionsのActionを実行し画面遷移する
             $('#form1').attr('action', '@Url.Action("Transitions")');
             $('#form1').submit();
 
@@ -261,13 +277,20 @@
             return false;
         });
 
-        $('#button11').click(function () {
-            // 結果をクリアする
-            $('#chartResult').html('');
+        $('#button22').click(function () {
+            // button22 の場合は、PreventDoubleSubmissionを実行し二重送信防止機能をテストする
+            $('#form1').attr('action', '@Url.Action("PreventDoubleSubmission")');
 
-            // Form をサブミットしないよう、false を返す
-            return false;
-        });
+            // If prevent double submission, then sets the flag to true.
+            PreventAjaxDoubleSubmit = true;
+
+             $('#form1').submit();
+
+             // サブミットが 2 回発生しないよう、false を返す
+             return false;
+         });
+
+        
     });
 </script>
 }
