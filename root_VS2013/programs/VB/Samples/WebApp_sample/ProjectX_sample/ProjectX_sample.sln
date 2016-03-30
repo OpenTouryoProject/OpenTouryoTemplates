@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ProjectX_sample(1)", ".", "{DA0667F0-9CF7-4D00-A691-AEC74D131E0E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ProjectX_sample", ".", "{DA0667F0-9CF7-4D00-A691-AEC74D131E0E}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
 		Debug.AspNetCompiler.VirtualPath = "/ProjectX_sample"
