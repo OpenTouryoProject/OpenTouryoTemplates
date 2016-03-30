@@ -631,5 +631,31 @@ namespace MVC_Sample.Controllers
         {
             return JavaScript("location.href='" + Url.Action("Index", "CrudMu2") + "';");
         }
+
+        /// <summary>
+        /// Sleepを実行し二重送信防止機能をテストする
+        /// </summary>
+        /// <returns>EmptyResult</returns>
+        public ActionResult PreventDoubleSubmission()
+        {
+            System.Threading.Thread.Sleep(5 * 1000);
+            
+            // 結果表示するメッセージ
+
+            // 確認用のカウンタ
+            if (Session["cnt"] == null)
+            {
+                Session["cnt"] = 1;
+            }
+            else
+            {
+                Session["cnt"] = ((int)Session["cnt"]) + 1;
+            }
+
+            CrudModel model = new CrudModel() { Message = "PreventDoubleSubmission:" + Session["cnt"].ToString() };
+
+            // Ajax.BeginFormでは、以下のように記述することで部分更新が可能。
+            return PartialView("_MessageView", model);
+        }
     }
 }
