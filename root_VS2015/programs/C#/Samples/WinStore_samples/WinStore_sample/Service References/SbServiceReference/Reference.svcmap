@@ -21,11 +21,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9996/WinStore_sample/WebService/ServiceForSb.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:9996/WebService/ServiceForSb.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceForSb.disco" MetadataType="Disco" ID="00f9a987-8522-41fc-80ff-f98d44fb3c9c" SourceId="1" SourceUrl="http://localhost:9996/WinStore_sample/WebService/ServiceForSb.asmx?disco" />
-    <MetadataFile FileName="ServiceForSb.wsdl" MetadataType="Wsdl" ID="c5bcb6e3-b05b-412f-a664-35f498963e2f" SourceId="1" SourceUrl="http://localhost:9996/WinStore_sample/WebService/ServiceForSb.asmx?wsdl" />
+    <MetadataFile FileName="ServiceForSb.wsdl" MetadataType="Wsdl" ID="23da3795-3db3-46c4-b837-bedb8055b056" SourceId="1" SourceUrl="http://localhost:9996/WebService/ServiceForSb.asmx?wsdl" />
+    <MetadataFile FileName="ServiceForSb.disco" MetadataType="Disco" ID="1dbe2e81-f258-4970-b790-5bde77362b03" SourceId="1" SourceUrl="http://localhost:9996/WebService/ServiceForSb.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

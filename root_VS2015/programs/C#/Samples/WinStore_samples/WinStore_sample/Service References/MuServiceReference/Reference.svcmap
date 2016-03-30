@@ -21,11 +21,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9996/WinStore_sample/WebService/ServiceForMu.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:9996/WebService/ServiceForMu.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceForMu.disco" MetadataType="Disco" ID="89bfbc11-bbe2-4c1a-8f04-49cf670ef4e3" SourceId="1" SourceUrl="http://localhost:9996/WinStore_sample/WebService/ServiceForMu.asmx?disco" />
-    <MetadataFile FileName="ServiceForMu.wsdl" MetadataType="Wsdl" ID="00b4f05b-e4cc-4ad3-a438-06328be45fe3" SourceId="1" SourceUrl="http://localhost:9996/WinStore_sample/WebService/ServiceForMu.asmx?wsdl" />
+    <MetadataFile FileName="ServiceForMu.disco" MetadataType="Disco" ID="d19eed40-4647-4097-8cfe-c3f7b6a6e264" SourceId="1" SourceUrl="http://localhost:9996/WebService/ServiceForMu.asmx?disco" />
+    <MetadataFile FileName="ServiceForMu.wsdl" MetadataType="Wsdl" ID="3a3d7f81-1b36-4c4a-b5d2-666e78f60166" SourceId="1" SourceUrl="http://localhost:9996/WebService/ServiceForMu.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
