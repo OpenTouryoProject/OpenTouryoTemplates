@@ -447,10 +447,10 @@
   </wsdl:binding>
   <wsdl:service name="ServiceForSb">
     <wsdl:port name="ServiceForSbSoap" binding="tns:ServiceForSbSoap">
-      <soap:address location="http://localhost:9996/WinStore_sample/WebService/ServiceForSb.asmx" />
+      <soap:address location="http://localhost:9996/WebService/ServiceForSb.asmx" />
     </wsdl:port>
     <wsdl:port name="ServiceForSbSoap12" binding="tns:ServiceForSbSoap12">
-      <soap12:address location="http://localhost:9996/WinStore_sample/WebService/ServiceForSb.asmx" />
+      <soap12:address location="http://localhost:9996/WebService/ServiceForSb.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
