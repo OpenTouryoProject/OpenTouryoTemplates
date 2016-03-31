@@ -120,8 +120,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <BaseApplicationManifest Include="Properties\app.manifest" />
     <None Include="WSClientWinCone_sample_TemporaryKey.pfx" />
+    <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MSGDefinition.xml" />
@@ -157,6 +157,9 @@
       <DependentUpon>Splash.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TMProtocolDefinition2.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
