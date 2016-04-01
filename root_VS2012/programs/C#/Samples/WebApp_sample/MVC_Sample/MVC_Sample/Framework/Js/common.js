@@ -49,7 +49,7 @@ function Fx_Document_OnLoad2() {
     Fx_InitProgressDialog();
 
     // Webサーバへ一定時間ごとにpingを行う
-   //window.setInterval(HttpPing, 5 * 60 * 1000);
+    //window.setInterval(HttpPing, 5 * 60 * 1000);
 }
 
 //// ---------------------------------------------------------------
@@ -122,8 +122,8 @@ function Fx_OnSubmit() {
             // IE10.0で問題の報告を受けていません。 
         }
         else if (navigator.appVersion.indexOf("Trident/7") != -1) {
-            // IE11.0で問題が合った場合、報告をお願いします。
-        }
+            // IE11.0で問題があった場合、報告をお願いします。
+        } 
 
         if (document.readyState == "complete") {
 
@@ -330,6 +330,7 @@ function Fx_OnSubmit() {
     }
 }
 
+
 // ---------------------------------------------------------------
 // プログレス ダイアログ表示を仕掛ける。
 // ---------------------------------------------------------------
@@ -463,7 +464,7 @@ function Fx_CreateMask() {
 
     _div.style.top = "0px";
     _div.style.left = "0px";
-    _div.style.height = Fx_getContentsHeight()+"px"; //"100%";では、初期表示画面サイズになってしまう。
+    _div.style.height = Fx_getContentsHeight() + "px"; //"100%";では、初期表示画面サイズになってしまう。
     _div.style.width = Fx_getBrowserWidth() + "px"; //"100%";では、初期表示画面サイズになってしまう。
     _div.style.position = "absolute";
 
