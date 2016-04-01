@@ -192,7 +192,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 
@@ -261,7 +261,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 
@@ -331,7 +331,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 
@@ -401,7 +401,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 
@@ -475,7 +475,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 
@@ -551,7 +551,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 
@@ -630,7 +630,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 
@@ -704,7 +704,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 
@@ -775,7 +775,7 @@ namespace WinStore_sample.Views
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ParamDataContract));
 
             // HTTPクライアントを使用
-            WebRequest request = WebRequest.Create(new Uri("http://localhost:9996/WinStore_sample/WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
+            WebRequest request = WebRequest.Create(new Uri(App.BaseUrl + "WebService/ServiceForRt.svc/JSON", UriKind.Absolute));
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
 

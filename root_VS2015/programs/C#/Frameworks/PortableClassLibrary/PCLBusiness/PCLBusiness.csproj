@@ -42,7 +42,7 @@
     <Folder Include="ServiceInterface\WcfDataContract\Rest\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Infrastructure\Business\WcfDataContract\Rest\ErrorInfo.cs">
+  <Compile Include="..\..\Infrastructure\Business\WcfDataContract\Rest\ErrorInfo.cs">
       <Link>ServiceInterface\WcfDataContract\Rest\ErrorInfo.cs</Link>
     </Compile>
     <Compile Include="..\..\Infrastructure\Business\WcfDataContract\Rest\Informations.cs">

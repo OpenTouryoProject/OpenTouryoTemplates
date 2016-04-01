@@ -6,6 +6,8 @@
 
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Base URI of the application server -->
+            <x:String x:Key="FxBaseUrl">http://localhost:9996/</x:String>
             <ResourceDictionary.MergedDictionaries>
 
                 <!-- 
