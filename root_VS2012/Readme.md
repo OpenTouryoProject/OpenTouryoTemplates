@@ -84,9 +84,6 @@ C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClien
 - Windowsストアアプリ の場合(In the case of Windows Store App )：  
 C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientWinStore_samples.sln
 
-###### Windows Azure の場合(In the case of Windows Azure)：
-C:\root\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
-
 ### Open棟梁の評価(Evaluation of OpenTouryo)
 各チュートリアルの内容に従いOpen棟梁の評価が可能です。  
 (Evaluation of OpenTouryo is possible in accordance with the contents of each tutorial.)
