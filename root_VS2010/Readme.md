@@ -122,11 +122,6 @@ C:\root\programs\C#\Samples\2CS_sample\2CSClientWPF_sample\2CSClientWPF_sample.s
   - C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSClientWinCone_sample.sln
 - WPF  
 C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
-- Windowsストアアプリ の場合(In the case of Windows Store App )：  
-C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientWinStore_samples.sln
-
-###### Windows Azure の場合(In the case of Windows Azure)：
-C:\root\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
 
 ### Open棟梁の評価(Evaluation of OpenTouryo)
 各チュートリアルの内容に従いOpen棟梁の評価が可能です。  
