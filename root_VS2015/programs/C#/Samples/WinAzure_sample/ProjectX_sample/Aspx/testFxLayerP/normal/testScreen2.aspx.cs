@@ -72,29 +72,29 @@ public partial class Aspx_testFxLayerP_normal_testScreen2 : MyBaseController
         // クライアントからの業務モーダル画面起動
         // スタイル指定なし
         this.btnButton2.OnClientClick =
-            "return " + this.GetScriptToShowModalScreen("/Aspx/testFxLayerP/normal/testScreen1.aspx") + ";";
+            "return " + this.GetScriptToShowModalScreen("~/Aspx/testFxLayerP/normal/testScreen1.aspx") + ";";
         this.btnButton3.OnClientClick =
-            "return " + this.GetScriptToShowModalScreen("/Aspx/testFxLayerP/normal/testScreen1.aspx?test=test") + ";";
+            "return " + this.GetScriptToShowModalScreen("~/Aspx/testFxLayerP/normal/testScreen1.aspx?test=test") + ";";
 
         // スタイル指定あり（空）
         this.btnButton4.OnClientClick =
-            "return " + this.GetScriptToShowModalScreen("/Aspx/testFxLayerP/normal/testScreen1.aspx", "") + ";";
+            "return " + this.GetScriptToShowModalScreen("~/Aspx/testFxLayerP/normal/testScreen1.aspx", "") + ";";
         this.btnButton5.OnClientClick =
-            "return " + this.GetScriptToShowModalScreen("/Aspx/testFxLayerP/normal/testScreen1.aspx?test=test", "") + ";";
+            "return " + this.GetScriptToShowModalScreen("~/Aspx/testFxLayerP/normal/testScreen1.aspx?test=test", "") + ";";
 
         // ---
 
         // クライアントからの業務モードレス画面起動
         this.btnButton9.OnClientClick =
-            this.GetScriptToShowNormalScreen("/Aspx/testFxLayerP/normal/testScreen1.aspx") 
+            this.GetScriptToShowNormalScreen("~/Aspx/testFxLayerP/normal/testScreen1.aspx")
             + "; return false;";
-        
+
         this.btnButton10.OnClientClick =
-            this.GetScriptToShowNormalScreen("/Aspx/testFxLayerP/normal/testScreen1.aspx?test=test", "")
+            this.GetScriptToShowNormalScreen("~/Aspx/testFxLayerP/normal/testScreen1.aspx?test=test", "")
             + "; return false;";
-        
+
         this.btnButton11.OnClientClick =
-            this.GetScriptToShowNormalScreen("/Aspx/testFxLayerP/normal/testScreen1.aspx?test=test", "", "t")
+            this.GetScriptToShowNormalScreen("~/Aspx/testFxLayerP/normal/testScreen1.aspx?test=test", "", "t")
             + "; return false;";
     }
 
@@ -111,7 +111,7 @@ public partial class Aspx_testFxLayerP_normal_testScreen2 : MyBaseController
     #region 外部パラメータ（アイコン）
 
     #region コンテンツ ページ上のフレームワーク対象コントロール
-    
+
     /// <summary>
     /// btnButton1のクリックイベント
     /// </summary>
@@ -202,7 +202,7 @@ public partial class Aspx_testFxLayerP_normal_testScreen2 : MyBaseController
              "ddlMDropDownList1のSelectedIndexChangedイベント",
              ((DropDownList)this.GetFxWebControl("ddlMDropDownList1")).SelectedValue,
             FxEnum.IconType.Information, "ＧＪ！");
-        
+
         // 画面遷移しないポストバックの場合は、urlを空文字列に設定する
         return "";
     }
