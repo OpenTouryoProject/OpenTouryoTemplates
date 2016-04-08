@@ -100,7 +100,7 @@ C:\root\programs\C#\Samples\2CS_sample\2CSClientWPF_sample\2CSClientWPF_sample.s
 - WPF  
 C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
 - Windowsストアアプリ の場合(In the case of Windows Store App )：  
-C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinStore_samples\WSClientWinStore_samples.sln
+C:\root\programs\C#\Samples\WinStore_samples\WinStore_samples.sln
 
 ###### Windows Azure の場合(In the case of Windows Azure)：
 C:\root\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
