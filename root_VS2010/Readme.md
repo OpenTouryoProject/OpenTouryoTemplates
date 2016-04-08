@@ -8,54 +8,9 @@ Open棟梁 Visual Studio2010 テンプレート・ベースに同梱されるサ
 「/root_VS2010/」以下のフォルダを「C:\root」フォルダ以下に配置します。  
 (Deploy to under 「C:\root」folder from under 「/root_VS2010/」folder.)
 
-(Execution procedure of the samples that are shipped with the
-OpenTouryo Visual Studio 2010 template base is as follows.)
-
-* 「/root_VS2010/」以下のフォルダを「C:\root」フォルダ以下に配置します。
-   (Deploy to under 「C:\root」folder from under 「/root_VS2010/」folder.)
-   
-* Visual Studio 2010 と SQL Server のインストール
-   (Installing Visual Studio 2010 and SQL Server.)
-   
-* サンプルDBの準備(Prepare Sample DB)
-
-   - 下記からダウンロードしインストールします。
-      (Download and install from the following.)
-      
-      Download: NorthWind and pubs Sample Databases for SQL Server 2000 - Microsoft Download Center - Download Details
-      http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=23654
-      
-   - 下記コマンドを実行します(Run the following command)。
-      "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S localhost\SQLExpress -E -i "C:\SQL Server 2000 Sample Databases\instnwnd.sql"
-      
-   - SQL Server 2012 以降のバージョンにNorthwindをインストールする場合は以下の手順に従って下さい。  
-      (Please follow the below steps, if you want to install the Northwind on SQL Server 2012 or a later version.)
-      - SQL ServerにNorthwindとPubsサンプルデータベースを入れる。 - Gobble up pudding  
-http://fa11enprince.hatenablog.com/entry/2014/05/28/234203
-      
-* セッション状態サービスの準備(Preparing the session state service)
-   - 管理者としてコマンドプロンプトを起動し、下記コマンドを実行します。
-      (Start a command prompt as an administrator, and then run the following command.)
-      
-      sc config aspnet_state start= auto
-      net start aspnet_state
-
-* プログラムのビルド(Building the program)
-   C:\root\programs\C#
-   C:\root\programs\VB
-
-   フォルダ以下のビルドバッチを番号順に実行してプログラムをビルドします。
-   (Build the program by running in numerical order the build batch of Above folder.)
-
-   - 必要であれば、環境に合わせて、z_Common.bat内のBUILDFILEPATHを書き換えます。
-     (If necessary, for your environment, you can rewrite the BUILDFILEPATH of z_Common.bat within.)
-   
-     Express Editionを使用している場合は、devenv.comが存在しないので、
-     z_Common.batとz_Common2.batを差し替えてMSBuild.exeを使用して下さい。
-     
-     (If you are using the Express Edition,
-     use the MSBuild.exe by replacing the z_Common2.bat and z_Common.bat.
-     Because devenv.com does not exist.)
+##### インストール(Install)
+Visual Studio 2010 と SQL Server Express のインストール  
+(Installing Visual Studio 2010 and SQL Server Express.)
    
 ##### サンプルDBの準備(Prepare Sample DB)
 下記からダウンロードしインストールします。  
