@@ -24,6 +24,18 @@ namespace WinStore_sample
     /// </summary>
     sealed partial class App : Application
     {
+        /// <summary>Base url of the application server</summary>
+        private static string _baseUrl = string.Empty;
+
+        /// <summary>Get the base url property of the application server</summary>
+        public static String BaseUrl
+        {
+            get
+            {
+                return App._baseUrl;
+            }
+        }
+
         /// <summary>
         /// 単一アプリケーション オブジェクトを初期化します。これは、実行される作成したコードの
         /// 最初の行であり、main() または WinMain() と論理的に等価です。
@@ -42,6 +54,9 @@ namespace WinStore_sample
         /// <param name="args">起動要求とプロセスの詳細を表示します。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
+            // Initialize the base URI of the application server
+            App._baseUrl = (string)App.Current.Resources["FxBaseUrl"];
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // ウィンドウに既にコンテンツが表示されている場合は、アプリケーションの初期化を繰り返さずに、

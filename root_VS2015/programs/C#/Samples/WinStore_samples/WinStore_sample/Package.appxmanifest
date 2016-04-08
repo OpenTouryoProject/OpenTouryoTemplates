@@ -6,13 +6,16 @@
     <PublisherDisplayName>seigi</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
+
   <Prerequisites>
     <OSMinVersion>6.3.0</OSMinVersion>
     <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
   </Prerequisites>
+
   <Resources>
-    <Resource Language="x-generate" />
+    <Resource Language="x-generate"/>
   </Resources>
+
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="WinStore_sample.App">
       <m2:VisualElements DisplayName="WinStore_sample" Description="WinStore_sample" BackgroundColor="#464646" ForegroundText="light" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">

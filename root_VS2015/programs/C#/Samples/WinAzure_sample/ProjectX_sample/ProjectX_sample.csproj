@@ -244,12 +244,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppCode\sample\3TierTableAdapter\ProductsTableAdapter.cs" />
-    <Compile Include="AppCode\sample\Business\Authentication.cs" />
     <Compile Include="AppCode\sample\Business\GetMasterData.cs" />
     <Compile Include="AppCode\sample\Business\LayerB.cs" />
-    <Compile Include="AppCode\sample\Business\LayerB_mu.cs" />
-    <Compile Include="AppCode\sample\Business\LayerB_rt.cs" />
-    <Compile Include="AppCode\sample\Business\LayerB_sb.cs" />
     <Compile Include="AppCode\sample\Common\Shipper.cs" />
     <Compile Include="AppCode\sample\Common\TestParameterValue.cs" />
     <Compile Include="AppCode\sample\Common\TestReturnValue.cs" />
@@ -257,7 +253,6 @@
     <Compile Include="AppCode\sample\Dao\DaoShippers.cs" />
     <Compile Include="AppCode\sample\Dao\DaoSuppliers.cs" />
     <Compile Include="AppCode\sample\Dao\LayerD.cs" />
-    <Compile Include="AppCode\sample\Dao\LayerD_mu.cs" />
     <Compile Include="Aspx\Common\ErrorScreen.aspx.cs">
       <DependentUpon>ErrorScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

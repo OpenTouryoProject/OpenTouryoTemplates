@@ -1,4 +1,5 @@
 ﻿@model MVC_Sample.Models.CrudModel
+@using Touryo.Infrastructure.Public.Util
 @{
     // ページタイトル
     ViewBag.Title = "CRUDサンプル（Html.BeginForm）";
@@ -153,7 +154,10 @@
             <td colspan="10"><label id="lblErrorMessage"></label></td>
         </tr>
         <tr>
-            <td colspan="10"><button id="button10" style="width: 100%">（ポスト後）画面遷移（リダイレクト）</button></td>
+            <td colspan="10"><button id="button21" style="width: 100%">（ポスト後）画面遷移（リダイレクト）</button></td>
+        </tr>
+        <tr>
+            <td colspan="10"><button id="button22" style="width: 100%">二重送信防止</button></td>
         </tr>
     </table>
 }
@@ -161,6 +165,7 @@
 @* スクリプト・セクション（RenderSection("scripts", required: false)に出力されます） *@
 @section scripts{
 <script type="text/javascript">
+
     $(function () {
         $('#button1').click(function () {
             // button1 の場合は、GetCountのActionを実行しメッセージ部分を更新する
@@ -243,8 +248,8 @@
             return false;
         });
 
-        $('#button10').click(function () {
-            // button10 の場合は、TransitionsのActionを実行し画面遷移する
+        $('#button21').click(function () {
+            // button21 の場合は、TransitionsのActionを実行し画面遷移する
             $('#form1').attr('action', '@Url.Action("Transitions")');
             $('#form1').submit();
 
@@ -252,13 +257,19 @@
             return false;
         });
 
-        $('#button11').click(function () {
-            // 結果をクリアする
-            $('#chartResult').html('');
+        $('#button22').click(function () {
+            // button22 の場合は、PreventDoubleSubmissionを実行し二重送信防止機能をテストする
+            $('#form1').attr('action', '@Url.Action("PreventDoubleSubmission")');
+            $('#form1').submit();
 
-            // Form をサブミットしないよう、false を返す
+            // サブミットが 2 回発生しないよう、false を返す
             return false;
         });
+
+        // Html.BeginFormの時は二重送信防止機能を組込む為にこの実装を追記する。
+        $("form").live("submit", function () {
+            return Fx_OnSubmit();
+        });    
     });
 </script>
 }

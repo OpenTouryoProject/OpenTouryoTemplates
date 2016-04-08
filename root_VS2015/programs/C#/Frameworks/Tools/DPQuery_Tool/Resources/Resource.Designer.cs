@@ -88,7 +88,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entry point:.
+        ///   Looks up a localized string similar to Entry point : {0}.
         /// </summary>
         internal static string EntryPoint {
             get {
@@ -97,7 +97,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Escape character is not set..
+        ///   Looks up a localized string similar to Escape character was not set..
         /// </summary>
         internal static string EscCharacterNotSet {
             get {
@@ -106,7 +106,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D layer definition information file format error : There is no table name..
+        ///   Looks up a localized string similar to Data tier definition information file format error : There was no table name..
         /// </summary>
         internal static string FileFormatError {
             get {
@@ -124,7 +124,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check error: file type information DB [{0}] does not exist..
+        ///   Looks up a localized string similar to Check error: Database type information file [{0}] does not exist..
         /// </summary>
         internal static string FilenotExistDBtypeInfo {
             get {
@@ -133,7 +133,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check error:Defined D layer Information file  defined  [{0}] does not exist..
+        ///   Looks up a localized string similar to Check error: Data tier definition information file [{0}] does not exist..
         /// </summary>
         internal static string FilenotExistDlayerInfo {
             get {
@@ -178,7 +178,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save file of configuration does not exist..
+        ///   Looks up a localized string similar to There was no saved configuration file..
         /// </summary>
         internal static string MSG_CONFIG_FILE_NOT_EXIST {
             get {
@@ -187,7 +187,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I run the dynamic parameterized query..
+        ///   Looks up a localized string similar to Dynamic parameterized query was executed..
         /// </summary>
         internal static string MSG_EXEC_DQP {
             get {
@@ -196,7 +196,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I run a parameterized query normal..
+        ///   Looks up a localized string similar to Static parameterized query was executed..
         /// </summary>
         internal static string MSG_EXEC_SPQ {
             get {
@@ -205,7 +205,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the ip address of the DB server.
+        ///   Looks up a localized string similar to Enter the IP address of the database server.
         /// </summary>
         internal static string MSG_INPUT_IP {
             get {
@@ -214,7 +214,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the logon account to the DB: password.
+        ///   Looks up a localized string similar to Enter the login account to the database: Password.
         /// </summary>
         internal static string MSG_INPUT_PWD {
             get {
@@ -223,7 +223,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the logon account to the DB: user ID.
+        ///   Looks up a localized string similar to Enter the login account to the database: User ID.
         /// </summary>
         internal static string MSG_INPUT_UID {
             get {
@@ -232,7 +232,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to save the query file?.
+        ///   Looks up a localized string similar to Are you sure you want to save this query file?.
         /// </summary>
         internal static string MSG_IS_QUERY_FILE_SAVED {
             get {
@@ -241,7 +241,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No columns are available to generate screens.
+        ///   Looks up a localized string similar to There were no columns available to generate screens..
         /// </summary>
         internal static string Nocolumns {
             get {
@@ -250,7 +250,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is no time stamp column name..
+        ///   Looks up a localized string similar to There was no time stamp column name..
         /// </summary>
         internal static string NoTimestampColName {
             get {
@@ -268,7 +268,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D layer definition information file.
+        ///   Looks up a localized string similar to Data tier definition information file..
         /// </summary>
         internal static string OpenFileDialogTitle {
             get {
@@ -304,7 +304,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Primary Keys are not set to the table :.
+        ///   Looks up a localized string similar to Primary Keys were not set to the table :.
         /// </summary>
         internal static string PKnotAvailable {
             get {
@@ -313,7 +313,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please check Primary Keys are set to the Table or not.
+        ///   Looks up a localized string similar to Please check Primary Keys were set to the Table or not..
         /// </summary>
         internal static string PkSetMessgae {
             get {
@@ -322,7 +322,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Primary key is not defined in the table..
+        ///   Looks up a localized string similar to Primary key was not defined in the table..
         /// </summary>
         internal static string PrimaryKeyNotDefined {
             get {
@@ -358,7 +358,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Is a run-time error:.
+        ///   Looks up a localized string similar to Is a run-time error : {0}.
         /// </summary>
         internal static string RuntimeError {
             get {
@@ -367,7 +367,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hurre!!!!!!!!! Screens are Generated.
+        ///   Looks up a localized string similar to The screens were generated automatically..
         /// </summary>
         internal static string ScreenGenerationSuccess {
             get {
@@ -376,7 +376,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (I run with auto-commit transaction mode) automatic control.
+        ///   Looks up a localized string similar to Automatic control (Ran with auto-commit transaction mode.).
         /// </summary>
         internal static string STATUS_AUTO_MODE_WAS_SELECTED {
             get {
@@ -385,7 +385,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I was loading the configuration..
+        ///   Looks up a localized string similar to Configured connection setting was loaded..
         /// </summary>
         internal static string STATUS_CONFIGURATION_LOADED {
             get {
@@ -394,7 +394,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I save the settings..
+        ///   Looks up a localized string similar to Configured connection setting was saved..
         /// </summary>
         internal static string STATUS_CONFIGURATION_SAVED {
             get {
@@ -403,7 +403,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I closed the connection..
+        ///   Looks up a localized string similar to Connection was closed..
         /// </summary>
         internal static string STATUS_CONNECTION_CLOSED {
             get {
@@ -412,7 +412,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I opened a connection..
+        ///   Looks up a localized string similar to Connection was opened..
         /// </summary>
         internal static string STATUS_CONNECTION_OPENED {
             get {
@@ -421,7 +421,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I created a new setting..
+        ///   Looks up a localized string similar to Configured a new connection string setting..
         /// </summary>
         internal static string STATUS_CREATE_CONFIGURATION {
             get {
@@ -430,11 +430,11 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I generated a DB2.NET..
+        ///   Looks up a localized string similar to The {0} data provider was selected..
         /// </summary>
-        internal static string STATUS_DB2_CREATED {
+        internal static string STATUS_DATA_PROVIDER_SELECTED {
             get {
-                return ResourceManager.GetString("STATUS_DB2_CREATED", resourceCulture);
+                return ResourceManager.GetString("STATUS_DATA_PROVIDER_SELECTED", resourceCulture);
             }
         }
         
@@ -448,7 +448,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (You manually control the transaction using the button) manual control.
+        ///   Looks up a localized string similar to Manual control (Manually control the transaction using this button.).
         /// </summary>
         internal static string STATUS_MANUAL_MODE_WAS_SELECTED {
             get {
@@ -457,52 +457,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I generated a MySQL Connector / NET..
-        /// </summary>
-        internal static string STATUS_MSL_CREATED {
-            get {
-                return ResourceManager.GetString("STATUS_MSL_CREATED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to I generated a ODBC.NET..
-        /// </summary>
-        internal static string STATUS_ODB_CREATED {
-            get {
-                return ResourceManager.GetString("STATUS_ODB_CREATED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to I generated a ODP.NET..
-        /// </summary>
-        internal static string STATUS_ODP_CREATED {
-            get {
-                return ResourceManager.GetString("STATUS_ODP_CREATED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to I generated a OLEDB.NET..
-        /// </summary>
-        internal static string STATUS_OLE_CREATED {
-            get {
-                return ResourceManager.GetString("STATUS_OLE_CREATED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to I generated a PostgreSQL Npgsql..
-        /// </summary>
-        internal static string STATUS_PGS_CREATED {
-            get {
-                return ResourceManager.GetString("STATUS_PGS_CREATED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to I canceled the operation..
+        ///   Looks up a localized string similar to Operation was canceled..
         /// </summary>
         internal static string STATUS_PROC_CANCELED {
             get {
@@ -511,7 +466,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I ran the query..
+        ///   Looks up a localized string similar to Query was executed..
         /// </summary>
         internal static string STATUS_QUERY_EXECED {
             get {
@@ -520,7 +475,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I close the query file..
+        ///   Looks up a localized string similar to Query file was closed..
         /// </summary>
         internal static string STATUS_QUERY_FILE_CLOSED {
             get {
@@ -529,7 +484,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I opened the query file..
+        ///   Looks up a localized string similar to Query file was opened..
         /// </summary>
         internal static string STATUS_QUERY_FILE_OPENED {
             get {
@@ -538,7 +493,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I have Save the query text file..
+        ///   Looks up a localized string similar to Modified query was saved to the query file..
         /// </summary>
         internal static string STATUS_QUERY_FILE_OVERWRITED {
             get {
@@ -547,7 +502,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I have been saved to a text file query..
+        ///   Looks up a localized string similar to Query has been saved to a new query file..
         /// </summary>
         internal static string STATUS_QUERY_FILE_SAVED {
             get {
@@ -556,16 +511,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I generated a sqlClient..
-        /// </summary>
-        internal static string STATUS_SQL_CREATED {
-            get {
-                return ResourceManager.GetString("STATUS_SQL_CREATED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to I commit the transaction..
+        ///   Looks up a localized string similar to Transaction was committed..
         /// </summary>
         internal static string STATUS_TRANSACTION_COMMITED {
             get {
@@ -574,7 +520,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I roll back the transaction.
+        ///   Looks up a localized string similar to Transaction was rolled back..
         /// </summary>
         internal static string STATUS_TRANSACTION_ROLLBACKED {
             get {
@@ -583,7 +529,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I started the transaction..
+        ///   Looks up a localized string similar to Transaction was started..
         /// </summary>
         internal static string STATUS_TRANSACTION_STARTED {
             get {
@@ -592,7 +538,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In front of, I can only be specified indent:..
+        ///   Looks up a localized string similar to Before [{0}], only indent can be specified. : {1}.
         /// </summary>
         internal static string StringIndentation {
             get {
@@ -610,7 +556,7 @@ namespace DPQuery_Tool.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specifies the root folder path input file (template file).
+        ///   Looks up a localized string similar to Specifies the root folder path of the input file (template file)..
         /// </summary>
         internal static string TemplateFolderPath {
             get {

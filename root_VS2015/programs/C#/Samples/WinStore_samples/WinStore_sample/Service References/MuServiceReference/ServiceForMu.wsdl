@@ -67,10 +67,10 @@
   </wsdl:binding>
   <wsdl:service name="ServiceForMu">
     <wsdl:port name="ServiceForMuSoap" binding="tns:ServiceForMuSoap">
-      <soap:address location="http://localhost:9996/WinStore_sample/WebService/ServiceForMu.asmx" />
+      <soap:address location="http://localhost:9996/WebService/ServiceForMu.asmx" />
     </wsdl:port>
     <wsdl:port name="ServiceForMuSoap12" binding="tns:ServiceForMuSoap12">
-      <soap12:address location="http://localhost:9996/WinStore_sample/WebService/ServiceForMu.asmx" />
+      <soap12:address location="http://localhost:9996/WebService/ServiceForMu.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

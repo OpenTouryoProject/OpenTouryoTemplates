@@ -193,7 +193,7 @@ namespace WinStore_sample.MuServiceReference {
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
             if ((endpointConfiguration == EndpointConfiguration.ServiceForMuSoap)) {
-                return new System.ServiceModel.EndpointAddress("http://localhost:9996/WinStore_sample/WebService/ServiceForMu.asmx");
+                return new System.ServiceModel.EndpointAddress(App.BaseUrl + "WebService/ServiceForMu.asmx");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
