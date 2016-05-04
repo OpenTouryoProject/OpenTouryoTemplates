@@ -206,7 +206,7 @@ namespace Touryo.Infrastructure.Business.Business
                     // 接続文字列をロード
                     connstring = GetConfigParameter.GetConnectionString("ConnectionString_SQL");
                 }
-                else if (parameterValue.ActionType.Split('%')[0] == "AzureSQL")
+                else if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithMultiShard")
                 {
                     // AzureSQL用のDamを生成
                     dam = new DamSqlDbWithMultiShard.DamSqlDbWithMultiShard();
