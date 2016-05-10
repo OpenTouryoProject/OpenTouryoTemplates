@@ -77,9 +77,6 @@ using Touryo.Infrastructure.Public.Log;
 using Touryo.Infrastructure.Public.Str;
 using Touryo.Infrastructure.Public.Util;
 
-//DamSqlDbWithMultiShard
-using DamSqlDbWithMultiShard;
-
 namespace Touryo.Infrastructure.Business.Business
 {
     /// <summary>自動振り分け機能付き業務コード親クラス２（サーバ用）（テンプレート）</summary>
@@ -206,9 +203,17 @@ namespace Touryo.Infrastructure.Business.Business
                     // 接続文字列をロード
                     connstring = GetConfigParameter.GetConnectionString("ConnectionString_SQL");
                 }
+                else if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithDataDependent")
+                {
+                    // Azure SQL用のDamを生成
+                    dam = new DamSqlDbWithMultiShard.DamSqlDbWithMultiShard();
+
+                    // 接続文字列をロード
+                    connstring = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
+                }
                 else if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithMultiShard")
                 {
-                    // AzureSQL用のDamを生成
+                    // Azure SQL用のDamを生成
                     dam = new DamSqlDbWithMultiShard.DamSqlDbWithMultiShard();
 
                     // 接続文字列をロード
@@ -295,8 +300,17 @@ namespace Touryo.Infrastructure.Business.Business
 
                 if (dam != null)
                 {
-                    // コネクションをオープンする。
-                    dam.ConnectionOpen(connstring);
+                    // SQL用のDamを生成     
+                    dam = new DamSqlSvr();
+                    if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithDataDependent")
+                    {
+                        ((DamSqlSvr)dam).DamSqlConnection = DamSqlDbWithMultiShard.MultiShardConfiguration.GetDataDependentRoutingConnectionString(connstring);
+                    }
+                    else
+                    {
+                        // コネクションをオープンする。
+                        dam.ConnectionOpen(connstring);
+                    }
 
                     #region トランザクションを開始する。
 
@@ -319,11 +333,14 @@ namespace Touryo.Infrastructure.Business.Business
                     // damを設定する。
                     this.SetDam(dam);
                 }
-            }
+                else
+                {
+                    // ここは通らない
+                }
 
             #endregion
+            }
         }
-
         #endregion
 
         #region 開始・終了処理
