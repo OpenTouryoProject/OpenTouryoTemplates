@@ -36,6 +36,7 @@
 //*  2012/02/09  西野 大介         OLEDB、ODBCのデータプロバイダ対応
 //*  2012/04/05  西野 大介         \n → \r\n 化
 //*  2012/06/18  西野  大介        OriginalStackTrace（ログ出力）の品質向上
+//*  2016/04/22  Supragyan        Added key value as ConnectionString_AzureSQL to support Azure SQL Database
 //**********************************************************************************
 
 // デバッグ用
@@ -75,6 +76,9 @@ using Touryo.Infrastructure.Public.IO;
 using Touryo.Infrastructure.Public.Log;
 using Touryo.Infrastructure.Public.Str;
 using Touryo.Infrastructure.Public.Util;
+
+//DamSqlDbWithMultiShard
+using DamSqlDbWithMultiShard;
 
 namespace Touryo.Infrastructure.Business.Business
 {
@@ -193,12 +197,23 @@ namespace Touryo.Infrastructure.Business.Business
 
                 #region データ プロバイダ選択
 
-                // SQL Server / SQL Client用のDamを生成
-                dam = new DamSqlSvr();
+                //// SQL Server / SQL Client用のDamを生成               
+                if (parameterValue.ActionType.Split('%')[0] == "SQL")
+                {
+                    // SQL Server / SQL Client用のDamを生成
+                    dam = new DamSqlSvr();
 
-                // 接続文字列をロード
-                connstring = GetConfigParameter.GetConnectionString("ConnectionString_SQL");
+                    // 接続文字列をロード
+                    connstring = GetConfigParameter.GetConnectionString("ConnectionString_SQL");
+                }
+                else if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithMultiShard")
+                {
+                    // AzureSQL用のDamを生成
+                    dam = new DamSqlDbWithMultiShard.DamSqlDbWithMultiShard();
 
+                    // 接続文字列をロード
+                    connstring = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
+                }
                 //if (parameterValue.ActionType.Split('%')[0] == "SQL")
                 //{
                 //    // SQL Server / SQL Client用のDamを生成
