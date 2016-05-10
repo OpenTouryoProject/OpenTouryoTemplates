@@ -59,6 +59,37 @@ namespace DamSqlDbWithMultiShard
         private static IEnumerable<Shard> _shards;
 
         /// <summary>
+        /// Gets the server name from the App.config file for shards to be created on.
+        /// </summary>
+        private static string _serverName
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ServerName"];
+            }
+        }
+
+        /// <summary>
+        /// Gets the server name from the App.config file for shards to be created on.
+        /// </summary>
+        private static string _databaseEdition
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["DatabaseEdition"];
+            }
+        }
+        
+        /// <summary>customerId</summary>
+        public static int customerId;
+
+        /// <summary>shardMap</summary>
+        public static string connStr = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
+
+        /// <summary>SQL master database name.</summary>
+        public static string MasterDatabaseName;
+
+        /// <summary>
         /// Gets all Shards.
         /// </summary>
         public static IEnumerable<Shard> Shards
@@ -100,17 +131,6 @@ namespace DamSqlDbWithMultiShard
         }
 
         /// <summary>
-        /// Gets the server name from the App.config file for shards to be created on.
-        /// </summary>
-        private static string _serverName
-        {
-            get
-            {
-                return ConfigurationManager.AppSettings["ServerName"];
-            }
-        }
-
-        /// <summary>
         /// Gets the database name for the Shard Map Manager database, which contains the shard maps.
         /// </summary>
         public static string ShardMapManagerDatabaseName
@@ -122,6 +142,18 @@ namespace DamSqlDbWithMultiShard
             set
             {
                 _shardMapManagerDatabaseName = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the edition to use for Shards and Shard Map Manager Database if the server is an Azure SQL DB server. 
+        /// If the server is a regular SQL Server then this is ignored.
+        /// </summary>
+        public static string DatabaseEdition
+        {
+            get
+            {
+                return _databaseEdition;
             }
         }
 
@@ -155,22 +187,51 @@ namespace DamSqlDbWithMultiShard
 
         #endregion
 
+        #region connectionstring methods
+
         /// <summary>
-        /// Tries to get the ShardMapManager that is stored in the specified database.
+        /// Returns a connection string that can be used to connect to the specified server and database.
         /// </summary>
-        public static ShardMapManager TryGetShardMapManager()
+        public static string GetConnectionString()
         {
-            string connStr = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
-
-            SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder(connStr);
-
-            stringBuilder.DataSource = ShardMapManagerServerName;
-            stringBuilder.InitialCatalog = ShardMapManagerDatabaseName;
-
-            ShardMapManager shardMapManager;
-            bool smmExists = ShardMapManagerFactory.TryGetSqlShardMapManager(stringBuilder.ToString(), ShardMapManagerLoadPolicy.Lazy, out shardMapManager);
-
-            return shardMapManager;
+            SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
+            sbConnStr.DataSource = ShardMapManagerServerName;
+            sbConnStr.InitialCatalog = ShardMapManagerDatabaseName;
+            return sbConnStr.ToString();
         }
+
+        /// <summary>
+        /// Returns a connection string that can be used to connect to the specified server and database.
+        /// </summary>
+        public static string GetConnectionStringByMasterDatabase()
+        {
+            SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
+            sbConnStr.DataSource = ShardMapManagerServerName;
+            sbConnStr.InitialCatalog = MasterDatabaseName;
+            return sbConnStr.ToString();
+        }
+
+        /// <summary>
+        /// Returns a connection string that can be used to connect to the specified shard.
+        /// </summary>
+        /// <param name="connstring"></param>
+        /// <returns></returns>
+        public static SqlConnection GetDataDependentRoutingConnectionString(string connstring)
+        {
+           return MultiShardConfiguration.TryGetShardMap().OpenConnectionForKey(MultiShardConfiguration.customerId, connstring);
+        }
+
+        /// <summary>
+        /// Returns a connection string that can be used to connect to the specified server and database.
+        /// </summary>
+        public static string GetConnectionStringBySelectedDatabase(string database)
+        {
+            SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
+            sbConnStr.DataSource = ShardMapManagerServerName;
+            sbConnStr.InitialCatalog = database;
+            return sbConnStr.ToString();
+        }
+
+        #endregion
     }
 }
