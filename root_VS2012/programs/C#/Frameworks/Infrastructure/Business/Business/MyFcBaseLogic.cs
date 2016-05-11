@@ -306,6 +306,12 @@ namespace Touryo.Infrastructure.Business.Business
                     {
                         ((DamSqlSvr)dam).DamSqlConnection = DamSqlDbWithMultiShard.MultiShardConfiguration.GetDataDependentRoutingConnectionString(connstring);
                     }
+                    else if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithMultiShard")
+                    {
+                        dam = new DamSqlDbWithMultiShard.DamSqlDbWithMultiShard();
+                        // コネクションをオープンする。
+                        dam.ConnectionOpen(connstring);
+                    }
                     else
                     {
                         // コネクションをオープンする。
