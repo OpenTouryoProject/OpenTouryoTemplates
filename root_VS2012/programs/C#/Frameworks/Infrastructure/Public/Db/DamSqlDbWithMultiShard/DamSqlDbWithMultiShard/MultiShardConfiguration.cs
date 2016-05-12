@@ -20,7 +20,7 @@
 
 //**********************************************************************************
 //* クラス名        ：MultiShardConfiguration
-//* クラス日本語名  ：データアクセス・プロバイダ＝DB2.NETのデータアクセス制御クラス
+//* クラス日本語名  ：データアクセス・プロバイダ＝MultiShardConfigurationのデータアクセス制御クラス
 //*
 //* 作成者          ：生技 西野
 //* 更新履歴        ：
@@ -42,8 +42,13 @@ using Touryo.Infrastructure.Public.Util;
 
 namespace DamSqlDbWithMultiShard
 {
+    /// <summary>
+    /// MultiShardConfiguration class
+    /// </summary>
     public static class MultiShardConfiguration
     {
+        #region Instance variable
+
         /// <summary>shardMapName</summary>
         private static string _shardMapName;
 
@@ -52,6 +57,22 @@ namespace DamSqlDbWithMultiShard
 
         /// <summary>Shards</summary>
         private static IEnumerable<Shard> _shards;
+
+        /// <summary>customerId</summary>
+        public static int customerId;
+
+        /// <summary>connection string</summary>
+        public static string connStr = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
+
+        /// <summary>SQL master database name.</summary>
+        public static string MasterDatabaseName;
+
+        /// <summary>objShardMapManager</summary>
+        public static ShardMapManager objShardMapManager;
+
+        #endregion
+
+        #region Property
 
         /// <summary>
         /// Property to get the server name values defined for appSettings tag of the configuration file
@@ -74,15 +95,6 @@ namespace DamSqlDbWithMultiShard
                 return ConfigurationManager.AppSettings["DatabaseEdition"];
             }
         }
-
-        /// <summary>customerId</summary>
-        public static int customerId;
-
-        /// <summary>connection string</summary>
-        public static string connStr = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
-
-        /// <summary>SQL master database name.</summary>
-        public static string MasterDatabaseName;
 
         /// <summary>
         /// Property to get and set all the Shards.
@@ -152,10 +164,7 @@ namespace DamSqlDbWithMultiShard
             }
         }
 
-        /// <summary>
-        /// objShardMapManager
-        /// </summary>
-        public static ShardMapManager objShardMapManager;
+        #endregion
 
         #region Shard map helper methods
 
