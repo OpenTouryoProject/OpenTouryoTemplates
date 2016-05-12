@@ -20,7 +20,7 @@
 
 //**********************************************************************************
 //* クラス名        ：DamSqlDbWithMultiShard
-//* クラス日本語名  ：データアクセス・プロバイダ＝Npgsqlのデータアクセス制御クラス
+//* クラス日本語名  ：データアクセス・プロバイダ＝SQLデータベースのMultiShardクエリのデータアクセス制御クラス
 //*
 //* 作成者          ：生技 西野
 //* 更新履歴        ：
@@ -31,24 +31,27 @@
 //*  2016/04/22  Supragyan        Created MultiShardConnection,MultiShardCommand,MultiShardDataReader 
 //*                               to support MultiShard Query
 //**********************************************************************************
-//system
-using System;
-using System.Collections.Generic;
+
+// データアクセスプロバイダ（SqlClient）
 using System.Data.SqlClient;
+
+// System
+using System;
 using System.Data;
 using System.Collections;
 
-//Microsoft
+// Microsoft
 using Microsoft.Azure.SqlDatabase.ElasticScale.Query;
-using Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement;
 
-//Touryo
+// 部品
 using Touryo.Infrastructure.Public.Db;
 using Touryo.Infrastructure.Public.Util;
 using Touryo.Infrastructure.Public.Log;
 
 namespace DamSqlDbWithMultiShard
 {
+    /// <summary>データアクセス・プロバイダ＝AzureElasticScaleのデータアクセス制御クラス</summary>
+    /// <remarks>必要なメソッド・プロパティを利用する</remarks>
     public class DamSqlDbWithMultiShard : BaseDam
     {
         #region クラス変数
@@ -84,6 +87,7 @@ namespace DamSqlDbWithMultiShard
             }
             private set
             {
+                //set the connection
                 _cnn = value;
             }
         }
@@ -188,32 +192,32 @@ namespace DamSqlDbWithMultiShard
             else if (iso == DbEnum.IsolationLevelEnum.DefaultTransaction)
             {
                 // 規定の分離レベルでトランザクションを開始する。
-                LogIF.DebugLog("ACCESS", "Transaction not supported");
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.ReadUncommitted)
             {
                 // 非コミット読み取りの分離レベルでトランザクションを開始する。
-                LogIF.DebugLog("ACCESS", "Transaction not supported");
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.ReadCommitted)
             {
                 // コミット済み読み取りの分離レベルでトランザクションを開始する。
-                LogIF.DebugLog("ACCESS", "Transaction not supported");
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.RepeatableRead)
             {
                 // 反復可能読み取りの分離レベルでトランザクションを開始する。
-                LogIF.DebugLog("ACCESS", "Transaction not supported");
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.Serializable)
             {
                 // 直列化可能の分離レベルでトランザクションを開始する。
-                LogIF.DebugLog("ACCESS", "Transaction not supported");
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.Snapshot)
             {
                 // スナップショット分離レベルでトランザクションを開始する。
-                LogIF.DebugLog("ACCESS", "Transaction not supported");
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.User)
             {
@@ -247,7 +251,7 @@ namespace DamSqlDbWithMultiShard
         public override void CommitTransaction()
         {
             // Txオブジェクトの存在チェック
-            LogIF.DebugLog("ACCESS", "Transaction not supported");
+            LogIF.DebugLog("ACCESS", "Transaction not supported (CommitTransaction)");
         }
 
         /// <summary>トランザクションのロールバック</summary>
@@ -255,13 +259,15 @@ namespace DamSqlDbWithMultiShard
         public override void RollbackTransaction()
         {
             //// Txオブジェクトの存在チェック
-            LogIF.DebugLog("ACCESS", "Transaction not supported");
+            LogIF.DebugLog("ACCESS", "Transaction not supported (RollbackTransaction)");
         }
 
         #endregion
+
         #endregion
 
         #region SQLの作成
+
         # region SetSql系
 
         /// <summary>SQL文を記述したファイルへのパスを設定して、Commandオブジェクトを生成。</summary>
@@ -497,6 +503,8 @@ namespace DamSqlDbWithMultiShard
             }
         }
 
+        #endregion
+
         #region SQLの実行
 
         #region SQL実行前の制御用メソッド
@@ -629,9 +637,10 @@ namespace DamSqlDbWithMultiShard
             // 制御用メソッド
             this.PreExecQuery();
 
-            // データリーダを返す。
-            _cmd.ExecutionOptions = MultiShardExecutionOptions.IncludeShardNameColumn;
+            //Allow for partial results in case some shards fails to respond
             _cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults;
+
+            // データリーダを返す。
             return this._cmd.ExecuteReader();
         }
 
@@ -792,15 +801,5 @@ namespace DamSqlDbWithMultiShard
         #endregion
 
         #endregion
-
-        #endregion
     }
 }
-
-
-
-
-
-
-
-

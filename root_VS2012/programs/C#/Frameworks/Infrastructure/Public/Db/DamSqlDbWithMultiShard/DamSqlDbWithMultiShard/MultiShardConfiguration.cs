@@ -31,19 +31,14 @@
 //*                                common properties,methods to get the shards 
 //**********************************************************************************
 
-//system
-using System;
+// system
 using System.Configuration;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//Microsoft
-using Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement;
-//touryo
-using Touryo.Infrastructure.Public.Util;
 using System.Data.SqlClient;
+// Microsoft
+using Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement;
+// Touryo
+using Touryo.Infrastructure.Public.Util;
 
 namespace DamSqlDbWithMultiShard
 {
@@ -59,7 +54,7 @@ namespace DamSqlDbWithMultiShard
         private static IEnumerable<Shard> _shards;
 
         /// <summary>
-        /// Gets the server name from the App.config file for shards to be created on.
+        /// Property to get the server name values defined for appSettings tag of the configuration file
         /// </summary>
         private static string _serverName
         {
@@ -70,7 +65,7 @@ namespace DamSqlDbWithMultiShard
         }
 
         /// <summary>
-        /// Gets the server name from the App.config file for shards to be created on.
+        /// Property to get the edition values defined for appSettings tag of the configuration file. 
         /// </summary>
         private static string _databaseEdition
         {
@@ -79,18 +74,18 @@ namespace DamSqlDbWithMultiShard
                 return ConfigurationManager.AppSettings["DatabaseEdition"];
             }
         }
-        
+
         /// <summary>customerId</summary>
         public static int customerId;
 
-        /// <summary>shardMap</summary>
+        /// <summary>connection string</summary>
         public static string connStr = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
 
         /// <summary>SQL master database name.</summary>
         public static string MasterDatabaseName;
 
         /// <summary>
-        /// Gets all Shards.
+        /// Property to get and set all the Shards.
         /// </summary>
         public static IEnumerable<Shard> Shards
         {
@@ -190,8 +185,10 @@ namespace DamSqlDbWithMultiShard
         #region connectionstring methods
 
         /// <summary>
-        /// Returns a connection string that can be used to connect to the specified server and database.
+        /// Defined in the connectionStrings tag of the configuration file
+        /// To get the connection string for the specified server and database
         /// </summary>
+        /// <returns>Connection strings that are defined in the configuration file with ServerName, DatabaseName</returns>
         public static string GetConnectionString()
         {
             SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
@@ -201,8 +198,10 @@ namespace DamSqlDbWithMultiShard
         }
 
         /// <summary>
-        /// Returns a connection string that can be used to connect to the specified server and database.
+        /// Defined in the connectionStrings tag of the configuration file
+        /// To get the connection string for the specified server and master database
         /// </summary>
+        /// <returns>Connection strings that are defined in the configuration file with ServerName, master databaseName</returns>
         public static string GetConnectionStringByMasterDatabase()
         {
             SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
@@ -212,18 +211,22 @@ namespace DamSqlDbWithMultiShard
         }
 
         /// <summary>
-        /// Returns a connection string that can be used to connect to the specified shard.
+        /// Defined in the connectionStrings tag of the configuration file
+        /// Defined customerId in the MultiShardConfiguration class
+        /// To get the connection string for the specified shard from ShardMap
         /// </summary>
-        /// <param name="connstring"></param>
-        /// <returns></returns>
+        /// <param name="connstring">connstring that is defined in the configuration file</param>
+        /// <returns>Connection strings for specific shard from shardmap</returns>
         public static SqlConnection GetDataDependentRoutingConnectionString(string connstring)
         {
-           return MultiShardConfiguration.TryGetShardMap().OpenConnectionForKey(MultiShardConfiguration.customerId, connstring);
+            return MultiShardConfiguration.TryGetShardMap().OpenConnectionForKey(MultiShardConfiguration.customerId, connstring);
         }
 
         /// <summary>
-        /// Returns a connection string that can be used to connect to the specified server and database.
+        /// Defined in the connectionStrings tag of the configuration file
+        /// To get the connection string for the specified server and database
         /// </summary>
+        /// <returns>Connection strings that are defined in the configuration file with ServerName, databaseName</returns>
         public static string GetConnectionStringBySelectedDatabase(string database)
         {
             SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
