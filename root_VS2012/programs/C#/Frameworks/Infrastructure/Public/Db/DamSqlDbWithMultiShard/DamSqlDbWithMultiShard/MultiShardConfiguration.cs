@@ -75,7 +75,7 @@ namespace DamSqlDbWithMultiShard
         #region Property
 
         /// <summary>
-        /// Property to get the server name values defined for appSettings tag of the configuration file
+        /// Gets the server name values defined for appSettings tag of the configuration file
         /// </summary>
         private static string _serverName
         {
@@ -86,7 +86,7 @@ namespace DamSqlDbWithMultiShard
         }
 
         /// <summary>
-        /// Property to get the edition values defined for appSettings tag of the configuration file. 
+        /// Gets the edition values defined for appSettings tag of the configuration file. 
         /// </summary>
         private static string _databaseEdition
         {
@@ -167,10 +167,11 @@ namespace DamSqlDbWithMultiShard
         #endregion
 
         #region Shard map helper methods
-
+        
         /// <summary>
-        /// Gets the shard map, if it exists. If it doesn't exist, writes out the reason and returns null.
+        /// Gets the shard map, if it exists. If it doesn't exist, returns null.
         /// </summary>
+        /// <returns>shardMap</returns>
         public static RangeShardMap<int> TryGetShardMap()
         {
             if (objShardMapManager == null)
@@ -194,10 +195,9 @@ namespace DamSqlDbWithMultiShard
         #region connectionstring methods
 
         /// <summary>
-        /// Defined in the connectionStrings tag of the configuration file
-        /// To get the connection string for the specified server and database
+        /// To get the connection string based on servername,shardmap databasename that are defined in the configuration file
         /// </summary>
-        /// <returns>Connection strings that are defined in the configuration file with ServerName, DatabaseName</returns>
+        /// <returns>Connection strings that are defined in the configuration file</returns>
         public static string GetConnectionString()
         {
             SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
@@ -207,10 +207,9 @@ namespace DamSqlDbWithMultiShard
         }
 
         /// <summary>
-        /// Defined in the connectionStrings tag of the configuration file
-        /// To get the connection string for the specified server and master database
+        /// To get the connection string based on servername,master databasename that are defined in the configuration file
         /// </summary>
-        /// <returns>Connection strings that are defined in the configuration file with ServerName, master databaseName</returns>
+        /// <returns>Connection strings that are defined in the configuration file</returns>
         public static string GetConnectionStringByMasterDatabase()
         {
             SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
@@ -220,22 +219,19 @@ namespace DamSqlDbWithMultiShard
         }
 
         /// <summary>
-        /// Defined in the connectionStrings tag of the configuration file
-        /// Defined customerId in the MultiShardConfiguration class
-        /// To get the connection string for the specified shard from ShardMap
+        /// To open the connection based on specified shard from ShardMap and connectionstring
         /// </summary>
         /// <param name="connstring">connstring that is defined in the configuration file</param>
-        /// <returns>Connection strings for specific shard from shardmap</returns>
+        /// <returns>Connection open for specific shard</returns>
         public static SqlConnection GetDataDependentRoutingConnectionString(string connstring)
         {
             return MultiShardConfiguration.TryGetShardMap().OpenConnectionForKey(MultiShardConfiguration.customerId, connstring);
         }
 
         /// <summary>
-        /// Defined in the connectionStrings tag of the configuration file
-        /// To get the connection string for the specified server and database
+        /// To get the connection string based on servername,databasename that are defined in the configuration file
         /// </summary>
-        /// <returns>Connection strings that are defined in the configuration file with ServerName, databaseName</returns>
+        /// <returns>Connection strings that are defined in the configuration file </returns>
         public static string GetConnectionStringBySelectedDatabase(string database)
         {
             SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
