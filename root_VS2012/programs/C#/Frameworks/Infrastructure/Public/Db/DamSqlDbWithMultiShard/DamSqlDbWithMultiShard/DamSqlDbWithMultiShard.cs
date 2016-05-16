@@ -72,6 +72,9 @@ namespace DamSqlDbWithMultiShard
         /// <summary>分離レベル</summary>
         private DbEnum.IsolationLevelEnum _iso;
 
+        /// <summary>MultiShardExecutionPolicy</summary>
+        private MultiShardExecutionPolicy _multiShardExecutionPolicy;
+
         #endregion
 
         #region プロパティ
@@ -101,10 +104,6 @@ namespace DamSqlDbWithMultiShard
                 // コマンドを戻す
                 return _cmd;
             }
-            set
-            {
-                _cmd = value;
-            }
         }
 
         #region IDbCommand
@@ -121,6 +120,25 @@ namespace DamSqlDbWithMultiShard
         }
 
         #endregion
+
+        #endregion
+
+        #region MultiShardExecPolicy
+
+        /// <summary>
+        /// Property for MultiShardExecutionPolicy to get/set ExecutionPolicy value
+        /// </summary>
+        public MultiShardExecutionPolicy MultiShardExecPolicy
+        {
+            get
+            {
+                return this._multiShardExecutionPolicy;
+            }
+            set
+            {
+                this._multiShardExecutionPolicy = value;
+            }
+        }
 
         #endregion
 
@@ -638,7 +656,7 @@ namespace DamSqlDbWithMultiShard
             this.PreExecQuery();
 
             //Allow for partial results in case some shards fails to respond
-            _cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults;
+            _cmd.ExecutionPolicy = this._multiShardExecutionPolicy;
 
             // データリーダを返す。
             return this._cmd.ExecuteReader();
