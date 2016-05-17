@@ -206,7 +206,7 @@ namespace Touryo.Infrastructure.Business.Business
                 else if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithDataDependent")
                 {
                     // Azure SQL用のDamを生成
-                    dam = new DamSqlDbWithMultiShard.DamSqlDbWithMultiShard();
+                    dam = new DamSqlDbWithMultiShard();
 
                     // 接続文字列をロード
                     connstring = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
@@ -214,7 +214,7 @@ namespace Touryo.Infrastructure.Business.Business
                 else if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithMultiShard")
                 {
                     // Azure SQL用のDamを生成
-                    dam = new DamSqlDbWithMultiShard.DamSqlDbWithMultiShard();
+                    dam = new DamSqlDbWithMultiShard();
 
                     // 接続文字列をロード
                     connstring = GetConfigParameter.GetConnectionString("ConnectionString_AzureSQL");
@@ -304,11 +304,11 @@ namespace Touryo.Infrastructure.Business.Business
                     dam = new DamSqlSvr();
                     if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithDataDependent")
                     {
-                        ((DamSqlSvr)dam).DamSqlConnection = DamSqlDbWithMultiShard.MultiShardConfiguration.GetDataDependentRoutingConnectionString(connstring);
+                        ((DamSqlSvr)dam).DamSqlConnection = MultiShardConfiguration.GetDataDependentRoutingConnectionString(connstring);
                     }
                     else if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithMultiShard")
                     {
-                        dam = new DamSqlDbWithMultiShard.DamSqlDbWithMultiShard();
+                        dam = new DamSqlDbWithMultiShard();
                         // コネクションをオープンする。
                         dam.ConnectionOpen(connstring);
                     }
