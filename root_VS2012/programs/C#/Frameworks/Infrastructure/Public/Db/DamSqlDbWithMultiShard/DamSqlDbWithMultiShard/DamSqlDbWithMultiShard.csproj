@@ -7,7 +7,7 @@
     <ProjectGuid>{1AD61B64-54D8-476E-BFE7-4CBC2E4A135B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DamSqlDbWithMultiShard</RootNamespace>
+    <RootNamespace>Touryo.Infrastructure.Public.Db</RootNamespace>
     <AssemblyName>DamSqlDbWithMultiShard</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -38,8 +38,9 @@
     <Reference Include="Microsoft.Azure.SqlDatabase.ElasticScale.Client">
       <HintPath>..\packages\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.2.0\lib\net45\Microsoft.Azure.SqlDatabase.ElasticScale.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Public">
-      <HintPath>..\..\..\bin\Debug\Public.dll</HintPath>
+    <Reference Include="Public, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Build\Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

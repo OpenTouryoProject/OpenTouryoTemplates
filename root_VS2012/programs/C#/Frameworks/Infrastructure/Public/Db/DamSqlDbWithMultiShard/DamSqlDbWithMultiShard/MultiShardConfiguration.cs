@@ -40,7 +40,7 @@ using Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement;
 // Touryo
 using Touryo.Infrastructure.Public.Util;
 
-namespace DamSqlDbWithMultiShard
+namespace Touryo.Infrastructure.Public.Db
 {
     /// <summary>
     /// MultiShardConfiguration class

@@ -44,11 +44,10 @@ using System.Collections;
 using Microsoft.Azure.SqlDatabase.ElasticScale.Query;
 
 // 部品
-using Touryo.Infrastructure.Public.Db;
 using Touryo.Infrastructure.Public.Util;
 using Touryo.Infrastructure.Public.Log;
 
-namespace DamSqlDbWithMultiShard
+namespace Touryo.Infrastructure.Public.Db
 {
     /// <summary>データアクセス・プロバイダ＝AzureElasticScaleのデータアクセス制御クラス</summary>
     /// <remarks>必要なメソッド・プロパティを利用する</remarks>
@@ -87,11 +86,6 @@ namespace DamSqlDbWithMultiShard
             {
                 // コネクションを戻す
                 return _cnn;
-            }
-            private set
-            {
-                //set the connection
-                _cnn = value;
             }
         }
 
