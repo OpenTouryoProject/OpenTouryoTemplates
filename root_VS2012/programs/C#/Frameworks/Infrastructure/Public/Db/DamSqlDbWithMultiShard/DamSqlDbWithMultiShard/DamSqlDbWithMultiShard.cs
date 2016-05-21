@@ -72,7 +72,7 @@ namespace Touryo.Infrastructure.Public.Db
         private DbEnum.IsolationLevelEnum _iso;
 
         /// <summary>MultiShardExecutionPolicy</summary>
-        private MultiShardExecutionPolicy _multiShardExecutionPolicy;
+        private MultiShardExecutionPolicy _multiShardExecutionPolicy = MultiShardExecutionPolicy.PartialResults;
 
         #endregion
 

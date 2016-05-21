@@ -81,7 +81,7 @@ namespace Touryo.Infrastructure.Public.Db
         {
             get
             {
-                return ConfigurationManager.AppSettings["ServerName"];
+                return ConfigurationManager.AppSettings["AzureSQLDatabaseServerName"];
             }
         }
 
