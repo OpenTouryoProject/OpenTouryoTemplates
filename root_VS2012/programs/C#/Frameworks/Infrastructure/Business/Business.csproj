@@ -131,6 +131,10 @@
       <Project>{81CC573A-0DF9-49E5-AF10-A50F9B194DA5}</Project>
       <Name>Public</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Public\Db\DamSqlDbWithMultiShard\DamSqlDbWithMultiShard\DamSqlDbWithMultiShard.csproj">
+      <Project>{1ad61b64-54d8-476e-bfe7-4cbc2e4a135b}</Project>
+      <Name>DamSqlDbWithMultiShard</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
