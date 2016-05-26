@@ -42,16 +42,16 @@ Public Class RouteConfig
         ' ・ defaults：初期値。 
 
         ' Defaultルートを定義
-        routes.MapRoute(name:="Default", url:="{controller}/{action}/{id}", defaults:=New With { _
-            Key .controller = "CrudMu", _
-            Key .action = "Index", _
-            Key .id = UrlParameter.[Optional] _
-        })
+        routes.MapRoute( _
+            name:="Default", _
+            url:="{controller}/{action}/{id}", _
+            defaults:=New With {.controller = "CrudMu", .action = "Index", .id = UrlParameter.[Optional]} _
+            )
 
-        routes.MapRoute(name:="Default2", url:="{controller}/{action}/{id}", defaults:=New With { _
-            Key .controller = "CrudMu2", _
-            Key .action = "Index", _
-            Key .id = UrlParameter.[Optional] _
-        })
+        routes.MapRoute( _
+            name:="Default2", _
+            url:="{controller}/{action}/{id}", _
+            defaults:=New With {.controller = "CrudMu2", .action = "Index", .id = UrlParameter.[Optional]} _
+            )
     End Sub
 End Class

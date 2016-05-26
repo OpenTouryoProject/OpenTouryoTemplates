@@ -34,38 +34,14 @@ Public NotInheritable Class ErrorInformation
     ''' ErrorMessage
     ''' </summary>
     Public Shared Property ErrorMessage() As String
-        Get
-            Return m_ErrorMessage
-        End Get
-        Set(value As String)
-            m_ErrorMessage = Value
-        End Set
-    End Property
-    Private Shared m_ErrorMessage As String
 
     ''' <summary>
     ''' ErrorInformation
     ''' </summary>
     Public Shared Property ErrorInfo() As String
-        Get
-            Return m_ErrorInfo
-        End Get
-        Set(value As String)
-            m_ErrorInfo = Value
-        End Set
-    End Property
-    Private Shared m_ErrorInfo As String
 
     ''' <summary>
     ''' ErrorDatas
     ''' </summary>
     Public Shared Property ErrorDatas() As List(Of ExceptionData)
-        Get
-            Return m_ErrorDatas
-        End Get
-        Set(value As List(Of ExceptionData))
-            m_ErrorDatas = Value
-        End Set
-    End Property
-    Private Shared m_ErrorDatas As List(Of ExceptionData)
 End Class

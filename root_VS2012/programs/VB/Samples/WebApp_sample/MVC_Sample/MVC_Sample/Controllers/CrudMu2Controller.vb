@@ -82,7 +82,10 @@ Namespace Controllers
         Public Function GetCount(ddlDap As String, ddlMode1 As String, ddlMode2 As String, ddlExRollback As String, form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button1", "SelectCount", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button1", "SelectCount", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 戻り値
             Dim testReturnValue As TestReturnValue
@@ -130,7 +133,10 @@ Namespace Controllers
         Public Function SelectAll_DT(ddlDap As String, ddlMode1 As String, ddlMode2 As String, ddlExRollback As String, form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button2", "SelectAll_DT", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button2", "SelectAll_DT", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 戻り値
             Dim testReturnValue As TestReturnValue
@@ -188,7 +194,10 @@ Namespace Controllers
         Public Function SelectAll_DS(ddlDap As String, ddlMode1 As String, ddlMode2 As String, ddlExRollback As String, form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button3", "SelectAll_DS", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button3", "SelectAll_DS", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 戻り値
             Dim testReturnValue As TestReturnValue
@@ -246,7 +255,10 @@ Namespace Controllers
         Public Function SelectAll_DR(ddlDap As String, ddlMode1 As String, ddlMode2 As String, ddlExRollback As String, form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button4", "SelectAll_DR", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button4", "SelectAll_DR", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 戻り値
             Dim testReturnValue As TestReturnValue
@@ -307,7 +319,10 @@ Namespace Controllers
             form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button5", "SelectAll_DSQL", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button5", "SelectAll_DSQL", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 動的SQLの要素を設定
             testParameterValue.OrderColumn = ddlOrderColumn
@@ -370,7 +385,10 @@ Namespace Controllers
         Public Function [Select](ddlDap As String, ddlMode1 As String, ddlMode2 As String, ddlExRollback As String, textBox1 As String, form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button6", "Select", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button6", "Select", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 動的SQLの要素を設定
             testParameterValue.ShipperID = Integer.Parse(textBox1)
@@ -427,7 +445,10 @@ Namespace Controllers
             form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button7", "Insert", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button7", "Insert", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 動的SQLの要素を設定
             testParameterValue.CompanyName = textBox2
@@ -482,7 +503,10 @@ Namespace Controllers
             textBox3 As String, form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button8", "Update", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button8", "Update", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 動的SQLの要素を設定
             testParameterValue.ShipperID = Integer.Parse(textBox1)
@@ -535,7 +559,10 @@ Namespace Controllers
         Public Function Delete(ddlDap As String, ddlMode1 As String, ddlMode2 As String, ddlExRollback As String, textBox1 As String, form As FormCollection) As ActionResult
             ' 引数クラスを生成
             ' 下位（Ｂ・Ｄ層）は、テスト クラスを流用する
-            Dim testParameterValue As New TestParameterValue("CrudMu", "button9", "Delete", ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, New MyUserInfo("aaa", "192.168.1.1"))
+            Dim testParameterValue As New TestParameterValue( _
+                "CrudMu", "button9", "Delete", _
+                ddlDap & "%" & ddlMode1 & "%" & ddlMode2 & "%" & ddlExRollback, _
+                New MyUserInfo("aaa", "192.168.1.1"))
 
             ' 動的SQLの要素を設定
             testParameterValue.ShipperID = Integer.Parse(textBox1)

@@ -763,7 +763,10 @@ Namespace Logic.Business
                     DirectCast(Me.ReturnValue, TestReturnValue).Obj = "戻り値が戻るか？"
 
                     ' 業務例外のスロー
-                    Throw New BusinessApplicationException("ロールバックのテスト", "ロールバックのテスト", "エラー情報")
+                    Throw New BusinessApplicationException( _
+                        "ロールバックのテスト", _
+                        "ロールバックのテスト", _
+                        "エラー情報")
                     'break; // 到達できないためコメントアウト
 
                 Case "System"
@@ -772,7 +775,9 @@ Namespace Logic.Business
                     DirectCast(Me.ReturnValue, TestReturnValue).Obj = "戻り値が戻るか？"
 
                     ' システム例外のスロー
-                    Throw New BusinessSystemException("ロールバックのテスト", "ロールバックのテスト")
+                    Throw New BusinessSystemException( _
+                        "ロールバックのテスト", _
+                        "ロールバックのテスト")
                     'break; // 到達できないためコメントアウト
 
                 Case "Other"

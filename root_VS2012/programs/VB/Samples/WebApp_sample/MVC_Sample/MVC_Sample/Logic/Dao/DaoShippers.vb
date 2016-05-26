@@ -103,7 +103,6 @@ Namespace Logic.Dao
 
 #Region "プロパティ プロシージャ（setter、getter）"
 
-
         ''' <summary>ShipperID列（主キー列）に対するパラメタ ライズド クエリのパラメタを設定する。</summary>
         ''' <remarks>更新処理時のSET句で使用するパラメタを除く</remarks>
         Public Property PK_ShipperID() As Object
@@ -114,8 +113,6 @@ Namespace Logic.Dao
                 Me.HtParameter("ShipperID") = value
             End Set
         End Property
-
-
 
         ''' <summary>CompanyName列に対するパラメタ ライズド クエリのパラメタを設定する。</summary>
         ''' <remarks>更新処理時のSET句で使用するパラメタを除く</remarks>
@@ -139,7 +136,6 @@ Namespace Logic.Dao
             End Set
         End Property
 
-
         ''' <summary>Set_ShipperID_forUPD列に対するパラメタ ライズド クエリのパラメタを設定する。</summary>
         ''' <remarks>更新処理時のSET句で使用するパラメタ専用</remarks>
         Public Property Set_ShipperID_forUPD() As Object
@@ -150,7 +146,6 @@ Namespace Logic.Dao
                 Me.HtParameter("Set_ShipperID_forUPD") = value
             End Set
         End Property
-
 
         ''' <summary>Set_CompanyName_forUPD列に対するパラメタ ライズド クエリのパラメタを設定する。</summary>
         ''' <remarks>更新処理時のSET句で使用するパラメタ専用</remarks>
@@ -163,7 +158,6 @@ Namespace Logic.Dao
             End Set
         End Property
 
-
         ''' <summary>Set_Phone_forUPD列に対するパラメタ ライズド クエリのパラメタを設定する。</summary>
         ''' <remarks>更新処理時のSET句で使用するパラメタ専用</remarks>
         Public Property Set_Phone_forUPD() As Object
@@ -174,8 +168,6 @@ Namespace Logic.Dao
                 Me.HtParameter("Set_Phone_forUPD") = value
             End Set
         End Property
-
-
 
         ''' <summary>ShipperID_Like列に対するパラメタ ライズド クエリのパラメタを設定する。</summary>
         ''' <remarks>動的参照処理時のLIKE検索で使用するパラメタ専用</remarks>
@@ -188,7 +180,6 @@ Namespace Logic.Dao
             End Set
         End Property
 
-
         ''' <summary>CompanyName_Like列に対するパラメタ ライズド クエリのパラメタを設定する。</summary>
         ''' <remarks>動的参照処理時のLIKE検索で使用するパラメタ専用</remarks>
         Public Property CompanyName_Like() As Object
@@ -200,7 +191,6 @@ Namespace Logic.Dao
             End Set
         End Property
 
-
         ''' <summary>Phone_Like列に対するパラメタ ライズド クエリのパラメタを設定する。</summary>
         ''' <remarks>動的参照処理時のLIKE検索で使用するパラメタ専用</remarks>
         Public Property Phone_Like() As Object
@@ -211,7 +201,6 @@ Namespace Logic.Dao
                 Me.HtParameter("Phone_Like") = value
             End Set
         End Property
-
 
 #End Region
 

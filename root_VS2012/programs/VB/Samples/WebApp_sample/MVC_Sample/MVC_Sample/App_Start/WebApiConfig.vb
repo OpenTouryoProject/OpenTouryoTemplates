@@ -30,9 +30,11 @@ Public NotInheritable Class WebApiConfig
     '''  さらに、Web APIの中でMVC Routingを使用しても良い。
     ''' </summary>
     Public Shared Sub Register(config As HttpConfiguration)
-        config.Routes.MapHttpRoute(name:="DefaultApi", routeTemplate:="api/{controller}/{id}", defaults:=New With { _
-            Key .id = RouteParameter.[Optional] _
-        })
+        config.Routes.MapHttpRoute( _
+            name:="DefaultApi", _
+            routeTemplate:="api/{controller}/{id}", _
+            defaults:=New With {.id = RouteParameter.[Optional]} _
+            )
 
         '' トレース機能を有効化します。
         'TraceConfig.Register(config);

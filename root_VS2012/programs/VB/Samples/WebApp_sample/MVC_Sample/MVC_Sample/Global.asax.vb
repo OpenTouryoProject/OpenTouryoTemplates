@@ -224,5 +224,4 @@ Public Class MvcApplication
     Private Sub Application_OnPreSendRequestContent(sender As Object, e As EventArgs)
         System.Diagnostics.Debug.WriteLine("Application_OnPreSendRequestContent")
     End Sub
-
 End Class
