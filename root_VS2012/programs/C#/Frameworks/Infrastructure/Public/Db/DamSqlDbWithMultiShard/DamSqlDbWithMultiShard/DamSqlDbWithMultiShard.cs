@@ -613,26 +613,22 @@ namespace Touryo.Infrastructure.Public.Db
 
         #region 外部公開API
 
-        /// <summary>Selectクエリを実行し、データテーブルを返す。</summary>
-        /// <param name="dt">データテーブル</param>
+        /// <summary>This method is not supported.</summary>
         /// <remarks>
-        /// MultiShardDataAdapterのFillを実行する。
-        /// 通常、Ｄａｏ経由で利用する。
+        /// Delete this tag.
         /// </remarks>
         public override void ExecSelectFill_DT(DataTable dt)
         {
-            throw new NotImplementedException(PublicExceptionMessage.NOT_IMPLEMENTED);
+            throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
-        /// <summary>Selectクエリを実行し、データセットを返す。</summary>
-        /// <param name="ds">データセット</param>
+        /// <summary>This method is not supported.</summary>
         /// <remarks>
-        /// MultiShardDataAdapterのFillを実行する。
-        /// 通常、Ｄａｏ経由で利用する。
+        /// Delete this tag.
         /// </remarks>
         public override void ExecSelectFill_DS(DataSet ds)
         {
-            throw new NotImplementedException(PublicExceptionMessage.NOT_IMPLEMENTED);
+            throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
         /// <summary>Selectクエリを実行し、データリーダを返す。</summary>
@@ -656,26 +652,22 @@ namespace Touryo.Infrastructure.Public.Db
             return this._cmd.ExecuteReader();
         }
 
-        /// <summary>Selectクエリを実行し、結果セットの最初の行の最初の列を返す。</summary>
-        /// <returns>結果セットの最初の行の最初の列（オブジェクト型） </returns>
+        /// <summary>This method is not supported.</summary>
         /// <remarks>
-        /// MultiShardCommandのExecuteScalarを実行する。
-        /// 通常、Ｄａｏ経由で利用する。
+        /// Delete this tag.
         /// </remarks>
         public override object ExecSelectScalar()
         {
-            throw new NotImplementedException(PublicExceptionMessage.NOT_IMPLEMENTED);
+            throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
-        /// <summary>Insert、Update、Deleteクエリを実行し、影響を受けた行数を返す。</summary>
-        /// <returns>影響を受けた行数</returns>
+        /// <summary>This method is not supported.</summary>
         /// <remarks>
-        /// MultiShardCommandのExecuteNonQueryを実行する。
-        /// 通常、Ｄａｏ経由で利用する。
+        /// Delete this tag.
         /// </remarks>
         public override int ExecInsUpDel_NonQuery()
         {
-            throw new NotImplementedException(PublicExceptionMessage.NOT_IMPLEMENTED);
+            throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
         /// <summary>静的SQLを生成する</summary>
