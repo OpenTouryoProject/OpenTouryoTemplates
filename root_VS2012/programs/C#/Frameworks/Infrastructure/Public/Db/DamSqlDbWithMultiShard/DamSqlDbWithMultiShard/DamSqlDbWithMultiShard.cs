@@ -614,18 +614,12 @@ namespace Touryo.Infrastructure.Public.Db
         #region 外部公開API
 
         /// <summary>This method is not supported.</summary>
-        /// <remarks>
-        /// Delete this tag.
-        /// </remarks>
         public override void ExecSelectFill_DT(DataTable dt)
         {
             throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
         /// <summary>This method is not supported.</summary>
-        /// <remarks>
-        /// Delete this tag.
-        /// </remarks>
         public override void ExecSelectFill_DS(DataSet ds)
         {
             throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
@@ -653,18 +647,12 @@ namespace Touryo.Infrastructure.Public.Db
         }
 
         /// <summary>This method is not supported.</summary>
-        /// <remarks>
-        /// Delete this tag.
-        /// </remarks>
         public override object ExecSelectScalar()
         {
             throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
         /// <summary>This method is not supported.</summary>
-        /// <remarks>
-        /// Delete this tag.
-        /// </remarks>
         public override int ExecInsUpDel_NonQuery()
         {
             throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
