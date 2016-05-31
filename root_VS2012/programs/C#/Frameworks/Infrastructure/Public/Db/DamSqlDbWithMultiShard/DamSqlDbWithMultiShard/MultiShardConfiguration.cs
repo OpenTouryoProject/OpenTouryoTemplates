@@ -210,7 +210,7 @@ namespace Touryo.Infrastructure.Public.Db
         /// To get the connection string based on servername,master databasename that are defined in the configuration file
         /// </summary>
         /// <returns>Connection strings that are defined in the configuration file</returns>
-        public static string GetConnectionStringByMasterDatabase()
+        public static string GetConnectionStringForMasterDatabase()
         {
             SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
             sbConnStr.DataSource = ShardMapManagerServerName;
@@ -223,7 +223,7 @@ namespace Touryo.Infrastructure.Public.Db
         /// </summary>
         /// <param name="connstring">connstring that is defined in the configuration file</param>
         /// <returns>Connection open for specific shard</returns>
-        public static SqlConnection GetDataDependentRoutingConnectionString(string connstring)
+        public static SqlConnection GetDataDependentRoutingConnection(string connstring)
         {
             return MultiShardConfiguration.TryGetShardMap().OpenConnectionForKey(MultiShardConfiguration.customerId, connstring);
         }
