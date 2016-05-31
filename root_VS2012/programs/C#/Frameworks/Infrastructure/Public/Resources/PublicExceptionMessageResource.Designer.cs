@@ -259,7 +259,7 @@ namespace Touryo.Infrastructure.Public.Resources {
         }
         
         /// <summary>
-        ///   This process is not supported に類似しているローカライズされた文字列を検索します。
+        ///   This process is not supported. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string NOT_SUPPORTED {
             get {
