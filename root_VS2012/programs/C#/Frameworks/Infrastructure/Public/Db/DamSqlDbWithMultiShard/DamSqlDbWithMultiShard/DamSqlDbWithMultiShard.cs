@@ -203,32 +203,26 @@ namespace Touryo.Infrastructure.Public.Db
             }
             else if (iso == DbEnum.IsolationLevelEnum.DefaultTransaction)
             {
-                // 規定の分離レベルでトランザクションを開始する。
                 LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.ReadUncommitted)
             {
-                // 非コミット読み取りの分離レベルでトランザクションを開始する。
                 LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.ReadCommitted)
             {
-                // コミット済み読み取りの分離レベルでトランザクションを開始する。
                 LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.RepeatableRead)
             {
-                // 反復可能読み取りの分離レベルでトランザクションを開始する。
                 LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.Serializable)
             {
-                // 直列化可能の分離レベルでトランザクションを開始する。
                 LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.Snapshot)
             {
-                // スナップショット分離レベルでトランザクションを開始する。
                 LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.User)
@@ -262,7 +256,6 @@ namespace Touryo.Infrastructure.Public.Db
         /// <remarks>必要に応じて利用する。</remarks>
         public override void CommitTransaction()
         {
-            // Txオブジェクトの存在チェック
             LogIF.DebugLog("ACCESS", "Transaction not supported (CommitTransaction)");
         }
 
@@ -270,7 +263,6 @@ namespace Touryo.Infrastructure.Public.Db
         /// <remarks>必要に応じて利用する。</remarks>
         public override void RollbackTransaction()
         {
-            //// Txオブジェクトの存在チェック
             LogIF.DebugLog("ACCESS", "Transaction not supported (RollbackTransaction)");
         }
 
@@ -419,7 +411,7 @@ namespace Touryo.Infrastructure.Public.Db
                 // nullの場合は、設定しない。
                 if (dbTypeInfo != null)
                 {
-                    // フラグ
+                    // フラグ (DbType型を使うかDataProvider固有型を使うか判定する)
                     bool isDbType = false;
 
                     // 設定方法の選択
