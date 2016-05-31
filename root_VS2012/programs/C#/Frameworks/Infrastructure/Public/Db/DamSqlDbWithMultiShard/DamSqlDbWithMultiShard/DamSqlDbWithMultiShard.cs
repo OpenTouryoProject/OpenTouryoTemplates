@@ -1,5 +1,5 @@
-//**********************************************************************************
-//* Copyright (C) 2007,2014 Hitachi Solutions,Ltd.
+﻿//**********************************************************************************
+//* Copyright (C) 2007,2016 Hitachi Solutions,Ltd.
 //**********************************************************************************
 
 #region Apache License
@@ -19,35 +19,17 @@
 #endregion
 
 //**********************************************************************************
-//* クラス名        ：DamSqlSvr
-//* クラス日本語名  ：データアクセス・プロバイダ＝SqlClientのデータアクセス制御クラス
+//* クラス名        ：DamSqlDbWithMultiShard
+//* クラス日本語名  ：データアクセス・プロバイダ＝SQLデータベースのMultiShardクエリのデータアクセス制御クラス
 //*
 //* 作成者          ：生技 西野
 //* 更新履歴        ：
 //* 
 //*  日時        更新者            内容
 //*  ----------  ----------------  -------------------------------------------------
-//*  2007/xx/xx  西野  大介        新規作成
-//*  2008/10/24  西野  大介        問題点の修正
-//*  2009/03/19  西野  大介        DRのインターフェイスをobject→IDataReaderへ変更。
-//*  2009/03/29  西野  大介        追加したNotConnectの対応。
-//*  2009/04/20  西野  大介        実行後、初期化して連続実行可能にする。
-//*  2009/04/26  西野  大介        配列バインド対応を兼ね、型指定を可能にした。
-//*  2009/04/28  西野  大介        デフォルト値を設けた
-//*  2009/06/02  西野  大介        sln - IR版からの修正
-//*                                ・#12 ： FxSqlTracelogがnullの場合NullReferenceとなる
-//*                                ・#x  ： CommandTimeOutデフォルト値を設定
-//*  2010/02/18  西野  大介        HiRDB対応として、サイズ指定を可能に、また、
-//*                                合わせてSize, Directionなどのプロパティもサポート
-//*  2010/09/24  西野  大介        型チェック方式の見直し（ GetType() & typeof() ）
-//*  2010/09/24  西野  大介        ジェネリック対応（Dictionary、List、Queue、Stack<T>）
-//*                                nullチェック方法、Contains → ContainsKeyなどに注意
-//*  2010/11/02  西野  大介        GetParameterメソッドを追加（ｽﾄｱﾄﾞ ﾕｰｻﾞﾋﾞﾘﾃｨ向上）
-//*  2012/03/16  西野  大介        ClearTextの所の仕様変更（文字列中は、空白・タブを詰めない）。
-//*  2012/03/21  西野  大介        SQLの型指定（.net型）対応
-//*  2013/07/07  西野  大介        ExecGenerateSQL（SQL生成）メソッド（実行しない）を追加
-//*  2013/07/09  西野  大介        静的SQLでもユーザパラメタを保存（操作ログで使用する用途）
-//*  2015/07/05  Sai              Implemented virtual property of IDbCommand in DamSqlSvr class
+//*  2016/04/22  Supragyan        Created DamSqlDbWithMultiShard class to support MultiShard Query
+//*  2016/04/22  Supragyan        Created MultiShardConnection,MultiShardCommand,MultiShardDataReader 
+//*                               to support MultiShard Query
 //**********************************************************************************
 
 // データアクセスプロバイダ（SqlClient）
@@ -55,27 +37,21 @@ using System.Data.SqlClient;
 
 // System
 using System;
-using System.IO;
-using System.Xml;
-using System.Text;
 using System.Data;
 using System.Collections;
 
-// 業務フレームワーク（循環参照になるため、参照しない）
-// フレームワーク（循環参照になるため、参照しない）
+// Microsoft
+using Microsoft.Azure.SqlDatabase.ElasticScale.Query;
 
 // 部品
-using Touryo.Infrastructure.Public.Db;
-using Touryo.Infrastructure.Public.IO;
-using Touryo.Infrastructure.Public.Log;
-using Touryo.Infrastructure.Public.Str;
 using Touryo.Infrastructure.Public.Util;
+using Touryo.Infrastructure.Public.Log;
 
 namespace Touryo.Infrastructure.Public.Db
 {
-    /// <summary>データアクセス・プロバイダ＝SqlClientのデータアクセス制御クラス</summary>
+    /// <summary>データアクセス・プロバイダ＝AzureElasticScaleのデータアクセス制御クラス</summary>
     /// <remarks>必要なメソッド・プロパティを利用する</remarks>
-    public class DamSqlSvr : BaseDam
+    public class DamSqlDbWithMultiShard : BaseDam
     {
         #region クラス変数
 
@@ -87,64 +63,35 @@ namespace Touryo.Infrastructure.Public.Db
         #region インスタンス変数
 
         /// <summary>コネクション</summary>
-        private SqlConnection _cnn;
-
-        /// <summary>トランザクション</summary>
-        private SqlTransaction _tx;
+        private MultiShardConnection _cnn;
 
         /// <summary>コマンド</summary>
-        private SqlCommand _cmd;
-
-        /// <summary>アダプタ</summary>
-        private SqlDataAdapter _adpt;
+        private MultiShardCommand _cmd;
 
         /// <summary>分離レベル</summary>
         private DbEnum.IsolationLevelEnum _iso;
+
+        /// <summary>MultiShardExecutionPolicy</summary>
+        private MultiShardExecutionPolicy _multiShardExecutionPolicy = MultiShardExecutionPolicy.PartialResults;
 
         #endregion
 
         #region プロパティ
 
-        /// <summary>SqlConnection（読み取り専用）</summary>
+        /// <summary>MultiShardConnection（読み取り専用）</summary>
         /// <remarks>必要に応じて利用する。</remarks>
-        public SqlConnection DamSqlConnection
+        public MultiShardConnection DamMultiShardConnection
         {
             get
             {
                 // コネクションを戻す
                 return _cnn;
             }
-            set
-            {
-                //set the connection
-                _cnn = value;
-            }
         }
 
-        /// <summary>SqlDataAdapter（読み取り専用）</summary>
-        /// <remarks>
-        /// 利用時、コネクション、トランザクションが有効な状態になっている事
-        /// 必要に応じて利用する。
-        /// </remarks>
-        public SqlDataAdapter DamSqlDataAdapter
-        {
-            get
-            {
-                // コネクション、トランザクションを設定
-                this._cmd.Connection = this._cnn;
-                this._cmd.Transaction = this._tx;
-
-                // SelectCommandからデータアダプタを生成
-                this._adpt = new SqlDataAdapter(this._cmd);
-
-                // アダプタを戻す
-                return _adpt;
-            }
-        }
-
-        /// <summary>SqlCommand（読み取り専用）</summary>
+        /// <summary>MultiShardCommand（読み取り専用）</summary>
         /// <remarks>必要に応じて利用する。</remarks>
-        public SqlCommand DamSqlCommand
+        public MultiShardCommand DamMultiShardCommand
         {
             get
             {
@@ -168,14 +115,22 @@ namespace Touryo.Infrastructure.Public.Db
 
         #endregion
 
-        /// <summary>SqlTransaction（読み取り専用）</summary>
-        /// <remarks>必要に応じて利用する。</remarks>
-        public SqlTransaction DamSqlTransaction
+        #endregion
+
+        #region MultiShardExecPolicy
+
+        /// <summary>
+        /// Property for MultiShardExecutionPolicy to get/set ExecutionPolicy value
+        /// </summary>
+        public MultiShardExecutionPolicy MultiShardExecPolicy
         {
             get
             {
-                // トランザクションを戻す
-                return _tx;
+                return this._multiShardExecutionPolicy;
+            }
+            set
+            {
+                this._multiShardExecutionPolicy = value;
             }
         }
 
@@ -190,9 +145,8 @@ namespace Touryo.Infrastructure.Public.Db
         /// <remarks>必要に応じて利用する。</remarks>
         public override void ConnectionOpen(string connstring)
         {
-            // コネクションをオープン
-            this._cnn = new SqlConnection(connstring);
-            this._cnn.Open();
+            // コネクションをオープン  
+            this._cnn = new MultiShardConnection(MultiShardConfiguration.Shards, connstring);
         }
 
         /// <summary>コネクションの切断</summary>
@@ -206,7 +160,7 @@ namespace Touryo.Infrastructure.Public.Db
             else
             {
                 // 参照がある
-                this._cnn.Close();
+                this._cnn.Dispose();
             }
         }
 
@@ -250,32 +204,32 @@ namespace Touryo.Infrastructure.Public.Db
             else if (iso == DbEnum.IsolationLevelEnum.DefaultTransaction)
             {
                 // 規定の分離レベルでトランザクションを開始する。
-                this._tx = this._cnn.BeginTransaction();
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.ReadUncommitted)
             {
                 // 非コミット読み取りの分離レベルでトランザクションを開始する。
-                this._tx = this._cnn.BeginTransaction(IsolationLevel.ReadUncommitted);
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.ReadCommitted)
             {
                 // コミット済み読み取りの分離レベルでトランザクションを開始する。
-                this._tx = this._cnn.BeginTransaction(IsolationLevel.ReadCommitted);
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.RepeatableRead)
             {
                 // 反復可能読み取りの分離レベルでトランザクションを開始する。
-                this._tx = this._cnn.BeginTransaction(IsolationLevel.RepeatableRead);
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.Serializable)
             {
                 // 直列化可能の分離レベルでトランザクションを開始する。
-                this._tx = this._cnn.BeginTransaction(IsolationLevel.Serializable);
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.Snapshot)
             {
                 // スナップショット分離レベルでトランザクションを開始する。
-                this._tx = this._cnn.BeginTransaction(IsolationLevel.Snapshot);
+                LogIF.DebugLog("ACCESS", "Transaction not supported (BeginTransaction)");
             }
             else if (iso == DbEnum.IsolationLevelEnum.User)
             {
@@ -309,38 +263,15 @@ namespace Touryo.Infrastructure.Public.Db
         public override void CommitTransaction()
         {
             // Txオブジェクトの存在チェック
-            if (this._tx == null)
-            {
-                // nullのためなにもしない。
-            }
-            else
-            {
-                // トランザクションのコミット
-                this._tx.Commit();
-
-                // nullクリア
-                this._tx = null;
-            }
+            LogIF.DebugLog("ACCESS", "Transaction not supported (CommitTransaction)");
         }
-
 
         /// <summary>トランザクションのロールバック</summary>
         /// <remarks>必要に応じて利用する。</remarks>
         public override void RollbackTransaction()
         {
-            // Txオブジェクトの存在チェック
-            if (this._tx == null)
-            {
-                // nullのためなにもしない。
-            }
-            else
-            {
-                // トランザクションのロールバック
-                this._tx.Rollback();
-
-                // nullクリア
-                this._tx = null;
-            }
+            //// Txオブジェクトの存在チェック
+            LogIF.DebugLog("ACCESS", "Transaction not supported (RollbackTransaction)");
         }
 
         #endregion
@@ -393,7 +324,7 @@ namespace Touryo.Infrastructure.Public.Db
             this.CheckCommandText(commandText);
 
             // Commandオブジェクトを生成する
-            this._cmd = new SqlCommand();
+            this._cmd = this._cnn.CreateCommand();
             this._cmd.CommandText = commandText;
             this._cmd.CommandType = commandType;
 
@@ -603,7 +534,7 @@ namespace Touryo.Infrastructure.Public.Db
                 // 動的パラメタライズド クエリ
 
                 // パラメタライズド クエリに変換する（各タグの処理、IN句の処理）。
-                this._cmd.CommandText = this.Convert(DamSqlSvr._paramSign);
+                this._cmd.CommandText = this.Convert(DamSqlDbWithMultiShard._paramSign);
 
                 // パラメタを設定する前に、this._QueryStatusをSQL
                 // （通常のパラメタライズド・クエリ）に設定する。
@@ -682,60 +613,22 @@ namespace Touryo.Infrastructure.Public.Db
 
         #region 外部公開API
 
-        /// <summary>Selectクエリを実行し、データテーブルを返す。</summary>
-        /// <param name="dt">データテーブル</param>
-        /// <remarks>
-        /// SqlDataAdapterのFillを実行する。
-        /// 通常、Ｄａｏ経由で利用する。
-        /// </remarks>
+        /// <summary>This method is not supported.</summary>
         public override void ExecSelectFill_DT(DataTable dt)
         {
-            // SQL実行前の、
-            // ・通常のパラメタライズド クエリ
-            // ・動的パラメタライズド クエリ
-            // 制御用メソッド
-            this.PreExecQuery();
-
-            // コネクション、トランザクションを設定
-            this._cmd.Connection = this._cnn;
-            this._cmd.Transaction = this._tx;
-
-            // SelectCommandからデータアダプタを生成
-            this._adpt = new SqlDataAdapter(this._cmd);
-
-            // データをFill
-            this._adpt.Fill(dt);
+            throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
-        /// <summary>Selectクエリを実行し、データセットを返す。</summary>
-        /// <param name="ds">データセット</param>
-        /// <remarks>
-        /// SqlDataAdapterのFillを実行する。
-        /// 通常、Ｄａｏ経由で利用する。
-        /// </remarks>
+        /// <summary>This method is not supported.</summary>
         public override void ExecSelectFill_DS(DataSet ds)
         {
-            // SQL実行前の、
-            // ・通常のパラメタライズド クエリ
-            // ・動的パラメタライズド クエリ
-            // 制御用メソッド
-            this.PreExecQuery();
-
-            // コネクション、トランザクションを設定
-            this._cmd.Connection = this._cnn;
-            this._cmd.Transaction = this._tx;
-
-            // SelectCommandからデータアダプタを生成
-            this._adpt = new SqlDataAdapter(this._cmd);
-
-            // データをFill
-            this._adpt.Fill(ds);
+            throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
         /// <summary>Selectクエリを実行し、データリーダを返す。</summary>
-        /// <returns>SqlDataReader</returns>
+        /// <returns>MultiShardDataReader</returns>
         /// <remarks>
-        /// SqlCommandのExecuteReaderを実行する。
+        /// MultiShardCommandのExecuteReaderを実行する。
         /// 通常、Ｄａｏ経由で利用する。
         /// </remarks>
         public override IDataReader ExecSelect_DR()
@@ -746,56 +639,23 @@ namespace Touryo.Infrastructure.Public.Db
             // 制御用メソッド
             this.PreExecQuery();
 
-            // コネクション、トランザクションを設定
-            this._cmd.Connection = this._cnn;
-            this._cmd.Transaction = this._tx;
+            //Allow for partial results in case some shards fails to respond
+            _cmd.ExecutionPolicy = this._multiShardExecutionPolicy;
 
             // データリーダを返す。
             return this._cmd.ExecuteReader();
         }
 
-        /// <summary>Selectクエリを実行し、結果セットの最初の行の最初の列を返す。</summary>
-        /// <returns>結果セットの最初の行の最初の列（オブジェクト型） </returns>
-        /// <remarks>
-        /// SqlCommandのExecuteScalarを実行する。
-        /// 通常、Ｄａｏ経由で利用する。
-        /// </remarks>
+        /// <summary>This method is not supported.</summary>
         public override object ExecSelectScalar()
         {
-            // SQL実行前の、
-            // ・通常のパラメタライズド クエリ
-            // ・動的パラメタライズド クエリ
-            // 制御用メソッド
-            this.PreExecQuery();
-
-            // コネクション、トランザクションを設定
-            this._cmd.Connection = this._cnn;
-            this._cmd.Transaction = this._tx;
-
-            // 結果セットの最初の行の最初の列を返す。
-            return this._cmd.ExecuteScalar();
+            throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
-        /// <summary>Insert、Update、Deleteクエリを実行し、影響を受けた行数を返す。</summary>
-        /// <returns>影響を受けた行数</returns>
-        /// <remarks>
-        /// SqlCommandのExecuteNonQueryを実行する。
-        /// 通常、Ｄａｏ経由で利用する。
-        /// </remarks>
+        /// <summary>This method is not supported.</summary>
         public override int ExecInsUpDel_NonQuery()
         {
-            // SQL実行前の、
-            // ・通常のパラメタライズド クエリ
-            // ・動的パラメタライズド クエリ
-            // 制御用メソッド
-            this.PreExecQuery();
-
-            // コネクション、トランザクションを設定
-            this._cmd.Connection = this._cnn;
-            this._cmd.Transaction = this._tx;
-
-            // SQLを実行して、影響を受けた行数を返す。
-            return this._cmd.ExecuteNonQuery();
+            throw new NotSupportedException(PublicExceptionMessage.NOT_SUPPORTED);
         }
 
         /// <summary>静的SQLを生成する</summary>
@@ -828,7 +688,7 @@ namespace Touryo.Infrastructure.Public.Db
                 int paramSignIndex;
 
                 // Command.CommandTextから、パラメタ名を取得する。
-                paramName = this.GetParamByText(tmpCommandText, DamSqlSvr._paramSign, out paramSignIndex);
+                paramName = this.GetParamByText(tmpCommandText, DamSqlDbWithMultiShard._paramSign, out paramSignIndex);
 
                 if (paramSignIndex == -1)
                 {

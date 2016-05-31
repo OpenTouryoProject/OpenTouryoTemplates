@@ -259,6 +259,15 @@ namespace Touryo.Infrastructure.Public.Resources {
         }
         
         /// <summary>
+        ///   This process is not supported  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Must declare the scalar variable &quot;{0}&quot;. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string ORDER_BIND_ERROR_PARAMETER_NOT_FOUND {
