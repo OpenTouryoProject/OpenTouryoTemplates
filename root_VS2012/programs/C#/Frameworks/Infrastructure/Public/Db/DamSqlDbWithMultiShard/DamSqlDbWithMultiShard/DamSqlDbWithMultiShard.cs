@@ -326,7 +326,7 @@ namespace Touryo.Infrastructure.Public.Db
 
         # endregion
 
-        #region SetParameter系
+        #region Parameter系
 
         /// <summary>パラメタライズドクエリのパラメタを取得する（Out,RetValパラメタ用）。</summary>
         /// <param name="parameterName">パラメタライズドクエリのパラメタ名</param>
