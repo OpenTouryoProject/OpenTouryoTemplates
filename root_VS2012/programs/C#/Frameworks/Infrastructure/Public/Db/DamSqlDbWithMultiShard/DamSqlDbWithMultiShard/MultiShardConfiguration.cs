@@ -232,7 +232,7 @@ namespace Touryo.Infrastructure.Public.Db
         /// To get the connection string based on servername,databasename that are defined in the configuration file
         /// </summary>
         /// <returns>Connection strings that are defined in the configuration file </returns>
-        public static string GetConnectionStringBySelectedDatabase(string database)
+        public static string GetConnectionStringForSelectedDatabase(string database)
         {
             SqlConnectionStringBuilder sbConnStr = new SqlConnectionStringBuilder(connStr);
             sbConnStr.DataSource = ShardMapManagerServerName;
