@@ -300,8 +300,7 @@ namespace Touryo.Infrastructure.Business.Business
 
                 if (dam != null)
                 {
-                    // SQL用のDamを生成     
-                    dam = new DamSqlSvr();
+                    // SQL用のDamを生成 
                     if (parameterValue.ActionType.Split('%')[0] == "SqlDbWithDataDependent")
                     {
                         ((DamSqlSvr)dam).DamSqlConnection = MultiShardConfiguration.GetDataDependentRoutingConnection(connstring);
