@@ -68,6 +68,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +98,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\MyBaseMVController.vb" />
     <Compile Include="Workflow\DaoM_User.vb" />
     <Compile Include="Workflow\DaoM_Workflow.vb" />
     <Compile Include="Workflow\DaoT_CurrentWorkflow.vb" />
