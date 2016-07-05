@@ -20,6 +20,7 @@
 //*                                false in ajaxComplete method.   
 //*  2016/02/01  Sai               Fixed Progress dialog mask not displaying problem.
 //*  2016/02/11  Nishi             Finish up of the prevent double submition function.
+//*  2016/07/05  Sandeep           Added cache property in the Ajax ping request to prevent the session timeout.
 //**********************************************************************************
 
 // ---------------------------------------------------------------
@@ -64,6 +65,7 @@ function Fx_Document_OnLoad2() {
 //        url: URL,
 //        contentType: "application/json; charset=utf-8",
 //        data: {},
+//        cache:false,
 //        dataType: "json",
 //        success: function () {},
 //        error: function () {}
