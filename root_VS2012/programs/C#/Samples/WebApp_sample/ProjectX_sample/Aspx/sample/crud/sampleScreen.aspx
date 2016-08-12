@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/sampleScreen.master" AutoEventWireup="true" CodeFile="sampleScreen.aspx.cs" Inherits="Aspx_sample_crud_sampleScreen" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/sampleScreen.master" AutoEventWireup="True" Inherits="ProjectX_sample.Aspx.sample.crud.sampleScreen" Title="Untitled Page" Codebehind="sampleScreen.aspx.cs" %>
 <%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_A" Runat="Server">
