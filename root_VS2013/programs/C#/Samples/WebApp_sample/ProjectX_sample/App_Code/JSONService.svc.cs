@@ -34,6 +34,9 @@ using Touryo.Infrastructure.Public.Dto;
 //Newtonsoft
 using Newtonsoft.Json;
 
+//ProjectX_sample
+using ProjectX_sample;
+
 /// <summary>
 /// JSONService class for selecting product table data and displaying in JQGrid.
 /// </summary>
