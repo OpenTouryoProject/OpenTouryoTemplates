@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="True" Inherits="ProjectX_sample.Aspx.Common.sampleScreen" Codebehind="sampleScreen.master.cs" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="ProjectX_sample.Aspx.Common.sampleScreen" Codebehind="sampleScreen.master.cs" %>
 <%@ Register Src="sampleControl.ascx" TagName="sampleControl" TagPrefix="uc1" %>
 <%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl" TagPrefix="cc1" %>
 

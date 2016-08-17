@@ -290,7 +290,7 @@ namespace ProjectX_sample.Aspx.testPublic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Touryo.Infrastructure.CustomControl.WebCustomButton btnGetMSG;
-        
+
         /// <summary>
         /// lblJis2K4 control.
         /// </summary>

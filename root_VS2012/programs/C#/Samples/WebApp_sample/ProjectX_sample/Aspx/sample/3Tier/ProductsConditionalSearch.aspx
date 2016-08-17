@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/testBlankScreen.master" AutoEventWireup="True"
+﻿<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/testBlankScreen.master" AutoEventWireup="true"
     Inherits="ProjectX_sample.Aspx.sample._3Tier.ProductsConditionalSearch" Title="ProductsConditionalSearch"
     CodeBehind="ProductsConditionalSearch.aspx.cs" %>
 
