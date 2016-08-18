@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="True" Inherits="ProjectX_sample.Aspx.Common.testScreen1" Codebehind="testScreen1.master.cs" %>
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="ProjectX_sample.Aspx.Common.testScreen1" Codebehind="testScreen1.master.cs" %>
 <%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl" TagPrefix="cc1" %>
 
 <!-- All Rights Reserved, Copyright (C) 2007,2012 Hitachi Solutions,Ltd. -->

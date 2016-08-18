@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/testBlankScreen.master" AutoEventWireup="True" Inherits="ProjectX_sample.Aspx.testFxLayerP.table.testListView"
+<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/testBlankScreen.master" AutoEventWireup="true" Inherits="ProjectX_sample.Aspx.testFxLayerP.table.testListView"
     Title="Untitled Page" EnableEventValidation="false" Codebehind="testListView.aspx.cs" %>
 
 <%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl"
