@@ -34,10 +34,15 @@
 //*  20xx/xx/xx  ＸＸ ＸＸ         ＸＸＸＸ
 //**********************************************************************************
 
+// System
 using System;
 using System.Web;
 using System.Web.UI;
 
-public partial class Aspx_Common_testNest_noBaseMasterPage : System.Web.UI.MasterPage
+namespace ProjectX_sample.Aspx.Common.testNest
 {
+    /// <summary>noBaseMasterPage class</summary>
+    public partial class noBaseMasterPage : System.Web.UI.MasterPage
+    {
+    } 
 }

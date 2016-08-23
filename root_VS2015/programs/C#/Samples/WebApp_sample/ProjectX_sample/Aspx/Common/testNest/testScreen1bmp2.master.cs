@@ -34,8 +34,13 @@
 //*  20xx/xx/xx  ＸＸ ＸＸ         ＸＸＸＸ
 //**********************************************************************************
 
+// Touryo
 using Touryo.Infrastructure.Framework.Presentation;
 
-public partial class Aspx_Common_testNest_testScreen1bmp2 : BaseMasterController
+namespace ProjectX_sample.Aspx.Common.testNest
 {
+    /// <summary>testScreen1bmp2 class</summary>
+    public partial class testScreen1bmp2 : BaseMasterController
+    {
+    } 
 }
