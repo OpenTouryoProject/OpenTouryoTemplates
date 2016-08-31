@@ -369,7 +369,8 @@
     <asp:Button ID="btnSearch" runat="server" Text="上記の条件で検索" />
     <asp:Button ID="btnInsert" runat="server" Text="レコードを追加する。" />
     <asp:GridView ID="gvwGridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductID"
-        AllowPaging="True" AllowSorting="True" PageSize="30" Width="100%" BorderWidth="1px">
+        AllowPaging="True" AllowSorting="True" PageSize="30" Width="100%" BorderWidth="1px"
+        EnableModelValidation="True">
         <HeaderStyle BackColor="darkturquoise" />
         <EditRowStyle BackColor="LightYellow" />
         <Columns>
