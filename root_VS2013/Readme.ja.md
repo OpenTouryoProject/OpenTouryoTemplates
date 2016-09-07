@@ -166,7 +166,8 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
     - 既定では、http_proxy 環境変数の定義部分はコメントアウトされていますので、"@rem" を削除して、このコメントを解除します。
     - http_proxy 環境変数に、お使いのプロキシ情報を設定してください。
 
-- ビルド時に以下のエラーが発生した場合は、Windows 8 用の Windows SDK をインストールしてください。([Open 棟梁の issue](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues/48#issuecomment-241349223) が参考になります。)
+- ビルド時に以下のエラーが発生した場合は、Windows SDK をインストールしてください。([Open 棟梁の issue](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues/48#issuecomment-241349223) が参考になります。)  
+なお、どのバージョンの Windows 用の Windows SDK を入れたらよいかは、エラーメッセージから判断できます。例えば、以下のメッセージであれば、「"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\\**v8.0A**\WinSDK-NetFx40Tools-x86" を使用して」とありますので、「Windows 8 用の Windows SDK」をインストールしたらよいことが分かります。
 ```
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(2863,5): error MSB3086: タスクは SdkToolsPath "" またはレジストリ キー "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0A\WinSDK-NetFx40Tools-x86" を使用して "AL.exe"を見つけられませんでした。SdkToolsPath が設定されていること、SdkToolsPath の下の適切なプロセッサ固有の場所にツールが存在すること、および Microsoft Windows SDK がインストールされていることを確認してください。 [C:\root\programs\C#\Frameworks\Infrastructure\Public\Public.csproj]
 ```

@@ -223,6 +223,8 @@ C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
 C:\\root\programs\C#\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
 - ASP.NET single page application  
 C:\\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+- PaaS application on Microsoft Azure  
+C:\root\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
  
 ###### Two-tier client server application:
 - Windows Forms  

@@ -177,7 +177,8 @@ Refer to the above table and build programs by running the batch files in numeri
     So, uncomment this code by removing '@rem'.
     - Set your proxy information in environment variable *http_proxy*.
 
-- When the following error occurred at build time, install *Windows SDK for Windows 8*. (Refer to [issue of Open Touryo](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues/48#issuecomment-241349223).)
+- When the following error occurred at build time, install *Windows SDK*. (Refer to [issue of Open Touryo](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues/48#issuecomment-241349223).)  
+Further, you can know the version of Windows SDK by error message. For example, in case of the following error message, you can judge that *Windows SDK for Windows 8* should be installed because the following error message says "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\\*v8.0A*\WinSDK-NetFx40Tools-x86".
 ```
 C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(2863,5): error MSB3086: Task could not find "AL.exe" using the SdkToolsPath "" or the registry key "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0A\WinSDK-NetFx40Tools-x86". Make sure the SdkToolsPath is set and the tool exists in the correct processor specific location under the SdkToolsPath and that the Microsoft Windows SDK is installed
 ```
@@ -223,6 +224,8 @@ C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
 C:\\root\programs\C#\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
 - ASP.NET single page application  
 C:\\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+- PaaS application on Microsoft Azure  
+C:\root\programs\C#\Samples\WinAzure_sample\WinAzure_sample.sln
  
 ###### Two-tier client server application:
 - Windows Forms  
