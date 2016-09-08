@@ -105,7 +105,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
     <Content Include="Aspx\Common\ErrorScreen.aspx" />
     <Content Include="Aspx\Common\sampleControl.ascx" />
     <Content Include="Aspx\Framework\DialogFrame.htm" />
