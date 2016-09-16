@@ -38,5 +38,6 @@ Imports Touryo.Infrastructure.Framework.Presentation
 
 ''' <summary>ClientCallbackテスト用のマスタ ページ</summary>
 Public Partial Class Aspx_Common_testClientCallback
-	Inherits BaseMasterController
+    Inherits BaseMasterController
 End Class
+

@@ -39,5 +39,5 @@ Imports System.Web
 Imports System.Web.UI
 
 Public Partial Class Aspx_Common_testNest_noBaseMasterPage
-	Inherits System.Web.UI.MasterPage
+    Inherits System.Web.UI.MasterPage
 End Class
