@@ -15,6 +15,11 @@
     <AssemblyName>ProjectX_sample</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MyType>Custom</MyType>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,6 +84,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -313,42 +320,49 @@
     </Compile>
     <Compile Include="Aspx\Common\sampleScreen.master.vb">
       <DependentUpon>sampleScreen.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testAspNetAjaxExtension_Separate.master.designer.vb">
       <DependentUpon>testAspNetAjaxExtension_Separate.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testAspNetAjaxExtension_Separate.master.vb">
       <DependentUpon>testAspNetAjaxExtension_Separate.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testAspNetAjaxExtension_Single.master.designer.vb">
       <DependentUpon>testAspNetAjaxExtension_Single.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testAspNetAjaxExtension_Single.master.vb">
       <DependentUpon>testAspNetAjaxExtension_Single.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testBlankScreen.master.designer.vb">
       <DependentUpon>testBlankScreen.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testBlankScreen.master.vb">
       <DependentUpon>testBlankScreen.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testClientCallback.master.designer.vb">
       <DependentUpon>testClientCallback.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testClientCallback.master.vb">
       <DependentUpon>testClientCallback.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testNest\branchMasterPage1.master.designer.vb">
       <DependentUpon>branchMasterPage1.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testNest\branchMasterPage1.master.vb">
       <DependentUpon>branchMasterPage1.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testNest\branchMasterPage2.master.designer.vb">
       <DependentUpon>branchMasterPage2.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testNest\branchMasterPage2.master.vb">
       <DependentUpon>branchMasterPage2.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testNest\noBaseMasterPage.master.designer.vb">
       <DependentUpon>noBaseMasterPage.master</DependentUpon>
@@ -362,48 +376,56 @@
     </Compile>
     <Compile Include="Aspx\Common\testNest\rootMasterPage.master.vb">
       <DependentUpon>rootMasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testNest\testScreen1bmp1.master.designer.vb">
       <DependentUpon>testScreen1bmp1.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testNest\testScreen1bmp1.master.vb">
       <DependentUpon>testScreen1bmp1.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testNest\testScreen1bmp2.master.designer.vb">
       <DependentUpon>testScreen1bmp2.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testNest\testScreen1bmp2.master.vb">
       <DependentUpon>testScreen1bmp2.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testNest\testScreen2bmp1.master.designer.vb">
       <DependentUpon>testScreen2bmp1.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testNest\testScreen2bmp1.master.vb">
       <DependentUpon>testScreen2bmp1.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testNest\testScreen2bmp2.master.designer.vb">
       <DependentUpon>testScreen2bmp2.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testNest\testScreen2bmp2.master.vb">
       <DependentUpon>testScreen2bmp2.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testScreen1.master.designer.vb">
       <DependentUpon>testScreen1.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testScreen1.master.vb">
       <DependentUpon>testScreen1.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testScreen2.master.designer.vb">
       <DependentUpon>testScreen2.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testScreen2.master.vb">
       <DependentUpon>testScreen2.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Common\testScreenCtrl.master.designer.vb">
       <DependentUpon>testScreenCtrl.master</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Common\testScreenCtrl.master.vb">
       <DependentUpon>testScreenCtrl.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\Framework\myOKMessageDialog.aspx.designer.vb">
       <DependentUpon>myOKMessageDialog.aspx</DependentUpon>
@@ -431,102 +453,119 @@
     </Compile>
     <Compile Include="Aspx\sample\3Tier\ProductsConditionalSearch.aspx.vb">
       <DependentUpon>ProductsConditionalSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\sample\3Tier\ProductsDetail.aspx.designer.vb">
       <DependentUpon>ProductsDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\sample\3Tier\ProductsDetail.aspx.vb">
       <DependentUpon>ProductsDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\sample\3Tier\ProductsSearchAndUpdate.aspx.designer.vb">
       <DependentUpon>ProductsSearchAndUpdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\sample\3Tier\ProductsSearchAndUpdate.aspx.vb">
       <DependentUpon>ProductsSearchAndUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\sample\crud\sampleScreen.aspx.designer.vb">
       <DependentUpon>sampleScreen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\sample\crud\sampleScreen.aspx.vb">
       <DependentUpon>sampleScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\sample\crud\sampleScreen_cc.aspx.designer.vb">
       <DependentUpon>sampleScreen_cc.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\sample\crud\sampleScreen_cc.aspx.vb">
       <DependentUpon>sampleScreen_cc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\start\login.aspx.designer.vb">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\start\login.aspx.vb">
       <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\start\logout.aspx.designer.vb">
       <DependentUpon>logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\start\logout.aspx.vb">
       <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\start\menu.aspx.designer.vb">
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\start\menu.aspx.vb">
       <DependentUpon>menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\nest\testNestMasterScreen.aspx.designer.vb">
       <DependentUpon>testNestMasterScreen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\nest\testNestMasterScreen.aspx.vb">
       <DependentUpon>testNestMasterScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\nest\testScreen1nest.aspx.designer.vb">
       <DependentUpon>testScreen1nest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\nest\testScreen1nest.aspx.vb">
       <DependentUpon>testScreen1nest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\nest\testScreen2nest.aspx.designer.vb">
       <DependentUpon>testScreen2nest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\nest\testScreen2nest.aspx.vb">
       <DependentUpon>testScreen2nest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\noBaseMasterScreen.aspx.designer.vb">
       <DependentUpon>noBaseMasterScreen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\noBaseMasterScreen.aspx.vb">
       <DependentUpon>noBaseMasterScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\noMasterScreen.aspx.designer.vb">
       <DependentUpon>noMasterScreen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\noMasterScreen.aspx.vb">
       <DependentUpon>noMasterScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\testScreen0.aspx.designer.vb">
       <DependentUpon>testScreen0.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\testScreen0.aspx.vb">
       <DependentUpon>testScreen0.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\testScreen1.aspx.designer.vb">
       <DependentUpon>testScreen1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\testScreen1.aspx.vb">
       <DependentUpon>testScreen1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\testScreen2.aspx.designer.vb">
       <DependentUpon>testScreen2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\normal\testScreen2.aspx.vb">
       <DependentUpon>testScreen2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\table\testGridView.aspx.designer.vb">
       <DependentUpon>testGridView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\table\testGridView.aspx.vb">
       <DependentUpon>testGridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\table\testJQGridJson.aspx.designer.vb">
       <DependentUpon>testJQGridJson.aspx</DependentUpon>
@@ -540,30 +579,35 @@
     </Compile>
     <Compile Include="Aspx\testFxLayerP\table\testListView.aspx.vb">
       <DependentUpon>testListView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\table\testRepeater.aspx.designer.vb">
       <DependentUpon>testRepeater.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\table\testRepeater.aspx.vb">
       <DependentUpon>testRepeater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\testDialogAtOnLoad.aspx.designer.vb">
       <DependentUpon>testDialogAtOnLoad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\testDialogAtOnLoad.aspx.vb">
       <DependentUpon>testDialogAtOnLoad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\testDLFrame.aspx.designer.vb">
       <DependentUpon>testDLFrame.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\testDLFrame.aspx.vb">
       <DependentUpon>testDLFrame.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\testDLScreen.aspx.designer.vb">
       <DependentUpon>testDLScreen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\testDLScreen.aspx.vb">
       <DependentUpon>testDLScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\testTransitionAheadScreen.aspx.designer.vb">
       <DependentUpon>testTransitionAheadScreen.aspx</DependentUpon>
@@ -584,18 +628,21 @@
     </Compile>
     <Compile Include="Aspx\testFxLayerP\withAjax\testClientCallback.aspx.vb">
       <DependentUpon>testClientCallback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\withAjax\testExtension_Separate.aspx.designer.vb">
       <DependentUpon>testExtension_Separate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\withAjax\testExtension_Separate.aspx.vb">
       <DependentUpon>testExtension_Separate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\withAjax\testExtension_Single.aspx.designer.vb">
       <DependentUpon>testExtension_Single.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testFxLayerP\withAjax\testExtension_Single.aspx.vb">
       <DependentUpon>testExtension_Single.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testPublic\testScreen.aspx.designer.vb">
       <DependentUpon>testScreen.aspx</DependentUpon>
@@ -609,36 +656,42 @@
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm0.aspx.vb">
       <DependentUpon>WebForm0.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm1.aspx.designer.vb">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm1.aspx.vb">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm2.aspx.designer.vb">
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm2.aspx.vb">
       <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm3.aspx.designer.vb">
       <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm3.aspx.vb">
       <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm4.aspx.designer.vb">
       <DependentUpon>WebForm4.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm4.aspx.vb">
       <DependentUpon>WebForm4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm5.aspx.designer.vb">
       <DependentUpon>WebForm5.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\testScreenCtrl\WebForm5.aspx.vb">
       <DependentUpon>WebForm5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
