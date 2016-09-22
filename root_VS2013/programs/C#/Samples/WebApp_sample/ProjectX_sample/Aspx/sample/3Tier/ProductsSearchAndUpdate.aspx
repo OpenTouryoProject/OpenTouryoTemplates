@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/testBlankScreen.master" AutoEventWireup="true" CodeFile="ProductsSearchAndUpdate.aspx.cs" Inherits="ProductsSearchAndUpdate" Title="ProductsSearchAndUpdate" %>
+<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/testBlankScreen.master" AutoEventWireup="true" Inherits="ProjectX_sample.Aspx.sample._3Tier.ProductsSearchAndUpdate" Title="ProductsSearchAndUpdate" Codebehind="ProductsSearchAndUpdate.aspx.cs" %>
 <%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_A" Runat="Server">
     <!-- Copyright (C) 2007,2014 Hitachi Solutions,Ltd. -->
@@ -282,7 +282,7 @@
     
     <asp:ObjectDataSource ID="ObjectDataSource1"
         runat="server" EnablePaging="True"
-        TypeName="ProductsTableAdapter" 
+        TypeName="ProjectX_sample.ProductsTableAdapter" 
         SelectCountMethod="SelectCountMethod"
         SelectMethod="SelectMethod"
         MaximumRowsParameterName="maximumRows"
