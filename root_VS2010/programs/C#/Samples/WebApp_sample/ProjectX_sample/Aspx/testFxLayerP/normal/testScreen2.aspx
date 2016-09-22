@@ -1,6 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/TestScreen2.master" AutoEventWireup="true"
-    CodeFile="testScreen2.aspx.cs" Inherits="Aspx_testFxLayerP_normal_testScreen2"
-    Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/TestScreen2.master" AutoEventWireup="true" Inherits="ProjectX_sample.Aspx.testFxLayerP.normal.testScreen2"
+    Title="Untitled Page" Codebehind="testScreen2.aspx.cs" %>
 
 <%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl"
     TagPrefix="cc1" %>

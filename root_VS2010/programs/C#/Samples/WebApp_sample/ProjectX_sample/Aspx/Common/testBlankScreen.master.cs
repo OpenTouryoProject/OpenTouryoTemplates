@@ -34,9 +34,13 @@
 //*  20xx/xx/xx  ＸＸ ＸＸ         ＸＸＸＸ
 //**********************************************************************************
 
+// Touryo
 using Touryo.Infrastructure.Framework.Presentation;
 
-/// <summary>ブランクのマスタ ページ</summary>
-public partial class Aspx_Common_testBlankScreen : BaseMasterController
+namespace ProjectX_sample.Aspx.Common
 {
+    /// <summary>ブランクのマスタ ページ</summary>
+    public partial class testBlankScreen : BaseMasterController
+    {
+    } 
 }

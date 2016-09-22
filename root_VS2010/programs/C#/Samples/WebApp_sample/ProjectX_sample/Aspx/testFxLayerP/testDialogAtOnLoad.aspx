@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/testBlankScreen.master" AutoEventWireup="true" CodeFile="testDialogAtOnLoad.aspx.cs" Inherits="Aspx_testFxLayerP_testDialogAtOnLoad" Title="Untitled Page" %>
+<%@ Page Language="C#" MasterPageFile="~/Aspx/Common/testBlankScreen.master" AutoEventWireup="true" Inherits="ProjectX_sample.Aspx.testFxLayerP.testDialogAtOnLoad" Title="Untitled Page" Codebehind="testDialogAtOnLoad.aspx.cs" %>
 <%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_A" Runat="Server">

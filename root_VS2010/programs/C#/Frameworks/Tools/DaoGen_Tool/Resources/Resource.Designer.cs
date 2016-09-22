@@ -124,6 +124,15 @@ namespace DaoGen_Tool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The operation was canceled..
+        /// </summary>
+        internal static string DLayerCancelledmessage {
+            get {
+                return ResourceManager.GetString("DLayerCancelledmessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Completion of generation of the D-layer definition information! に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string DlayerGeneratedMessage {
@@ -480,6 +489,15 @@ namespace DaoGen_Tool.Resources {
         internal static string TemplateFolderPath {
             get {
                 return ResourceManager.GetString("TemplateFolderPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ToolTip Text.
+        /// </summary>
+        internal static string ToolTipText {
+            get {
+                return ResourceManager.GetString("ToolTipText", resourceCulture);
             }
         }
         
