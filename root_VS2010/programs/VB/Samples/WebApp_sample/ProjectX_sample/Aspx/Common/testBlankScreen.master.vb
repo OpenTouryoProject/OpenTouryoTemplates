@@ -38,5 +38,7 @@ Imports Touryo.Infrastructure.Framework.Presentation
 
 ''' <summary>ブランクのマスタ ページ</summary>
 Public Partial Class Aspx_Common_testBlankScreen
-	Inherits BaseMasterController
+    Inherits BaseMasterController
 End Class
+
+
