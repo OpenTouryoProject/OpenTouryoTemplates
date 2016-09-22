@@ -484,6 +484,15 @@ namespace DaoGen_Tool.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ToolTip Text.
+        /// </summary>
+        internal static string ToolTipText {
+            get {
+                return ResourceManager.GetString("ToolTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type Information.
         /// </summary>
         internal static string TypeInfo {

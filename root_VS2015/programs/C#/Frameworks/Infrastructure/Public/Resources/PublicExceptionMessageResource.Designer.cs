@@ -250,11 +250,20 @@ namespace Touryo.Infrastructure.Public.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This processing is not Implemented..
+        ///   Looks up a localized string similar to This processing is not implemented.
         /// </summary>
         internal static string NOT_IMPLEMENTED {
             get {
                 return ResourceManager.GetString("NOT_IMPLEMENTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This process is not supported.
+        /// </summary>
+        internal static string NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("NOT_SUPPORTED", resourceCulture);
             }
         }
         
