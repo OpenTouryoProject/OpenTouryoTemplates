@@ -34,9 +34,13 @@
 //*  20xx/xx/xx  ＸＸ ＸＸ         ＸＸＸＸ
 //**********************************************************************************
 
+// Touryo
 using Touryo.Infrastructure.Framework.Presentation;
 
-/// <summary>ClientCallbackテスト用のマスタ ページ</summary>
-public partial class Aspx_Common_testClientCallback : BaseMasterController
+namespace ProjectX_sample.Aspx.Common
 {
+    /// <summary>ClientCallbackテスト用のマスタ ページ</summary>
+    public partial class testClientCallback : BaseMasterController
+    {
+    } 
 }

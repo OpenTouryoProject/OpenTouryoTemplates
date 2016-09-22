@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="testScreen.aspx.cs" Inherits="Aspx_testPublic_testScreen" ValidateRequest="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="ProjectX_sample.Aspx.testPublic.testScreen" ValidateRequest="false" Codebehind="testScreen.aspx.cs" %>
 <%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl" TagPrefix="cc1" %>
 
 <!-- Copyright (C) 2007,2014 Hitachi Solutions,Ltd. -->

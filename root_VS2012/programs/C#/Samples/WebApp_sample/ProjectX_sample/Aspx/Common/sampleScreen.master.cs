@@ -34,18 +34,22 @@
 //*  20xx/xx/xx  ＸＸ ＸＸ         ＸＸＸＸ
 //**********************************************************************************
 
+// Touryo
 using Touryo.Infrastructure.Framework.Presentation;
 
-/// <summary>サンプル画面用のマスタ ページ</summary>
-public partial class Aspx_Common_sampleScreen : BaseMasterController
+namespace ProjectX_sample.Aspx.Common
 {
-    /// <summary>マスタページにイベントハンドラを実装可能にしたのでそのテスト。</summary>
-    /// <param name="fxEventArgs">イベントハンドラの共通引数</param>
-    /// <returns>URL</returns>
-    protected string UOC_btnMPButton_Click(FxEventArgs fxEventArgs)
+    /// <summary>サンプル画面用のマスタ ページ</summary>
+    public partial class sampleScreen : BaseMasterController
     {
-        Response.Write("UOC_btnMPButton_Clickを実行できた。");
+        /// <summary>マスタページにイベントハンドラを実装可能にしたのでそのテスト。</summary>
+        /// <param name="fxEventArgs">イベントハンドラの共通引数</param>
+        /// <returns>URL</returns>
+        protected string UOC_btnMPButton_Click(FxEventArgs fxEventArgs)
+        {
+            Response.Write("UOC_btnMPButton_Clickを実行できた。");
 
-        return "";
-    }
+            return "";
+        }
+    } 
 }

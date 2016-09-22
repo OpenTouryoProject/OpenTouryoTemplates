@@ -51,491 +51,494 @@ using Touryo.Infrastructure.Public.Log;
 using Touryo.Infrastructure.Public.Str;
 using Touryo.Infrastructure.Public.Util;
 
-/// <summary>
-/// LayerD の概要の説明です
-/// </summary>
-public class LayerD : MyBaseDao
+namespace ProjectX_sample
 {
     /// <summary>
-    /// コンストラクタ
+    /// LayerD の概要の説明です
     /// </summary>
-    public LayerD(BaseDam dam) : base(dam) { }
-
-    #region テンプレ
-
-    /// <summary>テンプレ</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void テンプレ(TestParameterValue testParameter, TestReturnValue testReturn)
+    public class LayerD : MyBaseDao
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public LayerD(BaseDam dam) : base(dam) { }
 
-        // ↓DBアクセス-----------------------------------------------------
+        #region テンプレ
 
-        // ● 下記のいづれかの方法でSQLを設定する。
-
-        //   -- ファイルから読み込む場合。
-        this.SetSqlByFile2("ファイル名");
-
-        //   -- 直接指定する場合。
-        this.SetSqlByCommand("SQL文");
-
-        // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
-        this.SetParameter("P1", testParameter.ShipperID);
-
-        object obj;
-
-        //   -- 追加、更新、削除の場合（件数を確認できる）
-        obj = this.ExecInsUpDel_NonQuery();
-
-        //   -- 先頭の１セル分の情報を返すSELECTクエリを実行する場合
-        obj = this.ExecSelectScalar();
-
-        //   -- テーブル（or レコード）の情報を返す
-        //      SELECTクエリを実行する場合（引数 = データテーブル）
-        obj = new DataTable();
-        this.ExecSelectFill_DT((DataTable)obj);
-
-        //   -- テーブル（or レコード）の情報を返す
-        //      SELECTクエリを実行する場合（引数 = データセット）
-        obj = new DataSet();
-        this.ExecSelectFill_DS((DataSet)obj);
-
-        //   -- データリーダを返す
-        IDataReader idr = (IDataReader)this.ExecSelect_DR();
-
-        // ↑DBアクセス-----------------------------------------------------
-
-        // 戻り値を設定
-        testReturn.Obj = obj;
-    }
-
-    #endregion
-
-    #region 参照系
-
-    #region 件数取得（SelectCount）
-
-    /// <summary>件数情報を返すSELECTクエリを実行する</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void SelectCount(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-        // ↓DBアクセス-----------------------------------------------------
-
-        string filename = "";
-
-        if ((testParameter.ActionType.Split('%'))[2] == "static")
+        /// <summary>テンプレ</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void テンプレ(TestParameterValue testParameter, TestReturnValue testReturn)
         {
-            // 静的SQL
-            filename = "ShipperCount.sql";
-        }
-        else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
-        {
-            // 動的SQL
-            filename = "ShipperCount.xml";
+
+            // ↓DBアクセス-----------------------------------------------------
+
+            // ● 下記のいづれかの方法でSQLを設定する。
+
+            //   -- ファイルから読み込む場合。
+            this.SetSqlByFile2("ファイル名");
+
+            //   -- 直接指定する場合。
+            this.SetSqlByCommand("SQL文");
+
+            // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
+            this.SetParameter("P1", testParameter.ShipperID);
+
+            object obj;
+
+            //   -- 追加、更新、削除の場合（件数を確認できる）
+            obj = this.ExecInsUpDel_NonQuery();
+
+            //   -- 先頭の１セル分の情報を返すSELECTクエリを実行する場合
+            obj = this.ExecSelectScalar();
+
+            //   -- テーブル（or レコード）の情報を返す
+            //      SELECTクエリを実行する場合（引数 = データテーブル）
+            obj = new DataTable();
+            this.ExecSelectFill_DT((DataTable)obj);
+
+            //   -- テーブル（or レコード）の情報を返す
+            //      SELECTクエリを実行する場合（引数 = データセット）
+            obj = new DataSet();
+            this.ExecSelectFill_DS((DataSet)obj);
+
+            //   -- データリーダを返す
+            IDataReader idr = (IDataReader)this.ExecSelect_DR();
+
+            // ↑DBアクセス-----------------------------------------------------
+
+            // 戻り値を設定
+            testReturn.Obj = obj;
         }
 
-        //   -- ファイルから読み込む場合。
-        this.SetSqlByFile2(filename);
+        #endregion
 
-        object obj;
+        #region 参照系
 
-        //   -- 件数情報を返すSELECTクエリを実行する
-        obj = this.ExecSelectScalar();
+        #region 件数取得（SelectCount）
 
-        // ↑DBアクセス-----------------------------------------------------
-
-        // 戻り値を設定
-        testReturn.Obj = obj;
-    }
-
-    #endregion
-
-    #region 一覧取得（SelectAll）
-
-    /// <summary>一覧を返すSELECTクエリを実行する（DT）</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void SelectAll_DT(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-        // ↓DBアクセス-----------------------------------------------------
-
-        string commandText = "";
-
-        if ((testParameter.ActionType.Split('%'))[2] == "static")
+        /// <summary>件数情報を返すSELECTクエリを実行する</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void SelectCount(TestParameterValue testParameter, TestReturnValue testReturn)
         {
-            // 静的SQL
-            commandText = "SELECT * FROM Shippers";
-        }
-        else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
-        {
-            // 動的SQL
-            commandText =
-                "<?xml version=\"1.0\" encoding=\"utf-8\" ?><ROOT>SELECT * FROM Shippers</ROOT>";
-            // 通常、動的SQLをSetSqlByCommandで直接指定するような使い方はしない。
-        }
+            // ↓DBアクセス-----------------------------------------------------
 
-        //   -- 直接指定する場合。
-        this.SetSqlByCommand(commandText);
+            string filename = "";
 
-        // 戻り値 dt
-        DataTable dt = new DataTable();
+            if ((testParameter.ActionType.Split('%'))[2] == "static")
+            {
+                // 静的SQL
+                filename = "ShipperCount.sql";
+            }
+            else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+            {
+                // 動的SQL
+                filename = "ShipperCount.xml";
+            }
 
-        //   -- 一覧を返すSELECTクエリを実行する
-        this.ExecSelectFill_DT(dt);
+            //   -- ファイルから読み込む場合。
+            this.SetSqlByFile2(filename);
 
-        // ↑DBアクセス-----------------------------------------------------
+            object obj;
 
-        // 戻り値を設定
-        testReturn.Obj = dt;
-    }
+            //   -- 件数情報を返すSELECTクエリを実行する
+            obj = this.ExecSelectScalar();
 
-    /// <summary>一覧を返すSELECTクエリを実行する（DS）</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void SelectAll_DS(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-        // ↓DBアクセス-----------------------------------------------------
+            // ↑DBアクセス-----------------------------------------------------
 
-        string commandText = "";
-
-        if ((testParameter.ActionType.Split('%'))[2] == "static")
-        {
-            // 静的SQL
-            commandText = "SELECT * FROM Shippers";
-        }
-        else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
-        {
-            // 動的SQL
-            commandText =
-                "<?xml version=\"1.0\" encoding=\"utf-8\" ?><ROOT>SELECT * FROM Shippers</ROOT>";
-            // 通常、動的SQLをSetSqlByCommandで直接指定するような使い方はしない。
+            // 戻り値を設定
+            testReturn.Obj = obj;
         }
 
-        //   -- 直接指定する場合。
-        this.SetSqlByCommand(commandText);
+        #endregion
 
-        // 戻り値 ds
-        DataSet ds = new DataSet();
+        #region 一覧取得（SelectAll）
 
-        //   -- 一覧を返すSELECTクエリを実行する
-        this.ExecSelectFill_DS(ds);
-
-        // ↑DBアクセス-----------------------------------------------------
-
-        // 戻り値を設定
-        testReturn.Obj = ds;
-    }
-
-    /// <summary>一覧を返すSELECTクエリを実行する（DR）</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void SelectAll_DR(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-        // ↓DBアクセス-----------------------------------------------------
-
-        string commandText = "";
-
-        if ((testParameter.ActionType.Split('%'))[2] == "static")
+        /// <summary>一覧を返すSELECTクエリを実行する（DT）</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void SelectAll_DT(TestParameterValue testParameter, TestReturnValue testReturn)
         {
-            // 静的SQL
-            commandText = "SELECT * FROM Shippers";
-        }
-        else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
-        {
-            // 動的SQL
-            commandText =
-                "<?xml version=\"1.0\" encoding=\"shift_jis\" ?><ROOT>SELECT * FROM Shippers</ROOT>";
-            // 通常、動的SQLをSetSqlByCommandで直接指定するような使い方はしない。
-        }
+            // ↓DBアクセス-----------------------------------------------------
 
-        //   -- 直接指定する場合。
-        this.SetSqlByCommand(commandText);
+            string commandText = "";
 
-        // 戻り値 dt
-        DataTable dt = new DataTable();
+            if ((testParameter.ActionType.Split('%'))[2] == "static")
+            {
+                // 静的SQL
+                commandText = "SELECT * FROM Shippers";
+            }
+            else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+            {
+                // 動的SQL
+                commandText =
+                    "<?xml version=\"1.0\" encoding=\"utf-8\" ?><ROOT>SELECT * FROM Shippers</ROOT>";
+                // 通常、動的SQLをSetSqlByCommandで直接指定するような使い方はしない。
+            }
 
-        // ３列生成
-        dt.Columns.Add("c1", System.Type.GetType("System.String"));
-        dt.Columns.Add("c2", System.Type.GetType("System.String"));
-        dt.Columns.Add("c3", System.Type.GetType("System.String"));
+            //   -- 直接指定する場合。
+            this.SetSqlByCommand(commandText);
 
-        //   -- 一覧を返すSELECTクエリを実行する
-        IDataReader idr = (IDataReader)this.ExecSelect_DR();
+            // 戻り値 dt
+            DataTable dt = new DataTable();
 
-        while (idr.Read())
-        {
-            // DRから読む
-            object[] objArray = new object[3];
-            idr.GetValues(objArray);
+            //   -- 一覧を返すSELECTクエリを実行する
+            this.ExecSelectFill_DT(dt);
 
-            // DTに設定する。
-            DataRow dr = dt.NewRow();
-            dr.ItemArray = objArray;
-            dt.Rows.Add(dr);
+            // ↑DBアクセス-----------------------------------------------------
+
+            // 戻り値を設定
+            testReturn.Obj = dt;
         }
 
-        // 終了したらクローズ
-        idr.Close();
-
-        // ↑DBアクセス-----------------------------------------------------
-
-        // 戻り値を設定
-        testReturn.Obj = dt;
-    }
-
-    /// <summary>一覧を返すSELECTクエリを実行する</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void SelectAll_DSQL(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-        // ↓DBアクセス-----------------------------------------------------
-
-        string filename = "";
-
-        if ((testParameter.ActionType.Split('%'))[2] == "static")
+        /// <summary>一覧を返すSELECTクエリを実行する（DS）</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void SelectAll_DS(TestParameterValue testParameter, TestReturnValue testReturn)
         {
-            // 静的SQL
-            filename = "ShipperSelectOrder.sql";
-        }
-        else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
-        {
-            // 動的SQL
-            filename = "ShipperSelectOrder.xml";
-        }
+            // ↓DBアクセス-----------------------------------------------------
 
-        //   -- ファイルから読み込む場合。
-        this.SetSqlByFile2(filename);
+            string commandText = "";
 
-        // ユーザ定義パラメタに対して、動的に値を設定する。
-        string orderColumn = "";
-        string orderSequence = "";
+            if ((testParameter.ActionType.Split('%'))[2] == "static")
+            {
+                // 静的SQL
+                commandText = "SELECT * FROM Shippers";
+            }
+            else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+            {
+                // 動的SQL
+                commandText =
+                    "<?xml version=\"1.0\" encoding=\"utf-8\" ?><ROOT>SELECT * FROM Shippers</ROOT>";
+                // 通常、動的SQLをSetSqlByCommandで直接指定するような使い方はしない。
+            }
 
-        if (testParameter.OrderColumn == "c1")
-        {
-            orderColumn = "ShipperID";
-        }
-        else if (testParameter.OrderColumn == "c2")
-        {
-            orderColumn = "CompanyName";
-        }
-        else if (testParameter.OrderColumn == "c3")
-        {
-            orderColumn = "Phone";
-        }
-        else { }
+            //   -- 直接指定する場合。
+            this.SetSqlByCommand(commandText);
 
-        if (testParameter.OrderSequence == "A")
-        {
-            orderSequence = "ASC";
-        }
-        else if (testParameter.OrderSequence == "D")
-        {
-            orderSequence = "DESC";
-        }
-        else { }
+            // 戻り値 ds
+            DataSet ds = new DataSet();
 
-        // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
-        this.SetParameter("P1", "test");
+            //   -- 一覧を返すSELECTクエリを実行する
+            this.ExecSelectFill_DS(ds);
 
-        // ユーザ入力は指定しない。
-        // ※ 動的SQLのVALタグは、前後の空白をつめることが有るので、
-        //    必要であれば、前後の空白を明示的に指定する必要がある。
-        this.SetUserParameter("COLUMN", " " + orderColumn + " ");
-        this.SetUserParameter("SEQUENCE", " " + orderSequence + " ");
+            // ↑DBアクセス-----------------------------------------------------
 
-        // 戻り値 dt
-        DataTable dt = new DataTable();
-
-        //   -- 一覧を返すSELECTクエリを実行する
-        this.ExecSelectFill_DT(dt);
-
-        // ↑DBアクセス-----------------------------------------------------
-
-        // 戻り値を設定
-        testReturn.Obj = dt;
-    }
-
-    #endregion
-
-    #region 参照
-
-    /// <summary>１レコードを返すSELECTクエリを実行する</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void Select(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-        // ↓DBアクセス-----------------------------------------------------
-
-        string filename = "";
-
-        if ((testParameter.ActionType.Split('%'))[2] == "static")
-        {
-            // 静的SQL
-            filename = "ShipperSelect.sql";
-        }
-        else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
-        {
-            // 動的SQL
-            filename = "ShipperSelect.xml";
+            // 戻り値を設定
+            testReturn.Obj = ds;
         }
 
-        //   -- ファイルから読み込む場合。
-        this.SetSqlByFile2(filename);
-
-        // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
-        this.SetParameter("P1", testParameter.ShipperID);
-
-        // 戻り値 dt
-        DataTable dt = new DataTable();
-
-        //   -- １レコードを返すSELECTクエリを実行する
-        this.ExecSelectFill_DT(dt);
-
-        // ↑DBアクセス-----------------------------------------------------
-
-        //// 戻り値を設定 // 不要
-        //testReturn.Obj = dt;
-
-        // キャストの対策コードを挿入
-
-        // ・SQLの場合、ShipperIDのintがInt32型にマップされる。
-        // ・ODPの場合、ShipperIDのNUMBERがInt64型にマップされる。
-        // ・DB2の場合、ShipperIDのDECIMALがｘｘｘ型にマップされる。
-        if (dt.Rows[0].ItemArray.GetValue(0).GetType().ToString() == "System.Int32")
+        /// <summary>一覧を返すSELECTクエリを実行する（DR）</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void SelectAll_DR(TestParameterValue testParameter, TestReturnValue testReturn)
         {
-            // Int32なのでキャスト
-            testReturn.ShipperID = (int)dt.Rows[0].ItemArray.GetValue(0);
-        }
-        else
-        {
-            // それ以外の場合、一度、文字列に変換してInt32.Parseする。
-            testReturn.ShipperID = int.Parse(dt.Rows[0].ItemArray.GetValue(0).ToString());
-        }
+            // ↓DBアクセス-----------------------------------------------------
 
-        testReturn.CompanyName = (string)dt.Rows[0].ItemArray.GetValue(1);
-        testReturn.Phone = (string)dt.Rows[0].ItemArray.GetValue(2);
-    }
+            string commandText = "";
 
-    #endregion
+            if ((testParameter.ActionType.Split('%'))[2] == "static")
+            {
+                // 静的SQL
+                commandText = "SELECT * FROM Shippers";
+            }
+            else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+            {
+                // 動的SQL
+                commandText =
+                    "<?xml version=\"1.0\" encoding=\"shift_jis\" ?><ROOT>SELECT * FROM Shippers</ROOT>";
+                // 通常、動的SQLをSetSqlByCommandで直接指定するような使い方はしない。
+            }
 
-    #endregion
+            //   -- 直接指定する場合。
+            this.SetSqlByCommand(commandText);
 
-    #region 更新系
+            // 戻り値 dt
+            DataTable dt = new DataTable();
 
-    #region 追加
+            // ３列生成
+            dt.Columns.Add("c1", System.Type.GetType("System.String"));
+            dt.Columns.Add("c2", System.Type.GetType("System.String"));
+            dt.Columns.Add("c3", System.Type.GetType("System.String"));
 
-    /// <summary>Insertクエリを実行する</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void Insert(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-        // ↓DBアクセス-----------------------------------------------------
+            //   -- 一覧を返すSELECTクエリを実行する
+            IDataReader idr = (IDataReader)this.ExecSelect_DR();
 
-        //   -- ファイルから読み込む場合。
-        this.SetSqlByFile2("ShipperInsert.sql");
+            while (idr.Read())
+            {
+                // DRから読む
+                object[] objArray = new object[3];
+                idr.GetValues(objArray);
 
-        // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
-        this.SetParameter("P2", testParameter.CompanyName);
-        this.SetParameter("P3", testParameter.Phone);
+                // DTに設定する。
+                DataRow dr = dt.NewRow();
+                dr.ItemArray = objArray;
+                dt.Rows.Add(dr);
+            }
 
-        object obj;
+            // 終了したらクローズ
+            idr.Close();
 
-        //   -- 追加（件数を確認できる）
-        obj = this.ExecInsUpDel_NonQuery();
+            // ↑DBアクセス-----------------------------------------------------
 
-        // ↑DBアクセス-----------------------------------------------------
-
-        // 戻り値を設定
-        testReturn.Obj = obj;
-    }
-
-    #endregion
-
-    #region 更新
-
-    /// <summary>Updateクエリを実行する</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void Update(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-
-        // ↓DBアクセス-----------------------------------------------------
-
-        string filename = "";
-
-        if ((testParameter.ActionType.Split('%'))[2] == "static")
-        {
-            // 静的SQL
-            filename = "ShipperUpdate.sql";
-        }
-        else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
-        {
-            // 動的SQL
-            filename = "ShipperUpdate.xml";
+            // 戻り値を設定
+            testReturn.Obj = dt;
         }
 
-        //   -- ファイルから読み込む場合。
-        this.SetSqlByFile2(filename);
-
-        // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
-        this.SetParameter("P1", testParameter.ShipperID);
-        this.SetParameter("P2", testParameter.CompanyName);
-        this.SetParameter("P3", testParameter.Phone);
-
-        object obj;
-
-        //   -- 更新（件数を確認できる）
-        obj = this.ExecInsUpDel_NonQuery();
-
-        // ↑DBアクセス-----------------------------------------------------
-
-        // 戻り値を設定
-        testReturn.Obj = obj;
-    }
-
-    #endregion
-
-    #region 削除
-
-    /// <summary>Deleteクエリを実行する</summary>
-    /// <param name="testParameter">引数クラス</param>
-    /// <param name="testReturn">戻り値クラス</param>
-    public void Delete(TestParameterValue testParameter, TestReturnValue testReturn)
-    {
-        // ↓DBアクセス-----------------------------------------------------
-
-        string filename = "";
-
-        if ((testParameter.ActionType.Split('%'))[2] == "static")
+        /// <summary>一覧を返すSELECTクエリを実行する</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void SelectAll_DSQL(TestParameterValue testParameter, TestReturnValue testReturn)
         {
-            // 静的SQL
-            filename = "ShipperDelete.sql";
+            // ↓DBアクセス-----------------------------------------------------
+
+            string filename = "";
+
+            if ((testParameter.ActionType.Split('%'))[2] == "static")
+            {
+                // 静的SQL
+                filename = "ShipperSelectOrder.sql";
+            }
+            else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+            {
+                // 動的SQL
+                filename = "ShipperSelectOrder.xml";
+            }
+
+            //   -- ファイルから読み込む場合。
+            this.SetSqlByFile2(filename);
+
+            // ユーザ定義パラメタに対して、動的に値を設定する。
+            string orderColumn = "";
+            string orderSequence = "";
+
+            if (testParameter.OrderColumn == "c1")
+            {
+                orderColumn = "ShipperID";
+            }
+            else if (testParameter.OrderColumn == "c2")
+            {
+                orderColumn = "CompanyName";
+            }
+            else if (testParameter.OrderColumn == "c3")
+            {
+                orderColumn = "Phone";
+            }
+            else { }
+
+            if (testParameter.OrderSequence == "A")
+            {
+                orderSequence = "ASC";
+            }
+            else if (testParameter.OrderSequence == "D")
+            {
+                orderSequence = "DESC";
+            }
+            else { }
+
+            // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
+            this.SetParameter("P1", "test");
+
+            // ユーザ入力は指定しない。
+            // ※ 動的SQLのVALタグは、前後の空白をつめることが有るので、
+            //    必要であれば、前後の空白を明示的に指定する必要がある。
+            this.SetUserParameter("COLUMN", " " + orderColumn + " ");
+            this.SetUserParameter("SEQUENCE", " " + orderSequence + " ");
+
+            // 戻り値 dt
+            DataTable dt = new DataTable();
+
+            //   -- 一覧を返すSELECTクエリを実行する
+            this.ExecSelectFill_DT(dt);
+
+            // ↑DBアクセス-----------------------------------------------------
+
+            // 戻り値を設定
+            testReturn.Obj = dt;
         }
-        else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+
+        #endregion
+
+        #region 参照
+
+        /// <summary>１レコードを返すSELECTクエリを実行する</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void Select(TestParameterValue testParameter, TestReturnValue testReturn)
         {
-            // 動的SQL
-            filename = "ShipperDelete.xml";
+            // ↓DBアクセス-----------------------------------------------------
+
+            string filename = "";
+
+            if ((testParameter.ActionType.Split('%'))[2] == "static")
+            {
+                // 静的SQL
+                filename = "ShipperSelect.sql";
+            }
+            else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+            {
+                // 動的SQL
+                filename = "ShipperSelect.xml";
+            }
+
+            //   -- ファイルから読み込む場合。
+            this.SetSqlByFile2(filename);
+
+            // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
+            this.SetParameter("P1", testParameter.ShipperID);
+
+            // 戻り値 dt
+            DataTable dt = new DataTable();
+
+            //   -- １レコードを返すSELECTクエリを実行する
+            this.ExecSelectFill_DT(dt);
+
+            // ↑DBアクセス-----------------------------------------------------
+
+            //// 戻り値を設定 // 不要
+            //testReturn.Obj = dt;
+
+            // キャストの対策コードを挿入
+
+            // ・SQLの場合、ShipperIDのintがInt32型にマップされる。
+            // ・ODPの場合、ShipperIDのNUMBERがInt64型にマップされる。
+            // ・DB2の場合、ShipperIDのDECIMALがｘｘｘ型にマップされる。
+            if (dt.Rows[0].ItemArray.GetValue(0).GetType().ToString() == "System.Int32")
+            {
+                // Int32なのでキャスト
+                testReturn.ShipperID = (int)dt.Rows[0].ItemArray.GetValue(0);
+            }
+            else
+            {
+                // それ以外の場合、一度、文字列に変換してInt32.Parseする。
+                testReturn.ShipperID = int.Parse(dt.Rows[0].ItemArray.GetValue(0).ToString());
+            }
+
+            testReturn.CompanyName = (string)dt.Rows[0].ItemArray.GetValue(1);
+            testReturn.Phone = (string)dt.Rows[0].ItemArray.GetValue(2);
         }
 
-        //   -- ファイルから読み込む場合。
-        this.SetSqlByFile2(filename);
+        #endregion
 
-        // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
-        this.SetParameter("P1", testParameter.ShipperID);
+        #endregion
 
-        object obj;
+        #region 更新系
 
-        //   -- 追削除（件数を確認できる）
-        obj = this.ExecInsUpDel_NonQuery();
+        #region 追加
 
-        // ↑DBアクセス-----------------------------------------------------
+        /// <summary>Insertクエリを実行する</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void Insert(TestParameterValue testParameter, TestReturnValue testReturn)
+        {
+            // ↓DBアクセス-----------------------------------------------------
 
-        // 戻り値を設定
-        testReturn.Obj = obj;
-    }
+            //   -- ファイルから読み込む場合。
+            this.SetSqlByFile2("ShipperInsert.sql");
 
-    #endregion
+            // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
+            this.SetParameter("P2", testParameter.CompanyName);
+            this.SetParameter("P3", testParameter.Phone);
 
-    #endregion
+            object obj;
+
+            //   -- 追加（件数を確認できる）
+            obj = this.ExecInsUpDel_NonQuery();
+
+            // ↑DBアクセス-----------------------------------------------------
+
+            // 戻り値を設定
+            testReturn.Obj = obj;
+        }
+
+        #endregion
+
+        #region 更新
+
+        /// <summary>Updateクエリを実行する</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void Update(TestParameterValue testParameter, TestReturnValue testReturn)
+        {
+
+            // ↓DBアクセス-----------------------------------------------------
+
+            string filename = "";
+
+            if ((testParameter.ActionType.Split('%'))[2] == "static")
+            {
+                // 静的SQL
+                filename = "ShipperUpdate.sql";
+            }
+            else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+            {
+                // 動的SQL
+                filename = "ShipperUpdate.xml";
+            }
+
+            //   -- ファイルから読み込む場合。
+            this.SetSqlByFile2(filename);
+
+            // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
+            this.SetParameter("P1", testParameter.ShipperID);
+            this.SetParameter("P2", testParameter.CompanyName);
+            this.SetParameter("P3", testParameter.Phone);
+
+            object obj;
+
+            //   -- 更新（件数を確認できる）
+            obj = this.ExecInsUpDel_NonQuery();
+
+            // ↑DBアクセス-----------------------------------------------------
+
+            // 戻り値を設定
+            testReturn.Obj = obj;
+        }
+
+        #endregion
+
+        #region 削除
+
+        /// <summary>Deleteクエリを実行する</summary>
+        /// <param name="testParameter">引数クラス</param>
+        /// <param name="testReturn">戻り値クラス</param>
+        public void Delete(TestParameterValue testParameter, TestReturnValue testReturn)
+        {
+            // ↓DBアクセス-----------------------------------------------------
+
+            string filename = "";
+
+            if ((testParameter.ActionType.Split('%'))[2] == "static")
+            {
+                // 静的SQL
+                filename = "ShipperDelete.sql";
+            }
+            else if ((testParameter.ActionType.Split('%'))[2] == "dynamic")
+            {
+                // 動的SQL
+                filename = "ShipperDelete.xml";
+            }
+
+            //   -- ファイルから読み込む場合。
+            this.SetSqlByFile2(filename);
+
+            // パラメタ ライズド クエリのパラメタに対して、動的に値を設定する。
+            this.SetParameter("P1", testParameter.ShipperID);
+
+            object obj;
+
+            //   -- 追削除（件数を確認できる）
+            obj = this.ExecInsUpDel_NonQuery();
+
+            // ↑DBアクセス-----------------------------------------------------
+
+            // 戻り値を設定
+            testReturn.Obj = obj;
+        }
+
+        #endregion
+
+        #endregion
+    } 
 }
