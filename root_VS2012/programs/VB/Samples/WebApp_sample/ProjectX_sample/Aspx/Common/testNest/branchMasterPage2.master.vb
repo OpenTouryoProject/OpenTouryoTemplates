@@ -37,5 +37,6 @@
 Imports Touryo.Infrastructure.Framework.Presentation
 
 Public Partial Class Aspx_Common_testNest_branchMasterPage2
-	Inherits BaseMasterController
+    Inherits BaseMasterController
 End Class
+
