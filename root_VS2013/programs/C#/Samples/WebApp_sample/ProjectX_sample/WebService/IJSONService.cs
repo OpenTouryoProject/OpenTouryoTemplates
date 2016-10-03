@@ -20,11 +20,14 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.ServiceModel.Channels;
 
-// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IJSONService" in both code and config file together.
-[ServiceContract(SessionMode = SessionMode.Allowed)]
-public interface IJSONService
+namespace ProjectX_sample
 {
-    [OperationContract]
-    [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetProductData")]
-    Message GetProductData();
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IJSONService" in both code and config file together.
+    [ServiceContract(SessionMode = SessionMode.Allowed)]
+    public interface IJSONService
+    {
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetProductData")]
+        Message GetProductData();
+    }
 }

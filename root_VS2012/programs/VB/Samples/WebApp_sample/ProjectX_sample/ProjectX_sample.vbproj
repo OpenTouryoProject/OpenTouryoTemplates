@@ -290,8 +290,6 @@
     <Content Include="WebService\JSONService.svc" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppCode\IJSONService.vb" />
-    <Compile Include="AppCode\JSONService.vb" />
     <Compile Include="AppCode\sample\3TierTableAdapter\ProductsTableAdapter.vb" />
     <Compile Include="AppCode\sample\Business\GetMasterData.vb" />
     <Compile Include="AppCode\sample\Business\LayerB.vb" />
@@ -697,6 +695,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="WebService\IJSONService.vb" />
+    <Compile Include="WebService\JSONService.svc.vb">
+      <DependentUpon>JSONService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.config" />

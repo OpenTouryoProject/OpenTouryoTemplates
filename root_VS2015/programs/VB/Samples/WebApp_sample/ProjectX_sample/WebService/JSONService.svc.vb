@@ -15,6 +15,9 @@
 '*  日時        更新者            内容
 '*  ----------  ----------------  -------------------------------------------------
 '*  2015/09/11  Supragyan         Created JSONService for invoking Product table data.
+'*  2015/03/20  Sai               Modified method 'GetProductData()' return type to Json string
+'*                                and added paging parameters
+'*  2015/06/08  Supragyan         Modified startIndex and maximumRows in method 'GetProductData()'
 '**********************************************************************************
 
 ' System

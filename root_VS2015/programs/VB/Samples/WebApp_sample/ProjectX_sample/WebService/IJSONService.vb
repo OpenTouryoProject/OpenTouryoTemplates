@@ -14,8 +14,8 @@
 '*  日時        更新者            内容
 '*  ----------  ----------------  -------------------------------------------------
 '*  2015/09/11  Supragyan         Created IJSONService interface to invoking GetProductData
+'*  2015/03/20  Supragyan         Modified method 'GetProductData()' return type to Message 
 '**********************************************************************************
-
 ' System
 Imports System.ServiceModel
 Imports System.ServiceModel.Web

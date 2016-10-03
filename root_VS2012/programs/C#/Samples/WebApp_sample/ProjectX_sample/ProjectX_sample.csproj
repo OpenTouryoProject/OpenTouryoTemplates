@@ -660,7 +660,6 @@
     <Compile Include="Aspx\testScreenCtrl\WebForm5.aspx.designer.cs">
       <DependentUpon>WebForm5.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AppCode\IJSONService.cs" />
     <Compile Include="AppCode\sample\3TierTableAdapter\ProductsTableAdapter.cs" />
     <Compile Include="AppCode\sample\Business\GetMasterData.cs" />
     <Compile Include="AppCode\sample\Business\LayerB.cs" />
@@ -674,7 +673,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AppCode\JSONService.svc.cs" />
+    <Compile Include="WebService\IJSONService.cs" />
+    <Compile Include="WebService\JSONService.svc.cs">
+      <DependentUpon>JSONService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.config" />
