@@ -33,6 +33,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,6 +70,10 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +103,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\MyBaseMVController.vb" />
     <Compile Include="Workflow\DaoM_User.vb" />
     <Compile Include="Workflow\DaoM_Workflow.vb" />
     <Compile Include="Workflow\DaoT_CurrentWorkflow.vb" />
@@ -123,6 +130,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\MyReturnValue.vb" />
@@ -173,7 +181,38 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\AsyncProcessingServiceInsert.sql">
+      <Link>AsyncProcessingService\AsyncProcessingServiceInsert.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\SelectCommand.sql">
+      <Link>AsyncProcessingService\SelectCommand.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\SelectTask.sql">
+      <Link>AsyncProcessingService\SelectTask.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\StopAllTask.sql">
+      <Link>AsyncProcessingService\StopAllTask.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\UpdateTaskCommand.sql">
+      <Link>AsyncProcessingService\UpdateTaskCommand.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\UpdateTaskFail.sql">
+      <Link>AsyncProcessingService\UpdateTaskFail.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\UpdateTaskProgress.sql">
+      <Link>AsyncProcessingService\UpdateTaskProgress.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\UpdateTaskRetry.sql">
+      <Link>AsyncProcessingService\UpdateTaskRetry.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\UpdateTaskStart.sql">
+      <Link>AsyncProcessingService\UpdateTaskStart.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\files\resource\Sql\sqlserver\AsyncProcessingService\UpdateTaskSuccess.sql">
+      <Link>AsyncProcessingService\UpdateTaskSuccess.sql</Link>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -186,4 +225,11 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

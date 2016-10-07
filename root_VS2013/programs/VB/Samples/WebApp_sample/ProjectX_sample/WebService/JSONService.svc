@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="VB" Debug="true" Service="JSONService" CodeBehind="~/App_Code/JSONService.vb" %>
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="ProjectX_sample.JSONService" CodeBehind="~/WebService/JSONService.svc.vb" %>

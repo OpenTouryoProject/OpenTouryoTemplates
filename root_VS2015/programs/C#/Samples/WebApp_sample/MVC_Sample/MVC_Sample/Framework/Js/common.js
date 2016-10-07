@@ -20,6 +20,9 @@
 //*                                false in ajaxComplete method.   
 //*  2016/02/01  Sai               Fixed Progress dialog mask not displaying problem.
 //*  2016/02/11  Nishi             Finish up of the prevent double submition function.
+//*  2016/04/15  Sandeep           Implemented cross-browser detection method, to suppress double transmission
+//*  2016/04/20  Sandeep           Created form submission flag, to suppress double transmission
+//*  2016/07/05  Sandeep           Added cache property in the Ajax ping request to prevent the session timeout.
 //**********************************************************************************
 
 // ---------------------------------------------------------------
@@ -32,6 +35,9 @@ function Fx_Document_OnLoad() {
     // OnLoad処理を別スレッドで実行
     setTimeout("Fx_Document_OnLoad2()", 1);
 }
+
+// Form submission flag, to suppress double transmission
+var Form_IsSubmitted = false;
 
 // ---------------------------------------------------------------
 // ページがロードされた時に呼ばれる
@@ -50,6 +56,9 @@ function Fx_Document_OnLoad2() {
 
     // Webサーバへ一定時間ごとにpingを行う
     //window.setInterval(HttpPing, 5 * 60 * 1000);
+
+    // Cross-browser detection
+    Fx_WhichBrowser();
 }
 
 //// ---------------------------------------------------------------
@@ -64,6 +73,7 @@ function Fx_Document_OnLoad2() {
 //        url: URL,
 //        contentType: "application/json; charset=utf-8",
 //        data: {},
+//        cache:false,
 //        dataType: "json",
 //        success: function () {},
 //        error: function () {}
@@ -88,22 +98,16 @@ function Fx_OnSubmit() {
     // ・ASP.NET Ajax Extension
     // のどちらも、通過する。
 
-    // ・IE6.0のhrefのdoPostBackだと動かない。
-    // ・OperaのhrefのdoPostBack（二重送信時限定）だと動かない。
+    // ----------
 
-    // alert(navigator.appName);
-    // alert(navigator.appVersion);
+    // In Chrome, Safari and Firefox, document.readyState always returns complete
+    // Hence double transmission is prevented using Form_IsSubmitted flag
 
     // ----------
 
-    // ↑Operaの場合、ポスト後直ちにタイマーが無効になるので、実質機能しない。
-    //   ※ ただし、Ajaxの場合は、タイマーが無効にならない。
-
-    // ----------
-
-    if (navigator.appName == "Microsoft Internet Explorer" || navigator.appVersion.indexOf("Trident") != -1) {
-
-        // スレイプニルもこちらに含まれる。
+    if (Browser_IsIE) {
+        
+        // Detected browser is Internet Explorer
 
         if (navigator.appVersion.indexOf("MSIE 6.0") != -1) {
             // IE6.0では、hrefのdoPostBackの２重送信を抑止できない。
@@ -123,35 +127,21 @@ function Fx_OnSubmit() {
         }
         else if (navigator.appVersion.indexOf("Trident/7") != -1) {
             // IE11.0で問題があった場合、報告をお願いします。
-        } 
+        }
 
         if (document.readyState == "complete") {
 
             // 受信完了
 
-            // Ajaxがないページ
-            if (Ajax_IsProgressed == null || Ajax_IsProgressed == undefined) {
-                // 送信許可
-                return true;
-            }
-
             // Ajaxでは、completeのままになるので、
             // フラグでのチェックが必要になる。
             if (Ajax_IsProgressed) {
 
-                // Ajax有効で、処理中の場合
-
-                //                // 送信不許可
-                //                alert("二重送信です(IE + Ajax)");
-
-                // → ダイアログ表示中は、pageRequestManagerの
-                //    initializeRequest、endRequestのコールバック
-                //    をブロックするのでコメントアウトした。
+                // An Ajax request is processing
+                // Prevent other transmissions
                 return false;
             }
             else {
-
-                // Ajax有効で、処理中でない場合
 
                 // 送信許可
                 Fx_SetProgressDialog();
@@ -161,150 +151,27 @@ function Fx_OnSubmit() {
         else {
 
             // 受信未完了
-
-            //            // 送信不許可
-            //            alert("二重送信です(IE)");
-
-            // → ダイアログ表示中は、pageRequestManagerの
-            //    initializeRequest、endRequestのコールバック
-            //    をブロックするのでコメントアウトした。
+            // Prevent other transmissions
             return false;
         }
     }
-    else if (navigator.appName == "Netscape") {
-        // 実際には、Netscape、Firefox、Safari、Chromeのカバレージ
+    else if (Browser_IsEdge) {
 
-        // Netscapeはブラウザ側の機能で２重送信を抑止していたが、
-        // サポートがなくなったため、サポートしない。
-
-        // ブラウザがデフォルトでonSubmit×２を抑止している。
-        // ・Firefoxはブラウザ側の機能で２重送信を抑止している。
-        // ・Safariはブラウザ側の機能で２重送信を抑止している。
-        // ・Chromeはブラウザ側の機能で２重送信を抑止している。
-
-        if (document.readyState == "complete") {
-            // 実際には、Safari、Chromeのカバレージ
-
-            // Ajaxがないページ
-            if (Ajax_IsProgressed == null || Ajax_IsProgressed == undefined) {
-                // 送信許可
-                Fx_SetProgressDialog();
-                return true;
-            }
-
-            // Ajaxでは、completeのままになるので、
-            // フラグでのチェックが必要になる。
-            if (Ajax_IsProgressed) {
-
-                // Ajax有効で、処理中の場合
-
-                //                // 送信不許可
-                //                alert("二重送信です(Netscape + Ajax)");
-
-                // → ダイアログ表示中は、pageRequestManagerの
-                //    initializeRequest、endRequestのコールバック
-                //    をブロックするのでコメントアウトした。
-                return false;
-            }
-            else {
-
-                // Ajax有効で、処理中でない場合
-
-                // 送信許可
-                Fx_SetProgressDialog();
-                return true;
-            }
-        }
-        else if (document.readyState == null || document.readyState == undefined) {
-
-            // 実際には、Firefoxのカバレージ
-
-            // FirefoxでFxの２重送信抑止機能をONにした場合、
-            // hrefのdoPostBackでPOSTできなくなる現象を確認した。  
-
-            // Ajaxがないページ
-            if (Ajax_IsProgressed == null || Ajax_IsProgressed == undefined) {
-                // 送信許可
-                Fx_SetProgressDialog();
-                return true;
-            }
-
-            // Ajaxでは、completeのままになるので、
-            // フラグでのチェックが必要になる。
-            if (Ajax_IsProgressed) {
-
-                // Ajax有効で、処理中の場合
-
-                //                // 送信不許可
-                //                alert("二重送信です(Firefox + Ajax)");
-
-                // → ダイアログ表示中は、pageRequestManagerの
-                //    initializeRequest、endRequestのコールバック
-                //    をブロックするのでコメントアウトした。
-                return false;
-            }
-            else {
-
-                // Ajax有効で、処理中でない場合
-
-                // 送信許可
-                Fx_SetProgressDialog();
-                return true;
-            }
-
-            // Firefoxの制限事項は、通常のポストバック中にajaxの２重送信を抑止できない。
-            // 逆（ajax中に通常のポストバックの２重送信）は抑止できる。
-
-        }
-        else {
-
-            // 受信未完了（こちらは通過しない）
-            alert(document.readyState); // ← 故に、表示されない。
-
-            //            // 送信不許可
-            //            alert("二重送信です(Firefox)");
-
-            // → ダイアログ表示中は、pageRequestManagerの
-            //    initializeRequest、endRequestのコールバック
-            //    をブロックするのでコメントアウトした。
-            return false;
-        }
-    }
-    else if (navigator.appName == "Opera") {
-
-        // Operaでは完全に有効
-
-        // ただし、二重送信時のhrefのdoPostBackはハンドルできない。
-        // しかし、こちらは、ブラウザ側の機能で抑止している模様。
+        // Detected browser is Edge
 
         if (document.readyState == "complete") {
 
             // 受信完了
 
-            // Ajaxがないページ
-            if (Ajax_IsProgressed == null || Ajax_IsProgressed == undefined) {
-                // 送信許可
-                Fx_SetProgressDialog();
-                return true;
-            }
-
             // Ajaxでは、completeのままになるので、
             // フラグでのチェックが必要になる。
             if (Ajax_IsProgressed) {
 
-                // Ajax有効で、処理中の場合
-
-                //                // 送信不許可
-                //                alert("二重送信です(Opera + Ajax)");
-
-                // → ダイアログ表示中は、pageRequestManagerの
-                //    initializeRequest、endRequestのコールバック
-                //    をブロックするのでコメントアウトした。
+                // An Ajax request is processing
+                // Prevent other transmissions
                 return false;
             }
             else {
-
-                // Ajax有効で、処理中でない場合
 
                 // 送信許可
                 Fx_SetProgressDialog();
@@ -314,14 +181,68 @@ function Fx_OnSubmit() {
         else {
 
             // 受信未完了
-
-            //            // 送信不許可
-            //            alert("二重送信です(Opera)");
-
-            // → ダイアログ表示中は、pageRequestManagerの
-            //    initializeRequest、endRequestのコールバック
-            //    をブロックするのでコメントアウトした。
+            // Prevent other transmissions
             return false;
+        }
+    }
+    else if (Browser_IsChrome || Browser_IsSafari) {
+
+        // Detected browser is Chrome or Safari
+
+        if (Form_IsSubmitted) {
+
+            // A postback or an Ajax request is processing
+            // Prevent other transmissions
+            return false;
+        }
+        else {
+
+            // 送信許可
+            Fx_SetProgressDialog();
+
+            // Set double submission prevention flag
+            Form_IsSubmitted = true;
+            return true;
+        }
+    }
+    else if (Browser_IsFirefox) {
+
+        // Detected browser is Firefox
+
+        if (Form_IsSubmitted) {
+
+            // A postback or an Ajax request is processing
+            // Prevent other transmissions
+            return false;
+        }
+        else {
+
+            // 送信許可
+            Fx_SetProgressDialog();
+
+            // Set double submission prevention flag
+            Form_IsSubmitted = true;
+            return true;
+        }
+    }    
+    else if (Browser_IsOpera) {
+
+        // Detected browser is Opera
+
+        if (Form_IsSubmitted) {
+
+            // A postback or an Ajax request is processing
+            // Prevent other transmissions
+            return false;
+        }
+        else {
+
+            // 送信許可
+            Fx_SetProgressDialog();
+
+            // Set double submission prevention flag
+            Form_IsSubmitted = true;
+            return true;
         }
     }
     else {
@@ -583,6 +504,9 @@ function Fx_ClearPreventDoubleSubmissionSettings()
     // 二重送信フラグの設定
     Ajax_IsProgressed = false;
 
+    // Reset the form submission flag.
+    Form_IsSubmitted = false;
+
     //Disables Prevent Double Submit finctionality by setting flag to flase.
     PreventAjaxDoubleSubmit = false;
 }
@@ -663,4 +587,44 @@ function Fx_getBrowserHeight() {
 function Fx_getContentsHeight() {
     // コンテンツ全体の高さを取得する
     return Math.max.apply(null, [document.body.clientHeight, document.body.scrollHeight, document.documentElement.scrollHeight, document.documentElement.clientHeight]);
+}
+
+// ---------------------------------------------------------------
+//  Cross-browser detection function
+// ---------------------------------------------------------------
+
+// To store client browser information
+var Browser_IsIE = false;
+var Browser_IsEdge = false;
+var Browser_IsFirefox = false;
+var Browser_IsChrome = false;
+var Browser_IsOpera = false;
+var Browser_IsSafari = false;
+//var Browser_IsBlink = false;
+
+// ---------------------------------------------------------------
+// To detect client browser information
+// ---------------------------------------------------------------
+function Fx_WhichBrowser() {
+
+    // Value will true, when the client browser is Internet Explorer 6-11
+    Browser_IsIE = /*@cc_on!@*/false || !!document.documentMode;
+
+    // Value will true, when the client browser is Edge 20+
+    Browser_IsEdge = !Browser_IsIE && !!window.StyleMedia;
+
+    // Value will true, when the client browser is Firefox 1.0+
+    Browser_IsFirefox = typeof InstallTrigger !== 'undefined';
+
+    // Value will true, when the client browser is Chrome 1+
+    Browser_IsChrome = !!window.chrome && !!window.chrome.webstore;
+
+    // Value will true, when the client browser is Opera 8.0+
+    Browser_IsOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+    // Value will true, when the client browser is Safari 3+
+    Browser_IsSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+
+    // Value will true, when the client browser having Blink engine
+    //Browser_IsBlink = (Browser_IsChrome || Browser_IsOpera) && !!window.CSS;
 }
