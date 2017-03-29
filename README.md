@@ -22,7 +22,4 @@ Tutorial will be helpful to you for customizing template-base!)
 
 |Template-base|Develop Environment|Run-time Environment|
 |:-----|:------------------|:-------------------|
-|[/root_VS2010/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2010)|Visual Studio 2010|.NET Framework 3.5 SP1|
-|[/root_VS2012/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2012)|Visual Studio 2012|.NET Framework 4.5|
-|[/root_VS2013/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2013)|Visual Studio 2013|.NET Framework 4.5.1|
 |[/root_VS2015/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2015)|Visual Studio 2015|.NET Framework 4.6|
