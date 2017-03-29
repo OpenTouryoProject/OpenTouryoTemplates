@@ -1,60 +1,18 @@
-﻿# Open Touryo
-*Open Touryo* is an application framework based on .NET Framework.  
-The programs of Open Touryo are available in the following repositories:
-- OpenTouryoTemplates repository
-    - Summary  
-    The programs in this repository are the *development infrastructure (project template)* of the programs using Open Touryo.  
-    Default DBMS is *SQL Server*, and the programs are partitioned into the folders for each version of Visual Studio.
-    - Intended User  
-    The *application developers* using Open Touryo.
-- OpenTouryo repository (*Current repository*)
-    - Summary  
-    The programs in this repository are the *matrix* of OpenTouryoTemplates repository.  
-    (First, the features of Open Touryo are implemented in this repository. And then, the features are introduced into OpenTouryoTemplates repository.)
-    - Intended User  
-    *Open source developers*.
-
-Therefore, the users who use Open Touryo in a system development project need to use [OpenTouryoTemplates repository](https://github.com/OpenTouryoProject/OpenTouryoTemplates).  
-The following contents are the usage of Open Touryo for *open source developers*.
+# Open Touryo Template Base for Visual Studio 2015
+*Open Touryo Template Base* is the *foundation* of the development infrastructure (project template) of the programs using Open Touryo.
 
 Click [here](Readme.ja.md) for Japanese version of this file.
 
 ## Running sample application tasks
-You can run the sample application bundled with Open Touryo according to the following steps.
+You can run the sample application bundled with Open Touryo Template Base for Visual Studio 2015 according to the following steps.
 
 ### Install prerequisites
-Install Visual Studio 2015 beforehand.
-
-Further, when implementing or testing the *data access class*, install the DBMS(s) to be used.  
-Open Touryo supports the following DBMSs:
-- SQL Server  
-(You can use an arbitrary version of SQL Server. And you can use different editions than Express Edition.)
-- Oracle Database (including Express Edition)
-- IBM DB2
-- MySQL
-- PostgreSQL
-
-### Deploy Open Touryo
-Copy root folder to C drive.
-
-### Deploy data providers
-Obtain the data providers of DBMSs which are supported by Open Touryo, and deploy the data providers to the following folder.
-```txt
-C:\root\programs\C#\Frameworks\Infrastructure\Public\Dll
-```
-
-The correspondence between the DBMSs and the data providers is as follows:
-- Oracle (Oracle.DataAccess.dll)
-- DB2 (IBM.Data.DB2.dll)
-- MySQL (MySql.Data.dll)
-- PostgreSQL (Npgsql.dll)
-
-**Note:**  
-Open Touryo supports SQL Server, but it is not necessary to deploy System.Data.SqlClient.dll, which is the data provider of SQL Server, to the above folder because System.Data.SqlClient.dll is contained in .NET Framework.  
-And, it might be necessary to re-add the reference of each data provider to DamXXX.csproj, that is, the Visual Studio project for data access in Open Touryo.
-
+Install Visual Studio 2015 and SQL Server Express beforehand.  
+**Note**:  
+You can use an arbitrary version of SQL Server.  
+And you can use different editions than Express Edition, but it is necessary to revise connection string that is specified in the sample application.
+   
 ### Set up sample database
-#### SQL Server  
 Sample application requires *Northwind* database.  
 So, download the setup script installer of *Northwind* database from the following Microsoft site and install.
 
@@ -79,9 +37,9 @@ Execute command after confirming the path of folder in your environment.
 "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S localhost\SQLExpress -E -i "C:\SQL Server 2000 Sample Databases\instnwnd.sql"
 ```
 
-#### DBMSs except for SQL Server
-- Create an empty database in each DBMSs.
-- Create test table in the database by running C:\root\files\resource\Sql\[DBMS Name]\TestTable.txt.
+### Deploy Open Touryo Template Base
+Copy *root_VS2015* folder to C drive.  
+And rename *root_VS2015* folder to *root*.
 
 ### Build program
 When using Open Touryo, it is necessary to build programs **by running the batch files using MSBuild only at the first time**.  
@@ -210,8 +168,13 @@ Refer to the above table and build programs by running the batch files in numeri
 
 - If necessary, revise the environment variable *BUILDFILEPATH* in z_Common.bat according to the build environment.
 
-- When the following error occurred at build time, install *Windows SDK*. (Refer to [issue of Open Touryo](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues/48#issuecomment-241349223).)  
-Further, you can know the version of Windows SDK by error message. For example, in case of the following error message, you can judge that *Windows SDK for Windows 8* should be installed because the following error message says "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\\*v8.0A*\WinSDK-NetFx40Tools-x86".
+- The libraries which are used by Open Touryo Template Base for Visual Studio 2015 are downloaded by NuGet. NuGet libraries might not be downloaded normally under proxy environment. So, when using proxy environment, create environment variable *http_proxy* as follows:
+    - Open *C:\root\programs\C#\z_Common.bat* and *C:\root\programs\VB\z_Common.bat* in an editor.
+    - By default, the code which creates environment variable *http_proxy* is commented.  
+    So, uncomment this code by removing '@rem'.
+    - Set your proxy information in environment variable *http_proxy*.
+
+- When the following error occurred at build time, install *Windows SDK for Windows 8*. (Refer to [issue of Open Touryo](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues/48#issuecomment-241349223).)
 ```
 C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(2863,5): error MSB3086: Task could not find "AL.exe" using the SdkToolsPath "" or the registry key "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0A\WinSDK-NetFx40Tools-x86". Make sure the SdkToolsPath is set and the tool exists in the correct processor specific location under the SdkToolsPath and that the Microsoft Windows SDK is installed
 ```
@@ -223,10 +186,31 @@ Open a command prompt as an administrator and execute the following commands.
    net start aspnet_state
 ```
 
+### Change the URL of the web service
+The web services in this template base are supposed to run in the following environment.
+- During development (During debugging) : IIS Express
+- During operation : IIS
+
+The URL of the web service changes according to the above environment as follows:
+```txt
+In case of using IIS Express:
+http://localhost:xxxx/Service.asmx (xxxx: port number)
+
+In case of using IIS:
+http://localhost/yyyy/Service.asmx (yyyy: application name in IIS)
+```
+
+The URLs of the web service are defined in the configuration file of *communication control function* of Open Touryo.
+By default, the URL in the case of using IIS Express is used.
+Therefore, when deploying the web services on IIS, it is necessary to perform the following steps.
+
+- Change the value of *FxXMLTMProtocolDefinition* property from *TMProtocolDefinition2.xml* to *TMProtocolDefinition.xml*.
+- Modify *baseUrl* property in WinStore_sample.
+  - In *.html files
+  - In App.xaml files
+
 ### Run the sample application
-- Open the following file.
-- Open web.config or app.config and revise the values in *connectionStrings* section according to the actual database environment.
-- Run the sample application.  
+Open the following file and run.
 At the login screen, enter the arbitrary alphanumeric characters. (By default, the password authentication is not executed.)
    
 #### Web application:
@@ -249,12 +233,12 @@ C:\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
 
 #### Three-tier client server application:
 - Windows Forms  
-  - Windows forms application
+  - Windows forms application  
     - C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWin_sample\WSClientWin_sample.sln
     - C:\root\programs\VB\Samples\WS_sample\WSClient_sample\WSClientWin_sample\WSClientWin_sample.sln
   - ClickOnce application  
 C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSClientWinCone_sample.sln
-- WPF
+- WPF  
   - C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
   - C:\root\programs\VB\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
 - UWP  
@@ -268,13 +252,20 @@ You can see the introduction materials, such as PowerPoint slides.
 You can confirm the structure of Open Touryo and the specification of each feature.
 - [Tutorial](https://github.com/OpenTouryoProject/OpenTouryoDocuments/tree/master/documents/2_Tutorial)  
 You can see the *first step guide* of Open Touryo.
-
+   
+### Customizing Template Base
+When the mismatch is generated between *the features of Open Touryo* and *the requirements of the development project*, the customizing template base is useful for resolving the mismatch.  
+Refer to the [tutorial document](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc) about the customizing method of template base.
+   
 ### Copyright and license
-Refer to [License](https://github.com/OpenTouryoProject/OpenTouryo/tree/master/license) directory.
+Refer to [License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license) directory.
 
 ### Bug fix
-If you find the bug while you are using Open Touryo, create an new [issue](https://github.com/OpenTouryoProject/OpenTouryo/issues).  
+If you find the bug while you are using Open Touryo, create an new [issue](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues).  
 Open Touryo community confirms the issue and takes appropriate actions.  
+
+You can apply the patches by fetching the latest version of template base.  
+Or, confirm the bug with tracking tool, and obtain a difference generated by fixing the bug from *OpenTouryoTemplates repository*, and merge the difference to your application.
 
 ### Obtaining data provider, Exporting prodedures, Attaching to license
 Obtain and export the data provider, which Open Touryo supports, on your own.
