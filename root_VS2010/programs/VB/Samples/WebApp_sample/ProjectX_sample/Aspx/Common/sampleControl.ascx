@@ -1,2 +1,0 @@
-﻿<%@ Control Language="VB" AutoEventWireup="true" Inherits="ProjectX_sample.Aspx_Common_WebUserControl" Codebehind="sampleControl.ascx.vb" %>
-<asp:Button ID="btnUCButton" runat="server" Text="ユーザコントロール上のボタン" />
