@@ -51,8 +51,23 @@ using Touryo.Infrastructure.Public.Util;
 
 namespace Touryo.Infrastructure.Business.RichClient.Business
 {
+    ///// <summary>テスト</summary>
+    //public class TestBaseLogic : MyBaseLogic2CS
+    //{
+    //    /// <summary>UOC_DoAction</summary>
+    //    /// <param name="parameterValue">BaseParameterValue</param>
+    //    /// <param name="returnValue">BaseReturnValue</param>
+    //    protected override void UOC_DoAction(BaseParameterValue parameterValue, ref BaseReturnValue returnValue)
+    //    {
+    //    }
+    //}
+
     /// <summary>業務コード親クラス２（2層C/S用）（テンプレート）</summary>
-    /// <remarks>（オーバーライドして）自由に利用できる。</remarks>
+    /// <remarks>
+    /// （オーバーライドして）自由に利用できる。
+    /// ※ 下位互換のために残してあります。
+    /// </remarks>
+    [Obsolete("MyBaseLogic2CS is deprecated, please use MyFcBaseLogic2CS instead.")]
     public abstract class MyBaseLogic2CS : BaseLogic2CS
     {
         /// <summary>性能測定</summary>
@@ -122,36 +137,30 @@ namespace Touryo.Infrastructure.Business.RichClient.Business
 
                 #region データ プロバイダ選択
 
+                if (parameterValue.ActionType.Split('%')[0] == "SQL")
+                {
                 // SQL Server / SQL Client用のDamを生成
                 dam = new DamSqlSvr();
 
                 // 接続文字列をロード
                 connstring = GetConfigParameter.GetConnectionString("ConnectionString_SQL");
+                }
+                else if (parameterValue.ActionType.Split('%')[0] == "OLE")
+                {
+                    // OLEDB.NET用のDamを生成
+                    dam = new DamOLEDB();
 
-                //if (parameterValue.ActionType.Split('%')[0] == "SQL")
-                //{
-                //    // SQL Server / SQL Client用のDamを生成
-                //    dam = new DamSqlSvr();
+                    // 接続文字列をロード
+                    connstring = GetConfigParameter.GetConnectionString("ConnectionString_OLE");
+                }
+                else if (parameterValue.ActionType.Split('%')[0] == "ODB")
+                {
+                    // ODBC.NET用のDamを生成
+                    dam = new DamODBC();
 
-                //    // 接続文字列をロード
-                //    connstring = GetConfigParameter.GetConnectionString("ConnectionString_SQL");
-                //}
-                //else if (parameterValue.ActionType.Split('%')[0] == "OLE")
-                //{
-                //    // OLEDB.NET用のDamを生成
-                //    dam = new DamOLEDB();
-
-                //    // 接続文字列をロード
-                //    connstring = GetConfigParameter.GetConnectionString("ConnectionString_OLE");
-                //}
-                //else if (parameterValue.ActionType.Split('%')[0] == "ODB")
-                //{
-                //    // ODBC.NET用のDamを生成
-                //    dam = new DamODBC();
-
-                //    // 接続文字列をロード
-                //    connstring = GetConfigParameter.GetConnectionString("ConnectionString_ODBC");
-                //}
+                    // 接続文字列をロード
+                    connstring = GetConfigParameter.GetConnectionString("ConnectionString_ODBC");
+                }
                 //else if (parameterValue.ActionType.Split('%')[0] == "ORA")
                 //{
                 //    // Oracle / Oracle Client用のDamを生成
@@ -160,14 +169,14 @@ namespace Touryo.Infrastructure.Business.RichClient.Business
                 //    // 接続文字列をロード
                 //    connstring = GetConfigParameter.GetConnectionString("ConnectionString_ORA");
                 //}
-                //else if (parameterValue.ActionType.Split('%')[0] == "ODP")
-                //{
-                //    // Oracle / ODP.NET用のDamを生成
-                //    dam = new DamOraOdp();
+                else if (parameterValue.ActionType.Split('%')[0] == "ODP")
+                {
+                    // Oracle / ODP.NET用のDamを生成
+                    dam = new DamManagedOdp();
 
-                //    // 接続文字列をロード（ODP2：Instant Client）
-                //    connstring = GetConfigParameter.GetConnectionString("ConnectionString_ODP2");
-                //}
+                    // 接続文字列をロード
+                    connstring = GetConfigParameter.GetConnectionString("ConnectionString_ODP");
+                }
                 //else if (parameterValue.ActionType.Split('%')[0] == "DB2")
                 //{
                 //    // DB2.NET用のDamを生成
@@ -184,26 +193,26 @@ namespace Touryo.Infrastructure.Business.RichClient.Business
                 //    // 接続文字列をロード
                 //    connstring = GetConfigParameter.GetConnectionString("ConnectionString_HIR");
                 //}
-                //else if (parameterValue.ActionType.Split('%')[0] == "MCN")
-                //{
-                //    // MySQL Cnn/NET用のDamを生成
-                //    dam = new DamMySQL();
+                else if (parameterValue.ActionType.Split('%')[0] == "MCN")
+                {
+                    // MySQL Cnn/NET用のDamを生成
+                    dam = new DamMySQL();
 
-                //    // 接続文字列をロード
-                //    connstring = GetConfigParameter.GetConnectionString("ConnectionString_MCN");
-                //}
-                //else if (parameterValue.ActionType.Split('%')[0] == "NPS")
-                //{
-                //    // PostgreSQL / Npgsql用のDamを生成
-                //    dam = new DamPstGrS();
+                    // 接続文字列をロード
+                    connstring = GetConfigParameter.GetConnectionString("ConnectionString_MCN");
+                }
+                else if (parameterValue.ActionType.Split('%')[0] == "NPS")
+                {
+                    // PostgreSQL / Npgsql用のDamを生成
+                    dam = new DamPstGrS();
 
-                //    // 接続文字列をロード
-                //    connstring = GetConfigParameter.GetConnectionString("ConnectionString_NPS");
-                //}
-                //else
-                //{
-                //    // ここは通らない
-                //}
+                    // 接続文字列をロード
+                    connstring = GetConfigParameter.GetConnectionString("ConnectionString_NPS");
+                }
+                else
+                {
+                    // ここは通らない
+                }
 
                 #endregion
 
