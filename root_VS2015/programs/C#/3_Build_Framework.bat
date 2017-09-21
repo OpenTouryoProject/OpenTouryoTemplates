@@ -45,6 +45,7 @@ pause
 rem --------------------------------------------------
 rem Output xcopy after you build the batch Infrastructure(RichClientComponent)
 rem --------------------------------------------------
+..\nuget.exe restore "Frameworks\Infrastructure\RichClientComponent.sln"
 %BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\RichClientComponent.sln"
 
 xcopy /E /Y "Frameworks\Infrastructure\Framework\RichClient\bin\%BUILD_CONFIG%" "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%\"
