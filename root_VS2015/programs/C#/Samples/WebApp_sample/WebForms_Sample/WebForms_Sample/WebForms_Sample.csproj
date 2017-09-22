@@ -69,9 +69,6 @@
     <Reference Include="DamPstGrS">
       <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\DamPstGrS.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetZip">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\DotNetZip.dll</HintPath>
-    </Reference>
     <Reference Include="Framework">
       <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\Framework.dll</HintPath>
     </Reference>
@@ -106,15 +103,9 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Oracle.ManagedDataAccess">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -275,9 +266,6 @@
     <Content Include="WebService\JSONService.svc" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppCode\testPublic\Business\TestMTC.cs" />
-    <Compile Include="AppCode\testPublic\Business\TestMTC_mcn.cs" />
-    <Compile Include="AppCode\testPublic\Business\TestMTC_txg.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Aspx\OAuth2\OAuth2AuthorizationCodeGrantClient.aspx.cs">
