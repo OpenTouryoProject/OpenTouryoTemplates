@@ -35,14 +35,6 @@ xcopy /E /Y "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%" "Frameworks\Infrastr
 pause
 
 rem --------------------------------------------------
-rem Build the batch Infrastructure(AllDam)
-rem --------------------------------------------------
-..\nuget.exe restore "Frameworks\Infrastructure\Public\Db\AllDam.sln"
-%BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\Public\Db\AllDam.sln"
-
-pause
-
-rem --------------------------------------------------
 rem Output xcopy after you build the batch Infrastructure(RichClientComponent)
 rem --------------------------------------------------
 ..\nuget.exe restore "Frameworks\Infrastructure\RichClientComponent.sln"
