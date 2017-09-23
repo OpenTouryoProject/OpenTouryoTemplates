@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "UWP_Sample.Html", "UWP_Sample.Html\UWP_Sample.Html.jsproj", "{BA1699F0-8AD5-4B10-B0CA-B9617BE72E76}"
 EndProject
@@ -62,5 +62,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07A7B51A-DB51-4816-B18F-54976996A593}
 	EndGlobalSection
 EndGlobal
