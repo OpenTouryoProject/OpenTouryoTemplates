@@ -1,13 +1,13 @@
-# Open Touryo Template Base for Visual Studio 2015
+# Open Touryo Template Base for Visual Studio 2017
 *Open Touryo Template Base* is the *foundation* of the development infrastructure (project template) of the programs using Open Touryo.
 
 Click [here](Readme.ja.md) for Japanese version of this file.
 
 ## Running sample application tasks
-You can run the sample application bundled with Open Touryo Template Base for Visual Studio 2015 according to the following steps.
+You can run the sample application bundled with Open Touryo Template Base for Visual Studio 2017 according to the following steps.
 
 ### Install prerequisites
-Install Visual Studio 2015 and SQL Server Express beforehand.  
+Install Visual Studio 2017 and SQL Server Express beforehand.  
 **Note**:  
 You can use an arbitrary version of SQL Server.  
 And you can use different editions than Express Edition, but it is necessary to revise connection string that is specified in the sample application.
@@ -38,8 +38,8 @@ Execute command after confirming the path of folder in your environment.
 ```
 
 ### Deploy Open Touryo Template Base
-Copy *root_VS2015* folder to C drive.  
-And rename *root_VS2015* folder to *root*.
+Copy *root_VS2017* folder to C drive.  
+And rename *root_VS2017* folder to *root*.
 
 ### Build program
 When using Open Touryo, it is necessary to build programs **by running the batch files using MSBuild only at the first time**.  
@@ -164,7 +164,7 @@ Refer to the above table and build programs by running the batch files in numeri
 
 - If necessary, revise the environment variable *BUILDFILEPATH* in z_Common.bat according to the build environment.
 
-- The libraries which are used by Open Touryo Template Base for Visual Studio 2015 are downloaded by NuGet. NuGet libraries might not be downloaded normally under proxy environment. So, when using proxy environment, create environment variable *http_proxy* as follows:
+- The libraries which are used by Open Touryo Template Base for Visual Studio 2017 are downloaded by NuGet. NuGet libraries might not be downloaded normally under proxy environment. So, when using proxy environment, create environment variable *http_proxy* as follows:
     - Open *C:\root\programs\C#\z_Common.bat* and *C:\root\programs\VB\z_Common.bat* in an editor.
     - By default, the code which creates environment variable *http_proxy* is commented.  
     So, uncomment this code by removing '@rem'.
