@@ -61,14 +61,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Framework">
-      <HintPath>..\..\Build\Framework.dll</HintPath>
+    <Reference Include="Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.2.1.2\lib\net46\Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Framework.RichClient">
-      <HintPath>..\..\Build\Framework.RichClient.dll</HintPath>
+    <Reference Include="Framework.RichClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.1.2\lib\net46\Framework.RichClient.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Public">
-      <HintPath>..\..\Build\Public.dll</HintPath>
+    <Reference Include="Public, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Public.2.1.2\lib\net46\Public.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -153,6 +156,9 @@
     <EmbeddedResource Include="Control\WinCustomTextBox.resx">
       <DependentUpon>WinCustomTextBox.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

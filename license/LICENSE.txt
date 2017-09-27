@@ -202,35 +202,25 @@
 
 ====================================================================
 
-Open Touryo SubComponent: 
-
-- For the log4net component:
-
-  - License:http://www.apache.org/licenses/
-  - See the following path.
-   ./log4net/LICENSE
-
-- For the Json.NET component:
-
-  - License:https://json.codeplex.com/license
-  - See the following path.
-   ./Json.NET/LICENSE
+   - OpenTouryo SubComponent :
    
-- For the Dotnetzip component:
+     - The OSS included in the source code such as JavaScript / CSS
+       - jQuery
+       - jQuery.Validation
+       - bootstrap
+       - FontAwesome
+       - knockoutjs
+       - angularjs
+       - Respond
+       - Modernizr
+       - Microsoft.AspNet.ScriptManager.WebForms
+         http://www.microsoft.com/web/webpi/eula/WebDeveloperTools_1_eula_ENU.htm
+       - Microsoft.AspNet.ScriptManager.MSAjax
+         http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_enu.htm
+         
+     - The following *.exe is bundled in order to run the build system.
+       - nuget.exe
+         https://github.com/NuGet/NuGet.Client/blob/dev/LICENSE.txt
+       - vswhere.exe
+         https://github.com/Microsoft/vswhere/blob/develop/LICENSE.txt
 
-  - License:http://opensource.org/licenses/MS-PL
-  - See the following path.
-    - ./DotNetZip/License.txt
-    - ./DotNetZip/License.Combined.rtf
-
-    - Dotnetzip SubComponent:
-
-      - BZip2
-        - License:http://www.apache.org/licenses/LICENSE-2.0
-        - See the following path.
-          ./DotNetZip/License.BZip2.txt
-
-      - zlib
-        - License:http://www.zlib.net/zlib_license.html
-        - See the following path.
-          ./DotNetZip/License.zlib.txt

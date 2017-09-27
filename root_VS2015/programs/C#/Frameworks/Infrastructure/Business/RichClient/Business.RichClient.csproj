@@ -50,6 +50,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\Business.RichClient.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -64,8 +65,22 @@
     <Reference Include="Business">
       <HintPath>..\..\Build\Business.dll</HintPath>
     </Reference>
-    <Reference Include="Framework">
-      <HintPath>..\..\Build\Framework.dll</HintPath>
+    <Reference Include="DamManagedOdp">
+      <HintPath>..\..\Build\DamManagedOdp.dll</HintPath>
+    </Reference>
+    <Reference Include="DamMySQL">
+      <HintPath>..\..\Build\DamMySQL.dll</HintPath>
+    </Reference>
+    <Reference Include="DamPstGrS">
+      <HintPath>..\..\Build\DamPstGrS.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.2.1.2\lib\net46\Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Framework.RichClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.1.2\lib\net46\Framework.RichClient.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -73,8 +88,9 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Public">
-      <HintPath>..\..\Build\Public.dll</HintPath>
+    <Reference Include="Public, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Public.2.1.2\lib\net46\Public.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -96,12 +112,6 @@
     <Compile Include="Util\RcMyCmnFunction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FrameWork\RichClient\FrameWork.RichClient.csproj">
-      <Project>{3468B633-2CFE-4A1E-870F-396961E49A9E}</Project>
-      <Name>FrameWork.RichClient</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -117,6 +127,9 @@
       <ProductName>Windows インストーラー 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
