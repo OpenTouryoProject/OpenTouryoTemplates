@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenTouryo.Business.RichClient</name>
+    </assembly>
+    <members>
+        <member name="T:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc">
+            <summary>
+            非同期コード親クラス２
+            </summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc._lock">
+            <summary>ロック オブジェクト</summary>
+            <remarks>クリティカルセクション化のため</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.CanOutPutLog">
+            <summary>ログ出力の可否フラグ</summary>
+            <remarks>
+            自動デプロイ環境ではログ出力が出来ない
+            ことがあるので、その場合に利用すること。
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.perfRec">
+            <summary>性能測定</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.#ctor(System.Object)">
+            <summary>コンストラクタ</summary>
+            <param name="_this">WPFやWinFormの要素</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.UOC_Pre">
+            <summary>開始処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.UOC_After">
+            <summary>終了処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.UOC_ABEND(System.Exception)">
+            <summary>例外処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.UOC_Finally">
+            <summary>最終処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.Start">
+            <summary>開始方法を規定する</summary>
+            <returns>
+            true：開始した
+            false：開始できなかった
+            </returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Asynchronous.MyBaseAsyncFunc.StartByThreadPool">
+            <summary>開始方法を規定する（スレッドプール）</summary>
+            <returns>
+            true：開始した
+            false：開始できなかった
+            </returns>
+        </member>
+        <member name="T:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS">
+            <summary>業務コード親クラス２（2層C/S用）（テンプレート）</summary>
+            <remarks>
+            （オーバーライドして）自由に利用できる。
+            ※ 下位互換のために残してあります。
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS.perfRec">
+            <summary>性能測定</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS.UOC_ConnectionOpen(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Public.Db.DbEnum.IsolationLevelEnum)">
+            <summary>データアクセス制御クラス（ＤＡＭ）の生成し、コネクションを確立、トランザクションを開始する処理を実装</summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="iso">分離レベル（ＤＢＭＳ毎の分離レベルの違いを理解して設定すること）</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS.UOC_PreAction(Touryo.Infrastructure.Framework.Common.BaseParameterValue)">
+            <summary>
+            Ｂ層の開始処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS.UOC_AfterAction(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue)">
+            <summary>
+            Ｂ層の終了処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS.UOC_AfterTransaction(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue)">
+            <summary>
+            Ｂ層のトランザクションのコミット後の終了処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue,Touryo.Infrastructure.Framework.Exceptions.BusinessApplicationException)">
+            <summary>
+            Ｂ層の業務例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="baEx">BusinessApplicationException</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue,Touryo.Infrastructure.Framework.Exceptions.BusinessSystemException)">
+            <summary>
+            Ｂ層のシステム例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="bsEx">BusinessSystemException</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyBaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue@,System.Exception)">
+            <summary>
+            Ｂ層の一般的な例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="ex">Exception</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS">
+            <summary>自動振り分け機能付き業務コード親クラス２（2層C/S用）（テンプレート）</summary>
+            <remarks>（オーバーライドして）自由に利用できる。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.perfRec">
+            <summary>性能測定</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.UOC_DoAction(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue@)">
+            <summary>自動振り分け処理</summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.UOC_ConnectionOpen(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Public.Db.DbEnum.IsolationLevelEnum)">
+            <summary>データアクセス制御クラス（ＤＡＭ）の生成し、コネクションを確立、トランザクションを開始する処理を実装</summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="iso">分離レベル（ＤＢＭＳ毎の分離レベルの違いを理解して設定すること）</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.UOC_PreAction(Touryo.Infrastructure.Framework.Common.BaseParameterValue)">
+            <summary>
+            Ｂ層の開始処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.UOC_AfterAction(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue)">
+            <summary>
+            Ｂ層の終了処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.UOC_AfterTransaction(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue)">
+            <summary>
+            Ｂ層のトランザクションのコミット後の終了処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue,Touryo.Infrastructure.Framework.Exceptions.BusinessApplicationException)">
+            <summary>
+            Ｂ層の業務例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="baEx">BusinessApplicationException</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue,Touryo.Infrastructure.Framework.Exceptions.BusinessSystemException)">
+            <summary>
+            Ｂ層のシステム例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="bsEx">BusinessSystemException</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Business.MyFcBaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue@,System.Exception)">
+            <summary>
+            Ｂ層の一般的な例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="ex">Exception</param>
+            <remarks>業務コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin">
+            <summary>画面コード親クラス２（Windowアプリケーション）</summary>
+            <remarks>（オーバーライドして）自由に利用できる。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UserInfo">
+            <summary>ユーザ情報</summary>
+            <remarks>画面コード親クラス２、画面コード クラスから利用する。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.CanOutPutLog">
+            <summary>ログ出力の可否フラグ</summary>
+            <remarks>
+            自動デプロイ環境ではログ出力が出来ない
+            ことがあるので、その場合に利用すること。
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.perfRec">
+            <summary>性能測定</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.addControlEvent">
+            <summary>イベント追加処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.MyCreatePrefixAndEvtHndHt">
+            <summary>
+            コントロールのプレフィックスと
+            イベント ハンドラのディクショナリを生成
+            </summary>
+            <returns>
+            プレフィックスと
+            イベント ハンドラのディクショナリ
+            </returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.Item_Click(System.Object,System.EventArgs)">
+            <summary>
+            Item系のClickイベントに対応した集約イベント ハンドラ
+            </summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin._eventID">
+            <summary>イベントを識別するイベントID</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.Form_KeyDownEventHandler(System.Object,System.EventArgs)">
+            <summary>イベントを識別する（KeyDown）</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.Form_KeyPressEventHandler(System.Object,System.EventArgs)">
+            <summary>イベントを識別する（KeyPress）</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.Form_KeyUpEventHandler(System.Object,System.EventArgs)">
+            <summary>イベントを識別する（KeyUp）</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.Form_CMNEventHandler(System.Object,System.EventArgs)">
+            <summary>キーイベント</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_CMNFormInit">
+            <summary>フォーム ロードのUOCメソッド（共通）</summary>
+            <remarks>
+            実装必須
+            画面コード親クラス１から利用される派生の末端
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_FormInit">
+            <summary>
+            フォーム ロードのUOCメソッド（個別）
+            </summary>
+            <remarks>
+            サブクラスで利用するのでここでは処理を実装しない。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_CMNAfterFormInit">
+            <summary>フォーム ロードのUOCメソッド（共通）</summary>
+            <remarks>
+            実装必須
+            画面コード親クラス１から利用される派生の末端
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_FormEnd">
+            <summary>
+            フォーム クローズドのUOCメソッド（個別）
+            </summary>
+            <remarks>
+            サブクラスで利用するのでここでは処理を実装しない。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_CMNFormEnd">
+            <summary>フォーム クローズドのUOCメソッド（共通）</summary>
+            <remarks>
+            実装必須
+            画面コード親クラス１から利用される派生の末端
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_CMNAfterFormEnd">
+            <summary>フォーム クローズドのUOCメソッド（共通）</summary>
+            <remarks>
+            実装必須
+            画面コード親クラス１から利用される派生の末端
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_PreAction(Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>フレームワークの対象コントロールイベントの開始処理を実装</summary>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>画面コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_AfterAction(Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>フレームワークの対象コントロールイベントの終了処理を実装</summary>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>画面コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_Finally(Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>Finally節の処理を実装</summary>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>画面コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_ABEND(Touryo.Infrastructure.Framework.Exceptions.BusinessApplicationException,Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>業務例外発生時の処理を実装</summary>
+            <param name="baEx">BusinessApplicationException</param>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>画面コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_ABEND(Touryo.Infrastructure.Framework.Exceptions.BusinessSystemException,Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>システム例外発生時の処理を実装</summary>
+            <param name="bsEx">BusinessSystemException</param>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>画面コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Presentation.MyBaseControllerWin.UOC_ABEND(System.Exception,Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>一般的な例外発生時の処理を実装</summary>
+            <param name="ex">例外オブジェクト</param>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>画面コード親クラス１から利用される派生の末端</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Business.RichClient.Util.RcMyCmnFunction">
+            <summary>Business.RichClient層の共通クラス</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Util.RcMyCmnFunction.GetCtrlAndSetClickEventHandler(System.Windows.Forms.Control,System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.Windows.Forms.Control})">
+            <summary>コントロール取得＆イベントハンドラ設定</summary>
+            <param name="ctrl">コントロール</param>
+            <param name="prefix">プレフィックス</param>
+            <param name="eventHandler">イベント ハンドラ</param>
+            <param name="ControlHt">ディクショナリ</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Util.RcMyCmnFunction.GetCtrlAndSetClickEventHandler2(System.Windows.Forms.Control,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Windows.Forms.Control})">
+            <summary>コントロール取得＆イベントハンドラ設定</summary>
+            <param name="ctrl">コントロール</param>
+            <param name="prefixAndEvtHndHt">プレフィックスとイベント ハンドラのディクショナリ</param>
+            <param name="controlHt">コントロールのディクショナリ</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Util.RcMyCmnFunction.ShowErrorMessageWin(System.Exception,System.String)">
+            <summary>
+            ユーザー・フレンドリなダイアログを表示するメソッド
+            </summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Business.RichClient.Util.RcMyCmnFunction.ShowErrorMessageWPF(System.Exception,System.String)">
+            <summary>
+            ユーザー・フレンドリなダイアログを表示するメソッド
+            </summary>
+        </member>
+    </members>
+</doc>

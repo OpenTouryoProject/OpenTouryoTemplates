@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenTouryo.DamManagedOdp</name>
+    </assembly>
+    <members>
+        <member name="T:Touryo.Infrastructure.Public.Db.DamManagedOdp">
+            <summary>データアクセス・プロバイダ＝ODP.NETのデータアクセス制御クラス</summary>
+            <remarks>必要なメソッド・プロパティを利用する</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Public.Db.DamManagedOdp._paramSign">
+            <summary>パラメタの先頭記号（DBMSによって可変）</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Public.Db.DamManagedOdp._cnn">
+            <summary>コネクション</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Public.Db.DamManagedOdp._tx">
+            <summary>トランザクション</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Public.Db.DamManagedOdp._cmd">
+            <summary>コマンド</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Public.Db.DamManagedOdp._adpt">
+            <summary>アダプタ</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Public.Db.DamManagedOdp._iso">
+            <summary>分離レベル</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.ConnectionOpen(System.String)">
+            <summary>コネクションの確立</summary>
+            <param name="connstring">接続文字列</param>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.ConnectionClose">
+            <summary>コネクションの切断</summary>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.BeginTransaction(Touryo.Infrastructure.Public.Db.DbEnum.IsolationLevelEnum)">
+            <summary>トランザクション開始</summary>
+            <param name="iso">
+            分離レベル
+             1. NoTransaction:トランザクションを開始しない。
+             2. DefaultTransaction:規定の分離レベルでトランザクションを開始する。
+             3. ReadUncommitted:エラー（Oracleでは無効な分離レベル）
+             4. ReadCommitted:コミット済み読み取りの分離レベルでトランザクションを開始する。
+             5. RepeatableRead:エラー（Oracleでは無効な分離レベル）
+             6. Serializable:直列化可能の分離レベルでトランザクションを開始する。
+             7. Snapshot:エラー（ODP.NETでは無効な分離レベル）
+            </param>
+            <remarks>
+            ○ 基本的に「ReadCommitted」で良い。
+            ○ 参照データしたデータが、Tx中に変更されては困る場合のみ、
+            　「Serializable」を使用する（楽観）。若しくはUPで更新ロックをかける（悲観）。
+            ○ ノートランザクションは、通常、デフォルトの分離レベルの「ReadCommitted」の自動コミットになる。
+            必要に応じて利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.CommitTransaction">
+            <summary>トランザクションのコミット</summary>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.RollbackTransaction">
+            <summary>トランザクションのロールバック</summary>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetSqlByFile(System.String)">
+            <summary>SQL文を記述したファイルへのパスを設定して、Commandオブジェクトを生成。</summary>
+            <param name="sqlFilePath">SQL文を記述したファイルへのパス</param>
+            <remarks>通常、Ｄａｏ経由で利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetSqlByFile(System.String,System.Data.CommandType)">
+            <summary>SQL文を記述したファイルへのパスとCommandTypeを設定して、Commandオブジェクトを生成。</summary>
+            <param name="sqlFilePath">SQL文を記述したファイルへのパス</param>
+            <param name="commandType">コマンドの種類</param>
+            <remarks>通常、Ｄａｏ経由で利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetSqlByCommand(System.String)">
+            <summary>SQL文を設定して、Commandオブジェクトを生成。</summary>
+            <param name="commandText">実行するSQL文</param>
+            <remarks>通常、Ｄａｏ経由で利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetSqlByCommand(System.String,System.Data.CommandType)">
+            <summary>SQL文とCommandTypeを設定して、Commandオブジェクトを生成。</summary>
+            <param name="commandText">実行するSQL文</param>
+            <param name="commandType">コマンドの種類</param>
+            <remarks>通常、Ｄａｏ経由で利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.GetParameter(System.String)">
+            <summary>パラメタライズドクエリのパラメタを取得する（Out,RetValパラメタ用）。</summary>
+            <param name="parameterName">パラメタライズドクエリのパラメタ名</param>
+            <returns>Out,RetValパラメタのバリュー</returns>
+            <remarks>
+            通常、Ｄａｏ経由で利用する。
+            動的SQLの場合はSQL実行後に利用可能
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetParameter(System.String,System.Object)">
+            <summary>パラメタライズドクエリにパラメタを設定する。</summary>
+            <param name="parameterName">パラメタライズドクエリのパラメタ名</param>
+            <param name="obj">パラメタの値</param>
+            <remarks>通常、Ｄａｏ経由で利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetParameter(System.String,System.Object,System.Object)">
+            <summary>パラメタライズドクエリにパラメタを設定する。</summary>
+            <param name="parameterName">パラメタライズドクエリのパラメタ名</param>
+            <param name="obj">パラメタの値</param>
+            <param name="dbTypeInfo">パラメタの型（OracleDbType）（設定しない場合は、nullを指定）</param>
+            <remarks>通常、Ｄａｏ経由で利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetParameter(System.String,System.Object,System.Object,System.Int32)">
+            <summary>パラメタライズドクエリにパラメタを設定する。</summary>
+            <param name="parameterName">パラメタライズドクエリのパラメタ名</param>
+            <param name="obj">パラメタの値</param>
+            <param name="dbTypeInfo">パラメタの型（OracleDbType）（設定しない場合は、nullを指定）</param>
+            <param name="size">パラメタのサイズ（設定しない場合は、-1を指定）</param>
+            <remarks>通常、Ｄａｏ経由で利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetParameter(System.String,System.Object,System.Object,System.Int32,System.Data.ParameterDirection)">
+            <summary>パラメタライズドクエリにパラメタを設定する。</summary>
+            <param name="parameterName">パラメタライズドクエリのパラメタ名</param>
+            <param name="obj">パラメタの値</param>
+            <param name="dbTypeInfo">パラメタの型（OracleDbType）（設定しない場合は、nullを指定）</param>
+            <param name="size">パラメタのサイズ（設定しない場合は、-1を指定）</param>
+            <param name="paramDirection">パラメタの方向</param>
+            <remarks>通常、Ｄａｏ経由で利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.SetUserParameter(System.String,System.String)">
+            <summary>ユーザパラメタを指定の文字列で置換する。</summary>
+            <param name="userParameterName">置換対象のユーザパラメタ名</param>
+            <param name="userParameterValue">置換の文字列</param>
+            <remarks>
+            SQLインジェクションされる可能性があるユーザ入力は「userParameterValue」に指定しないこと。
+            通常、Ｄａｏ経由で利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.PreExecQuery">
+            <summary>
+            SQL実行前の、
+            ・通常のパラメタライズド クエリ
+            ・動的パラメタライズド クエリ
+            制御用メソッド
+            </summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.ExecSelectFill_DT(System.Data.DataTable)">
+            <summary>Selectクエリを実行し、データテーブルを返す。</summary>
+            <param name="dt">データテーブル</param>
+            <remarks>
+            OracleDataAdapterのFillを実行する。
+            通常、Ｄａｏ経由で利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.ExecSelectFill_DS(System.Data.DataSet)">
+            <summary>Selectクエリを実行し、データセットを返す。</summary>
+            <param name="ds">データセット</param>
+            <remarks>
+            OracleDataAdapterのFillを実行する。
+            通常、Ｄａｏ経由で利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.ExecSelect_DR">
+            <summary>Selectクエリを実行し、データリーダを返す。</summary>
+            <returns>OracleDataReader</returns>
+            <remarks>
+            OracleCommandのExecuteReaderを実行する。
+            通常、Ｄａｏ経由で利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.ExecSelectScalar">
+            <summary>Selectクエリを実行し、結果セットの最初の行の最初の列を返す。</summary>
+            <returns>結果セットの最初の行の最初の列（オブジェクト型） </returns>
+            <remarks>
+            OracleCommandのExecuteScalarを実行する。
+            通常、Ｄａｏ経由で利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.ExecInsUpDel_NonQuery">
+            <summary>Insert、Update、Deleteクエリを実行し、影響を受けた行数を返す。</summary>
+            <returns>影響を受けた行数</returns>
+            <remarks>
+            OracleCommandのExecuteNonQueryを実行する。
+            通常、Ｄａｏ経由で利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.ExecGenerateSQL(Touryo.Infrastructure.Public.Db.SQLUtility)">
+            <summary>静的SQLを生成する</summary>
+            <param name="sqlUtil">SQLUtility</param>
+            <returns>SQL文</returns>
+            <remarks>
+            Commandでの実行はしない。
+            通常、Ｄａｏ経由で利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.GetCurrentQuery">
+            <summary>現在コマンドオブジェクトに設定されているSQLを取得する。</summary>
+            <returns>現在コマンドオブジェクトに設定されているSQL</returns>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Public.Db.DamManagedOdp.GetCurrentQueryForLog">
+            <summary>現在コマンドオブジェクトに設定されているSQLを取得する（ログ出力用に編集したもの）。</summary>
+            <returns>現在コマンドオブジェクトに設定されているSQL（ログ出力用に編集したもの）</returns>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Public.Db.DamManagedOdp.DamOracleConnection">
+            <summary>OracleConnection（読み取り専用）</summary>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Public.Db.DamManagedOdp.DamOracleDataAdapter">
+            <summary>OracleDataAdapter（読み取り専用）</summary>
+            <remarks>
+            利用時、コネクション、トランザクションが有効な状態になっている事
+            必要に応じて利用する。
+            </remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Public.Db.DamManagedOdp.DamOracleCommand">
+            <summary>OracleCommand（読み取り専用）</summary>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Public.Db.DamManagedOdp.DamIDbCommand">
+            <summary>IDbCommand（読み取り専用）</summary>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Public.Db.DamManagedOdp.ArrayBindCount">
+            <summary>CommandのArrayBindCountへのアクセッサ</summary>
+            <remarks>DummyのDap対応</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Public.Db.DamManagedOdp.DamOracleTransaction">
+            <summary>OracleTransaction（読み取り専用）</summary>
+            <remarks>必要に応じて利用する。</remarks>
+        </member>
+    </members>
+</doc>

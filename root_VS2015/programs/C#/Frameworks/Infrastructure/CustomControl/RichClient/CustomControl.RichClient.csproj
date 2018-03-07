@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Touryo.Infrastructure.CustomControl.RichClient</RootNamespace>
-    <AssemblyName>CustomControl.RichClient</AssemblyName>
+    <AssemblyName>OpenTouryo.CustomControl.RichClient</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -61,17 +61,29 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.2.1.2\lib\net46\Framework.dll</HintPath>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTouryo.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\OpenTouryo.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTouryo.Framework.RichClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.2.0\lib\net46\OpenTouryo.Framework.RichClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Framework.RichClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.1.2\lib\net46\Framework.RichClient.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Public, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Public.2.1.2\lib\net46\Public.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="OpenTouryo.Public, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

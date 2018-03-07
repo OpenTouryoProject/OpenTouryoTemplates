@@ -1,0 +1,970 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenTouryo.Framework.RichClient</name>
+    </assembly>
+    <members>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx">
+            <summary>非同期イベント フレームワーク</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx._lock">
+            <summary>ロック オブジェクト</summary>
+            <remarks>
+            staticメンバ メソッドで利用する。
+            インスタンス メンバ メソッドはシングルトン
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NPS">
+            <summary>名前付きパイプ サーバ</summary>
+            <remarks>自プロセス内のサーバ１つ</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NPCS">
+            <summary>名前付きパイプ クライアント（Dictionary化）</summary>
+            <remarks>接続先：接続先は複数ありえるのでDic化する。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx._waitTime_msec">
+            <summary>接続待ちの待機時間（ミリ秒）</summary>
+            <remarks>読み取り専用</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.Init(System.String,System.String[],System.Int32)">
+            <summary>初期化</summary>
+            <param name="serverPipeName">名前付きパイプ サーバの名前</param>
+            <param name="clientPipeNames">名前付きパイプ クライアントの名前の配列</param>
+            <param name="waitTime_msec">接続待ちの待機時間（ミリ秒）</param>
+            <remarks>スレッド セーフ</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.Final">
+            <summary>終了</summary>
+            <remarks>スレッド セーフ</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.RegisterAsyncEvent(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry)">
+            <summary>非同期イベント登録</summary>
+            <param name="aee">非同期イベント エントリ</param>
+            <returns>
+            ・成功：true
+            ・失敗：false
+            </returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.UnRegisterAsyncEvent(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry)">
+            <summary>非同期イベント エントリ削除</summary>
+            <param name="aee">非同期イベント エントリ</param>
+            <returns>
+            ・成功：true
+            ・失敗：false
+            </returns>
+            <remarks>メッセージID付きのエントリは自動的に削除される。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.SendAsyncEvent(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass,System.String,Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass,System.String,System.String,System.String,System.UInt32,System.Byte[])">
+            <summary>非同期イベント通知</summary>
+            <param name="dstEventClass">送信先イベント区分（最大36文字）</param>
+            <param name="dstFuncID">送信先機能ＩＤ（最大36文字）</param>
+            <param name="srcEventClass">送信元イベント区分（最大36文字）</param>
+            <param name="srcFuncID">送信元機能ＩＤ（最大36文字）</param>
+            <param name="dstPipeName">送信先 名前付きパイプ名</param>
+            <param name="srcPipeName">送信元 名前付きパイプ名</param>
+            <param name="dataLength">データ部のバイト長</param>
+            <param name="bodyBytes">データ部のバイト表現</param>
+            <returns>
+            ・成功：true
+            ・失敗：false（名前付きパイプ クライアントが見つからない）
+            </returns>
+            <remarks>スレッド セーフ</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.WaitTime_msec">
+            <summary>接続待ちの待機時間（ミリ秒）</summary>
+            <remarks>読み取り専用</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.SetResultDelegate">
+            <summary>SetResultのDelegate型</summary>
+            <param name="result">ヘッダ部構造体と、データ部（バイト表現）</param>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer">
+            <summary>名前付きパイプ サーバ</summary>
+            <remarks>
+            ・名前付きパイプ サーバ
+            ・非同期イベント エントリ
+            持つプライベート クラス
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.NPSS">
+            <summary>名前付きパイプ サーバ ストリーム</summary>
+            <remarks>.NET3.5組み込みオブジェクト</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.NPSS_Name">
+            <summary>名前付きパイプ サーバの名前</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.loop">
+            <summary>ループ変数</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.AEES">
+            <summary>非同期イベント エントリ（Dictionary化）</summary>
+            <remarks>１つの機能ＩＤに対して複数のエントリを登録可能</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.RegisterAsyncEvent(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry)">
+            <summary>非同期イベント エントリ登録</summary>
+            <param name="aee">非同期イベント エントリ</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.UnRegisterAsyncEvent(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry)">
+            <summary>非同期イベント エントリ削除</summary>
+            <param name="aee">非同期イベント エントリ</param>
+            <returns>
+            ・成功：true
+            ・失敗：false
+            </returns>
+            <remarks>メッセージID付きのエントリは自動的に削除される。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.#ctor(System.String)">
+            <summary>コンストラクタ</summary>
+            <param name="pipeName">自身の名前付きパイプ名</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.ListeningNamedPipeServer">
+            <summary>サーバ起動 - listenerスレッド関数</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.Final">
+            <summary>終了処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeServer.StopListenNamedPipeServer">
+            <summary>リスナのループ＆待機を終了させる</summary>
+            <remarks>非同期化しないとハングするため</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeClient">
+            <summary>名前付きパイプ クライアント</summary>
+            <remarks>プライベート クラス</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeClient.NPCS">
+            <summary>名前付きパイプ・クライアント</summary>
+            <remarks>.NET3.5組み込みオブジェクト</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeClient.NPSS_Name">
+            <summary>名前付きパイプ・サーバの名前</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeClient.#ctor(System.String)">
+            <summary>コンストラクタ</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventFx.NamedPipeClient.SendData(System.Object)">
+            <summary>データ送信</summary>
+            <param name="parameter">送信データ（バイト配列）</param>
+            <remarks>object型なのは、ThreadStartデリゲートのため</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventHeader">
+            <summary>
+            非同期イベント ヘッダ（C言語構造体）の授受用
+            </summary>
+            <remarks>
+            C言語構造体と同様に、メンバが宣言された順にメモリに配置するには、
+            StructLayoutにLayoutKind.Sequentialという値を指定する。
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventHeader.DstEventClass">
+            <summary>
+            ＜送信先イベント区分＞
+            送信先イベント区分を識別する。
+            （コールバック関数を登録＆呼出す場合に利用する）
+            </summary>
+            <remarks>
+            ・Thread        （0）
+            ・ThreadPool    （1）
+            ・Windows Forms （2）
+            ・WPF           （3）
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventHeader.DstFuncID">
+            <summary>
+            ＜送信先機能ＩＤ＞
+            送信先機能を識別する。
+            （コールバック関数を登録＆呼出す場合に利用する）
+            </summary>
+            <remarks>
+            最大36文字
+            サイズを超える場合は、切り詰められる。
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventHeader.SrcPipeName">
+            <summary>
+            ＜送信元 名前付きパイプ名＞
+            送信元プロセスを識別する（戻りメッセージの受信時）。
+            </summary>
+            <remarks>
+            最大36文字
+            サイズを超える場合は、切り詰められる。
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventHeader.SrcEventClass">
+            <summary>
+            ＜送信元イベント区分＞
+            送信先イベント区分を識別する。
+            （コールバック関数を登録＆呼出す場合に利用する）
+            </summary>
+            <remarks>
+            ・Thread        （0）
+            ・ThreadPool    （1）
+            ・Windows Forms （2）
+            ・WPF           （3）
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventHeader.SrcFuncID">
+            <summary>
+            ＜送信元機能ＩＤ＞
+            送信元機能を識別する（戻りメッセージの受信時）。
+            （コールバック関数を登録＆呼出す場合に利用する）
+            </summary>
+            <remarks>
+            最大36文字
+            サイズを超える場合は、切り詰められる。
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventHeader.DataLength">
+            <summary>
+            ＜データ部のバイト長＞
+            データ部の長さを示す。
+            </summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventHeader.#ctor(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass,System.String,Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass,System.String,System.String,System.UInt32)">
+            <summary>コンストラクタ</summary>
+            <param name="dstEventClass">送信先イベント区分</param>
+            <param name="dstFuncID">送信先機能ＩＤ（最大36文字）</param>
+            <param name="srcEventClass">送信元イベント区分</param>
+            <param name="srcFuncID">送信元機能ＩＤ（最大36文字）</param>
+            <param name="srcPipeName">送信元 名前付きパイプ名（最大36文字）</param>
+            <param name="dataLength">データ部のバイト長</param>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry">
+            <summary>非同期イベント デリゲート エントリ</summary>
+            <remarks>１つの機能ＩＤに対して複数のエントリを登録可能</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.#ctor(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass,System.String,System.Object,System.Object)">
+            <summary>コンストラクタ</summary>
+            <param name="eventClass">
+            イベント区分
+            ・スレッド関数へ    ：AsyncEventEnum.EventClass.ThreadPool
+            ・スレッドプールへ  ：AsyncEventEnum.EventClass.WinForm
+            ・WinFormの結果表示 ：AsyncEventEnum.EventClass.WinForm
+            ・WPFの結果表示     ：AsyncEventEnum.EventClass.WPF
+            </param>
+            <param name="funcID">機能ＩＤ（最大36文字）</param>
+            <param name="control">
+            UIコントロール
+            ・Control（WinForm）
+            ・DependencyObject（WPF）
+            </param>
+            <param name="callback">
+            ＜コールバック＞
+            ・スレッド関数へ    ：System.Threading.ParameterizedThreadStart
+            ・スレッドプールへ  ：System.Threading.WaitCallback
+            ・WinFormの結果表示 ：AsyncEventFx.SetResultDelegate
+            ・WPFの結果表示     ：AsyncEventFx.SetResultDelegate
+            </param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.GetHashCode">
+            <summary>ハッシュを返す</summary>
+            <returns>ハッシュコード</returns>
+            <remarks>全メンバのハッシュコードのXOR</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.Equals(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry)">
+            <summary>Equals</summary>
+            <param name="aee">AsyncEventEntry</param>
+            <returns>
+            true：等しい
+            false：等しくない
+            </returns>
+            <remarks>全メンバの==のAND</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.Equals(System.Object)">
+            <summary>Equals</summary>
+            <param name="obj">AsyncEventEntry</param>
+            <returns>
+            true：等しい
+            false：等しくない
+            </returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.op_Equality(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry,Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry)">
+            <summary>比較演算子（==）</summary>
+            <param name="l">右辺</param>
+            <param name="r">左辺</param>
+            <returns>
+            true：等しい
+            false：等しくない
+            </returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.op_Inequality(Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry,Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry)">
+            <summary>比較演算子（!=）</summary>
+            <param name="l">右辺</param>
+            <param name="r">左辺</param>
+            <returns>
+            true：等しい
+            false：等しくない
+            </returns>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.EventClass">
+            <summary>イベント区分</summary>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.FuncID">
+            <summary>機能ＩＤ（最大36文字）</summary>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.Control">
+            <summary>UIコントロール</summary>
+            <remarks>メッセージ ループを使用する際に必要</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEntry.Callback">
+            <summary>コールバック</summary>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum">
+            <summary>Framework.RichClient.Asynchronous名前空間で使用する列挙型クラス</summary>
+            <remarks>特定の箇所で利用できる。</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass">
+            <summary>イベント区分の列挙型</summary>
+            <remarks>自由に利用できる。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass.Thread">
+            <summary>スレッド</summary>
+            <remarks>通常0スタート、C言語から使うので明記した</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass.ThreadPool">
+            <summary>スレッド プール</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass.WinForm">
+            <summary>Windows Forms</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.AsyncEventEnum.EventClass.WPF">
+            <summary>WPF</summary>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS">
+            <summary>業務コード親クラス１（2層C/S用）</summary>
+            <remarks>業務コード親クラス２、業務コード クラス、画面コード クラスから利用する。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.TC">
+            <summary>トランザクション制御シングルトン クラス</summary>
+            <remarks>
+            初期化は起動時の１回のみであり、
+            読み取り専用のデータを保持する場合
+            のみに適用するデザインパターンとする。
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS._dam">
+            <summary>
+            データアクセス制御クラス（ＤＡＭ）
+            </summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS._lock">
+            <summary>
+            排他のためのクラス変数
+            </summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.WasCalledFromDoBusinessLogic">
+            <summary>DoBusinessLogicから呼ばれたかフラグ</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS._returnValue">
+            <summary>戻り値の設定用メンバ変数</summary>
+            <remarks>
+            レイトバインドにおいて、例外発生時、戻り値（ref）が戻らないので、メンバ変数を使用
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.DoBusinessLogic(Touryo.Infrastructure.Framework.Common.BaseParameterValue)">
+            <summary>
+            業務コード呼び出しメソッド（業務ロジックの入り口）
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <returns>戻り値クラス</returns>
+            <remarks>
+            クライアント側（2層C/S）用
+            画面コード クラスから利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.DoBusinessLogic(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Public.Db.DbEnum.IsolationLevelEnum)">
+            <summary>
+            業務コード呼び出しメソッド（業務ロジックの入り口）
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="iso">分離レベル（ＤＢＭＳ毎の分離レベルの違いを理解して設定すること）</param>
+            <returns>戻り値クラス</returns>
+            <remarks>
+            クライアント側（2層C/S）用
+            画面コード クラスから利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.GetDam">
+            <summary>データアクセス制御クラス（ＤＡＭ）を返す。</summary>
+            <returns>データアクセス制御クラス（ＤＡＭ）</returns>
+            <remarks>派生の業務コード親クラス２、業務コード クラスから利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.SetDam(Touryo.Infrastructure.Public.Db.BaseDam)">
+            <summary>データアクセス制御クラス（ＤＡＭ）を設定する。</summary>
+            <param name="dam">データアクセス制御クラス（ＤＡＭ）</param>
+            <remarks>派生の業務コード親クラス２、業務コード クラスから利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.UOC_ConnectionOpen(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Public.Db.DbEnum.IsolationLevelEnum)">
+            <summary>
+            データアクセス制御クラス（ＤＡＭ）の生成し、
+            コネクションを確立、トランザクションを開始する処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="iso">分離レベル（ＤＢＭＳ毎の分離レベルの違いを理解して設定すること）</param>
+            <remarks>派生の業務コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.UOC_PreAction(Touryo.Infrastructure.Framework.Common.BaseParameterValue)">
+            <summary>
+            Ｂ層の開始処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <remarks>派生の業務コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.UOC_DoAction(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue@)">
+            <summary>
+            業務処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <remarks>派生の業務コード クラスでオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.UOC_AfterAction(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue)">
+            <summary>
+            Ｂ層の終了処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <remarks>派生の業務コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.UOC_AfterTransaction(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue)">
+            <summary>
+            Ｂ層のトランザクションのコミット後の終了処理を実装
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <remarks>派生の業務コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue,Touryo.Infrastructure.Framework.Exceptions.BusinessApplicationException)">
+            <summary>
+            Ｂ層の業務例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="baEx">BusinessApplicationException</param>
+            <remarks>派生の業務コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue,Touryo.Infrastructure.Framework.Exceptions.BusinessSystemException)">
+            <summary>
+            Ｂ層のシステム例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="bsEx">BusinessSystemException</param>
+            <remarks>派生の業務コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.UOC_ABEND(Touryo.Infrastructure.Framework.Common.BaseParameterValue,Touryo.Infrastructure.Framework.Common.BaseReturnValue@,System.Exception)">
+            <summary>
+            Ｂ層の一般的な例外による異常終了の後処理を実装するUOCメソッド。
+            </summary>
+            <param name="parameterValue">引数クラス</param>
+            <param name="returnValue">戻り値クラス</param>
+            <param name="ex">Exception</param>
+            <remarks>派生の業務コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.GetTransactionPatterns(System.String,System.String[]@)">
+            <summary>トランザクション グループIDからトランザクション パターンIDを取得する。</summary>
+            <param name="TransactionGroupID">トランザクション グループID</param>
+            <param name="TransactionPatternID">トランザクション パターンID（配列）</param>
+            <remarks>派生の業務コード親クラス２、業務コード クラスから利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.InitDam(System.String,Touryo.Infrastructure.Public.Db.BaseDam)">
+            <summary>データアクセス制御クラス（DAM）を初期化する</summary>
+            <param name="businessID">業務ID</param>
+            <param name="dam">データアクセス制御クラス（DAM）インスタンス</param>
+            <remarks>派生の業務コード親クラス２、業務コード クラスから利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.CommitAndClose">
+            <summary>コミット ＋ コネクション クローズ処理</summary>
+            <remarks>
+            接続・切断オーバーヘッドは、コネクションプールにより回避する。
+            画面コード クラスから利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.RollbackAndClose">
+            <summary>ロールバック ＋ コネクション クローズ処理</summary>
+            <remarks>
+            接続・切断オーバーヘッドは、コネクションプールにより回避する。
+            画面コード クラスから利用する。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.ConnectionClose">
+            <summary>コネクション クローズ処理</summary>
+            <remarks>
+            トランザクションを開始していない場合のコネクションクローズの方法
+            画面コード クラスから利用する。
+            </remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Business.BaseLogic2CS.ReturnValue">
+            <summary>戻り値の設定用メンバ変数のプロパティ</summary>
+            <remarks>
+            レイトバインドにおいて、例外発生時、戻り値（ref）が戻らないので、メンバ変数を使用
+            </remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin">
+            <summary>画面コード親クラス１（Windowアプリケーション）</summary>
+            <remarks>画面コード親クラス２、画面コード クラスから利用する。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin._intWindowsCount">
+            <summary>ウィンドウ数の管理（全Form型）</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.GetWindowsCount">
+            <summary>全Form型のウィンドウ数を取得</summary>
+            <returns>全Form型のウィンドウ数</returns>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin._dicWindowsCount">
+            <summary>ウィンドウ数の管理（当該Form型）</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.GetWindowsCount(System.Type)">
+            <summary>当該Form型ウィンドウ数を取得</summary>
+            <param name="formType">当該Form型情報</param>
+            <returns>当該Form型ウィンドウ数</returns>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin._windowInstances">
+            <summary>ウィンドウ インスタンスの管理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.GetWindowInstances(System.Type)">
+            <summary>ウィンドウ インスタンスを取得</summary>
+            <param name="formType">型情報（form）</param>
+            <returns>ウィンドウ インスタンス一覧</returns>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.ControlHt">
+            <summary>フレームワークのイベント処理対応コントロールを保持する</summary>
+            <remarks>画面コード親クラス２から利用する。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.LstUserControl">
+            <summary>全てのユーザ コントロールを保存するワーク領域</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin._lockCount">
+            <summary>Formの多重ロック・アンロック管理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.SetEnabled(System.Boolean)">
+            <summary>Formの多重ロック・アンロック管理</summary>
+            <param name="isEnabled">
+            true：アンロック
+            false：ロック
+            </param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.#ctor">
+            <summary>BaseControllerWinクラスのコンストラクタ</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.InitializeComponent">
+            <summary>InitializeComponent</summary>
+            <remarks>Page_Loadイベントハンドラを登録する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.Form_Load(System.Object,System.EventArgs)">
+            <summary>Form_Loadのイベントハンドラ</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.CreatePrefixAndEvtHndHt">
+            <summary>
+            コントロールのプレフィックスと
+            イベント ハンドラのディクショナリを生成
+            </summary>
+            <returns>
+            プレフィックスと
+            イベント ハンドラのディクショナリ
+            </returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.Form_Closed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
+            <summary>Form_Closedのイベントハンドラ</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            ボタン系のClickイベントに対応した集約イベント ハンドラ
+            </summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.List_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            リスト系のSelectedIndexChangedイベントに対応した集約イベント ハンドラ
+            </summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.Check_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            ボタン系のCheckedChangedイベントに対応した集約イベント ハンドラ
+            </summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.Form_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            FormのKeyDownイベントに対応した集約イベント ハンドラ
+            </summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.Form_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            FormのKeyPressイベントに対応した集約イベント ハンドラ
+            </summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.Form_KeyUp(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            FormのKeyUpイベントに対応した集約イベント ハンドラ
+            </summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UserControlImplementingMethod">
+            <summary>ユーザ コントロール名を記憶しておくワーク</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.GetMethodName(System.Windows.Forms.Control,System.String)">
+            <summary>レイトバインドする際に使用するメソッド名を生成する</summary>
+            <param name="sender">コントロール</param>
+            <param name="eventName">イベント名</param>
+            <returns>レイトバインドする際に使用するメソッド名</returns>
+            <remarks>派生の画面コード親クラス２から利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.CMN_Event_Handler(Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>イベント処理の共通メソッド</summary>
+            <param name="rcFxEventArgs">イベント ハンドラの共通引数</param>
+            <remarks>派生の画面コード親クラス２から利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.LateBind(Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>レイトバインドするメソッド</summary>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <returns>画面遷移する場合のURL</returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.GetFxFormControl(System.String)">
+            <summary>Fxでハンドルしているコントロールを取得するメソッド</summary>
+            <param name="controlName">取得したいコントロールのコントロール名</param>
+            <returns>コントロールのオブジェクト参照</returns>
+            <remarks>画面コード親クラス２、画面コード クラスから利用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.FindControl(System.Windows.Forms.Control,System.String)">
+            <summary>コントロールを取得する</summary>
+            <param name="ctrl">検索を開始するルートのコントロール</param>
+            <param name="ctrlName">コントロール名</param>
+            <returns>コントロール</returns>
+            <remarks>（ネストした）ユーザ コントロール以下を検索しない。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.GetUserControl(System.Windows.Forms.Control)">
+            <summary>ユーザ コントロールの情報を初期化する</summary>
+            <param name="ctrl">コントロール（再起するため）</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.GetUCControl(System.Windows.Forms.Control,System.String@)">
+            <summary>ユーザ コントロール上のコントロールを取得するメソッド</summary>
+            <param name="sender">取得したいコントロール</param>
+            <param name="userControlName">ユーザ コントロール名</param>
+            <returns>コントロールのオブジェクト参照</returns>
+            <remarks>ユーザコントロールのネストを考慮する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_CMNFormInit">
+            <summary>画面開始に対応した共通UOCメソッド</summary>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_FormInit">
+            <summary>画面開始に対応した個別UOCメソッド</summary>
+            <remarks>派生の画面コード クラスでオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_CMNAfterFormInit">
+            <summary>画面開始に対応した共通UOCメソッド</summary>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_CMNFormEnd">
+            <summary>画面終了に対応した共通UOCメソッド</summary>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_CMNAfterFormEnd">
+            <summary>画面終了に対応した共通UOCメソッド</summary>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_FormEnd">
+            <summary>画面終了に対応した個別UOCメソッド</summary>
+            <remarks>派生の画面コード クラスでオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_PreAction(Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>イベントの開始前の処理を実装</summary>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_AfterAction(Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>イベントの終了後の処理を実装</summary>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_Finally(Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>Finally節の処理を実装</summary>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_ABEND(Touryo.Infrastructure.Framework.Exceptions.BusinessApplicationException,Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>BusinessApplicationExceptionの例外処理用のUOCメソッド</summary>
+            <param name="baEx">BusinessApplicationException</param>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_ABEND(Touryo.Infrastructure.Framework.Exceptions.BusinessSystemException,Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>BusinessSystemExceptionの例外処理用のUOCメソッド</summary>
+            <param name="bsEx">BusinessSystemException</param>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.BaseControllerWin.UOC_ABEND(System.Exception,Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs)">
+            <summary>Exceptionの例外処理用のUOCメソッド</summary>
+            <param name="ex">Exception</param>
+            <param name="rcFxEventArgs">イベントハンドラの共通引数</param>
+            <remarks>派生の画面コード親クラス２でオーバーライドする。</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Presentation.HiddenButton">
+            <summary>Clickイベントを発生させることが出来る隠しボタン</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.HiddenButton.#ctor">
+            <summary>コンストラクタ</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.HiddenButton.DoClick">
+            <summary>Clickイベントを発生させる</summary>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs">
+            <summary>イベントハンドラの共通引数</summary>
+            <remarks>自由に利用できる。</remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs._controlName">
+            <summary>コントロール名</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs._methodName">
+            <summary>イベントハンドラのメソッド名</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs._sender">
+            <summary>イベントハンドラのsender</summary>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs._e">
+            <summary>イベントハンドラのEventArgs</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs.#ctor(System.String,System.String,System.Object,System.EventArgs)">
+            <summary>コンストラクタ</summary>
+            <param name="controlName">コントロール名</param>
+            <param name="methodName">レイトバインドする際のメソッド名</param>
+            <param name="sender">object</param>
+            <param name="e">EventArgs</param>
+            <remarks>自由に利用できる。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs.ControlName">
+            <summary>コントロール名</summary>
+            <remarks>自由に利用できる。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs.MethodName">
+            <summary>イベントハンドラのメソッド名</summary>
+            <remarks>自由に利用できる。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs.Sender">
+            <summary>イベントハンドラのsender</summary>
+            <remarks>自由に利用できる。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Presentation.RcFxEventArgs.E">
+            <summary>イベントハンドラのEventArgs</summary>
+            <remarks>自由に利用できる。</remarks>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc">
+            <summary>
+            非同期コード親クラス１
+            </summary>
+            <remarks>
+            this.CmnCallback、CmnCallbackPは副スレッドから呼び出されるので、
+            Control、Dispatcher.Invokeを使用してthis.SetResultを
+            キューイングし、主スレッドから実行するようにする。
+            ※ this.SetResultは、delegate（SetResultDelegate）
+            
+            以下コードをクラスライブラリ内で実装する場合は、
+            PresentationFramework.dll , WindowsBase.dll
+            の2つのアセンブリを参照設定する必要がある
+            </remarks>
+        </member>
+        <member name="F:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc._threadCount">
+            <summary>スレッド数</summary>
+            <remarks>初期値は０</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.#ctor(System.Object)">
+            <summary>コンストラクタ</summary>
+            <param name="_this">WPFやWinFormの要素</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.CmnCallback">
+            <summary>Thread関数（Threadクラス用）</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.CmnCallbackP(System.Object)">
+            <summary>Thread関数（ThreadPoolクラス用）</summary>
+            <remarks>引数を渡すときは、Parameterメンバ変数を使用する。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ExecChangeProgress(System.Object)">
+            <summary>各画面を更新する（進捗表示）</summary>
+            <param name="param">引数</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ShowAsyncMessageBoxWPF(System.String,System.String,System.Windows.MessageBoxButton,System.Windows.MessageBoxImage)">
+            <summary>
+            非同期処理からメッセージボックスを表示する（WPF）。
+            </summary>
+            <param name="messageBoxText">メッセージ テキスト</param>
+            <param name="caption">Caption</param>
+            <param name="button">表示するボタン</param>
+            <param name="icon">表示するアイコン</param>
+            <returns>MessageBoxResult</returns>
+            <remarks>主スレッドで表示するメッセージボックスを呼び出す)</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ShowAsyncMessageBoxWin(System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            非同期処理からメッセージボックスを表示する（Win）。
+            </summary>
+            <param name="messageBoxText">メッセージ テキスト</param>
+            <param name="caption">Caption</param>
+            <param name="button">表示するボタン</param>
+            <param name="icon">表示するアイコン</param>
+            <returns>MessageBoxResult</returns>
+            <remarks>主スレッドで表示するメッセージボックスを呼び出す)</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc._ShowAsyncMessageBoxWPF(System.String,System.String,System.Windows.MessageBoxButton,System.Windows.MessageBoxImage)">
+            <summary>
+            メッセージボックス表示のためのdelegate(WPF)
+            </summary>
+            <param name="messageBoxText">メッセージ テキスト</param>
+            <param name="caption">Caption</param>
+            <param name="button">表示するボタン</param>
+            <param name="icon">表示するアイコン</param>
+            <returns>MessageBoxResult</returns>
+            <remarks>本メソッドは主スレッドで実行される</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc._ShowAsyncMessageBoxWin(System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            メッセージボックス表示のためのdelegate(WPF)
+            </summary>
+            <param name="messageBoxText">メッセージ テキスト</param>
+            <param name="caption">Caption</param>
+            <param name="button">表示するボタン</param>
+            <param name="icon">表示するアイコン</param>
+            <returns>DialogResult</returns>
+            <remarks>本メソッドは主スレッドで実行される</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.WindowLock">
+            <summary>ウィンドウのロック</summary>
+            <remarks>
+            通常、ベース２から使用する
+            －－－－－－－－－－
+            呼び元はLockオブジェクトAを使用する
+            クリティカルセクションAであること。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.WindowUnlock">
+            <summary>ウィンドウのアンロック</summary>
+            <remarks>
+            通常、ベース２から使用する
+            －－－－－－－－－－
+            呼び元はLockオブジェクトAを使用する
+            クリティカルセクションBであること。
+            －－－－－－－－－－
+            ここでは、Invokeを使用しない（デッドロックになる）。
+            </remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.SetEnabled(System.Boolean)">
+            <summary>ウィンドウのロック・アンロック</summary>
+            <param name="isEnabled">
+            true：アンロック
+            false：ロック
+            </param>
+            <remarks>主スレッドから実行される。</remarks>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.UOC_Pre">
+            <summary>開始処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.UOC_After">
+            <summary>終了処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.UOC_ABEND(System.Exception)">
+            <summary>例外処理</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.UOC_Finally">
+            <summary>最終処理</summary>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ThreadCount">
+            <summary>スレッド数</summary>
+            <remarks>
+            スレッド数を管理
+            （ベース２から行う）
+            </remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.Parameter">
+            <summary>非同期処理を実行するDelegateメソッドに渡すパラメタ</summary>
+            <remarks>スレッドプールの場合もコチラを使用すること</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ReturnValue">
+            <summary>各画面を更新するDelegateメソッド渡すパラメタ</summary>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.AsyncFunc">
+            <summary>非同期処理を実行するDelegate</summary>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ChangeProgress">
+            <summary>各画面を更新するDelegate（進捗の反映）</summary>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.SetResult">
+            <summary>各画面を更新するDelegate（結果の反映）</summary>
+            <remarks>nullの場合は呼び出されない。</remarks>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.thisWPF">
+            <summary>WPFの要素（ウィンドウやコントロールなど）</summary>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.thisWinForm">
+            <summary>WinFormの要素（ウィンドウやコントロールなど）</summary>
+        </member>
+        <member name="P:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.UIElementName">
+            <summary>UI要素の名称</summary>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.AsyncFuncDelegate">
+            <summary>ExecAsyncFuncのDelegate型</summary>
+            <param name="param">引数</param>
+            <returns>戻り値（SetResultへ渡される）</returns>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ChangeProgressDelegate">
+            <summary>ChangeProgressのDelegate型</summary>
+            <param name="param">引数</param>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.SetResultDelegate">
+            <summary>SetResultのDelegate型</summary>
+            <param name="result">結果（ExecAsyncFuncの戻り値）</param>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.SetEnabledDelegate">
+            <summary>ウィンドウのロック・アンロックのDelegate</summary>
+            <param name="isEnabled">
+            true：アンロック、false：ロック
+            </param>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ShowAsyncMessageBoxDelegateWPF">
+            <summary>
+            メッセージボックス表示のためのdelegate宣言(WPF)
+            </summary>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Asynchronous.BaseAsyncFunc.ShowAsyncMessageBoxDelegateWin">
+            <summary>
+            メッセージボックス表示のためのdelegate宣言(Win)
+            </summary>
+        </member>
+        <member name="T:Touryo.Infrastructure.Framework.RichClient.Util.RcFxCmnFunction">
+            <summary>FrameWork.RichClient層の共通クラス</summary>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Util.RcFxCmnFunction.GetCtrlAndSetClickEventHandler(System.Windows.Forms.Control,System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.Windows.Forms.Control})">
+            <summary>コントロール取得＆イベントハンドラ設定（下位互換）</summary>
+            <param name="ctrl">コントロール</param>
+            <param name="prefix">プレフィックス</param>
+            <param name="eventHandler">イベント ハンドラ</param>
+            <param name="controlHt">コントロールのディクショナリ</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Util.RcFxCmnFunction.GetCtrlAndSetClickEventHandler2(System.Windows.Forms.Control,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Windows.Forms.Control})">
+            <summary>コントロール取得＆イベントハンドラ設定</summary>
+            <param name="ctrl">コントロール</param>
+            <param name="prefixAndEvtHndHt">プレフィックスとイベント ハンドラのディクショナリ</param>
+            <param name="controlHt">コントロールのディクショナリ</param>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Util.RcFxCmnFunction.CastByAsOperator``1(System.Windows.Forms.Control,System.String)">
+            <summary>キャスト可否チェック</summary>
+            <typeparam name="TResult">キャストする型</typeparam>
+            <param name="target">Control</param>
+            <param name="prefix">プレフィックス</param>
+            <returns>キャスト結果</returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Util.RcFxCmnFunction.FindParentWinUserControl(System.Object)">
+            <summary>親UserControlを検索</summary>
+            <param name="sender">object</param>
+            <returns>親UserControl</returns>
+        </member>
+        <member name="M:Touryo.Infrastructure.Framework.RichClient.Util.RcFxCmnFunction.IsDesignMode">
+            <summary>
+            デザイン・モードであるかチェックする。
+            </summary>
+            <returns>
+            true:デザインモード時
+            false:実行時時
+            </returns>
+            <remarks>
+            DesignModeプロパティというデザイン・モードであるかチェックするものが用意されていますが、バグがあるため使用禁止です。
+            </remarks>
+        </member>
+    </members>
+</doc>

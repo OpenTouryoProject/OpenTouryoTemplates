@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="WebForms_Sample.Aspx.TestPublic.testScreen" ValidateRequest="false" Codebehind="testScreen.aspx.cs" %>
-<%@ Register Assembly="CustomControl" Namespace="Touryo.Infrastructure.CustomControl" TagPrefix="cc1" %>
+<%@ Register Assembly="OpenTouryo.CustomControl" Namespace="Touryo.Infrastructure.CustomControl" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 <html>
@@ -129,6 +129,55 @@
                         <br />
                     </td>
                     <td style="width:33%;vertical-align:top;">
+                        <br />
+                        <hr />
+                        <br />
+                        ＜トランザクション制御＞<br />
+                        <br />
+                        オフ：シングル コネクション モード<br />
+                        オン：マルチ コネクション モード<br />
+                        <cc1:WebCustomCheckBox ID="cbxCnnMode" runat="server" /><br />
+                        <br />
+                        データアクセス制御クラス<br />
+                        （データプロバイダ）を選択<br />
+                        <cc1:WebCustomDropDownList ID="ddlDap" runat="server">
+                            <asp:ListItem Value="SQL">SQLClient</asp:ListItem>
+                            <asp:ListItem Value="ODP">ODP.NET</asp:ListItem>
+                            <asp:ListItem Value="DB2">DB2.NET</asp:ListItem>
+                            <asp:ListItem Value="MCN">MySQL Cnn/NET</asp:ListItem>
+                        </cc1:WebCustomDropDownList><br />
+                        <cc1:WebCustomButton ID="btnTxPID" runat="server" Text="トランザクション パターンＩＤ" Width="250px" OnClick="btnTxPID_Click"/><br />
+                        <br />
+                        トランザクショングループIDを設定<br />
+                        <cc1:WebCustomDropDownList ID="ddlTxGpID" runat="server">
+                            <asp:ListItem Value="SQL">SQL（SQLClient）</asp:ListItem>
+                            <asp:ListItem Value="ODP">ODP（ODP.NET）</asp:ListItem>
+                            <asp:ListItem Value="DB2">DB2（DB2.NET）</asp:ListItem>
+                            <asp:ListItem Value="MCN">MCN（MySQL Cnn/NET）</asp:ListItem>
+                        </cc1:WebCustomDropDownList><br />
+                        <cc1:WebCustomButton ID="btnTxGID" runat="server" Text="トランザクション グループＩＤ" Width="250px" OnClick="btnTxGID_Click"/><br />
+                        <br />
+                        トランザクションID：<br />
+                        <cc1:WebCustomLabel ID="lblTxID" runat="server" Text=""></cc1:WebCustomLabel><br />
+                        <br />
+                        終了時のステータス<br />
+                        <cc1:WebCustomDropDownList ID="ddlExStatus" runat="server">
+                            <asp:ListItem Value="UT">トランザクションあり</asp:ListItem>
+                            <asp:ListItem Value="NT">トランザクションなし</asp:ListItem>
+                            <asp:ListItem Value="NC">コネクションなし</asp:ListItem>
+                            <asp:ListItem Value="NULL">データアクセス制御クラス = Null</asp:ListItem>
+                        </cc1:WebCustomDropDownList><br />
+                        <br />
+                        コミット、ロールバックを設定<br />
+                        （例外発生時、ロールバック）<br />
+                        <cc1:WebCustomDropDownList ID="ddlExRollback" runat="server">
+                            <asp:ListItem Value="-">正常時</asp:ListItem>
+                            <asp:ListItem Value="Business">業務例外</asp:ListItem>
+                            <asp:ListItem Value="System">システム例外</asp:ListItem>
+                            <asp:ListItem Value="Other">その他、一般的な例外</asp:ListItem>
+                            <asp:ListItem Value="Other-Business">業務例外への振替</asp:ListItem>
+                            <asp:ListItem Value="Other-System">システム例外への振替</asp:ListItem>
+                        </cc1:WebCustomDropDownList><br />
                         <br />
                         <hr />
                         <br />
