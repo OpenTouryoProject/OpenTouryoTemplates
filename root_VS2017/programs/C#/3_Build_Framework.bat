@@ -24,6 +24,7 @@ md "Frameworks\Infrastructure\Build"
 rem --------------------------------------------------
 rem Output xcopy after you build the batch Infrastructure(AllComponent)
 rem --------------------------------------------------
+
 ..\nuget.exe restore "Frameworks\Infrastructure\AllComponent.sln"
 %BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\AllComponent.sln"
 
