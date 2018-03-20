@@ -7,15 +7,25 @@
 Open 棟梁テンプレート・ベース (Visual Studio 2015 用) に同梱されるサンプルアプリケーションの実行手順は以下のとおりです。
 
 ### 前提ツールのインストール
-あらかじめ、Visual Studio 2015 と SQL Server Express をインストールしておいてください。  
-(SQL Server のバージョンは任意です。また、エディションについては、Express Edition 以外もお使いいただけますが、サンプルアプリケーションに指定する接続文字列を修正する必要がありますので、ご注意ください)
+あらかじめ、Visual Studio 2015 をインストールしておいてください。
+また、下記の Open 棟梁テンプレートの既定のターゲット DBMS (データプロバイダ) から使用する DBMS をインストールしてください。
+- SQL Server (System.Data.SqlClient)
+- Oracle Database
+  - Oracle.DataAccess
+  - Oracle.ManagedDataAccess
+- MySQL (MySql.Data)
+- PostgreSQL (Npgsql)
+- その他 DBMS (データプロバイダ)
+  - OLEDB (System.Data.OleDb)
+  - ODBC (System.Data.Odbc)
    
 ### サンプルデータベースのセットアップ
+#### SQL Server  
 サンプルアプリケーションの実行には、Northwind データベースが必要です。
 以下のマイクロソフトのサイトから、Northwind データベースのセットアップ スクリプトをダウンロードし、インストールしてください。  
 
 - Download: NorthWind and pubs Sample Databases for SQL Server 2000 - Microsoft Download Center  
-    http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=23654
+  http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=23654
 
 インストールが成功すると、C ドライブ直下に "SQL Server 2000 Sample Databases" フォルダが作成されます。  
 SQL Server 2012 以降をお使いの場合は、このフォルダにある instnwnd.sql ファイルをエディタなどで開き、以下のコードをコメントアウトしてください。(SQL Server 2012 以降では sp_dboption システム ストアド プロシージャがないため)
@@ -30,6 +40,10 @@ exec sp_dboption 'Northwind','select into/bulkcopy','true'
 ```bat
 "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S localhost\SQLExpress -E -i "C:\SQL Server 2000 Sample Databases\instnwnd.sql"
 ```
+
+#### SQL Server 以外
+- 各 DBMS に、空のデータベースを作成してください。
+- C:\root\files\resource\Sql\[DBMS 名]\TestTable.txt を実行し、テスト用のテーブルを作成してください。
 
 ### テンプレート・ベースの配置
 「root_VS2015」フォルダを、C ドライブ直下にコピーしてください。  
@@ -200,13 +214,14 @@ http://localhost/yyyy/Service.asmx (yyyy: IIS のアプリケーション名)
    
 #### Web の場合：
 - ASP.NET Web Forms  
-  - C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
-  - C:\root\programs\VB\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
+  - C:\root\programs\C#\Samples\WebApp_sample\WebForms_Sample\WebForms_Sample.sln
+  - C:\root\programs\VB\Samples\WebApp_sample\WebForms_Sample\WebForms_Sample.sln
 - ASP.NET MVC  
   - C:\root\programs\C#\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
   - C:\root\programs\VB\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
 - ASP.NET Single Page Application  
-C:\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+  - C:\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+  - C:\root\programs\C#\Samples\WS_sample\ASPNETWebService\ASPNETWebService.sln
  
 #### C/S 2階層の場合：
 - Windows Forms  
@@ -227,7 +242,8 @@ C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSC
   - C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
   - C:\root\programs\VB\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
 - UWP  
-C:\root\programs\C#\Samples\UWP_sample\UWP_sample.sln
+  - C:\root\programs\C#\Samples\UWP_sample\UWP_sample.sln
+  - C:\root\programs\C#\Samples\WS_sample\ASPNETWebService\ASPNETWebService.sln
 
 ### 参考資料
 Open 棟梁をご利用いただくにあたり、OpenTouryoDocument リポジトリのドキュメントをご利用いただけます。
@@ -239,7 +255,9 @@ Open 棟梁の仕組みや、各機能の仕様などをご覧いただけます
 Open 棟梁のファーストステップガイドです。     
    
 ### テンプレート・ベースのカスタマイズ
-もし Open 棟梁の機能の中で、システム開発プロジェクトの要件に合わない部分がありましたら、このテンプレート・ベースをカスタマイズすることでご対応いただけます。  
+もし Open 棟梁の機能の中で、システム開発プロジェクトの要件に合わない部分がありましたら、このテンプレート・ベースをカスタマイズすることでご対応いただけます。
+例えば、IBM DB2 (IBM.Data.DB2.) など、NuGet にライブラリが存在しない DBMS (データプロバイダ) はテンプレートの既定のターゲット DBMS に含まれていません。必要に応じて、テンプレートのカスタマイズを行って対応して下さい。
+
 テンプレートベースのカスタマイズ方法につきましては、[チュートリアル](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc)をご覧ください。
    
 ### 著作権、ライセンス
