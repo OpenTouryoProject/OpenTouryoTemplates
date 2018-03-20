@@ -8,7 +8,7 @@ You can run the sample application bundled with Open Touryo Template Base for Vi
 
 ### Install prerequisites
 Install Visual Studio 2015 beforehand.  
-In addition, Open Touryo Template Base supports the following DBMS by default. Install the DBMS to use from among these. (In the following, inside of the parentheses indicate data providers for connecting to each DBMS)
+In addition, Open Touryo Template Base supports the following DBMSs by default. Install the DBMS to use from among these. (The words inside the parentheses show the data provider for connecting to the DBMS.)
 
 - SQL Server (System.Data.SqlClient)
 - Oracle (Oracle.ManagedDataAccess)
@@ -45,7 +45,7 @@ Execute command after confirming the path of folder in your environment.
 
 #### DBMSs except for SQL Server
 - Create an empty database in each DBMSs.
-- Create test table in the database by running C:\root\files\resource\Sql[DBMS Name]\TestTable.txt.
+- Create test table in the database by running C:\root\files\resource\Sql\[DBMS Name]\TestTable.txt.
 
 ### Deploy Open Touryo Template Base
 Copy *root_VS2015* folder to C drive.  
