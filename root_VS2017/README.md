@@ -7,12 +7,18 @@ Click [here](Readme.ja.md) for Japanese version of this file.
 You can run the sample application bundled with Open Touryo Template Base for Visual Studio 2017 according to the following steps.
 
 ### Install prerequisites
-Install Visual Studio 2017 and SQL Server Express beforehand.  
-**Note**:  
-You can use an arbitrary version of SQL Server.  
-And you can use different editions than Express Edition, but it is necessary to revise connection string that is specified in the sample application.
-   
+Install Visual Studio 2017 beforehand.  
+In addition, Open Touryo Template Base supports the following DBMS by default. Install the DBMS to use from among these. (In the following, inside of the parentheses indicate data providers for connecting to each DBMS)
+
+- SQL Server (System.Data.SqlClient)
+- Oracle (Oracle.ManagedDataAccess)
+- MySQL (MySql.Data)
+- PostgreSQL (Npgsql)
+
+In addition, Open Touryo Template Base also supports data access using ODBC and OLE DB. Therefore, if you are using a DBMS other than the above, you can also access it via ODBC or OLE DB.
+
 ### Set up sample database
+#### SQL Server 
 Sample application requires *Northwind* database.  
 So, download the setup script installer of *Northwind* database from the following Microsoft site and install.
 
@@ -36,6 +42,10 @@ Execute command after confirming the path of folder in your environment.
 ```bat
 "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S localhost\SQLExpress -E -i "C:\SQL Server 2000 Sample Databases\instnwnd.sql"
 ```
+
+#### DBMSs except for SQL Server
+- Create an empty database in each DBMSs.
+- Create test table in the database by running C:\root\files\resource\Sql[DBMS Name]\TestTable.txt.
 
 ### Deploy Open Touryo Template Base
 Copy *root_VS2017* folder to C drive.  
@@ -214,14 +224,15 @@ At the login screen, enter the arbitrary alphanumeric characters. (By default, t
    
 #### Web application:
 - ASP.NET Web Forms  
-  - C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
-  - C:\root\programs\VB\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
+  - C:\root\programs\C#\Samples\WebApp_sample\WebForms_Sample\WebForms_Sample.sln
+  - C:\root\programs\VB\Samples\WebApp_sample\WebForms_Sample\WebForms_Sample.sln
 - ASP.NET MVC  
   - C:\root\programs\C#\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
   - C:\root\programs\VB\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
 - ASP.NET Single Page Application  
-C:\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
- 
+  - C:\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+  - C:\root\programs\C#\Samples\WS_sample\ASPNETWebService\ASPNETWebService.sln
+
 #### Two-tier client server application:
 - Windows Forms  
   - C:\root\programs\C#\Samples\2CS_sample\2CSClientWin_sample\2CSClientWin_sample.sln
@@ -241,7 +252,8 @@ C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSC
   - C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
   - C:\root\programs\VB\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
 - UWP  
-C:\root\programs\C#\Samples\UWP_sample\UWP_sample.sln
+  - C:\root\programs\C#\Samples\UWP_sample\UWP_sample.sln
+  - C:\root\programs\C#\Samples\WS_sample\ASPNETWebService\ASPNETWebService.sln
 
 ### Reference
 The documents in *OpenTouryoDocument repository* are useful when using Open Touryo.  
@@ -251,11 +263,13 @@ You can see the introduction materials, such as PowerPoint slides.
 You can confirm the structure of Open Touryo and the specification of each feature.
 - [Tutorial](https://github.com/OpenTouryoProject/OpenTouryoDocuments/tree/master/documents/2_Tutorial)  
 You can see the *first step guide* of Open Touryo.
-   
+
 ### Customizing Template Base
 When the mismatch is generated between *the features of Open Touryo* and *the requirements of the development project*, the customizing template base is useful for resolving the mismatch.  
+For example, DBMS such as IBM DB2, Hitachi HiRDB, and data providers such as System.Data.OracleClient and Oracle.DataAccess are not supported on the default template base. If you are using these DBMS and data provider, please customize the template base.
+
 Refer to the [tutorial document](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc) about the customizing method of template base.
-   
+
 ### Copyright and license
 Refer to [License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license) directory.
 
