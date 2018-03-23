@@ -257,7 +257,7 @@ Open 棟梁のファーストステップガイドです。
    
 ### テンプレート・ベースのカスタマイズ
 もし Open 棟梁の機能の中で、システム開発プロジェクトの要件に合わない部分がありましたら、このテンプレート・ベースをカスタマイズすることでご対応いただけます。
-例えば、IBM DB2, Hitachi HiRDB などの DBMS や、System.Data.OracleClient, Oracle.DataAccess などのデータプロバイダーは、既定のテンプレート・ベースではサポートしていません。もし、これらの DBMS やデータプロバイダーをお使いの場合は、テンプレート・ベースのカスタマイズを行って対応して下さい。
+例えば、IBM DB2, Hitachi HiRDB などの DBMS や、Oracle.DataAccess などのデータプロバイダーは、既定のテンプレート・ベースではサポートしていません。もし、これらの DBMS やデータプロバイダーをお使いの場合は、テンプレート・ベースのカスタマイズを行って対応して下さい。
 
 テンプレート・ベースのカスタマイズ方法につきましては、[チュートリアル](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc)をご覧ください。
    

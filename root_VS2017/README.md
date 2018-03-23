@@ -15,7 +15,7 @@ In addition, Open Touryo Template Base supports the following DBMSs by default. 
 - MySQL (MySql.Data)
 - PostgreSQL (Npgsql)
 
-In addition, Open Touryo Template Base also supports data access using ODBC and OLE DB. Therefore, if you are using a DBMS other than the above, you can also access it via ODBC or OLE DB.
+In addition, Open Touryo Template Base also supports data access using ODBC and OLE DB. Therefore, if you are using a DBMS other than the above, you can connect to the DBMS using ODBC or OLE DB.
 
 ### Set up sample database
 #### SQL Server 
@@ -266,7 +266,7 @@ You can see the *first step guide* of Open Touryo.
 
 ### Customizing Template Base
 When the mismatch is generated between *the features of Open Touryo* and *the requirements of the development project*, the customizing template base is useful for resolving the mismatch.  
-For example, DBMS such as IBM DB2, Hitachi HiRDB, and data providers such as System.Data.OracleClient and Oracle.DataAccess are not supported on the default template base. If you are using these DBMS and data provider, please customize the template base.
+For example, DBMS such as IBM DB2, Hitachi HiRDB, and data providers such as Oracle.DataAccess are not supported on the default template base. If you are using these DBMS and data provider, please customize the template base.
 
 Refer to the [tutorial document](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc) about the customizing method of template base.
 
