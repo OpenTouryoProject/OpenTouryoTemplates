@@ -45,7 +45,7 @@ Execute command after confirming the path of folder in your environment.
 
 #### DBMSs except for SQL Server
 - Create an empty database in each DBMSs.
-- Create test table in the database by running C:\root\files\resource\Sql\[DBMS Name]\TestTable.txt.
+- Create test table in the database by running C:\root\files\resource\Sql\\[DBMS Name]\TestTable.txt.
 
 ### Deploy Open Touryo Template Base
 Copy *root_VS2017* folder to C drive.  

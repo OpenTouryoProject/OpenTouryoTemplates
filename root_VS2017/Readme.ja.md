@@ -41,7 +41,7 @@ exec sp_dboption 'Northwind','select into/bulkcopy','true'
 
 #### SQL Server 以外
 - 各 DBMS に、空のデータベースを作成してください。
-- C:\root\files\resource\Sql\[DBMS 名]\TestTable.txt を実行し、テスト用のテーブルを作成してください。
+- C:\root\files\resource\Sql\\[DBMS 名]\TestTable.txt を実行し、テスト用のテーブルを作成してください。
 
 ### テンプレート・ベースの配置
 「root_VS2017」フォルダを、C ドライブ直下にコピーしてください。  
