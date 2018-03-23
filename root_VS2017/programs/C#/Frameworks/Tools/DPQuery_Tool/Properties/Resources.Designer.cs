@@ -19,7 +19,7 @@ namespace DPQuery_Tool.Properties {
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
     // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -97,20 +97,20 @@ namespace DPQuery_Tool.Properties {
         }
         
         /// <summary>
-        ///   &lt;DECMA&gt; に類似しているローカライズされた文字列を検索します。
+        ///   &lt;DELCMA&gt; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string DECMA1 {
+        internal static string DELCMA1 {
             get {
-                return ResourceManager.GetString("DECMA1", resourceCulture);
+                return ResourceManager.GetString("DELCMA1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   &lt;/DECMA&gt; に類似しているローカライズされた文字列を検索します。
+        ///   &lt;/DELCMA&gt; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string DECMA2 {
+        internal static string DELCMA2 {
             get {
-                return ResourceManager.GetString("DECMA2", resourceCulture);
+                return ResourceManager.GetString("DELCMA2", resourceCulture);
             }
         }
         

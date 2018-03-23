@@ -7,10 +7,18 @@
 Open 棟梁テンプレート・ベース (Visual Studio 2017 用) に同梱されるサンプルアプリケーションの実行手順は以下のとおりです。
 
 ### 前提ツールのインストール
-あらかじめ、Visual Studio 2017 と SQL Server Express をインストールしておいてください。  
-(SQL Server のバージョンは任意です。また、エディションについては、Express Edition 以外もお使いいただけますが、サンプルアプリケーションに指定する接続文字列を修正する必要がありますので、ご注意ください)
+あらかじめ、Visual Studio 2017 をインストールしておいてください。
+また、Open 棟梁テンプレート・ベースは、既定で以下の DBMS をサポートしています。この中から、使用する DBMS をインストールしておいてください。(以下、カッコ内はそれぞれの DBMS に接続するためのデータプロバイダーを表します)
+
+- SQL Server (System.Data.SqlClient)
+- Oracle (Oracle.ManagedDataAccess)
+- MySQL (MySql.Data)
+- PostgreSQL (Npgsql)
+
+なお、Open 棟梁テンプレート・ベースでは ODBC や OLE DB を使ったデータアクセスもサポートしています。そのため、上記以外の DBMS をお使いの場合は、ODBC または OLE DB 経由でアクセスすることも可能です。
    
 ### サンプルデータベースのセットアップ
+#### SQL Server  
 サンプルアプリケーションの実行には、Northwind データベースが必要です。
 以下のマイクロソフトのサイトから、Northwind データベースのセットアップ スクリプトをダウンロードし、インストールしてください。  
 
@@ -31,13 +39,17 @@ exec sp_dboption 'Northwind','select into/bulkcopy','true'
 "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\SQLCMD.EXE" -S localhost\SQLExpress -E -i "C:\SQL Server 2000 Sample Databases\instnwnd.sql"
 ```
 
+#### SQL Server 以外
+- 各 DBMS に、空のデータベースを作成してください。
+- C:\root\files\resource\Sql\\[DBMS 名]\TestTable.txt を実行し、テスト用のテーブルを作成してください。
+
 ### テンプレート・ベースの配置
 「root_VS2017」フォルダを、C ドライブ直下にコピーしてください。  
 そして、フォルダ名を「root_VS2017」から「root」にリネームしてください。
 
 ### プログラムのビルド
 Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBuild を使用したビルドバッチファイルを実行**して、プログラムをビルドします。  
-これは、Open 棟梁のテンプレートベースには、「フレームワーク部分 (ベースクラス１，２)」と「サンプルアプリケーション」がありますが、フレームワーク部分のビルド生成物 (DLL ファイル) を Open 棟梁の既定の置き場にコピーするなどの処理が必要なためです。  
+これは、Open 棟梁のテンプレート・ベースには、「フレームワーク部分 (ベースクラス１，２)」と「サンプルアプリケーション」がありますが、フレームワーク部分のビルド生成物 (DLL ファイル) を Open 棟梁の既定の置き場にコピーするなどの処理が必要なためです。  
 これらの一連のビルドプロセスをまとめたバッチファイルを実行します。
 
 ビルドバッチファイルは、以下のフォルダにあります。
@@ -63,7 +75,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
   </thead>
   <tbody>
     <tr>
-      <td rowspan="16" style="vertical-align: top">C:\root\programs\C#</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td>○</td><td>○</td>
+      <td rowspan="15" style="vertical-align: top">C:\root\programs\C#</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td>○</td><td>○</td>
     </tr>
     <tr>
       <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td>○</td><td>○</td>
@@ -90,10 +102,10 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>7_Build_Framework_WS.bat</td><td>フレームワーク (サービスインタフェース部分) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>8_Build_WSClnt_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
+      <td>8_Build_WSClntWin_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>9_Build_WSClnt_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
+      <td>9_Build_WSClntWPF_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
     </tr>
     <tr>
       <td>10_Build_WebApp_sample.bat</td><td>サンプルアプリ (ASP.NET) をビルドする。</td><td></td>
@@ -108,7 +120,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>z_Common2.bat</td><td>共通設定 (Visual Studio 用)</td><td></td><td></td>
     </tr>
     <tr>
-      <td rowspan="12" style="vertical-align: top">C:\root\programs\VB</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td></td><td>○</td>
+      <td rowspan="13" style="vertical-align: top">C:\root\programs\VB</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td></td><td>○</td>
     </tr>
     <tr>
       <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td></td><td>○</td>
@@ -120,7 +132,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>3_Build_RichClientFramework.bat</td><td>リッチクライアント用フレームワークをビルドする。</td><td></td><td>△<span style="color: red"><sup>*2</sup></span></td>
     </tr>
     <tr>
-      <td>5_Build_2CS_sample.bat</td><td>サンプルアプリ (2 層 C/S) をビルドする。</td><td></td><td rowspan="6" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
+      <td>5_Build_2CS_sample.bat</td><td>サンプルアプリ (2 層 C/S) をビルドする。</td><td></td><td rowspan="7" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
     </tr>
     <tr>
       <td>5_Build_Bat_sample.bat</td><td>サンプルアプリ (バッチ) をビルドする。</td><td></td>
@@ -132,7 +144,10 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>7_Build_Framework_WS.bat</td><td>フレームワーク (サービスインタフェース部分) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>8_Build_WSClnt_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
+      <td>8_Build_WSClntWin_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
+    </tr>
+    <tr>
+      <td>9_Build_WSClntWPF_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
     </tr>
     <tr>
       <td>10_Build_WebApp_sample.bat</td><td>サンプルアプリ (ASP.NET) をビルドする。</td><td></td>
@@ -200,13 +215,14 @@ http://localhost/yyyy/Service.asmx (yyyy: IIS のアプリケーション名)
    
 #### Web の場合：
 - ASP.NET Web Forms  
-  - C:\root\programs\C#\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
-  - C:\root\programs\VB\Samples\WebApp_sample\ProjectX_sample\ProjectX_sample.sln
+  - C:\root\programs\C#\Samples\WebApp_sample\WebForms_Sample\WebForms_Sample.sln
+  - C:\root\programs\VB\Samples\WebApp_sample\WebForms_Sample\WebForms_Sample.sln
 - ASP.NET MVC  
   - C:\root\programs\C#\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
   - C:\root\programs\VB\Samples\WebApp_sample\MVC_Sample\MVC_Sample.sln
 - ASP.NET Single Page Application  
-C:\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+  - C:\root\programs\C#\Samples\WebApp_sample\SPA_Sample\SPA_Sample.sln
+  - C:\root\programs\C#\Samples\WS_sample\ASPNETWebService\ASPNETWebService.sln
  
 #### C/S 2階層の場合：
 - Windows Forms  
@@ -227,7 +243,8 @@ C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSC
   - C:\root\programs\C#\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
   - C:\root\programs\VB\Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln
 - UWP  
-C:\root\programs\C#\Samples\UWP_sample\UWP_sample.sln
+  - C:\root\programs\C#\Samples\UWP_sample\UWP_sample.sln
+  - C:\root\programs\C#\Samples\WS_sample\ASPNETWebService\ASPNETWebService.sln
 
 ### 参考資料
 Open 棟梁をご利用いただくにあたり、OpenTouryoDocument リポジトリのドキュメントをご利用いただけます。
@@ -240,7 +257,9 @@ Open 棟梁のファーストステップガイドです。
    
 ### テンプレート・ベースのカスタマイズ
 もし Open 棟梁の機能の中で、システム開発プロジェクトの要件に合わない部分がありましたら、このテンプレート・ベースをカスタマイズすることでご対応いただけます。  
-テンプレートベースのカスタマイズ方法につきましては、[チュートリアル](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc)をご覧ください。
+例えば、IBM DB2, Hitachi HiRDB などの DBMS や、Oracle.DataAccess などのデータプロバイダーは、既定のテンプレート・ベースではサポートしていません。もし、これらの DBMS やデータプロバイダーをお使いの場合は、テンプレート・ベースのカスタマイズを行って対応して下さい。
+
+テンプレート・ベースのカスタマイズ方法につきましては、[チュートリアル](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc)をご覧ください。
    
 ### 著作権、ライセンス
 [License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license)ディレクトリをご確認ください。

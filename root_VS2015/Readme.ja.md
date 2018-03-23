@@ -8,16 +8,14 @@ Open 棟梁テンプレート・ベース (Visual Studio 2015 用) に同梱さ�
 
 ### 前提ツールのインストール
 あらかじめ、Visual Studio 2015 をインストールしておいてください。
-また、下記の Open 棟梁テンプレートの既定のターゲット DBMS (データプロバイダ) から使用する DBMS をインストールしてください。
+また、Open 棟梁テンプレート・ベースは、既定で以下の DBMS をサポートしています。この中から、使用する DBMS をインストールしておいてください。(以下、カッコ内はそれぞれの DBMS に接続するためのデータプロバイダーを表します)
+
 - SQL Server (System.Data.SqlClient)
-- Oracle Database
-  - Oracle.DataAccess
-  - Oracle.ManagedDataAccess
+- Oracle (Oracle.ManagedDataAccess)
 - MySQL (MySql.Data)
 - PostgreSQL (Npgsql)
-- その他 DBMS (データプロバイダ)
-  - OLEDB (System.Data.OleDb)
-  - ODBC (System.Data.Odbc)
+
+なお、Open 棟梁テンプレート・ベースでは ODBC や OLE DB を使ったデータアクセスもサポートしています。そのため、上記以外の DBMS をお使いの場合は、ODBC または OLE DB 経由でアクセスすることも可能です。
    
 ### サンプルデータベースのセットアップ
 #### SQL Server  
@@ -43,7 +41,7 @@ exec sp_dboption 'Northwind','select into/bulkcopy','true'
 
 #### SQL Server 以外
 - 各 DBMS に、空のデータベースを作成してください。
-- C:\root\files\resource\Sql\[DBMS 名]\TestTable.txt を実行し、テスト用のテーブルを作成してください。
+- C:\root\files\resource\Sql\\[DBMS 名]\TestTable.txt を実行し、テスト用のテーブルを作成してください。
 
 ### テンプレート・ベースの配置
 「root_VS2015」フォルダを、C ドライブ直下にコピーしてください。  
@@ -51,7 +49,7 @@ exec sp_dboption 'Northwind','select into/bulkcopy','true'
 
 ### プログラムのビルド
 Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBuild を使用したビルドバッチファイルを実行**して、プログラムをビルドします。  
-これは、Open 棟梁のテンプレートベースには、「フレームワーク部分 (ベースクラス１，２)」と「サンプルアプリケーション」がありますが、フレームワーク部分のビルド生成物 (DLL ファイル) を Open 棟梁の既定の置き場にコピーするなどの処理が必要なためです。  
+これは、Open 棟梁のテンプレート・ベースには、「フレームワーク部分 (ベースクラス１，２)」と「サンプルアプリケーション」がありますが、フレームワーク部分のビルド生成物 (DLL ファイル) を Open 棟梁の既定の置き場にコピーするなどの処理が必要なためです。  
 これらの一連のビルドプロセスをまとめたバッチファイルを実行します。
 
 ビルドバッチファイルは、以下のフォルダにあります。
@@ -77,7 +75,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
   </thead>
   <tbody>
     <tr>
-      <td rowspan="16" style="vertical-align: top">C:\root\programs\C#</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td>○</td><td>○</td>
+      <td rowspan="15" style="vertical-align: top">C:\root\programs\C#</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td>○</td><td>○</td>
     </tr>
     <tr>
       <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td>○</td><td>○</td>
@@ -104,10 +102,10 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>7_Build_Framework_WS.bat</td><td>フレームワーク (サービスインタフェース部分) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>8_Build_WSClnt_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
+      <td>8_Build_WSClntWin_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>9_Build_WSClnt_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
+      <td>9_Build_WSClntWPF_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
     </tr>
     <tr>
       <td>10_Build_WebApp_sample.bat</td><td>サンプルアプリ (ASP.NET) をビルドする。</td><td></td>
@@ -122,7 +120,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>z_Common2.bat</td><td>共通設定 (Visual Studio 用)</td><td></td><td></td>
     </tr>
     <tr>
-      <td rowspan="12" style="vertical-align: top">C:\root\programs\VB</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td></td><td>○</td>
+      <td rowspan="13" style="vertical-align: top">C:\root\programs\VB</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td></td><td>○</td>
     </tr>
     <tr>
       <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td></td><td>○</td>
@@ -134,7 +132,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>3_Build_RichClientFramework.bat</td><td>リッチクライアント用フレームワークをビルドする。</td><td></td><td>△<span style="color: red"><sup>*2</sup></span></td>
     </tr>
     <tr>
-      <td>5_Build_2CS_sample.bat</td><td>サンプルアプリ (2 層 C/S) をビルドする。</td><td></td><td rowspan="6" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
+      <td>5_Build_2CS_sample.bat</td><td>サンプルアプリ (2 層 C/S) をビルドする。</td><td></td><td rowspan="7" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
     </tr>
     <tr>
       <td>5_Build_Bat_sample.bat</td><td>サンプルアプリ (バッチ) をビルドする。</td><td></td>
@@ -146,7 +144,10 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>7_Build_Framework_WS.bat</td><td>フレームワーク (サービスインタフェース部分) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>8_Build_WSClnt_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
+      <td>8_Build_WSClntWin_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
+    </tr>
+    <tr>
+      <td>9_Build_WSClntWPF_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
     </tr>
     <tr>
       <td>10_Build_WebApp_sample.bat</td><td>サンプルアプリ (ASP.NET) をビルドする。</td><td></td>
@@ -256,9 +257,9 @@ Open 棟梁のファーストステップガイドです。
    
 ### テンプレート・ベースのカスタマイズ
 もし Open 棟梁の機能の中で、システム開発プロジェクトの要件に合わない部分がありましたら、このテンプレート・ベースをカスタマイズすることでご対応いただけます。
-例えば、IBM DB2 (IBM.Data.DB2.) など、NuGet にライブラリが存在しない DBMS (データプロバイダ) はテンプレートの既定のターゲット DBMS に含まれていません。必要に応じて、テンプレートのカスタマイズを行って対応して下さい。
+例えば、IBM DB2, Hitachi HiRDB などの DBMS や、Oracle.DataAccess などのデータプロバイダーは、既定のテンプレート・ベースではサポートしていません。もし、これらの DBMS やデータプロバイダーをお使いの場合は、テンプレート・ベースのカスタマイズを行って対応して下さい。
 
-テンプレートベースのカスタマイズ方法につきましては、[チュートリアル](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc)をご覧ください。
+テンプレート・ベースのカスタマイズ方法につきましては、[チュートリアル](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc)をご覧ください。
    
 ### 著作権、ライセンス
 [License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license)ディレクトリをご確認ください。
