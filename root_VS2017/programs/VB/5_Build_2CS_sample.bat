@@ -18,7 +18,6 @@ call %CURRENT_DIR%z_Common.bat
 rem --------------------------------------------------
 rem Batch build of 2CSClientWin_sample.
 rem --------------------------------------------------
-..\nuget.exe restore "Samples\2CS_sample\2CSClientWin_sample\2CSClientWin_sample.sln"
 %BUILDFILEPATH% %COMMANDLINE% "Samples\2CS_sample\2CSClientWin_sample\2CSClientWin_sample.sln"
 
 pause
@@ -40,7 +39,6 @@ pause
 rem --------------------------------------------------
 rem Batch build of 2CSClientWPF_sample.
 rem --------------------------------------------------
-..\nuget.exe restore "Samples\\2CS_sample\2CSClientWPF_sample\2CSClientWPF_sample.sln"
 %BUILDFILEPATH% %COMMANDLINE% "Samples\\2CS_sample\2CSClientWPF_sample\2CSClientWPF_sample.sln"
 
 pause

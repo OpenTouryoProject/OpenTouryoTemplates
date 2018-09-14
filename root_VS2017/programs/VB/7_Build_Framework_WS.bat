@@ -34,7 +34,6 @@ pause
 rem --------------------------------------------------
 rem Batch build of ServiceInterface(WCFService).
 rem --------------------------------------------------
-..\nuget.exe restore "Frameworks\Infrastructure\ServiceInterface\WCFService\WCFService.sln"
 %BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\ServiceInterface\WCFService\WCFService.sln"
 
 pause
