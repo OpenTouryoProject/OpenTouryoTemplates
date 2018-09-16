@@ -22,17 +22,6 @@ md "Frameworks\Infrastructure\Temp"
 md "Frameworks\Infrastructure\Build"
 
 rem --------------------------------------------------
-rem Change the packages.config.
-rem --------------------------------------------------
-
-copy /Y "Frameworks\Infrastructure\Public\packages_net46.config" "Frameworks\Infrastructure\Public\packages.config"
-copy /Y "Frameworks\Infrastructure\Public\Db\DamManagedOdp\packages_net46.config" "Frameworks\Infrastructure\Public\Db\DamManagedOdp\packages.config"
-copy /Y "Frameworks\Infrastructure\Public\Db\DamPstGrS\packages_net46.config" "Frameworks\Infrastructure\Public\Db\DamPstGrS\packages.config"
-copy /Y "Frameworks\Infrastructure\Public\Db\DamMySQL\packages_net46.config" "Frameworks\Infrastructure\Public\Db\DamMySQL\packages.config"
-
-copy /Y "Frameworks\Infrastructure\Framework\packages_net46.config" "Frameworks\Infrastructure\Framework\packages.config"
-
-rem --------------------------------------------------
 rem Output xcopy after you build the batch Infrastructure(AllComponent)
 rem --------------------------------------------------
 
@@ -45,20 +34,6 @@ xcopy /E /Y "Frameworks\Infrastructure\CustomControl\bin\%BUILD_CONFIG%" "Framew
 xcopy /E /Y "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%" "Frameworks\Infrastructure\Build\"
 
 pause
-
-rem --------------------------------------------------
-rem Build the batch Infrastructure(AllDam)
-rem --------------------------------------------------
-..\nuget.exe restore "Frameworks\Infrastructure\Public\Db\AllDam.sln"
-%BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\Public\Db\AllDam.sln"
-
-pause
-
-rem --------------------------------------------------
-rem Delete the System.Web.MVC.dll after the bulk copy
-rem --------------------------------------------------
-del "Frameworks\Infrastructure\Build\System.Web.MVC.*"
-del "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%\System.Web.MVC.*"
 
 rem -------------------------------------------------------
 endlocal

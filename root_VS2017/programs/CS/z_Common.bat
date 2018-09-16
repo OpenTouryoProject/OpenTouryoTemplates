@@ -15,7 +15,7 @@ set BUILDFILEPATH4.0="C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"
 @echo The choice of build configuration (Debug / Release).
 @echo --------------------------------------------------
 set BUILD_CONFIG=Debug
-set VisualStudioVersion=14.0
+set VisualStudioVersion=15.0
 
 @echo --------------------------------------------------
 @echo Creating a build command.

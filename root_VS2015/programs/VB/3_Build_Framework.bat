@@ -35,10 +35,9 @@ xcopy /E /Y "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%" "Frameworks\Infrastr
 pause
 
 rem --------------------------------------------------
-rem Delete the System.Web.MVC.dll after the bulk copy
+rem Copy assemblies that can not be obtained as NuGet dependencies.
 rem --------------------------------------------------
-del "Frameworks\Infrastructure\Build\System.Web.MVC.*"
-del "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%\System.Web.MVC.*"
+xcopy /E /Y "..\CS\Frameworks\Infrastructure\Build\MySql.Data.dll" "Frameworks\Infrastructure\Build\"
 
 rem -------------------------------------------------------
 endlocal
