@@ -10,7 +10,9 @@ Open 棟梁テンプレート・ベース (Visual Studio 2017 用) に同梱さ�
 以下、optional 表記のある DBMS とデータプロバイダは、Open 棟梁でサポートされていますが、Open 棟梁のプログラムには含まれていません。そのため、optional 表記のある DBMS とデータプロバイダを使う場合、必要に応じてデータプロバイダを手動でダウンロードし、[Open 棟梁のデータアクセス用のプロジェクト (DamXXX.csproj)](https://github.com/OpenTouryoProject/OpenTouryo/tree/develop/root/programs/CS/Frameworks/Infrastructure/Public/Db) から、当該データプロバイダに参照設定を張り直してください。
 
 ### 前提ツールのインストール
-あらかじめ、Visual Studio 2017 をインストールしておいてください。
+あらかじめ、Visual Studio 2017 をインストールしておいてください。  
+.NET Standard、.NET Core開発を行う場合は、Visual Studio 2017 をインストールしておいてください。  
+参考: https://docs.microsoft.com/ja-jp/dotnet/core/windows-prerequisites
 
 また、Open 棟梁テンプレート・ベースは、既定で以下の DBMS をサポートしています。この中から、使用する DBMS をインストールしておいてください。
 - SQL Server  
