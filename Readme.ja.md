@@ -17,6 +17,6 @@
 |Template-base|Develop Environment|Run-time Environment|
 |:-----|:------------------|:-------------------|
 |[/root_VS2015/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2015)|Visual Studio 2015|.NET Framework 4.6|
-|[/root_VS2017/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2017)|Visual Studio 2017|.NET Framework 4.7|
+|[/root_VS2017/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2017)|Visual Studio 2017|.NET Framework 4.7, .NET Core 2.0|
 
 Visual Studio 2013以前を使用する場合は、*[OpenTouryoTemplates バージョン 01-80](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/01-80)*を使用してください。
