@@ -69,7 +69,7 @@ exec sp_dboption 'Northwind','select into/bulkcopy','true'
 
 ### プログラムのビルド
 Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBuild を使用したビルドバッチファイルを実行**して、プログラムをビルドします。  
-これは、Open 棟梁のテンプレートベースには、「フレームワーク部分 (ベースクラス１，２)」と「サンプルアプリケーション」がありますが、フレームワーク部分のビルド生成物 (DLL ファイル) を Open 棟梁の既定の置き場にコピーするなどの処理が必要なためです。  
+これは、Open 棟梁のテンプレート・ベースには、「フレームワーク部分 (ベースクラス１，２)」と「サンプルアプリケーション」がありますが、フレームワーク部分のビルド生成物 (DLL ファイル) を Open 棟梁の既定の置き場にコピーするなどの処理が必要なためです。  
 これらの一連のビルドプロセスをまとめたバッチファイルを実行します。
 
 ビルドバッチファイルは、以下のフォルダにあります。
@@ -95,43 +95,52 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
   </thead>
   <tbody>
     <tr>
-      <td rowspan="15" style="vertical-align: top">C:\root\programs\C#</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td>○</td><td>○</td>
+      <td rowspan="18" style="vertical-align: top">C:\root\programs\CS</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td>○</td><td>○</td>
     </tr>
     <tr>
       <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td>○</td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_Framework.bat</td><td>フレームワーク部分 (ベースクラス１，２) をビルドする。</td><td>○</td><td>○</td>
+      <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス１, ２, ライブラリ部分) をビルドする。</td><td>○</td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_RichClientFramework.bat</td><td>リッチクライアント用フレームワークをビルドする。</td><td>△<span style="color: red"><sup>*2</sup></span></td><td></td>
+      <td>3_Build_NetCore.bat</td><td>.NET Standard, .NET Coreベースのフレームワーク (ベースクラス１, ２, ライブラリ部分) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*4</sup></span></td><td></td>
     </tr>
     <tr>
-      <td>4_Build_Framework_Tool.bat</td><td>付属ツールをビルドする。</td><td>○</td><td>○</td>
+      <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td>△<span style="color: red"><sup>*2</sup></span></td><td></td>
     </tr>
     <tr>
-      <td>5_Build_2CS_sample.bat</td><td>サンプルアプリ (2 層 C/S) をビルドする。</td><td rowspan="8" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
+      <td>4_Build_Framework_Tool.bat</td><td>.NET Frameworkベースの付属ツールをビルドする。</td><td>○</td><td>○</td>
     </tr>
     <tr>
-      <td>5_Build_Bat_sample.bat</td><td>サンプルアプリ (バッチ) をビルドする。</td><td></td>
+      <td>5_Build_2CS_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (2 層 C/S) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
     </tr>
     <tr>
-      <td>6_Build_WSSrv_sample.bat</td><td>サンプルアプリ (Web サービス (サーバー側ロジック)) をビルドする。</td><td></td>
+      <td>5_Build_Bat_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (バッチ) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
     </tr>
     <tr>
-      <td>7_Build_Framework_WS.bat</td><td>フレームワーク (サービスインタフェース部分) をビルドする。</td><td></td>
+      <td>5_Build_BatCore_sample.bat</td><td>.NET Coreベースのサンプルアプリ (バッチ) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3, *4</sup></span></td><td></td>
     </tr>
     <tr>
-      <td>8_Build_WSClntWin_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
+      <td>6_Build_WSSrv_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービス (サーバー側ロジック)) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
     </tr>
     <tr>
-      <td>9_Build_WSClntWPF_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
+      <td>6_Build_WSSrvCore_sample.bat</td><td>.NET Coreベースのサンプルアプリ (Web サービス (サーバー側ロジック)) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3, *4</sup></span></td><td></td>
     </tr>
     <tr>
-      <td>10_Build_WebApp_sample.bat</td><td>サンプルアプリ (ASP.NET) をビルドする。</td><td></td>
+      <td>7_Build_Framework_WS.bat</td><td>.NET Frameworkベースのフレームワーク (サービスインタフェース部分) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
     </tr>
     <tr>
-      <td>11_Build_UWP_sample.bat</td><td>サンプルアプリ (UWP) をビルドする。</td><td></td>
+      <td>8_Build_WSClntWin_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
+    </tr>
+    <tr>
+      <td>9_Build_WSClntWPF_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
+    </tr>
+    <tr>
+      <td>10_Build_WebApp_sample.bat</td><td>サンプルWebアプリ (ASP.NET) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
+    </tr>
+    <tr>
+      <td>10_Build_WebAppCore_sample.bat</td><td>サンプルWebアプリ (ASP.NET Core) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
     </tr>
     <tr>
       <td>z_Common.bat</td><td>共通設定 (MSBuild 用)</td><td></td><td></td>
@@ -146,31 +155,31 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td></td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_Framework.bat</td><td>フレームワーク (ベースクラス２) をビルドする。</td><td></td><td>○</td>
+      <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス２部分) をビルドする。</td><td></td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_RichClientFramework.bat</td><td>リッチクライアント用フレームワークをビルドする。</td><td></td><td>△<span style="color: red"><sup>*2</sup></span></td>
+      <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td></td><td>△<span style="color: red"><sup>*2</sup></span></td>
     </tr>
     <tr>
-      <td>5_Build_2CS_sample.bat</td><td>サンプルアプリ (2 層 C/S) をビルドする。</td><td></td><td rowspan="7" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
+      <td>5_Build_2CS_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (2 層 C/S) をビルドする。</td><td></td><td rowspan="7" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
     </tr>
     <tr>
-      <td>5_Build_Bat_sample.bat</td><td>サンプルアプリ (バッチ) をビルドする。</td><td></td>
+      <td>5_Build_Bat_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (バッチ) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>6_Build_WSSrv_sample.bat</td><td>サンプルアプリ (Web サービス (サーバー側ロジック)) をビルドする。</td><td></td>
+      <td>6_Build_WSSrv_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービス (サーバー側ロジック)) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>7_Build_Framework_WS.bat</td><td>フレームワーク (サービスインタフェース部分) をビルドする。</td><td></td>
+      <td>7_Build_Framework_WS.bat</td><td>.NET Frameworkベースのフレームワーク (サービスインタフェース部分) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>8_Build_WSClntWin_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
+      <td>8_Build_WSClntWin_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>9_Build_WSClntWPF_sample.bat</td><td>サンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
+      <td>9_Build_WSClntWPF_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
     </tr>
     <tr>
-      <td>10_Build_WebApp_sample.bat</td><td>サンプルアプリ (ASP.NET) をビルドする。</td><td></td>
+      <td>10_Build_WebApp_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (ASP.NET) をビルドする。</td><td></td>
     </tr>
     <tr>
       <td>z_Common.bat</td><td>共通設定 (MSBuild 用)</td><td></td><td></td>
@@ -181,6 +190,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
   </tbody>
 </table>
 <div style="font-size: small">
+  <span style="color: red;">*1</span>　NuGetパッケージを作成を作成する場合は必須<br />
   <span style="color: red;">*2</span>　リッチクライアント アプリケーションを作成する場合は必須<br />
   <span style="color: red;">*3</span>　実際のアプリケーションの形態に応じて選択してください<br />
   <span style="color: red;">*4</span>　.NET Standard、.NET Core ベースのアプリケーションを開発する場合は必須
@@ -226,12 +236,9 @@ http://localhost/yyyy/Service.asmx (yyyy: IIS のアプリケーション名)
 このため、Web サービスを IIS にデプロイした場合、以下の変更が必要になります。
 
 - FxXMLTMProtocolDefinition プロパティの値を「TMProtocolDefinition2.xml」から「TMProtocolDefinition.xml」に変更する。  
-- WinStore_sample の baseUrl プロパティを変更する
-  - *.htmlファイルの中
-  - App.xamlファイルの中
 
 ### サンプルの実行
-- 以下のファイルを開いてください。
+以下のファイルを開いてください。
 - web.config または app.config (.NET Coreの場合は、appsettings.json) を開き、  
 実際のデータベース環境に合わせて connectionString セクションの値を修正してください。
 - サンプルアプリケーションを実行してください。  
