@@ -7,7 +7,7 @@
 Open 棟梁テンプレート・ベース (Visual Studio 2015 用) に同梱されるサンプルアプリケーションの実行手順は以下のとおりです。
 
 **Optional 表記:**  
-以下、optional 表記のある DBMS とデータプロバイダは、Open 棟梁でサポートされていますが、Open 棟梁のプログラムには含まれていません。そのため、optional 表記のある DBMS とデータプロバイダを使う場合、必要に応じてデータプロバイダを手動でダウンロードし、[Open 棟梁のデータアクセス用のプロジェクト (DamXXX.csproj)](https://github.com/OpenTouryoProject/OpenTouryo/tree/develop/root/programs/CS/Frameworks/Infrastructure/Public/Db) から、当該データプロバイダに参照設定を張り直してください。
+以下、optional 表記のある DBMS とデータプロバイダは、Open 棟梁でサポートされていますが、Open 棟梁のプログラムには含まれていません。そのため、optional 表記のある DBMS とデータプロバイダを使う場合、必要に応じてデータプロバイダを手動でダウンロードし、[Open 棟梁のデータアクセス用のプロジェクト (DamXXX.csproj)](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/develop/root/programs/CS/Frameworks/Infrastructure/Public/Db) から、当該データプロバイダに参照設定を張り直してください。
 
 ### 前提ツールのインストール
 あらかじめ、Visual Studio 2015 をインストールしておいてください。
@@ -260,10 +260,10 @@ C:\root\programs\CS\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSC
 ## その他 特記事項
 
 ### 著作権、ライセンス
-[License](https://github.com/OpenTouryoProject/OpenTouryo/tree/master/license)ディレクトリをご確認ください。
+[License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license)ディレクトリをご確認ください。
 
 ### バグ対応
-ご利用いただく中で、バグを発見されましたら、[issue](https://github.com/OpenTouryoProject/OpenTouryo/issues) としてご連絡ください。  
+ご利用いただく中で、バグを発見されましたら、[issue](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues) としてご連絡ください。  
 コミュニティで内容を確認し、適切に対応いたします。
 
 ### NuGetパッケージの作成方法
@@ -272,12 +272,6 @@ Open 棟梁の NuGetパッケージを作成する方法については、[こ�
 ### ライブラリの入手、輸出手続き、使用許諾への添付について
 - NuGetまたはnpmなどのパッケージ・マネージャーから取得できるライブラリは、Open 棟梁に同梱されないため、輸出管理する必要はありません。
 - これ以外のライブラリ、つまりパッケージ・マネージャーから入手できないライブラリは、必要に応じて自身で入手・同梱して輸出する必要があります。この場合、Open棟梁のライセンスに、使用するライブラリのライセンスを添付する必要があります。
-
-### テンプレート・ベースのカスタマイズ
-もし Open 棟梁の機能の中で、システム開発プロジェクトの要件に合わない部分がありましたら、このテンプレート・ベースをカスタマイズすることでご対応いただけます。
-例えば、IBM DB2, Hitachi HiRDB などの DBMS や、Oracle.DataAccess などのデータプロバイダーは、既定のテンプレート・ベースではサポートしていません。もし、これらの DBMS やデータプロバイダーをお使いの場合は、テンプレート・ベースのカスタマイズを行って対応して下さい。
-
-テンプレート・ベースのカスタマイズ方法につきましては、[チュートリアル](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc)をご覧ください。
 
 ### 参考資料
 Open 棟梁をご利用いただくにあたり、OpenTouryoDocument リポジトリのドキュメントをご利用いただけます。
