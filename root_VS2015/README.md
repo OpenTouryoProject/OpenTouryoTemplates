@@ -7,7 +7,7 @@ Click [here](Readme.ja.md) for Japanese version of this file.
 You can run the sample application bundled with Open Touryo Template Base for Visual Studio 2015 according to the following steps.
 
 Notation *Optional*:  
-Open Touryo supports the following DBMSs and data providers. But the data providers, having the notation *optional*, are not included in the programs of Open Touryo. When using the DBMSs and data providers having the notation *optional*, download the data provider manually, and modify [the data access project of Open Touryo, that is DamXXX.csproj](https://github.com/OpenTouryoProject/OpenTouryo/tree/develop/root/programs/CS/Frameworks/Infrastructure/Public/Db), to refer the data provider.
+Open Touryo supports the following DBMSs and data providers. But the data providers, having the notation *optional*, are not included in the programs of Open Touryo. When using the DBMSs and data providers having the notation *optional*, download the data provider manually, and modify [the data access project of Open Touryo, that is DamXXX.csproj](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/develop/root/programs/CS/Frameworks/Infrastructure/Public/Db), to refer the data provider.
 
 ### Install prerequisites
 Install Visual Studio 2015 beforehand.  
@@ -271,10 +271,10 @@ C:\root\programs\CS\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSC
 ## Other items of note
 
 ### Copyright and license
-Refer to [License](https://github.com/OpenTouryoProject/OpenTouryo/tree/master/license) directory.
+Refer to [License](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/license) directory.
 
 ### Bug fix
-If you find the bug while you are using Open Touryo, create an new [issue](https://github.com/OpenTouryoProject/OpenTouryo/issues).  
+If you find the bug while you are using Open Touryo, create an new [issue](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues).  
 Open Touryo community confirms the issue and takes appropriate actions.  
 
 ### How to create NuGet packages
@@ -292,9 +292,3 @@ You can see the introduction materials, such as PowerPoint slides.
 You can confirm the structure of Open Touryo and the specification of each feature.
 - [Tutorial](https://github.com/OpenTouryoProject/OpenTouryoDocuments/tree/master/documents/2_Tutorial)  
 You can see the *first step guide* of Open Touryo.
-   
-### Customizing Template Base
-When the mismatch is generated between *the features of Open Touryo* and *the requirements of the development project*, the customizing template base is useful for resolving the mismatch.  
-For example, DBMS such as IBM DB2, Hitachi HiRDB, and data providers such as Oracle.DataAccess are not supported on the default template base. If you are using these DBMS and data provider, please customize the template base.
-
-Refer to the [tutorial document](https://github.com/OpenTouryoProject/OpenTouryoDocuments/blob/master/documents/2_Tutorial/ja-JP/Tutorial_Template_development.doc) about the customizing method of template base.
