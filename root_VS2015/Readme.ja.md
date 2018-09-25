@@ -109,7 +109,7 @@ Open 棟梁のテンプレート・ベースには、2つの部分がありま�
       <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス２, ライブラリ部分) をビルドする。</td><td>○</td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td>△<span style="color: red"><sup>*2</sup></span></td><td></td>
+      <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td>△<span style="color: red"><sup>*1</sup></span></td><td>△<span style="color: red"><sup>*2</sup></span></td>
     </tr>
     <tr>
       <td>4_Build_Framework_Tool.bat</td><td>.NET Frameworkベースの付属ツールをビルドする。</td><td>○</td><td>○</td>
@@ -151,7 +151,7 @@ Open 棟梁のテンプレート・ベースには、2つの部分がありま�
       <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス２, ライブラリ部分) をビルドする。</td><td></td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td></td><td>△<span style="color: red"><sup>*2</sup></span></td>
+      <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td></td><td>△<span style="color: red"><sup>*1</sup></span></td>
     </tr>
     <tr>
       <td>5_Build_2CS_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (2 層 C/S) をビルドする。</td><td></td><td rowspan="7" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
@@ -183,8 +183,8 @@ Open 棟梁のテンプレート・ベースには、2つの部分がありま�
   </tbody>
 </table>
 <div style="font-size: small">
-  <span style="color: red;">*1</span>　NuGetパッケージを作成を作成する場合は必須<br />
-  <span style="color: red;">*2</span>　リッチクライアント アプリケーションを作成する場合は必須<br />
+  <span style="color: red;">*1</span>　リッチクライアント アプリケーションを作成する場合は必須<br />
+  <span style="color: red;">*2</span>　DeployZipPackWithHTTPツールを作成する場合は必須<br />
   <span style="color: red;">*3</span>　実際のアプリケーションの形態に応じて選択してください
 </div>
 
