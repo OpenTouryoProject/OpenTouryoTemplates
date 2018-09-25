@@ -34,10 +34,5 @@ xcopy /E /Y "Frameworks\Infrastructure\Temp\%BUILD_CONFIG%" "Frameworks\Infrastr
 
 pause
 
-rem --------------------------------------------------
-rem Copy assemblies that can not be obtained as NuGet dependencies.
-rem --------------------------------------------------
-xcopy /E /Y "..\CS\Frameworks\Infrastructure\Build\MySql.Data.dll" "Frameworks\Infrastructure\Build\"
-
 rem -------------------------------------------------------
 endlocal
