@@ -12,7 +12,7 @@ Open 棟梁テンプレート・ベース (Visual Studio 2015 用) に同梱さ�
 ### 前提ツールのインストール
 あらかじめ、Visual Studio 2015 をインストールしておいてください。
 
-また、Open 棟梁テンプレート・ベースは、既定で以下の DBMS をサポートしています。この中から、使用する DBMS をインストールしておいてください。
+また、Open 棟梁テンプレート・ベースは、既定で以下の DBMS をサポートしています。必要に応じて使用する DBMS をインストールしておいてください。
 - SQL Server  
 (SQL Server のバージョンは任意です。また、エディションについては、Express Edition 以外もお使いいただけますが、サンプルアプリケーションに指定する接続文字列を修正する必要がありますので、ご注意ください)
 - Oracle Database (Express Edition を含みます)
@@ -68,9 +68,14 @@ exec sp_dboption 'Northwind','select into/bulkcopy','true'
 - C:\root\files\resource\Sql\\[DBMS 名]\TestTable.txt を実行し、テスト用のテーブルを作成してください。
 
 ### プログラムのビルド
-Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBuild を使用したビルドバッチファイルを実行**して、プログラムをビルドします。  
-これは、Open 棟梁のテンプレート・ベースには、「フレームワーク部分 (ベースクラス１，２)」と「サンプルアプリケーション」がありますが、フレームワーク部分のビルド生成物 (DLL ファイル) を Open 棟梁の既定の置き場にコピーするなどの処理が必要なためです。  
-これらの一連のビルドプロセスをまとめたバッチファイルを実行します。
+Open 棟梁を使用する場合、**初回のみ、MSBuild を使用したビルドバッチファイルを実行**してプログラムをビルドする必要があります。  
+**注意:**  
+Open 棟梁のテンプレート・ベースには、2つの部分があります：
+- フレームワーク（ベースクラス2およびライブラリ）
+- サンプルアプリケーション（サブクラス）
+
+*ビルドによって生成された成果物*、つまり*dllファイル*を既定のフォルダにコピーする必要があります。
+このため、これらの一連のビルドプロセスをまとめたバッチファイルを実行します。
 
 ビルドバッチファイルは、以下のフォルダにあります。
 - C:\root\programs\CS  
@@ -101,7 +106,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td>○</td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス１, ２, ライブラリ部分) をビルドする。</td><td>○</td><td>○</td>
+      <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス２, ライブラリ部分) をビルドする。</td><td>○</td><td>○</td>
     </tr>
     <tr>
       <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td>△<span style="color: red"><sup>*2</sup></span></td><td></td>
@@ -143,7 +148,7 @@ Open 棟梁のプログラムをビルドするときは、**初回のみ、MSBu
       <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td></td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス２部分) をビルドする。</td><td></td><td>○</td>
+      <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス２, ライブラリ部分) をビルドする。</td><td></td><td>○</td>
     </tr>
     <tr>
       <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td></td><td>△<span style="color: red"><sup>*2</sup></span></td>
@@ -265,9 +270,6 @@ C:\root\programs\CS\Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSC
 ### バグ対応
 ご利用いただく中で、バグを発見されましたら、[issue](https://github.com/OpenTouryoProject/OpenTouryoTemplates/issues) としてご連絡ください。  
 コミュニティで内容を確認し、適切に対応いたします。
-
-### NuGetパッケージの作成方法
-Open 棟梁の NuGetパッケージを作成する方法については、[こちらの記事](https://github.com/OpenTouryoProject/OpenTouryo/wiki/HowToCreateOpenTouryoNuGetPackages.ja)をご参照ください。
 
 ### ライブラリの入手、輸出手続き、使用許諾への添付について
 - NuGetまたはnpmなどのパッケージ・マネージャーから取得できるライブラリは、Open 棟梁に同梱されないため、輸出管理する必要はありません。
