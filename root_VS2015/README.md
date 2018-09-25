@@ -25,7 +25,7 @@ In addition, Open Touryo template base supports the following DBMS by default. I
 
 ### Deploy Open Touryo Template Base
 Copy *root_VS2015* folder to just under C drive, and rename *root_VS2015* folder to *root*.
-If not copy *root_VS2015* folder to just under C drive, the build may fail for the Windows maximum path length limitation.
+If not copying *root_VS2015* folder to just under C drive, the build may fail for the Windows maximum path length limitation.
 
 ### Obtain and deploy data providers
 The correspondence between the DBMSs and the data providers is as follows.
