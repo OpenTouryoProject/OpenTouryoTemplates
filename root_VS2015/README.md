@@ -113,7 +113,7 @@ Legend:
       <td>3_Build_Framework.bat</td><td>Build the .NET Framework-based framework. (Base class 2 and library part)</td><td>○</td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_RichClientFramework.bat</td><td>Build the .NET Framework-based framework for rich client application.</td><td>△<span style="color: red"><sup>*2</sup></span></td><td></td>
+      <td>3_Build_RichClientFramework.bat</td><td>Build the .NET Framework-based framework for rich client application.</td><td>△<span style="color: red"><sup>*1</sup></span></td><td>△<span style="color: red"><sup>*2</sup></span></td>
     </tr>
     <tr>
       <td>4_Build_Framework_Tool.bat</td><td>Build the .NET Framework-based tools bundled with Open Touryo.</td><td>○</td><td>○</td>
@@ -155,7 +155,7 @@ Legend:
       <td>3_Build_Framework.bat</td><td>Build the .NET Framework-based framework. (Base class 2 and library part)</td><td></td><td>○</td>
     </tr>
     <tr>
-      <td>3_Build_RichClientFramework.bat</td><td>Build the .NET Framework-based framework for rich client application.</td><td></td><td>△<span style="color: red"><sup>*2</sup></span></td>
+      <td>3_Build_RichClientFramework.bat</td><td>Build the .NET Framework-based framework for rich client application.</td><td></td><td>△<span style="color: red"><sup>*1</sup></span></td>
     </tr>
     <tr>
       <td>5_Build_2CS_sample.bat</td><td>Build the .NET Framework-based sample application. (Two-tier client server application)</td><td></td><td rowspan="7" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
@@ -187,8 +187,8 @@ Legend:
   </tbody>
 </table>
 <div style="font-size: small">
-  <span style="color: red;">*1</span>　Need to run when making NuGet package.<br />
-  <span style="color: red;">*2</span>　Need to run when creating rich client application.<br />
+  <span style="color: red;">*1</span>　Need to run when creating rich client application.<br />
+  <span style="color: red;">*2</span>　Need to run when creating tool of DeployZipPackWithHTTP.<br />
   <span style="color: red;">*3</span>　Select according to the actual architecture.
 </div>
 
