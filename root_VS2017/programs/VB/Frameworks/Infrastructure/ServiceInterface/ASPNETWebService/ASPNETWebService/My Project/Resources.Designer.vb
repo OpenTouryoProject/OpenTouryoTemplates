@@ -47,7 +47,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+        '''  すべてについて、現在のスレッドの CurrentUICulture プロパティをオーバーライドします
         '''  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
