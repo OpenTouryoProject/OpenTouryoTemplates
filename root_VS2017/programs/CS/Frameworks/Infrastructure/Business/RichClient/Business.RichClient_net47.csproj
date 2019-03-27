@@ -78,8 +78,8 @@
     <Reference Include="OpenTouryo.Framework">
       <HintPath>..\..\Build_net47\OpenTouryo.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Framework.RichClient">
-      <HintPath>..\..\Build_net47\OpenTouryo.Framework.RichClient.dll</HintPath>
+    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.4.1\lib\net47\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -125,6 +125,9 @@
       <ProductName>Windows インストーラー 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
