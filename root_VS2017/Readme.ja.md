@@ -81,6 +81,8 @@ Open 棟梁のテンプレート・ベースには、2つの部分がありま�
 - C:\root\programs\CS  
 - C:\root\programs\VB
 
+`0_ExecAllBat.bat` を実行すると、必要なバッチファイルをまとめて実行することができます。下の表を参考に、実行する必要のあるバッチファイルをご確認いただき、必要に応じて `0_ExecAllBat.bat` をカスタマイズした上で実行してください。
+
 <table Border="1">
 <tr>
 <Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;" colspan="1" rowspan="2">バッチファイル名</td>
