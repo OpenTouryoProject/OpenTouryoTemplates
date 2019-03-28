@@ -81,127 +81,136 @@ Open 棟梁のテンプレート・ベースには、2つの部分がありま�
 - C:\root\programs\CS  
 - C:\root\programs\VB
 
-実行するバッチファイルは、以下の表のとおりです。
-なお、以下の表で
-- ○: 必ず実行する
-- △: アプリケーションの形態によっては、実行する必要がある
-- 空白: 実行する必要はない
+`0_ExecAllBat.bat` を実行すると、必要なバッチファイルをまとめて実行することができます。下の表を参考に、実行する必要のあるバッチファイルをご確認いただき、必要に応じて `0_ExecAllBat.bat` をカスタマイズした上で実行してください。
 
-を表します。
-
-<table>
-  <thead>
-    <tr>
-      <th rowspan="2">フォルダ名</th><th rowspan="2">バッチファイル名</th><th rowspan="2">説明</th><th colspan="2">実行するファイル</th>
-    </tr>
-    <tr>
-      <th>C#</th><th>VB</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="18" style="vertical-align: top">C:\root\programs\CS</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td>○</td><td>○</td>
-    </tr>
-    <tr>
-      <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td>○</td><td>○</td>
-    </tr>
-    <tr>
-      <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス２, ライブラリ部分) をビルドする。</td><td>○</td><td>○</td>
-    </tr>
-    <tr>
-      <td>3_Build_NetCore.bat</td><td>.NET Standard, .NET Coreベースのフレームワーク (ベースクラス２, ライブラリ部分) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*4</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td>△<span style="color: red"><sup>*1</sup></span></td><td>△<span style="color: red"><sup>*2</sup></span></td>
-    </tr>
-    <tr>
-      <td>4_Build_Framework_Tool.bat</td><td>.NET Frameworkベースの付属ツールをビルドする。</td><td>○</td><td>○</td>
-    </tr>
-    <tr>
-      <td>5_Build_2CS_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (2 層 C/S) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>5_Build_Bat_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (バッチ) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>5_Build_BatCore_sample.bat</td><td>.NET Coreベースのサンプルアプリ (バッチ) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3, *4</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>6_Build_WSSrv_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービス (サーバー側ロジック)) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>6_Build_WSSrvCore_sample.bat</td><td>.NET Coreベースのサンプルアプリ (Web サービス (サーバー側ロジック)) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3, *4</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>7_Build_Framework_WS.bat</td><td>.NET Frameworkベースのフレームワーク (サービスインタフェース部分) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>8_Build_WSClntWin_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>9_Build_WSClntWPF_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>10_Build_WebApp_sample.bat</td><td>サンプルWebアプリ (ASP.NET) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>10_Build_WebAppCore_sample.bat</td><td>サンプルWebアプリ (ASP.NET Core) をビルドする。</td><td style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td><td></td>
-    </tr>
-    <tr>
-      <td>z_Common.bat</td><td>共通設定 (MSBuild 用)</td><td></td><td></td>
-    </tr>
-    <tr>
-      <td>z_Common2.bat</td><td>共通設定 (Visual Studio 用)</td><td></td><td></td>
-    </tr>
-    <tr>
-      <td rowspan="13" style="vertical-align: top">C:\root\programs\VB</td><td>1_DeleteDir.bat</td><td>ビルドによってできたフォルダを削除 (クリーン) する。</td><td></td><td>○</td>
-    </tr>
-    <tr>
-      <td>2_DeleteFile.bat</td><td>一時ファイルなどを削除 (クリーン) する。</td><td></td><td>○</td>
-    </tr>
-    <tr>
-      <td>3_Build_Framework.bat</td><td>.NET Frameworkベースのフレームワーク (ベースクラス２, ライブラリ部分) をビルドする。</td><td></td><td>○</td>
-    </tr>
-    <tr>
-      <td>3_Build_RichClientFramework.bat</td><td>.NET Frameworkベースのリッチクライアント用フレームワークをビルドする。</td><td></td><td>△<span style="color: red"><sup>*1</sup></span></td>
-    </tr>
-    <tr>
-      <td>5_Build_2CS_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (2 層 C/S) をビルドする。</td><td></td><td rowspan="7" style="vertical-align: top">△<span style="color: red"><sup>*3</sup></span></td>
-    </tr>
-    <tr>
-      <td>5_Build_Bat_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (バッチ) をビルドする。</td><td></td>
-    </tr>
-    <tr>
-      <td>6_Build_WSSrv_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービス (サーバー側ロジック)) をビルドする。</td><td></td>
-    </tr>
-    <tr>
-      <td>7_Build_Framework_WS.bat</td><td>.NET Frameworkベースのフレームワーク (サービスインタフェース部分) をビルドする。</td><td></td>
-    </tr>
-    <tr>
-      <td>8_Build_WSClntWin_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービスクライアント (Windows フォーム)) をビルドする。</td><td></td>
-    </tr>
-    <tr>
-      <td>9_Build_WSClntWPF_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (Web サービスクライアント (WPF)) をビルドする。</td><td></td>
-    </tr>
-    <tr>
-      <td>10_Build_WebApp_sample.bat</td><td>.NET Frameworkベースのサンプルアプリ (ASP.NET) をビルドする。</td><td></td>
-    </tr>
-    <tr>
-      <td>z_Common.bat</td><td>共通設定 (MSBuild 用)</td><td></td><td></td>
-    </tr>
-    <tr>
-      <td>z_Common2.bat</td><td>共通設定 (Visual Studio 用)</td><td></td><td></td>
-    </tr>
-  </tbody>
+<table Border="1">
+<tr>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;" colspan="1" rowspan="2">バッチファイル名</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;" colspan="1" rowspan="2">説明</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;" colspan="2" rowspan="1">存在</td>
+</tr>
+<tr>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">C#</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">VB</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">0_ExecAllBat.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">以下のファイルを使用してバッチビルドを行う。必要に応じてカスタマイズしてください。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">1_DeleteDir.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">ビルドによってできたフォルダを削除&nbsp;(クリーンアップ)&nbsp;する。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">1_DeleteFile.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">一時ファイルなどを削除&nbsp;(クリーンアップ)&nbsp;する。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">3_Build_Business_net47.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Framework&nbsp;4.7&nbsp;をターゲットとする&nbsp;Business名前空間のフレームワーク&nbsp;(ベースクラス２,&nbsp;ライブラリ部分)&nbsp;をビルドする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">3_Build_BusinessRichClient_net47.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Framework&nbsp;4.7&nbsp;をターゲットとするBusiness名前空間のリッチクライアント用フレームワーク&nbsp;(ベースクラス２,&nbsp;ライブラリ部分)&nbsp;をビルドする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*2</td>
+</tr>
+<tr>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">3_Build_Business_netcore20.bat</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Core&nbsp;2.0&nbsp;をターゲットとする&nbsp;Business名前空間のフレームワーク&nbsp;(ベースクラス２,&nbsp;ライブラリ部分)&nbsp;をビルドする。</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">4_Build_CopyAssemblies.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">上記ビルドのプライマリ出力を参照先フォルダにコピーする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">4_Build_Framework_Tool.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Frameworkベースの付属ツールをビルドする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">5_Build_Bat_sample.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Frameworkベースのサンプルアプリ&nbsp;(バッチ)&nbsp;をビルドする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
+</tr>
+<tr>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">5_Build_BatCore_sample.bat</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Coreベースのサンプルアプリ&nbsp;(バッチ)&nbsp;をビルドする。</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3,&nbsp;*4</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">5_Build_2CS_sample.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Frameworkベースのサンプルアプリ&nbsp;(2&nbsp;層&nbsp;C/S)&nbsp;をビルドする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">6_Build_WSSrv_sample.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Frameworkベースのサンプルアプリ&nbsp;(Web&nbsp;サービス&nbsp;(サーバー側ロジック))&nbsp;をビルドする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
+</tr>
+<tr>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">6_Build_WSSrvCore_sample.bat</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Coreベースのサンプルアプリ&nbsp;(Web&nbsp;サービス&nbsp;(サーバー側ロジック))&nbsp;をビルドする。</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">7_Build_Framework_WS.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Frameworkベースのフレームワーク&nbsp;(サービスインタフェース部分)&nbsp;をビルドする。&nbsp;</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">8_Build_WSClntWin_sample.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Frameworkベースのサンプルアプリ&nbsp;(Web&nbsp;サービスクライアント&nbsp;(Windows&nbsp;Forms))&nbsp;をビルドする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">9_Build_WSClntWPF_sample.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">.NET&nbsp;Frameworkベースのサンプルアプリ&nbsp;(Web&nbsp;サービスクライアント&nbsp;(WPF))&nbsp;をビルドする。</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">10_Build_WebApp_sample.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">サンプルWebアプリ&nbsp;(ASP.NET)&nbsp;をビルドする。&nbsp;</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
+</tr>
+<tr>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">10_Build_WebAppCore_sample.bat</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">サンプルWebアプリ&nbsp;(ASP.NET&nbsp;Core)&nbsp;をビルドする。&nbsp;</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3,&nbsp;*4</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">z_Common.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">共通設定&nbsp;(MSBuild&nbsp;用)</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+</tr>
+<tr>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">z_Common2.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">共通設定&nbsp;(Visual&nbsp;Studio&nbsp;用)&nbsp;</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
+</tr>
 </table>
-<div style="font-size: small">
-  <span style="color: red;">*1</span>　リッチクライアント アプリケーションを作成する場合は必須<br />
-  <span style="color: red;">*2</span>　DeployZipPackWithHTTPツールを作成する場合は必須<br />
-  <span style="color: red;">*3</span>　実際のアプリケーションの形態に応じて選択してください<br />
-  <span style="color: red;">*4</span>　.NET Standard、.NET Core ベースのアプリケーションを開発する場合は必須
-</div>
 
-上の表を参考に、ビルドバッチファイルを番号順に実行してプログラムをビルドしてください。  
+<div style="font-size: small">
+  <span style="color: red;">*1</span>　NuGetパッケージを作成を作成する場合は必須<br />
+  <span style="color: red;">*2</span>　リッチクライアント アプリケーションを作成する場合は必須<br />
+  <span style="color: red;">*3</span>　.NET Standard、.NET Core ベースのアプリケーションを開発する場合は必須<br />
+  <span style="color: red;">*4</span>　実際のアプリケーションの形態に応じて選択してください
+</div>
 
 - 必要であれば、環境に合わせて、z_Common.bat 内の BUILDFILEPATH を書き換えてください。  
 
