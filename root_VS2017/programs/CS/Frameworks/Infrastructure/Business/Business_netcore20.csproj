@@ -16,6 +16,12 @@
     <NoWarn>1701;1702;NU1701</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;NETCORE</DefineConstants>
+    <DocumentationFile>..\Build_netcore20r\netstandard2.0\OpenTouryo.Business.xml</DocumentationFile>
+    <OutputPath>..\Build_netcore20r\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Csp\**" />
     <Compile Remove="RichClient\**" />
@@ -39,6 +45,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="app.config" />
+    <None Remove="packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
 
@@ -49,9 +60,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Touryo.Infrastructure.Framework" Version="2.3.0" />
-    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamMySQL" Version="2.3.0" />
-    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamPstGrS" Version="2.3.0" />
+    <PackageReference Include="Touryo.Infrastructure.Framework" Version="2.4.2" />
+    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamManagedOdp" Version="2.4.2" />
+    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamMySQL" Version="2.4.2" />
+    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamPstGrS" Version="2.4.2" />
+    <PackageReference Include="Touryo.Infrastructure.Public.Security" Version="2.4.2" />
   </ItemGroup>
 
 </Project>
