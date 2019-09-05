@@ -12,7 +12,7 @@
     <AssemblyName>OpenTouryo.Business.RichClient</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -43,42 +43,42 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\Build_net47\</OutputPath>
-    <DocumentationFile>..\..\Build_net47\OpenTouryo.Business.RichClient.xml</DocumentationFile>
+    <OutputPath>..\..\Build_net48\</OutputPath>
+    <DocumentationFile>..\..\Build_net48\OpenTouryo.Business.RichClient.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
-    <DefineConstants>DEBUG,TRACE,NET47</DefineConstants>
+    <DefineConstants>DEBUG,TRACE,NET48</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Build_net47r\</OutputPath>
-    <DocumentationFile>..\..\Build_net47r\OpenTouryo.Business.RichClient.xml</DocumentationFile>
+    <OutputPath>..\..\Build_net48r\</OutputPath>
+    <DocumentationFile>..\..\Build_net48r\OpenTouryo.Business.RichClient.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
-    <DefineConstants>TRACE,NET47</DefineConstants>
+    <DefineConstants>TRACE,NET48</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenTouryo.Business">
-      <HintPath>..\..\Build_net47\OpenTouryo.Business.dll</HintPath>
+      <HintPath>..\..\Build_net48\OpenTouryo.Business.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamManagedOdp">
-      <HintPath>..\..\Build_net47\OpenTouryo.DamManagedOdp.dll</HintPath>
+      <HintPath>..\..\Build_net48\OpenTouryo.DamManagedOdp.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamMySQL">
-      <HintPath>..\..\Build_net47\OpenTouryo.DamMySQL.dll</HintPath>
+      <HintPath>..\..\Build_net48\OpenTouryo.DamMySQL.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamPstGrS">
-      <HintPath>..\..\Build_net47\OpenTouryo.DamPstGrS.dll</HintPath>
+      <HintPath>..\..\Build_net48\OpenTouryo.DamPstGrS.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework">
-      <HintPath>..\..\Build_net47\OpenTouryo.Framework.dll</HintPath>
+      <HintPath>..\..\Build_net48\OpenTouryo.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework.RichClient, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.5.0-preview3\lib\net47\OpenTouryo.Framework.RichClient.dll</HintPath>
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.5.0-preview3\lib\net48\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess">
-      <HintPath>..\..\Build_net47\Oracle.ManagedDataAccess.dll</HintPath>
+      <HintPath>..\..\Build_net48\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -87,7 +87,7 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="OpenTouryo.Public">
-      <HintPath>..\..\Build_net47\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\..\Build_net48\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

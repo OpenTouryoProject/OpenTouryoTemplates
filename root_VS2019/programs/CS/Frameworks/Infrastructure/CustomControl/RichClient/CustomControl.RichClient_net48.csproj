@@ -24,7 +24,7 @@
     <SccProvider>
     </SccProvider>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <PublishUrl>http://localhost/CustomControl.RichClient/</PublishUrl>
     <Install>true</Install>
@@ -45,32 +45,32 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Build_net47\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NET47</DefineConstants>
+    <OutputPath>..\..\Build_net48\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NET48</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\Build_net47\OpenTouryo.CustomControl.RichClient.XML</DocumentationFile>
+    <DocumentationFile>..\..\Build_net48\OpenTouryo.CustomControl.RichClient.XML</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Build_net47r\</OutputPath>
-    <DefineConstants>TRACE;NET47</DefineConstants>
+    <OutputPath>..\..\Build_net48r\</OutputPath>
+    <DefineConstants>TRACE;NET48</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\Build_net47r\OpenTouryo.CustomControl.RichClient.XML</DocumentationFile>
+    <DocumentationFile>..\..\Build_net48r\OpenTouryo.CustomControl.RichClient.XML</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenTouryo.Framework">
-      <HintPath>..\..\Build_net47\OpenTouryo.Framework.dll</HintPath>
+      <HintPath>..\..\Build_net48\OpenTouryo.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework.RichClient, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.5.0-preview3\lib\net47\OpenTouryo.Framework.RichClient.dll</HintPath>
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.5.0-preview3\lib\net48\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public">
-      <HintPath>..\..\Build_net47\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\..\Build_net48\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
