@@ -13,13 +13,14 @@ set CURRENT_DIR="%~dp0"
 @rem --------------------------------------------------
 @rem Execution of the common processing.
 @rem --------------------------------------------------
-call %CURRENT_DIR%z_Common2.bat
+call %CURRENT_DIR%z_Common.bat
 
 rem --------------------------------------------------
-rem Build the batch Infrastructure
+rem Build the Infrastructures
 rem --------------------------------------------------
-call dotnet restore "Frameworks\Infrastructure\Business_netcore20.sln"
-call dotnet msbuild %COMMANDLINE% "Frameworks\Infrastructure\Business_netcore20.sln"
+
+..\nuget.exe restore "Frameworks\Infrastructure\BusinessRichClient_net48.sln"
+%BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\BusinessRichClient_net48.sln"
 
 pause
 

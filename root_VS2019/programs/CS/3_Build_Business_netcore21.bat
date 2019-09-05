@@ -13,19 +13,13 @@ set CURRENT_DIR="%~dp0"
 @rem --------------------------------------------------
 @rem Execution of the common processing.
 @rem --------------------------------------------------
-call %CURRENT_DIR%z_Common.bat
+call %CURRENT_DIR%z_Common2.bat
 
 rem --------------------------------------------------
-rem Change the packages.config.
+rem Build the batch Infrastructure
 rem --------------------------------------------------
-call %CURRENT_DIR%z_ChangePackages_net47.bat
-
-rem --------------------------------------------------
-rem Build the Infrastructures
-rem --------------------------------------------------
-
-..\nuget.exe restore "Frameworks\Infrastructure\Business_net47.sln"
-%BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\Business_net47.sln"
+call dotnet restore "Frameworks\Infrastructure\Business_netcore21.sln"
+call dotnet msbuild %COMMANDLINE% "Frameworks\Infrastructure\Business_netcore21.sln"
 
 pause
 

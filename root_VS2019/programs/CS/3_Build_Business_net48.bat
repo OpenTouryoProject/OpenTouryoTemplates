@@ -16,11 +16,11 @@ set CURRENT_DIR="%~dp0"
 call %CURRENT_DIR%z_Common.bat
 
 rem --------------------------------------------------
-rem Output xcopy after you build the batch Infrastructure
+rem Build the Infrastructures
 rem --------------------------------------------------
 
-..\nuget.exe restore "Frameworks\Infrastructure\BusinessRichClient_net47.sln"
-%BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\BusinessRichClient_net47.sln"
+..\nuget.exe restore "Frameworks\Infrastructure\Business_net48.sln"
+%BUILDFILEPATH% %COMMANDLINE% "Frameworks\Infrastructure\Business_net48.sln"
 
 pause
 
