@@ -7,16 +7,23 @@ using Microsoft.AspNetCore.Cors;
 
 namespace ReactReduxTemplate.Controllers
 {
-    [EnableCors("AllowAllOrigins")]
-    [Route("api/[controller]")]
-    public class SampleDataController : Controller
+    [EnableCors]
+    [ApiController]
+    [Route("api/[controller]/[action]")]
+    public class SampleDataController : ControllerBase
     {
+        /// <summary>Summaries</summary>
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        [HttpGet("[action]")]
+        /// <summary>
+        /// GET api/sampledata/weatherforecasts?1
+        /// </summary>
+        /// <param name="startDateIndex">int</param>
+        /// <returns>IEnumerable(WeatherForecast)</returns>
+        [HttpGet()]
         public IEnumerable<WeatherForecast> WeatherForecasts(int startDateIndex)
         {
             var rng = new Random();
@@ -28,6 +35,7 @@ namespace ReactReduxTemplate.Controllers
             });
         }
 
+        /// <summary>WeatherForecast</summary>
         public class WeatherForecast
         {
             public string DateFormatted { get; set; }

@@ -38,13 +38,12 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Runtime.ExceptionServices;
 
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc.WebApiCompatShim;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 using Touryo.Infrastructure.Business.Presentation;
 using Touryo.Infrastructure.Business.Util;
@@ -66,10 +65,12 @@ namespace ASPNETWebService.Controllers
     /// <summary>
     /// ASP.NET WebAPI JSON-RPCの個別Webメソッドを公開するサービス インターフェイス基盤。
     /// </summary>
-    [EnableCors("AllowAllOrigins")]
+
+    [EnableCors]
+    [ApiController]
     [MyBaseAsyncApiController()]
-    [Route("api/[controller]")]
-    public class JsonController : ApiController
+    [Route("api/[controller]/[action]")]
+    public class JsonController : ControllerBase
     {
         #region 疎通テスト用
 
@@ -118,8 +119,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> SelectCount([FromForm] WebApiParams param)
+        public async Task<ContentResult> SelectCount([FromForm] WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -165,7 +165,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         /// <summary>
@@ -174,8 +174,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> SelectAll_DT([FromForm] WebApiParams param)
+        public async Task<ContentResult> SelectAll_DT([FromForm] WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -241,7 +240,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         /// <summary>
@@ -250,8 +249,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> SelectAll_DS([FromForm] WebApiParams param)
+        public async Task<ContentResult> SelectAll_DS([FromForm] WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -298,7 +296,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         /// <summary>
@@ -307,8 +305,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> SelectAll_DR([FromForm] WebApiParams param)
+        public async Task<ContentResult> SelectAll_DR([FromForm] WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -361,7 +358,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         /// <summary>
@@ -370,8 +367,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> SelectAll_DSQL([FromForm] WebApiParams param)
+        public async Task<ContentResult> SelectAll_DSQL([FromForm] WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -421,7 +417,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         /// <summary>
@@ -430,8 +426,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> Select(WebApiParams param)
+        public async Task<ContentResult> Select(WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -484,7 +479,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         /// <summary>
@@ -493,8 +488,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> Insert(WebApiParams param)
+        public async Task<ContentResult> Insert(WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -544,7 +538,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         /// <summary>
@@ -553,8 +547,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> Update(WebApiParams param)
+        public async Task<ContentResult> Update(WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -605,7 +598,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         /// <summary>
@@ -614,8 +607,7 @@ namespace ASPNETWebService.Controllers
         /// <param name="param">引数</param>
         /// <returns>戻り値</returns>
         [HttpPost]
-        [Route("[action]")]
-        public async Task<HttpResponseMessage> Delete(WebApiParams param)
+        public async Task<ContentResult> Delete(WebApiParams param)
         {
             // Claimを取得する。
             string userName, roles, scopes, ipAddress;
@@ -664,7 +656,7 @@ namespace ASPNETWebService.Controllers
                 }
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, ret);
+            return this.Content(JsonConvert.SerializeObject(ret));
         }
 
         #endregion

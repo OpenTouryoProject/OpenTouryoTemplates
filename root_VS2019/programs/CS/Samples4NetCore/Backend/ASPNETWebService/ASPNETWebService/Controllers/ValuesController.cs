@@ -38,9 +38,10 @@ using Microsoft.AspNetCore.Cors;
 
 namespace ASPNETWebService.Controllers
 {
-    [EnableCors("AllowAllOrigins")]
-    [Route("api/[controller]")]
-    public class ValuesController : Controller
+    [EnableCors]
+    [ApiController]
+    [Route("api/[controller]/[action]")]
+    public class ValuesController : ControllerBase
     {
         /// <summary>
         /// GET api/values/get
@@ -49,7 +50,6 @@ namespace ASPNETWebService.Controllers
         /// IEnumerable(string)
         /// </returns>
         [HttpGet]
-        [Route("[action]")]
         public IEnumerable<string> get()
         {
             return new string[] { "value1", "value2" };

@@ -19,8 +19,8 @@
 
 using System.Net.Http;
 
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 using Touryo.Infrastructure.Framework.Authentication;
 
@@ -39,19 +39,17 @@ namespace ASPNETWebService
 
             // BuildWebHostが返すIWebHostをRunする。
             // 呼び出し元スレッドは終了までブロックされる。
-            Program.BuildWebHost(args).Run();
+            Program.CreateHostBuilder(args).Build().Run();
         }
 
-        /// <summary>BuildWebHost</summary>
+        /// <summary>CreateHostBuilder</summary>
         /// <param name="args">コマンドライン引数</param>
         /// <returns>IWebHost</returns>
-        public static IWebHost BuildWebHost(string[] args)
-        {
-            // WebHost経由で、IWebHost, IWebHostBuilderにアクセスする。
-
-            return WebHost.CreateDefaultBuilder(args) //  IWebHostBuilderを取得する。
-                .UseStartup<Startup>() // IWebHostBuilder.UseStartup<TStartup> メソッドにStartupクラスを指定。
-                .Build(); // IWebHostBuilder.Build メソッドでIWebHostクラスインスタンスを返す。
-        }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }
