@@ -5,7 +5,7 @@ echo | call 1_DeleteFile.bat
 timeout 5
 
 echo | call 3_Build_Business_net48.bat
-echo | call 3_Build_Business_netcore21.bat
+echo | call 3_Build_Business_netcore30.bat
 echo | call 3_Build_BusinessRichClient_net48.bat
 echo | call 4_Build_CopyAssemblies.bat
 
