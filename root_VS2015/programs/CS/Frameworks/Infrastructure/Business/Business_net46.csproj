@@ -99,22 +99,22 @@
       <HintPath>..\packages\Npgsql.4.0.3\lib\net451\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamManagedOdp, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Touryo.Infrastructure.Public.Db.DamManagedOdp.2.5.0-preview4\lib\net46\OpenTouryo.DamManagedOdp.dll</HintPath>
+      <HintPath>..\packages\Touryo.Infrastructure.Public.Db.DamManagedOdp.2.5.0\lib\net46\OpenTouryo.DamManagedOdp.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamMySQL, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Touryo.Infrastructure.Public.Db.DamMySQL.2.5.0-preview4\lib\net46\OpenTouryo.DamMySQL.dll</HintPath>
+      <HintPath>..\packages\Touryo.Infrastructure.Public.Db.DamMySQL.2.5.0\lib\net46\OpenTouryo.DamMySQL.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamPstGrS, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Touryo.Infrastructure.Public.Db.DamPstGrS.2.5.0-preview4\lib\net46\OpenTouryo.DamPstGrS.dll</HintPath>
+      <HintPath>..\packages\Touryo.Infrastructure.Public.Db.DamPstGrS.2.5.0\lib\net46\OpenTouryo.DamPstGrS.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Touryo.Infrastructure.Framework.2.5.0-preview4\lib\net46\OpenTouryo.Framework.dll</HintPath>
+      <HintPath>..\packages\Touryo.Infrastructure.Framework.2.5.0\lib\net46\OpenTouryo.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Touryo.Infrastructure.Public.2.5.0-preview4\lib\net46\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\packages\Touryo.Infrastructure.Public.2.5.0\lib\net46\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public.Security, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Touryo.Infrastructure.Public.Security.2.5.0-preview4\lib\net46\OpenTouryo.Public.Security.dll</HintPath>
+      <HintPath>..\packages\Touryo.Infrastructure.Public.Security.2.5.0\lib\net46\OpenTouryo.Public.Security.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.18.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>

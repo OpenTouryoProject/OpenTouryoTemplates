@@ -72,7 +72,7 @@
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Touryo.Infrastructure.Public.2.5.0-preview4\lib\net46\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\packages\Touryo.Infrastructure.Public.2.5.0\lib\net46\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
