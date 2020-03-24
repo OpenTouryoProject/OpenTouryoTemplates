@@ -11,11 +11,7 @@
     <RootNamespace>RerunnableBatch_sample2</RootNamespace>
     <AssemblyName>RerunnableBatch_sample2</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>2.0</OldToolsVersion>
-    <UpgradeBackupLocation />
-    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
