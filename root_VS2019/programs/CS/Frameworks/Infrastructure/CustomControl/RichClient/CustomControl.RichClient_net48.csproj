@@ -13,16 +13,6 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
@@ -66,8 +56,8 @@
     <Reference Include="OpenTouryo.Framework">
       <HintPath>..\..\Build_net48\OpenTouryo.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.5.0\lib\net48\OpenTouryo.Framework.RichClient.dll</HintPath>
+    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.6.0-preview1\lib\net48\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public">
       <HintPath>..\..\Build_net48\OpenTouryo.Public.dll</HintPath>

@@ -64,28 +64,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenTouryo.DamManagedOdp">
-      <HintPath>..\..\Infrastructure\Build\OpenTouryo.DamManagedOdp.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net48\OpenTouryo.DamManagedOdp.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamMySQL">
-      <HintPath>..\..\Infrastructure\Build\OpenTouryo.DamMySQL.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net48\OpenTouryo.DamMySQL.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamPstGrS">
-      <HintPath>..\..\Infrastructure\Build\OpenTouryo.DamPstGrS.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net48\OpenTouryo.DamPstGrS.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Infrastructure\Build\MySql.Data.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net48\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql, Version=3.0.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Infrastructure\Build\Npgsql.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net48\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess">
-      <HintPath>..\..\Infrastructure\Build\Oracle.ManagedDataAccess.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net48\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Infrastructure\Build\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net48\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
