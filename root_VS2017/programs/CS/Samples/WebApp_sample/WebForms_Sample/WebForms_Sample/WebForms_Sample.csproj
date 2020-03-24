@@ -66,41 +66,41 @@
       <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\Npgsql.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Business">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\OpenTouryo.Business.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\OpenTouryo.Business.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.CustomControl">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\OpenTouryo.CustomControl.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\OpenTouryo.CustomControl.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamManagedOdp">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\OpenTouryo.DamManagedOdp.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\OpenTouryo.DamManagedOdp.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamMySQL">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\OpenTouryo.DamMySQL.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\OpenTouryo.DamMySQL.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamPstGrS">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\OpenTouryo.DamPstGrS.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\OpenTouryo.DamPstGrS.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\OpenTouryo.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\OpenTouryo.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public.Security">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\OpenTouryo.Public.Security.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\OpenTouryo.Public.Security.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public">
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build\Oracle.ManagedDataAccess.dll</HintPath>
+      <HintPath>..\..\..\..\Frameworks\Infrastructure\Build_net47\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
