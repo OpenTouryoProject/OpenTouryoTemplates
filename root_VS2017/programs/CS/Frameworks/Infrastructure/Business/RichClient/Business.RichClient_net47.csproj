@@ -79,7 +79,7 @@
       <HintPath>..\..\Build_net47\OpenTouryo.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework.RichClient, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.6.0-preview1\lib\net47\OpenTouryo.Framework.RichClient.dll</HintPath>
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.6.0-preview2\lib\net47\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public">
       <HintPath>..\..\Build_net47\OpenTouryo.Public.dll</HintPath>
