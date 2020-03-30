@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Touryo.Infrastructure.Framework.RichClient" Version="2.6.0-preview2" />
+    <PackageReference Include="Touryo.Infrastructure.Framework.RichClient" Version="2.6.0" />
   </ItemGroup>
 
   <ItemGroup>
