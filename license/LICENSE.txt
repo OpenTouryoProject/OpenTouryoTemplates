@@ -207,10 +207,9 @@
      - The OSS included in the source code such as JavaScript / CSS
        - jQuery
        - jQuery.Validation
+       - Popper.js
        - bootstrap
        - FontAwesome
-       - knockoutjs
-       - angularjs
        - Respond
        - Modernizr
        - Microsoft.AspNet.ScriptManager.WebForms
@@ -221,6 +220,3 @@
      - The following *.exe is bundled in order to run the build system.
        - nuget.exe
          https://github.com/NuGet/NuGet.Client/blob/dev/LICENSE.txt
-       - vswhere.exe
-         https://github.com/Microsoft/vswhere/blob/develop/LICENSE.txt
-

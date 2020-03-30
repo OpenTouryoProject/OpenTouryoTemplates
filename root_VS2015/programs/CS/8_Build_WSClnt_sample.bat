@@ -30,5 +30,20 @@ rem --------------------------------------------------
 
 pause
 
+rem --------------------------------------------------
+rem Batch build of WSClientWinCone_sample.
+rem --------------------------------------------------
+..\nuget.exe restore "Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSClientWinCone_sample.sln"
+%BUILDFILEPATH% %COMMANDLINE% "Samples\WS_sample\WSClient_sample\WSClientWinCone_sample\WSClientWinCone_sample.sln"
+
+pause
+
+rem --------------------------------------------------
+rem Batch build of WSClientWPF_sample.
+rem --------------------------------------------------
+%BUILDFILEPATH% %COMMANDLINE% "Samples\WS_sample\WSClient_sample\WSClientWPF_sample\WSClientWPF_sample.sln"
+
+pause
+
 rem -------------------------------------------------------
 endlocal
