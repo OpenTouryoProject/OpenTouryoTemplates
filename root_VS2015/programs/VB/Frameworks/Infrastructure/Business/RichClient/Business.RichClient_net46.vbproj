@@ -86,14 +86,14 @@
     <Reference Include="OpenTouryo.DamPstGrS">
       <HintPath>..\..\Build_net46\OpenTouryo.DamPstGrS.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Framework, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.2.5.0\lib\net46\OpenTouryo.Framework.dll</HintPath>
+    <Reference Include="OpenTouryo.Framework, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.2.6.0\lib\net46\OpenTouryo.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.5.0\lib\net46\OpenTouryo.Framework.RichClient.dll</HintPath>
+    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.6.0\lib\net46\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Public, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Public.2.5.0\lib\net46\OpenTouryo.Public.dll</HintPath>
+    <Reference Include="OpenTouryo.Public, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Public.2.6.0\lib\net46\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess">
       <HintPath>..\..\Build_net46\Oracle.ManagedDataAccess.dll</HintPath>

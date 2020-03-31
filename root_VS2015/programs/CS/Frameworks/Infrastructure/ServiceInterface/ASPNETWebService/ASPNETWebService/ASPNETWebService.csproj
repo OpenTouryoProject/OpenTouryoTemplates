@@ -57,10 +57,10 @@
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Business">
-      <HintPath>..\..\..\Build\OpenTouryo.Business.dll</HintPath>
+      <HintPath>..\..\..\Build_net46\OpenTouryo.Business.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework">
-      <HintPath>..\..\..\Build\OpenTouryo.Framework.dll</HintPath>
+      <HintPath>..\..\..\Build_net46\OpenTouryo.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -68,7 +68,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="OpenTouryo.Public">
-      <HintPath>..\..\..\Build\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\..\..\Build_net46\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />

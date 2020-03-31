@@ -72,21 +72,21 @@
     </Reference>
     <Reference Include="OpenTouryo.Business.RichClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Infrastructure\Build\OpenTouryo.Business.RichClient.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net47\OpenTouryo.Business.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Infrastructure\Build\OpenTouryo.Framework.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net47\OpenTouryo.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework.RichClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Infrastructure\Build\OpenTouryo.Framework.RichClient.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net47\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="OpenTouryo.Public, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Infrastructure\Build\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\..\Infrastructure\Build_net47\OpenTouryo.Public.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />

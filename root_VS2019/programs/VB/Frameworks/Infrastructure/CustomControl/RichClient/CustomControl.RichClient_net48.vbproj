@@ -59,8 +59,8 @@
     <DefineConstants>TRACE,NET48</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.5.0\lib\net48\OpenTouryo.Framework.RichClient.dll</HintPath>
+    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.6.0\lib\net48\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
