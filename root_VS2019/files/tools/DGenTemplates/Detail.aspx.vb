@@ -113,7 +113,6 @@ Partial Public Class _TableName_Detail
             ' ControlComment:LoopEnd-ElseColumn
             ' 編集
             Me.SetControlReadOnly(True)
-            'Session("PrimaryKeyAndTimeStamp") = Nothing
         End If
     End Sub
 
