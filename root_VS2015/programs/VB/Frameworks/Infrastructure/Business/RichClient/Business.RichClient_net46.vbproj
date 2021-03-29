@@ -53,8 +53,8 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Build_net46r\</OutputPath>
-    <DocumentationFile>..\..\Build_net46r\OpenTouryo.Business.RichClient.xml</DocumentationFile>
+    <OutputPath>..\..\Build_net46\</OutputPath>
+    <DocumentationFile>..\..\Build_net46\OpenTouryo.Business.RichClient.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
     <DefineConstants>TRACE,NET46</DefineConstants>
   </PropertyGroup>
@@ -86,14 +86,14 @@
     <Reference Include="OpenTouryo.DamPstGrS">
       <HintPath>..\..\Build_net46\OpenTouryo.DamPstGrS.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Framework, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.2.6.0\lib\net46\OpenTouryo.Framework.dll</HintPath>
+    <Reference Include="OpenTouryo.Framework, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.2.7.0\lib\net46\OpenTouryo.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.6.0\lib\net46\OpenTouryo.Framework.RichClient.dll</HintPath>
+    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.7.0\lib\net46\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Public, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Public.2.6.0\lib\net46\OpenTouryo.Public.dll</HintPath>
+    <Reference Include="OpenTouryo.Public, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Public.2.7.0\lib\net46\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess">
       <HintPath>..\..\Build_net46\Oracle.ManagedDataAccess.dll</HintPath>

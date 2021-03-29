@@ -49,8 +49,8 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\Build_net46r\</OutputPath>
-    <DocumentationFile>..\Build_net46r\OpenTouryo.CustomControl.xml</DocumentationFile>
+    <OutputPath>..\Build_net46\</OutputPath>
+    <DocumentationFile>..\Build_net46\OpenTouryo.CustomControl.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
     <DefineConstants>TRACE,NET46</DefineConstants>
   </PropertyGroup>
@@ -64,8 +64,8 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Public, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Touryo.Infrastructure.Public.2.6.0\lib\net46\OpenTouryo.Public.dll</HintPath>
+    <Reference Include="OpenTouryo.Public, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Touryo.Infrastructure.Public.2.7.0\lib\net46\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />

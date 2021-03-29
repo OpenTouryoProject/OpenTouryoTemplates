@@ -53,8 +53,8 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Build_net47r\</OutputPath>
-    <DocumentationFile>..\..\Build_net47r\OpenTouryo.Business.RichClient.xml</DocumentationFile>
+    <OutputPath>..\..\Build_net47\</OutputPath>
+    <DocumentationFile>..\..\Build_net47\OpenTouryo.Business.RichClient.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
     <DefineConstants>TRACE,NET47</DefineConstants>
   </PropertyGroup>
@@ -74,8 +74,8 @@
     <Reference Include="OpenTouryo.Framework">
       <HintPath>..\..\Build_net47\OpenTouryo.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.6.0\lib\net47\OpenTouryo.Framework.RichClient.dll</HintPath>
+    <Reference Include="OpenTouryo.Framework.RichClient, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.2.7.0\lib\net47\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess">
       <HintPath>..\..\Build_net47\Oracle.ManagedDataAccess.dll</HintPath>
