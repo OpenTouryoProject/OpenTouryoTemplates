@@ -17,6 +17,6 @@ For more information, please refer to the Readme in each root_VS20XX folder.
 |:-----|:------------------|:-------------------|
 |[/root_VS2015/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2015)|Visual Studio 2015|.NET Framework 4.6|
 |[/root_VS2017/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2017)|Visual Studio 2017|.NET Framework 4.7, .NET Core 2.0|
-|[/root_VS2019/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2019)|Visual Studio 2019|.NET Framework 4.8, .NET Core 3.0|
+|[/root_VS2019/](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/master/root_VS2019)|Visual Studio 2019|.NET Framework 4.8, .NET 5.0|
 
 When using Visual Studio 2013 or earlier, please use *[OpenTouryoTemplates version 01-80](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/01-80)*.
