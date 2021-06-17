@@ -62,14 +62,6 @@ namespace MVC_Sample
         /// <param name="config">IConfiguration</param>
         public Startup(IHostingEnvironment env, IConfiguration config)
         {
-            // 自前
-            //IConfigurationBuilder builder = new ConfigurationBuilder()
-            //    .SetBasePath(env.ContentRootPath)
-            //    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            //    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-            //    .AddEnvironmentVariables();
-            //config = builder.Build();
-
             // メンバに設定
             this.HostingEnvironment = env;
             this.Configuration = config;
@@ -99,42 +91,21 @@ namespace MVC_Sample
         /// </remarks>
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            // Development、Staging、Productionの
-            // 環境変数（ASPNETCORE_ENVIRONMENT）値を使用可能。
-            //bool flg = this.HostingEnvironment.IsDevelopment();
-            //flg = this.HostingEnvironment.IsStaging();
-            //flg = this.HostingEnvironment.IsProduction();
-
-            #region Development or それ以外のモード
-
             if (this.HostingEnvironment.IsDevelopment())
             {
-                // Developmentモードの場合
-
-                // 開発用エラー画面
-                app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
-                
-                // 簡易ログ出力
-                loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-                loggerFactory.AddDebug();
-
-                // ブラウザー リンク
-                // 開発環境と 1-n ブラウザの間の通信チャネルを作成
-                // https://blogs.msdn.microsoft.com/chack/2013/12/16/visual-studio-2013-1/
-                app.UseBrowserLink();
+            	app.UseDeveloperExceptionPage();
             }
             else
             {
-                // Developmentモードでない場合
-
-                // カスタム例外処理ページ
-                // MyMVCCoreFilterAttribute.OnExceptionで処理。
+                app.UseExceptionHandler("/Home/Error");
             }
 
-            #endregion
+            // HttpContextのマイグレーション用
+            app._UseHttpContextAccessor();
 
-            #region パイプラインに追加
+            // /wwwroot（既定の）の
+            // 静的ファイルをパイプラインに追加
+            app.UseStaticFiles();
 
             // Cookieを使用する。
             app.UseCookiePolicy(new CookiePolicyOptions()
@@ -155,13 +126,10 @@ namespace MVC_Sample
                     HttpOnly = true,
                     Name = "mvc_session",
                     Path = "/",
-                    SameSite= SameSiteMode.Strict,
+                    SameSite = SameSiteMode.Strict,
                     SecurePolicy = CookieSecurePolicy.SameAsRequest
                 }
             });
-
-            // HttpContextのマイグレーション用
-            app._UseHttpContextAccessor();
 
             // MVCをパイプラインに追加（routesも設定）
             app.UseMvc(routes =>
@@ -171,20 +139,11 @@ namespace MVC_Sample
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            // UseCorsでAllowAllOriginsを指定。
-            //app.UseCors("AllowAllOrigins");
-
-            // /wwwroot（既定の）の
-            // 静的ファイルをパイプラインに追加
-            app.UseStaticFiles();
-
             // Identity
             //app.UseAuthentication();
 
             // Identityではなく、CookieAuthentication
             app.UseAuthentication();
-
-            #endregion
         }
 
         /// <summary>
@@ -205,31 +164,18 @@ namespace MVC_Sample
             // 構成情報から、AppConfiguration SectionをAppConfiguration Classへバインドするようなケース。
             //services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 
-            #region Development or それ以外のモード
+            // HttpContextのマイグレーション用
+            services._AddHttpContextAccessor();
 
-            if (this.HostingEnvironment.IsDevelopment())
-            {
-                // Developmentモードの場合
-
-                // Sessionのモード
-                services.AddDistributedMemoryCache(); // 開発用
-            }
-            else
-            {
-                // Developmentモードでない場合
-
-                // Sessionのモード
-                //services.AddDistributedSqlServerCache();
-                //services.AddDistributedRedisCache();
-            }
-
-            #endregion
+            // Sessionのモード
+            services.AddDistributedMemoryCache(); // 開発用
+            //services.AddDistributedSqlServerCache();
+            //services.AddDistributedRedisCache();
 
             // Sessionを使用する。
             services.AddSession();
 
-            // HttpContextのマイグレーション用
-            services._AddHttpContextAccessor();
+            
 
             #region Add Frameworks
 
