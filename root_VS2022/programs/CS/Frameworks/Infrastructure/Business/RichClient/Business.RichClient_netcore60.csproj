@@ -37,7 +37,7 @@
       <HintPath>..\..\Build_netcore60\net6.0\OpenTouryo.Business.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamManagedOdp">
-      <HintPath>..\..\Build_netcore&0\net6.0\OpenTouryo.DamManagedOdp.dll</HintPath>
+      <HintPath>..\..\Build_netcore60\net6.0\OpenTouryo.DamManagedOdp.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.DamMySQL">
       <HintPath>..\..\Build_netcore60\net6.0\OpenTouryo.DamMySQL.dll</HintPath>

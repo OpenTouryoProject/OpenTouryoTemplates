@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29209.62
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business_net48.csproj", "{7187571A-3A26-4363-9AB6-189CB5B58422}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business_net48", "Business\Business_net48.csproj", "{7187571A-3A26-4363-9AB6-189CB5B58422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControl", "CustomControl\CustomControl_net48.csproj", "{2C6108F5-DEB1-4821-8CE0-E80619A06E03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControl_net48", "CustomControl\CustomControl_net48.csproj", "{2C6108F5-DEB1-4821-8CE0-E80619A06E03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
