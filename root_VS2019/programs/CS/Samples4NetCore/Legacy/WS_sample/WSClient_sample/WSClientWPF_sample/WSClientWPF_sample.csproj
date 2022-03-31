@@ -70,10 +70,10 @@
       <HintPath>..\..\..\..\..\Frameworks\Infrastructure\Build_netcore50\net5.0-windows\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="WSIFType_sample">
-      <HintPath>..\..\Build\net5.0-windows\WSIFType_sample.dll</HintPath>
+      <HintPath>..\..\Build\net5.0\WSIFType_sample.dll</HintPath>
     </Reference>
     <Reference Include="WSServer_sample">
-      <HintPath>..\..\Build\net5.0-windows\WSServer_sample.dll</HintPath>
+      <HintPath>..\..\Build\net5.0\WSServer_sample.dll</HintPath>
     </Reference>
   </ItemGroup>
   
