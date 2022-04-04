@@ -66,11 +66,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="4.5.0" />
-    <PackageReference Include="Touryo.Infrastructure.Framework" version="3.0.0-preview2" />
-    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamManagedOdp" version="3.0.0-preview2" />
-    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamMySQL" version="3.0.0-preview2" />
-    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamPstGrS" version="3.0.0-preview2" />
-    <PackageReference Include="Touryo.Infrastructure.Public.Security" version="3.0.0-preview2" />
+    <PackageReference Include="Touryo.Infrastructure.Framework" version="3.0.0" />
+    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamManagedOdp" version="3.0.0" />
+    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamMySQL" version="3.0.0" />
+    <PackageReference Include="Touryo.Infrastructure.Public.Db.DamPstGrS" version="3.0.0" />
+    <PackageReference Include="Touryo.Infrastructure.Public.Security" version="3.0.0" />
   </ItemGroup>
 
 </Project>

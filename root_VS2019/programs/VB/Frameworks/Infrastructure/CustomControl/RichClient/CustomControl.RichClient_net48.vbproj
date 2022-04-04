@@ -60,13 +60,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenTouryo.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.3.0.0-preview2\lib\net48\OpenTouryo.Framework.dll</HintPath>
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.3.0.0\lib\net48\OpenTouryo.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Framework.RichClient, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.3.0.0-preview2\lib\net48\OpenTouryo.Framework.RichClient.dll</HintPath>
+      <HintPath>..\..\packages\Touryo.Infrastructure.Framework.RichClient.3.0.0\lib\net48\OpenTouryo.Framework.RichClient.dll</HintPath>
     </Reference>
     <Reference Include="OpenTouryo.Public, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Touryo.Infrastructure.Public.3.0.0-preview2\lib\net48\OpenTouryo.Public.dll</HintPath>
+      <HintPath>..\..\packages\Touryo.Infrastructure.Public.3.0.0\lib\net48\OpenTouryo.Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
