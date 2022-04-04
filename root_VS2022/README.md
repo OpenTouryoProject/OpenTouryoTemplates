@@ -1,16 +1,16 @@
-# Open Touryo Template Base for Visual Studio 2019
+# Open Touryo Template Base for Visual Studio 2022
 *Open Touryo Template Base* is the *foundation* of the development infrastructure (project template) of the programs using Open Touryo.
 
 Click [here](Readme.ja.md) for Japanese version of this file.
 
 ## Running sample application tasks
-You can run the sample application bundled with Open Touryo Template Base for Visual Studio 2019 according to the following steps.
+You can run the sample application bundled with Open Touryo Template Base for Visual Studio 2022 according to the following steps.
 
 Notation *Optional*:  
 Open Touryo supports the following DBMSs and data providers. But the data providers, having the notation *optional*, are not included in the programs of Open Touryo. When using the DBMSs and data providers having the notation *optional*, download the data provider manually, and modify [the data access project of Open Touryo, that is DamXXX.csproj](https://github.com/OpenTouryoProject/OpenTouryoTemplates/tree/develop/root/programs/CS/Frameworks/Infrastructure/Public/Db), to refer the data provider.
 
 ### Install prerequisites
-Install Visual Studio 2019 beforehand.  
+Install Visual Studio 2022 beforehand.  
 
 In addition, Open Touryo template base supports the following DBMS by default. If necessary, install the DBMS to use.
 - SQL Server  
@@ -22,8 +22,8 @@ In addition, Open Touryo template base supports the following DBMS by default. I
 - PostgreSQL
 
 ### Deploy Open Touryo Template Base
-Copy *root_VS2019* folder to just under C drive, and rename *root_VS2019* folder to *root*.
-If not copying *root_VS2019* folder to just under C drive, the build may fail for the Windows maximum path length limitation.
+Copy *root_VS2022* folder to just under C drive, and rename *root_VS2022* folder to *root*.
+If not copying *root_VS2022* folder to just under C drive, the build may fail for the Windows maximum path length limitation.
 
 ### Obtain and deploy data providers
 The correspondence between the DBMSs and the data providers is as follows.
@@ -132,15 +132,15 @@ By executing `0_ExecAllBat.bat`, you can execute necessary batch files together.
 </tr>
 <tr>
 <Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">6</td>
-<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">3_Build_Business_netcore30.bat</td>
-<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;a&nbsp;framework&nbsp;(base&nbsp;class&nbsp;2,&nbsp;library&nbsp;part)&nbsp;of&nbsp;Business&nbsp;namespace&nbsp;that&nbsp;targets&nbsp;.NET&nbsp;Core&nbsp;3.0.</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">3_Build_Business_netcore60.bat</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;a&nbsp;framework&nbsp;(base&nbsp;class&nbsp;2,&nbsp;library&nbsp;part)&nbsp;of&nbsp;Business&nbsp;namespace&nbsp;that&nbsp;targets&nbsp;.NET&nbsp;6.</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
 </tr>
 <tr>
 <Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">7</td>
-<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">3_Build_BusinessRichClient_netcore30.bat</td>
-<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;a&nbsp;framework&nbsp;for&nbsp;rich&nbsp;client&nbsp;application&nbsp;(base&nbsp;class&nbsp;2,&nbsp;library&nbsp;part)&nbsp;of&nbsp;Business&nbsp;namespace&nbsp;that&nbsp;targets&nbsp;.NET&nbsp;Core&nbsp;3.0.</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">3_Build_BusinessRichClient_netcore60.bat</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;a&nbsp;framework&nbsp;for&nbsp;rich&nbsp;client&nbsp;application&nbsp;(base&nbsp;class&nbsp;2,&nbsp;library&nbsp;part)&nbsp;of&nbsp;Business&nbsp;namespace&nbsp;that&nbsp;targets&nbsp;.NET&nbsp;6.</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*2,&nbsp;*3</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
 </tr>
@@ -173,78 +173,91 @@ By executing `0_ExecAllBat.bat`, you can execute necessary batch files together.
 </tr>
 <tr>
 <Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">12</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">5_Build_CLI_sample.bat</td>
+<Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Framework-based&nbsp;sample&nbsp;application.&nbsp;(CLI&nbsp;application)</td>
+<Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
+</tr>
+<tr>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">13</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">5_Build_CLICore_sample.bat</td>
+<Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Core-based&nbsp;sample&nbsp;application.&nbsp;(CLI&nbsp;application)</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3,&nbsp;*4</td>
+<Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
+</tr>
+<tr>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">14</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">5_Build_2CS_sample.bat</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Framework-based&nbsp;sample&nbsp;application.&nbsp;(Two-tier&nbsp;client&nbsp;server&nbsp;application)</td>
 <Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">13</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">15</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">5_Build_2CSCore_sample.bat</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Core-based&nbsp;sample&nbsp;application.&nbsp;(Two-tier&nbsp;client&nbsp;server&nbsp;application)</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3,&nbsp;*4</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">14</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">16</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">6_Build_WSSrv_sample.bat</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Framework-based&nbsp;sample&nbsp;application.&nbsp;(Web&nbsp;services&nbsp;(Server-side&nbsp;logic))</td>
 <Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">15</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">17</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">6_Build_WSSrvCore_sample.bat</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Core-based&nbsp;sample&nbsp;application.&nbsp;(Web&nbsp;services&nbsp;(Server-side&nbsp;logic))</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3,&nbsp;*4</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">16</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">18</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">7_Build_Framework_WS.bat</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Framework-based&nbsp;framework.&nbsp;(Service&nbsp;interface)</td>
 <Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">17</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">19</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">7_Build_Framework_WSCore.bat</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Core-based&nbsp;framework.&nbsp;(Service&nbsp;interface)</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3,&nbsp;*4</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">18</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">20</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">8_Build_WSClnt_sample.bat</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Framework-based&nbsp;sample&nbsp;application.&nbsp;(Web&nbsp;service&nbsp;client)&nbsp;</td>
 <Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">19</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">21</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">8_Build_WSClntCore_sample.bat</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;.NET&nbsp;Core-based&nbsp;sample&nbsp;application.&nbsp;(Web&nbsp;service&nbsp;client)&nbsp;</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3,&nbsp;*4</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">20</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">22</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">10_Build_WebApp_sample.bat</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;sample&nbsp;web&nbsp;application.&nbsp;(ASP.NET)</td>
 <Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;" colspan="2" rowspan="1">○*4</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">21</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">23</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">10_Build_WebAppCore_sample.bat</td>
 <Td style="background-color:#F8CBAD;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Build&nbsp;the&nbsp;sample&nbsp;web&nbsp;application.&nbsp;(ASP.NET&nbsp;Core)</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○*3,&nbsp;*4</td>
 <Td style="background-color:#F8CBAD;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">－</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">22</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">24</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">z_Common.bat</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Common&nbsp;settings&nbsp;(for&nbsp;MSBuild)</td>
 <Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
 <Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
 </tr>
 <tr>
-<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">23</td>
+<Td style="background-color:#9BC2E6;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;font-weight:bold;">25</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">z_Common2.bat</td>
 <Td style="background-color:#FFFFFF;text-align:left;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">Common&nbsp;settings&nbsp;(for&nbsp;Visual&nbsp;Studio)</td>
 <Td style="background-color:#FFFFFF;text-align:center;color:#000000;font-family:'ＭＳ Ｐゴシック';font-size:11pt;">○</td>
@@ -260,7 +273,7 @@ By executing `0_ExecAllBat.bat`, you can execute necessary batch files together.
 
 - If necessary, revise the environment variable *BUILDFILEPATH* in z_Common.bat according to the build environment.
 
-- The libraries which are used by Open Touryo Template Base for Visual Studio 2019 are downloaded by NuGet. NuGet libraries might not be downloaded normally under proxy environment. So, when using proxy environment, create environment variable *http_proxy* as follows:
+- The libraries which are used by Open Touryo Template Base for Visual Studio 2022 are downloaded by NuGet. NuGet libraries might not be downloaded normally under proxy environment. So, when using proxy environment, create environment variable *http_proxy* as follows:
     - Open *C:\root\programs\CS\z_Common.bat* and *C:\root\programs\VB\z_Common.bat* in an editor.
     - By default, the code which creates environment variable *http_proxy* is commented.  
     So, uncomment this code by removing '@rem'.
