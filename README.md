@@ -1,11 +1,10 @@
 ﻿# OpenTouryo
 *OpenTouryo* is an application framework for .NET Framework which was developed using the accumulated know-how with a long track record in .NET application development.
 
-You can see what OpenTouryo is according to template-base.
-Further, you can create the "project template" using proper version of Visual Studio.
-Tutorial will be helpful to you for customizing template-base!
+You can see what OpenTouryo is according to template-base. Further, you can create the "project template" using proper version of Visual Studio. Tutorial will be helpful to you for customizing template-base!
 
-For more information, please refer to the Readme in each root_VS20XX folder.
+- For more information, please refer to the Readme in each root_VS20XX folder.
+- Click [here](Readme.ja.md) for Japanese version of this file.
 
 ## contents
 
