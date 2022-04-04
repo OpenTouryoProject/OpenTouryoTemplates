@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSClientWPF_sample", "WSClientWPF_sample.csproj", "{F9737483-DC6C-45D1-8CB7-27138FD76D36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPNETWebServiceCore", "..\..\..\..\..\Frameworks\Infrastructure\ServiceInterface\ASPNETWebServiceCore\ASPNETWebServiceCore\ASPNETWebServiceCore.csproj", "{C24BC2FA-D423-4F0F-B2B0-E647B621683D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9737483-DC6C-45D1-8CB7-27138FD76D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9737483-DC6C-45D1-8CB7-27138FD76D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9737483-DC6C-45D1-8CB7-27138FD76D36}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F9737483-DC6C-45D1-8CB7-27138FD76D36}.Debug|x86.Build.0 = Debug|Any CPU
+		{F9737483-DC6C-45D1-8CB7-27138FD76D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9737483-DC6C-45D1-8CB7-27138FD76D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9737483-DC6C-45D1-8CB7-27138FD76D36}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9737483-DC6C-45D1-8CB7-27138FD76D36}.Release|x86.Build.0 = Release|Any CPU
+		{C24BC2FA-D423-4F0F-B2B0-E647B621683D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C24BC2FA-D423-4F0F-B2B0-E647B621683D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C24BC2FA-D423-4F0F-B2B0-E647B621683D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C24BC2FA-D423-4F0F-B2B0-E647B621683D}.Debug|x86.Build.0 = Debug|Any CPU
+		{C24BC2FA-D423-4F0F-B2B0-E647B621683D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C24BC2FA-D423-4F0F-B2B0-E647B621683D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C24BC2FA-D423-4F0F-B2B0-E647B621683D}.Release|x86.ActiveCfg = Release|Any CPU
+		{C24BC2FA-D423-4F0F-B2B0-E647B621683D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03541A7D-6263-43D4-83E1-6751E882C704}
+	EndGlobalSection
+EndGlobal

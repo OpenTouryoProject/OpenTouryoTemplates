@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>WpfApplication</RootNamespace>
+    <AssemblyName>WpfApplication</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="OpenTouryo.Framework.RichClient">
+      <HintPath>..\..\..\..\..\Frameworks\Infrastructure\Build_netcore60\net6.0-windows\OpenTouryo.Framework.RichClient.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTouryo.Public">
+      <HintPath>..\..\..\..\..\Frameworks\Infrastructure\Build_netcore60\net6.0-windows\OpenTouryo.Public.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

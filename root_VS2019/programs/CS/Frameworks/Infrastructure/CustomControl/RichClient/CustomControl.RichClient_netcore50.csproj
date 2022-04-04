@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Touryo.Infrastructure.Framework.RichClient" version="2.7.0" />
+    <PackageReference Include="Touryo.Infrastructure.Framework.RichClient" version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
